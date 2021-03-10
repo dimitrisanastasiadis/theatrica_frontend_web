@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles, Typography, Avatar, Zoom } from "@material-ui/core";
-import style from "../assets/jss/components/artistCardStyle"
+import style from "../assets/jss/components/artistCardStyle";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(style);
 
@@ -22,6 +23,13 @@ function ArtistCard(props) {
             </div>
         </Zoom>
     )
+}
+
+ArtistCard.propTypes = {
+    name: PropTypes.string,
+    img: PropTypes.string,
+    play: PropTypes.string,
+    delay: PropTypes.number
 }
 
 export default ArtistCard;

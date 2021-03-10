@@ -4,6 +4,7 @@ import { makeStyles, List, ListItem, ListItemText, ListItemIcon, Drawer, Hidden 
 import { Link } from "react-router-dom";
 import Routes from "../../routes";
 import style from "../../assets/jss/components/sidebarStyle";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(style)
 
@@ -42,6 +43,10 @@ function Sidebar(props) {
         </Hidden>
             
     )
+}
+
+Sidebar.propTypes = {
+    drawerOpen: PropTypes.bool
 }
 
 export default Sidebar;

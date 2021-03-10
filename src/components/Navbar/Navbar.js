@@ -5,6 +5,7 @@ import style from "../../assets/jss/components/navbarStyle"
 import SearchIcon from "@material-ui/icons/Search"
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(style)
 
@@ -38,6 +39,12 @@ function Navbar(props){
             
         </React.Fragment>
     )
+}
+
+Navbar.propTypes = {
+    darkMode: PropTypes.bool,
+    toggleDarkMode: PropTypes.func,
+    toggleDrawer: PropTypes.func
 }
 
 export default Navbar

@@ -29,7 +29,7 @@ function Home(props) {
     return (
         <Grid container className={classes.grid} justify="center">
             <Grid item xs={12} md={9}>
-                <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί">
+                <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί" drawerOpen={props.drawerOpen}>
                     {data.artists.map((artist, index) => 
                         <ArtistCard 
                             name={artist.name}
@@ -40,12 +40,10 @@ function Home(props) {
                 </ContentSlider>
             </Grid>
             <Grid item xs={12} sm={9}>
-                
+                {testData.length ? <h1>{testData[0].fullName}</h1> :
+                                        <h1>Loading</h1>}
             </Grid>
         </Grid>
-            
-            
-                
     )
 }
 

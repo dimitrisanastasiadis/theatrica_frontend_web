@@ -18,21 +18,38 @@ function ContentSlider(props) {
     const isXxlUp = useMediaQuery(theme.breakpoints.up("xxl"));
 
     const [progress, setProgress] = useState(0);
-    const [slidesPerView, setSlidedPerView] = useState(2);
+    const [slidesPerView, setSlidesPerView] = useState(2);
 
     const swiperRef = React.useRef(null);
 
     useEffect(() => {
+        const delay = 15;
+        const timeout = props.drawerOpen ?
+                        theme.transitions.duration.enteringScreen :
+                        theme.transitions.duration.leavingScreen;
+        const interval = setInterval(() => {
+            swiperRef.current.swiper.update();
+        }, delay);
+        const timer = setTimeout(() => {
+            clearInterval(interval);
+        }, timeout);
+        return () => {
+            clearTimeout(timer);
+            clearInterval(interval)
+        }; 
+    }, [props.drawerOpen, theme.transitions.duration.enteringScreen, theme.transitions.duration.leavingScreen])
+
+    useEffect(() => {
         if (isXxlUp){
-            setSlidedPerView(6);
+            setSlidesPerView(6);
         }else if (isXlUp) {
-            setSlidedPerView(5);
+            setSlidesPerView(5);
         }else if (isLgUp){
-            setSlidedPerView(4);
+            setSlidesPerView(4);
         }else if (isSdUp){
-            setSlidedPerView(3);
+            setSlidesPerView(3);
         }else{
-            setSlidedPerView(2);
+            setSlidesPerView(2);
         }
     },[isLgUp, isXlUp, isSdUp, isXxlUp])
 
@@ -86,7 +103,10 @@ function ContentSlider(props) {
 }
 
 ContentSlider.propTypes = {
-    children: PropTypes.element
+    children: PropTypes.array,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    drawerOpen: PropTypes.bool
 }
 
 export default ContentSlider;

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import routes from "../routes"
 import { ThemeProvider } from '@material-ui/core/styles';
 import DarkTheme from '../assets/themes/DarkTheme'
 import LightTheme from '../assets/themes/LightTheme'
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Navbar from "./Navbar/Navbar"
 import Sidebar from "./Navbar/Sidebar";
-import BottomNav from "./Navbar/BottomNav"
+import BottomNav from "./Navbar/BottomNav";
+import Home from "../layouts/Home";
+import Artist from "../layouts/Artist";
+import Show from "../layouts/Show";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -31,16 +33,15 @@ function App() {
       <div style={{display: "flex"}}>
         <Sidebar drawerOpen={drawerOpen}/>
         <Switch>
-          {routes.map(route => {
-            return (
-              <Route 
-                key={route.name}
-                path={route.path}
-                exact={route.isExact}
-                component={route.component}
-              />
-            )
-          })}
+          <Route path={"/home"} exact>
+            <Home drawerOpen={drawerOpen} />
+          </Route>
+          <Route path={"/artist"} exact>
+            <Artist />
+          </Route>
+          <Route path={"/show"} exact>
+            <Show />
+          </Route>
           <Redirect from="/" to="/home" />
         </Switch>
       </div>

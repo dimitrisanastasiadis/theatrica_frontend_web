@@ -11,8 +11,10 @@ const useStyles = makeStyles(style);
 function ContentSlider(props) {
     const classes = useStyles();
     const theme = useTheme();
+    const isSdUp = useMediaQuery(theme.breakpoints.up("sd"));
     const isLgUp = useMediaQuery(theme.breakpoints.up("lg"));
     const isXlUp = useMediaQuery(theme.breakpoints.up("xl"));
+    const isXxlUp = useMediaQuery(theme.breakpoints.up("xxl"));
 
     const [progress, setProgress] = useState(0);
     const [slidesPerView, setSlidedPerView] = useState(2);
@@ -20,14 +22,18 @@ function ContentSlider(props) {
     const swiperRef = React.useRef(null);
 
     useEffect(() => {
-        if (isXlUp) {
-            setSlidedPerView(4);
+        if (isXxlUp){
+            setSlidedPerView(6);
+        }else if (isXlUp) {
+            setSlidedPerView(5);
         }else if (isLgUp){
+            setSlidedPerView(4);
+        }else if (isSdUp){
             setSlidedPerView(3);
         }else{
             setSlidedPerView(2);
         }
-    },[isLgUp, isXlUp])
+    },[isLgUp, isXlUp, isSdUp, isXxlUp])
 
     const slideByAmount = number => {
         let i = 0;

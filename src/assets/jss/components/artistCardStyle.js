@@ -1,7 +1,7 @@
 const artistCardStyle = theme => ({
     avatar: {
-        width: 150,
-        height: 150,
+        width: 135,
+        height: 135,
         "&:hover": {
             transform: "translate(0px, -10px)",
             border: `2px solid ${theme.palette.secondary.main}`,
@@ -13,8 +13,8 @@ const artistCardStyle = theme => ({
         }),
         zIndex: 2,
         [theme.breakpoints.up("sm")]: {
-            width: 200,
-            height: 200
+            width: 180,
+            height: 180
         },
         marginTop: 10,
         border: "2px solid transparent"

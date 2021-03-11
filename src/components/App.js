@@ -15,8 +15,6 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const theme = darkMode ? DarkTheme : LightTheme
-
   const toggleDarkMode = () => {
     setDarkMode(prevDarkMode => !prevDarkMode)
   }
@@ -26,7 +24,7 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme = {theme}>
+    <ThemeProvider theme = {darkMode ? DarkTheme : LightTheme}>
       <CssBaseline />
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} toggleDrawer={toggleDrawer} />
       <BottomNav />

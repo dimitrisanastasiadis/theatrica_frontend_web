@@ -5,6 +5,7 @@ import ContentSlider from "../components/ContentSlider"
 import ArtistCard from "../components/ArtistCard"
 import data from "../mockData"
 import axios from "axios"
+import VideoContainer from "../components/VideoContainer"
 
 const useStyles = makeStyles(style)
 
@@ -15,7 +16,7 @@ function Home(props) {
 
     const getData = async () => {
         try {
-          const response = await axios.get('http://localhost:8080/api/people');
+          const response = await axios.get('http://192.168.2.9:8080/api/people');
           setTestData(response.data.data);
         } catch (error) {
           console.error(error);
@@ -29,6 +30,9 @@ function Home(props) {
     return (
         <Grid container className={classes.grid} justify="center">
             <Grid item xs={12} md={9}>
+                <VideoContainer production={data.productions} />
+            </Grid>
+            <Grid item xs={12} md={9}>
                 <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί" drawerOpen={props.drawerOpen}>
                     {data.artists.map((artist, index) => 
                         <ArtistCard 
@@ -39,10 +43,7 @@ function Home(props) {
                             delay={index} />)}
                 </ContentSlider>
             </Grid>
-            <Grid item xs={12} sm={9}>
-                {testData.length ? <h1>{testData[0].fullName}</h1> :
-                                        <h1>Loading</h1>}
-            </Grid>
+            
         </Grid>
     )
 }

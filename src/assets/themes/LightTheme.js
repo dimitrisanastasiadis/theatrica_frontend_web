@@ -1,12 +1,25 @@
-import { createMuiTheme } from "@material-ui/core";
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
 
-const LightTheme = createMuiTheme({
+let LightTheme = createMuiTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 600,
+            sd: 800,
+            md: 960,
+            lg: 1280,
+            xl: 1920,
+            xxl: 2500
+        }
+    },
     palette: {
         secondary: {
-            main: "#f5c518"
+            main: "#00fff5"
         },
         type: "light"
     }
 })
+
+LightTheme = responsiveFontSizes(LightTheme);
 
 export default LightTheme;

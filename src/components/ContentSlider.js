@@ -79,10 +79,10 @@ function ContentSlider(props) {
                         <Typography variant="subtitle1" component="h3">{props.description}</Typography>
                     </div>
                     <div className={classes.buttonsContainer}>
-                        <IconButton onClick={prevSlide} disabled={progress <= 0}>
+                        <IconButton onClick={prevSlide} disabled={progress <= 0} className={classes.button}>
                             <NavigateBeforeRoundedIcon />
                         </IconButton>
-                        <IconButton onClick={nextSlide} disabled={progress >= 1}>
+                        <IconButton onClick={nextSlide} disabled={progress >= 1} className={classes.button}>
                             <NavigateNextRoundedIcon />
                         </IconButton>
                     </div>

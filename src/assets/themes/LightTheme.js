@@ -13,8 +13,13 @@ let LightTheme = createMuiTheme({
         }
     },
     palette: {
+        primary: {
+            main: "#b3e5fc",
+            light: "#82b3c9",
+            dark: "#e6ffff"
+        },
         secondary: {
-            main: "#00fff5"
+            main: "#fd2155"
         },
         type: "light"
     }

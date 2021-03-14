@@ -6,6 +6,11 @@ const bottomNavStyle = theme => ({
         position: "fixed",
         width: "100%",
         zIndex: theme.zIndex.drawer + 1
+    },
+    selected: {
+        "& > *": {
+            color: theme.palette.secondary.main
+        }
     }
 })
 

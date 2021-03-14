@@ -12,11 +12,17 @@ const contentSliderStyle = theme => ({
             display: "none"
         }
     },
+    button: {
+        "&:hover": {
+            color: theme.palette.secondary.main
+        }
+    },
     headerContainer: {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        margin: 20
+        marginBottom: 16,
+        padding: "0px 16px",
     }
 })
 

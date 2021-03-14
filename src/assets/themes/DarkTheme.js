@@ -14,15 +14,16 @@ let DarkTheme = createMuiTheme({
     },
     palette: {
         background: {
-            default: "#181818"
+            default: "#191919",
+            paper: "2A2A2A"
         },
         primary: {
             light: "#303030",
-            main: "#202020",
-            dark: "#121212"
+            main: "#1D1D1D",
+            dark: "#212121"
         },
         secondary: {
-            main: "#00fff5"
+            main: "#71FFFA"
         },
         type: "dark"
     }

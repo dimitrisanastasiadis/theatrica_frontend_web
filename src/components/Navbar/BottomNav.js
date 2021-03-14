@@ -11,15 +11,21 @@ function BottomNav(props) {
 
     return (
         <Hidden smUp>
-            <BottomNavigation className={classes.root} showLabels >
+            <BottomNavigation 
+                className={classes.root} 
+                showLabels 
+                value={props.currentPath}
+                onChange={(event, newValue) => {props.setPath(newValue)}}>
             {Routes.map(route => {
                 return (
                     <BottomNavigationAction 
+                        classes={{selected: classes.selected }}
                         key={route.name}
                         label={route.name} 
+                        value={route.path}
                         icon={route.icon} 
                         component={Link} 
-                        to={route.path} />
+                        to={route.path}/>
                 )
             })}
             </BottomNavigation>

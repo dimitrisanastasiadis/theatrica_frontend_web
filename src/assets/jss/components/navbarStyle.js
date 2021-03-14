@@ -4,7 +4,7 @@ const navbarStyle = theme => ({
         justifyContent: "space-between"
     },
     search: {
-        backgroundColor: theme.palette.primary.dark,
+        backgroundColor: theme.palette.background.default,
         margin: "auto",
         width: "35vw",
         display: "flex"

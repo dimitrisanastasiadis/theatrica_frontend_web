@@ -25,7 +25,15 @@ const sidebarStyle = theme => ({
     },
     item: {
         paddingTop: 17,
-        paddingBottom: 17
+        paddingBottom: 17,
+        "&:hover > *": {
+            color: theme.palette.secondary.main
+        }
+    },
+    selected: {
+        "& > *":{
+            color: theme.palette.secondary.main
+        }
     },
     toolbar: theme.mixins.toolbar,
 })

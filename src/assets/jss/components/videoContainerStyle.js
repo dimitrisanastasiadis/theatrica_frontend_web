@@ -13,13 +13,15 @@ const videoContainerStyle = theme => ({
         float: "left",
         marginRight: 20
     },
-    buttonPrev: {
-        position: "absolute",
-        top: "45%"
-    },
-    buttonNext: {
+    button: {
         position: "absolute",
         top: "45%",
+        "&:hover": {
+            color: theme.palette.secondary.main
+        },
+        minWidth: 20
+    },
+    buttonNext: {
         right: 0
     },
     container: {
@@ -29,9 +31,12 @@ const videoContainerStyle = theme => ({
     description: {
         padding: "20px 0px"
     },
-    divider: {
-        height: 2,
-        margin: "40px 0px"
+    headerContainer: {
+        marginBottom: 24,
+        padding: "0px 16px"
+    },
+    bodyContainer: {
+        padding: "0px 0px"
     }
 })
 

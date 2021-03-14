@@ -1,4 +1,4 @@
-import { Grid, makeStyles } from "@material-ui/core"
+import { Grid, makeStyles, Hidden, Divider } from "@material-ui/core"
 import React, { useEffect, useState } from "react"
 import style from "../assets/jss/layouts/homeStyle"
 import ContentSlider from "../components/ContentSlider"
@@ -29,10 +29,15 @@ function Home(props) {
 
     return (
         <Grid container className={classes.grid} justify="center">
-            <Grid item xs={12} md={9}>
+            <Grid item xs={12} md={9} className={classes.gridItem}>
                 <VideoContainer production={data.productions} />
             </Grid>
-            <Grid item xs={12} md={9}>
+            <Hidden mdDown>
+                <Grid item md={9}>
+                    <Divider className={classes.divider} flexItem />
+                </Grid>
+            </Hidden>
+            <Grid item xs={12} md={9} className={classes.gridItem}>
                 <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί" drawerOpen={props.drawerOpen}>
                     {data.artists.map((artist, index) => 
                         <ArtistCard 

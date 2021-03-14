@@ -26,17 +26,20 @@ function Sidebar(props) {
                 <div className={classes.toolbar}/>
                 <List>
                     {Routes.map(route => {
-                            return (
-                                    <ListItem
-                                        className={classes.item}
-                                        button 
-                                        component={Link} 
-                                        to={route.path} 
-                                        key={route.name}>
-                                        <ListItemIcon>{route.icon}</ListItemIcon>
-                                        <ListItemText primary={route.name}/>
-                                    </ListItem>
-                            )
+                        return (
+                            <ListItem
+                                className={classes.item}
+                                classes={{selected: classes.selected}}
+                                selected={route.path.startsWith(props.currentPath)}
+                                button 
+                                component={Link} 
+                                to={route.path} 
+                                key={route.name} 
+                                onClick={() => {props.setPath(route.path)}}>
+                                <ListItemIcon>{route.icon}</ListItemIcon>
+                                <ListItemText primary={route.name}/>
+                            </ListItem>
+                        )
                     })}
                 </List>
             </Drawer>
@@ -46,7 +49,9 @@ function Sidebar(props) {
 }
 
 Sidebar.propTypes = {
-    drawerOpen: PropTypes.bool
+    drawerOpen: PropTypes.bool,
+    currentPath: PropTypes.string,
+    setPath: PropTypes.func
 }
 
 export default Sidebar;

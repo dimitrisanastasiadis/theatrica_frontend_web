@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles, Button, Fade, Typography, Hidden, Divider } from "@material-ui/core";
+import { makeStyles, Button, Fade, Typography, Hidden } from "@material-ui/core";
 import style from "../assets/jss/components/videoContainerStyle";
 import ReactPlayer from 'react-player/youtube';
 import NavigateNextRoundedIcon from '@material-ui/icons/NavigateNextRounded';
@@ -33,11 +33,11 @@ function VideoContainer(props) {
 
     return (
         <div className={classes.container}>
-            <div style={{margin: 20}}>
+            <div className={classes.headerContainer}>
                 <Typography variant="h4" component="h2">Trailers</Typography>
                 <Typography variant="h5" component="h3">{production.title}</Typography>
             </div>
-            <div>
+            <div className={classes.bodyContainer}>
                 <div className={classes.aspectRatioSizer}>
                     <svg viewBox="0 0 16 9"></svg>
                     <ReactPlayer 
@@ -52,14 +52,14 @@ function VideoContainer(props) {
                     <Fade in={!playing}>
                         <Button
                             onClick={handlePrev}
-                            className={classes.buttonPrev}>
+                            className={classes.button}>
                             <NavigateBeforeRoundedIcon fontSize="large"/>
                         </Button>
                     </Fade>
                     <Fade in={!playing}>
                         <Button
                             onClick={handleNext}
-                            className={classes.buttonNext}>
+                            className={`${classes.button} ${classes.buttonNext}`}>
                             <NavigateNextRoundedIcon fontSize="large"/>
                         </Button>
                     </Fade>
@@ -70,9 +70,6 @@ function VideoContainer(props) {
                     </Hidden>
                 </div>
             </div>
-            <Hidden mdDown>
-                <Divider className={classes.divider} flexItem />
-            </Hidden>
         </div>  
     )
 }

@@ -5,7 +5,7 @@ const homeStyle = theme => ({
         padding: "8px 0px 76px 0px"
     },
     gridItem: {
-        marginBottom: 8,
+        marginBottom: 16,
         padding: "16px 0px",
         [theme.breakpoints.down("sm")]: {
             backgroundColor: theme.palette.primary.dark

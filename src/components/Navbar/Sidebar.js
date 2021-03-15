@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from 'clsx';
 import { makeStyles, List, ListItem, ListItemText, ListItemIcon, Drawer, Hidden } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Routes from "../../routes";
 import style from "../../assets/jss/components/sidebarStyle";
 import PropTypes from "prop-types";
@@ -10,6 +10,7 @@ const useStyles = makeStyles(style)
 
 function Sidebar(props) {
     const classes = useStyles();
+    const location = useLocation();
 
     return (
         <Hidden xsDown>
@@ -30,12 +31,11 @@ function Sidebar(props) {
                             <ListItem
                                 className={classes.item}
                                 classes={{selected: classes.selected}}
-                                selected={route.path.startsWith(props.currentPath)}
+                                selected={location.pathname.startsWith(route.path)}
                                 button 
                                 component={Link} 
                                 to={route.path} 
-                                key={route.name} 
-                                onClick={() => {props.setPath(route.path)}}>
+                                key={route.name}>
                                 <ListItemIcon>{route.icon}</ListItemIcon>
                                 <ListItemText primary={route.name}/>
                             </ListItem>
@@ -49,9 +49,7 @@ function Sidebar(props) {
 }
 
 Sidebar.propTypes = {
-    drawerOpen: PropTypes.bool,
-    currentPath: PropTypes.string,
-    setPath: PropTypes.func
+    drawerOpen: PropTypes.bool
 }
 
 export default Sidebar;

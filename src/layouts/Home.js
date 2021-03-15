@@ -48,7 +48,11 @@ function Home(props) {
                             delay={index} />)}
                 </ContentSlider>
             </Grid>
-            
+            <Hidden mdDown>
+                <Grid item md={9}>
+                    <Divider className={classes.divider} flexItem />
+                </Grid>
+            </Hidden>
         </Grid>
     )
 }

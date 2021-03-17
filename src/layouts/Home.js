@@ -1,4 +1,4 @@
-import { Grid, makeStyles, Hidden, Divider } from "@material-ui/core"
+import { Grid, makeStyles, Hidden, Divider, LinearProgress, Typography } from "@material-ui/core"
 import React, { useEffect, useState } from "react"
 import style from "../assets/jss/layouts/homeStyle"
 import ContentSlider from "../components/ContentSlider"
@@ -16,8 +16,16 @@ function Home(props) {
 
     const getData = async () => {
         try {
-          const response = await axios.get('http://192.168.2.9:8080/api/people');
-          setTestData(response.data.data);
+          const response = await axios.get('http://192.168.2.9:8080/api/people?page=1&size=10');
+          const artists = response.data.data;
+          let responseProductions
+          await Promise.all(
+              artists.map(async (artist, index) => {
+                responseProductions = await axios.get(`http://192.168.2.9:8080/api/people/${artist.id}/productions`);
+                artists[index].productions = responseProductions.data.data;
+              })
+          )
+          setTestData(artists);
         } catch (error) {
           console.error(error);
         }
@@ -38,15 +46,19 @@ function Home(props) {
                 </Grid>
             </Hidden>
             <Grid item xs={12} md={9} className={classes.gridItem}>
+                {testData.length ?
                 <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί" drawerOpen={props.drawerOpen}>
-                    {data.artists.map((artist, index) => 
+                    {testData.map((artist, index) => 
                         <ArtistCard 
-                            name={artist.name}
-                            img={artist.img}
-                            play={artist.play}
+                            name={artist.fullName}
+                            play={artist.productions[0].title}
                             key={index}
                             delay={index} />)}
-                </ContentSlider>
+                </ContentSlider> : 
+                <div className={classes.loading}>
+                    <Typography variant="h5">Interviewing actors. Please wait...</Typography>
+                    <LinearProgress color="secondary" className={classes.progressBar}/>
+                </div>}
             </Grid>
             <Hidden mdDown>
                 <Grid item md={9}>

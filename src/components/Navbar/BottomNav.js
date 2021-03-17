@@ -3,7 +3,6 @@ import { makeStyles, BottomNavigation, BottomNavigationAction, Hidden } from "@m
 import style from "../../assets/jss/components/bottomNavStyle";
 import Routes from "../../routes";
 import { Link, useLocation } from "react-router-dom"
-import PropTypes from "prop-types"
 
 const useStyles = makeStyles(style);
 
@@ -16,7 +15,7 @@ function BottomNav(props) {
             <BottomNavigation 
                 className={classes.root} 
                 showLabels 
-                value={location.pathname}>
+                value={`/${location.pathname.split("/")[1]}`}>
             {Routes.map(route => {
                 return (
                     <BottomNavigationAction 
@@ -33,11 +32,6 @@ function BottomNav(props) {
         </Hidden>
         
     )
-}
-
-BottomNav.propTypes = {
-    currentPath: PropTypes.string,
-    setPath: PropTypes.func
 }
 
 export default BottomNav;

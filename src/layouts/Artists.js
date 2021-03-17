@@ -1,6 +1,6 @@
 import React from "react"
 
-function Artist(props) {
+function Artists(props) {
     return (
         <React.Fragment>
             <h1>This is the artist page</h1>
@@ -8,4 +8,4 @@ function Artist(props) {
     )
 }
 
-export default Artist;
+export default Artists;

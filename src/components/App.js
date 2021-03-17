@@ -8,7 +8,7 @@ import Navbar from "./Navbar/Navbar"
 import Sidebar from "./Navbar/Sidebar";
 import BottomNav from "./Navbar/BottomNav";
 import Home from "../layouts/Home";
-import Artist from "../layouts/Artist";
+import Artists from "../layouts/Artists";
 import Show from "../layouts/Show";
 
 function App() {
@@ -35,8 +35,8 @@ function App() {
           <Route path={"/home"} exact>
             <Home drawerOpen={drawerOpen} />
           </Route>
-          <Route path={"/artist"} exact>
-            <Artist />
+          <Route path={"/artists"}>
+            <Artists />
           </Route>
           <Route path={"/show"} exact>
             <Show />
@@ -44,7 +44,7 @@ function App() {
           <Redirect from="/" to="/home" />
         </Switch>
       </div>
-    </ThemeProvider>  
+    </ThemeProvider>
   );
 }
 

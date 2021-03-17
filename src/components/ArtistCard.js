@@ -17,7 +17,7 @@ function ArtistCard(props) {
 
     return (
         <Zoom in={checked} style={{ transitionDelay: checked ? `${props.delay * 200}ms` : '0ms' }}>
-            <Link to="/artist" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+            <Link to="/artists" style={{ color: 'inherit', textDecoration: 'inherit'}}>
                 <div className={classes.container}>
                     <Avatar className={classes.avatar} alt="Artist Photo" src={props.img} />
                     <Typography variant="body1" component="h4">{props.name}</Typography>

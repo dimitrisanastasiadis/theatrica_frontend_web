@@ -1,6 +1,6 @@
 import React from "react"
 import Home from "./layouts/Home";
-import Artist from "./layouts/Artist";
+import Artists from "./layouts/Artists";
 import Show from "./layouts/Show";
 import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
@@ -15,10 +15,10 @@ const routes = [
         icon: <HomeIcon fontSize="default"/>
     },
     {
-        path: "/artist",
-        name: "Artist",
+        path: "/artists",
+        name: "Artists",
         isExact: true,
-        component: Artist,
+        component: Artists,
         icon: <PersonIcon fontSize="default"/>
     },
     {

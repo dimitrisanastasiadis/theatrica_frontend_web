@@ -23,7 +23,11 @@ const artistCardStyle = theme => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        textAlign: "center"
+        textAlign: "center",
+        width: 135,
+        [theme.breakpoints.up("sm")]: {
+            width: 180
+        },
     },
     subtitle: {
         flexShrink: 0,

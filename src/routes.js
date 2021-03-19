@@ -1,6 +1,6 @@
 import React from "react"
 import Home from "./layouts/Home";
-import Artists from "./layouts/Artists";
+import PaginationPage from "./layouts/PaginationPage";
 import Show from "./layouts/Show";
 import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
@@ -18,7 +18,7 @@ const routes = [
         path: "/artists",
         name: "Artists",
         isExact: true,
-        component: Artists,
+        component: PaginationPage,
         icon: <PersonIcon fontSize="default"/>
     },
     {

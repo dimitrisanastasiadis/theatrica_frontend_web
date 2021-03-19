@@ -8,8 +8,9 @@ import Navbar from "./Navbar/Navbar"
 import Sidebar from "./Navbar/Sidebar";
 import BottomNav from "./Navbar/BottomNav";
 import Home from "../layouts/Home";
-import Artists from "../layouts/Artists";
+import PaginationPage from "../layouts/PaginationPage";
 import Show from "../layouts/Show";
+import ArtistDetails from "../layouts/ArtistDetails";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -35,8 +36,11 @@ function App() {
           <Route path={"/home"} exact>
             <Home drawerOpen={drawerOpen} />
           </Route>
+          <Route path="/artists/id/:id">
+            <ArtistDetails />
+          </Route>
           <Route path={"/artists"}>
-            <Artists />
+            <PaginationPage path="/artists" fetchURL="http://192.168.2.9:8080/api/people"/>
           </Route>
           <Route path={"/show"} exact>
             <Show />

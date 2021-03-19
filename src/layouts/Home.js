@@ -14,25 +14,35 @@ function Home(props) {
 
     const [testData, setTestData] = useState([]);
 
-    const getData = async () => {
-        try {
-          const response = await axios.get('http://192.168.2.9:8080/api/people?page=1&size=10');
-          const artists = response.data.data;
-          let responseProductions
-          await Promise.all(
-              artists.map(async (artist, index) => {
-                responseProductions = await axios.get(`http://192.168.2.9:8080/api/people/${artist.id}/productions`);
-                artists[index].productions = responseProductions.data.data;
-              })
-          )
-          setTestData(artists);
-        } catch (error) {
-          console.error(error);
-        }
-    }
+    
 
     useEffect(() => {
+        let isMounted = true;
+
+        const getData = async () => {
+            try {
+              const response = await axios.get('http://192.168.2.9:8080/api/people?page=1&size=10');
+              const artists = response.data.data;
+              let responseProductions
+              await Promise.all(
+                  artists.map(async (artist, index) => {
+                    responseProductions = await axios.get(`http://192.168.2.9:8080/api/people/${artist.id}/productions`);
+                    artists[index].productions = responseProductions.data.data;
+                  })
+              )
+              if (isMounted){
+                setTestData(artists);
+              }
+            } catch (error) {
+              console.error(error);
+            }
+        }
+
         getData();
+
+        return () => {
+            isMounted = false;
+        }
     }, [])
 
     return (
@@ -50,8 +60,9 @@ function Home(props) {
                 <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί" drawerOpen={props.drawerOpen}>
                     {testData.map((artist, index) => 
                         <ArtistCard 
+                            id={artist.id}
                             name={artist.fullName}
-                            play={artist.productions[0].title}
+                            play={artist.productions.length ? artist.productions[0].title : ""}
                             key={index}
                             delay={index} />)}
                 </ContentSlider> : 

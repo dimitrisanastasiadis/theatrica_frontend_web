@@ -1,17 +1,17 @@
-import React, { useEffect} from "react"
-import axios from "axios"
+import React from "react"
 import ArtistCard from "../components/ArtistCard"
 import { makeStyles, Typography, useMediaQuery, useTheme } from "@material-ui/core"
 import style from "../assets/jss/components/artistsListStyle"
 import { Skeleton } from "@material-ui/lab"
+import useArtistData from "../hooks/useArtistData"
 
 const useStyles = makeStyles(style);
 
 function ArtistsList(props){
     const classes = useStyles();
     const theme = useTheme();
-    const [ artistData, setArtistData ] = React.useState([]);
     const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
+    const artistData = useArtistData(props.page, 20);
 
     const loadingSkeletons = Array(20).fill(
         <div>
@@ -24,36 +24,6 @@ function ArtistsList(props){
             </Typography>
         </div>
     )
-
-    useEffect(() => {
-        let isMounted = true;
-        setArtistData([]);
-        const getData = async () => {
-            try {
-              const response = await axios.get(`http://192.168.2.9:8080/api/people?page=${props.page}&size=20`);
-              const artists = response.data.data;
-              let responseProductions
-              await Promise.all(
-                  artists.map(async (artist, index) => {
-                    responseProductions = await axios.get(`http://192.168.2.9:8080/api/people/${artist.id}/productions`);
-                    artists[index].productions = responseProductions.data.data;
-                  })
-              )
-              if (isMounted){
-                setArtistData(artists);
-              }
-            } catch (error) {
-              console.error(error);
-            }
-        }
-        if (props.page){
-            getData();
-        }
-
-        return () => {
-            isMounted = false;
-        }
-    }, [props.page])
 
     return (
         <React.Fragment>

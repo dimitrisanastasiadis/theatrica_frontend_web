@@ -1,41 +1,19 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { makeStyles, Grid } from "@material-ui/core"
 import style from "../assets/jss/layouts/paginationPageStyle"
 import { Pagination } from "@material-ui/lab"
-import axios from "axios"
 import useQuery from "../hooks/useQuery"
 import ArtistsList from "../components/ArtistsList"
+import usePageCount from "../hooks/usePageCount"
 
 const useStyles = makeStyles(style);
 
 function PaginationPage(props) {
     const classes = useStyles();
     const query = Number(useQuery().get("page"));
-    const [ pageCount, setPageCount ] = useState(0);
     const history = useHistory();
-    
-    useEffect(() => {
-        let isMounted = true;
-        
-        const getPageCount = async () => {
-            try {
-              const response = await axios.get(props.fetchURL);
-              const items = response.data.data;
-              if(isMounted){
-                setPageCount(Math.ceil(items.length / 20));
-              }
-            } catch (error) {
-              console.error(error);
-            }
-        }
-
-        getPageCount();
-
-        return () => {
-            isMounted = false;
-        }
-    },[props.fetchURL])
+    const pageCount = usePageCount(props.fetchURL);
 
     useEffect(() => {
         if (!query){

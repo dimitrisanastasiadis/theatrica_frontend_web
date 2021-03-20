@@ -1,49 +1,17 @@
 import { Grid, makeStyles, Hidden, Divider, LinearProgress, Typography } from "@material-ui/core"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import style from "../assets/jss/layouts/homeStyle"
 import ContentSlider from "../components/ContentSlider"
 import ArtistCard from "../components/ArtistCard"
 import data from "../mockData"
-import axios from "axios"
 import VideoContainer from "../components/VideoContainer"
+import useArtistData from "../hooks/useArtistData"
 
 const useStyles = makeStyles(style)
 
 function Home(props) {
     const classes = useStyles();
-
-    const [testData, setTestData] = useState([]);
-
-    
-
-    useEffect(() => {
-        let isMounted = true;
-
-        const getData = async () => {
-            try {
-              const response = await axios.get('http://192.168.2.9:8080/api/people?page=1&size=10');
-              const artists = response.data.data;
-              let responseProductions
-              await Promise.all(
-                  artists.map(async (artist, index) => {
-                    responseProductions = await axios.get(`http://192.168.2.9:8080/api/people/${artist.id}/productions`);
-                    artists[index].productions = responseProductions.data.data;
-                  })
-              )
-              if (isMounted){
-                setTestData(artists);
-              }
-            } catch (error) {
-              console.error(error);
-            }
-        }
-
-        getData();
-
-        return () => {
-            isMounted = false;
-        }
-    }, [])
+    const artistData = useArtistData(1, 10);
 
     return (
         <Grid container className={classes.grid} justify="center">
@@ -56,9 +24,9 @@ function Home(props) {
                 </Grid>
             </Hidden>
             <Grid item xs={12} md={9} className={classes.gridItem}>
-                {testData.length ?
+                {artistData.length ?
                 <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί" drawerOpen={props.drawerOpen}>
-                    {testData.map((artist, index) => 
+                    {artistData.map((artist, index) => 
                         <ArtistCard 
                             id={artist.id}
                             name={artist.fullName}

@@ -13,15 +13,21 @@ import Show from "../layouts/Show";
 import ArtistDetails from "../layouts/ArtistDetails";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  
+  const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === null ?
+    true : localStorage.getItem("darkMode") === "true");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDarkMode = () => {
-    setDarkMode(prevDarkMode => !prevDarkMode)
+    setDarkMode(prevDarkMode => !prevDarkMode);
   }
 
+  React.useEffect(() => {
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode])
+
   const toggleDrawer = () => {
-    setDrawerOpen(prevDrawerOpen => !prevDrawerOpen)
+    setDrawerOpen(prevDrawerOpen => !prevDrawerOpen);
   }
 
   return (
@@ -40,7 +46,7 @@ function App() {
             <ArtistDetails />
           </Route>
           <Route path={"/artists"}>
-            <PaginationPage path="/artists" fetchURL="http://192.168.2.9:8080/api/people"/>
+            <PaginationPage path="/artists" fetchURL="http://192.168.2.10:8080/api/people"/>
           </Route>
           <Route path={"/show"} exact>
             <Show />

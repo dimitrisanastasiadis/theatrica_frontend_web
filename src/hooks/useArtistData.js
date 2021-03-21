@@ -6,6 +6,7 @@ function useArtistData(page, size = 10){
 
     useEffect(() => {
         let isMounted = true;
+        setArtistData([]);
         const getData = async () => {
             try {
               const response = await axios.get(`http://192.168.2.10:8080/api/people?page=${page}&size=${size}`);

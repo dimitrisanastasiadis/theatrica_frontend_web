@@ -27,8 +27,9 @@ function ArtistsList(props){
 
     return (
         <React.Fragment>
-            <h1>Artists</h1>
+            
             <div className={classes.container}>
+                <h1 style={{width: "100%"}}>Artists</h1>
                 {artistData.length ?
                     artistData.map((artist, index) => 
                     <ArtistCard 

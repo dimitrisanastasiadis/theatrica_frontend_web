@@ -4,6 +4,7 @@ import { makeStyles, Typography, useMediaQuery, useTheme } from "@material-ui/co
 import style from "../assets/jss/components/artistsListStyle"
 import { Skeleton } from "@material-ui/lab"
 import useArtistData from "../hooks/useArtistData"
+import PropTypes from "prop-types"
 
 const useStyles = makeStyles(style);
 
@@ -44,6 +45,10 @@ function ArtistsList(props){
             </div>
         </React.Fragment>
     )
+}
+
+ArtistsList.propTypes = {
+    page: PropTypes.number
 }
 
 export default ArtistsList;

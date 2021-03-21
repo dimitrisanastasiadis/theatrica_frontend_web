@@ -6,6 +6,7 @@ import { Pagination } from "@material-ui/lab"
 import useQuery from "../hooks/useQuery"
 import ArtistsList from "../components/ArtistsList"
 import usePageCount from "../hooks/usePageCount"
+import PropTypes from "prop-types"
 
 const useStyles = makeStyles(style);
 
@@ -47,6 +48,11 @@ function PaginationPage(props) {
             </Grid>
         </Grid>
     )
+}
+
+PaginationPage.propTypes = {
+    path: PropTypes.string,
+    fetchURL: PropTypes.string
 }
 
 export default PaginationPage;

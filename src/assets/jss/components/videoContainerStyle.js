@@ -1,28 +1,20 @@
 const videoContainerStyle = theme => ({
-    aspectRatioSizer: {
-        display: "grid",
-        "& > *": {
-            gridArea: "1 / 1 / 2 / 2"
-        },
-        position: "relative",
-        width: "66%",
-        flexShrink: 0,
-        [theme.breakpoints.down("md")]: {
-            width: "100%"
-        },
-        float: "left",
-        marginRight: 20
-    },
     button: {
         position: "absolute",
         top: "45%",
         "&:hover": {
             color: theme.palette.secondary.main
         },
-        minWidth: 20
+        minWidth: 20,
     },
     buttonNext: {
-        right: 0
+        right: "34%",
+        [theme.breakpoints.down("md")]: {
+            right: 0
+        }
+    },
+    buttonPrev: {
+        left: 0
     },
     container: {
         display: "flex",
@@ -36,7 +28,8 @@ const videoContainerStyle = theme => ({
         padding: "0px 16px"
     },
     bodyContainer: {
-        padding: "0px 0px"
+        padding: "0px 0px",
+        position: "relative"
     }
 })
 

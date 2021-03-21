@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { makeStyles, Button, Fade, Typography, Hidden } from "@material-ui/core";
 import style from "../assets/jss/components/videoContainerStyle";
-import ReactPlayer from 'react-player/youtube';
 import NavigateNextRoundedIcon from '@material-ui/icons/NavigateNextRounded';
 import NavigateBeforeRoundedIcon from '@material-ui/icons/NavigateBeforeRounded';
 import PropTypes from "prop-types";
+import ReactPlayer from 'react-player/youtube';
+import AspectRatioSizer from "../utils/AspectRatioSizer"
 
 const useStyles = makeStyles(style);
 
@@ -38,8 +39,7 @@ function VideoContainer(props) {
                 <Typography variant="h5" component="h3">{production.title}</Typography>
             </div>
             <div className={classes.bodyContainer}>
-                <div className={classes.aspectRatioSizer}>
-                    <svg viewBox="0 0 16 9"></svg>
+                <AspectRatioSizer widthRatio={16} heightRatio={9}>
                     <ReactPlayer 
                         url={production.url}
                         controls
@@ -49,10 +49,11 @@ function VideoContainer(props) {
                         onPause={() => {setPlaying(false)}}
                         onEnded={() => {setPlaying(false)}}
                     />
-                    <Fade in={!playing}>
+                </AspectRatioSizer>
+                <Fade in={!playing}>
                         <Button
                             onClick={handlePrev}
-                            className={classes.button}>
+                            className={`${classes.button} ${classes.buttonPrev}`}>
                             <NavigateBeforeRoundedIcon fontSize="large"/>
                         </Button>
                     </Fade>
@@ -63,7 +64,6 @@ function VideoContainer(props) {
                             <NavigateNextRoundedIcon fontSize="large"/>
                         </Button>
                     </Fade>
-                </div>
                 <div className={classes.description}>
                     <Hidden mdDown>
                         <Typography component="p" variant="body1">{production.description}</Typography>

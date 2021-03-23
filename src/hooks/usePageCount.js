@@ -5,24 +5,30 @@ function usePageCount(fetchURL, pageSize = 20) {
     const [ pageCount, setPageCount ] = useState(0);
 
     useEffect(() => {
-        let isMounted = true;
+      const CancelToken = axios.CancelToken;
+      const source = CancelToken.source();      
         
         const getPageCount = async () => {
-            try {
-              const response = await axios.get(fetchURL);
-              const items = response.data.data;
-              if(isMounted){
-                setPageCount(Math.ceil(items.length / pageSize));
-              }
-            } catch (error) {
-              console.error(error);
+          try{
+            const response = await axios.get(fetchURL, {
+              cancelToken: source.token
+            })
+            const items = response.data.data;
+            setPageCount(Math.ceil(items.length / pageSize));
+          }catch(error) {
+            if (axios.isCancel(error)){
+              console.log('Request canceled: ' + error);
             }
+            else{
+              console.log('Request failed: ' + error);
+            }
+          }
         }
 
         getPageCount();
 
         return () => {
-            isMounted = false;
+          source.cancel();
         }
     },[fetchURL, pageSize])
 

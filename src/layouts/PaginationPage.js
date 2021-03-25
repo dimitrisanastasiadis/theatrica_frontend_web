@@ -35,7 +35,7 @@ function PaginationPage(props) {
     return (
         <Grid container className={classes.grid} justify="center">
             <Grid item xs={12} md={9}>
-                <ArtistsList page={query}/>
+                <ArtistsList page={query-1}/>
             </Grid>
             <Grid item xs={12} md={9}>
                 <div className={classes.paginationContainer}>

@@ -46,7 +46,7 @@ function App() {
             <ArtistDetails />
           </Route>
           <Route path={"/artists"}>
-            <PaginationPage path="/artists" fetchURL="http://192.168.2.10:8080/api/people"/>
+            <PaginationPage path="/artists" fetchURL="http://192.168.2.10:8080/api/people?page=0&size=20"/>
           </Route>
           <Route path={"/show"} exact>
             <Show />

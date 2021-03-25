@@ -6,6 +6,7 @@ const videoContainerStyle = theme => ({
             color: theme.palette.secondary.main
         },
         minWidth: 20,
+        color: "white"
     },
     buttonNext: {
         right: "34%",

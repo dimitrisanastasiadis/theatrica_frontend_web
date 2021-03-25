@@ -14,8 +14,8 @@ function ArtistsList(props){
     const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
     const artistData = useArtistData(props.page, 20);
 
-    const loadingSkeletons = Array(20).fill(
-        <div>
+    const loadingSkeletons = Array.from(Array(20), (_, index) => 
+        <div key={index}>
             <Skeleton variant="circle" width={isSmUp ? 180 : 135} height={isSmUp ? 180 : 135} />
             <Typography variant="body1">
                 <Skeleton />

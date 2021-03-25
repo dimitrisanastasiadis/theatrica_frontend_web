@@ -11,7 +11,7 @@ const useStyles = makeStyles(style)
 
 function Home(props) {
     const classes = useStyles();
-    const artistData = useArtistData(1, 10);
+    const artistData = useArtistData(0, 10);
 
     return (
         <Grid container className={classes.grid} justify="center">

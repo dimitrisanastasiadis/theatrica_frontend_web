@@ -13,8 +13,7 @@ function usePageCount(fetchURL, pageSize = 20) {
             const response = await axios.get(fetchURL, {
               cancelToken: source.token
             })
-            const items = response.data.data;
-            setPageCount(Math.ceil(items.length / pageSize));
+            setPageCount(response.data.data.totalPages);
           }catch(error) {
             if (axios.isCancel(error)){
               console.log('Request canceled: ' + error);

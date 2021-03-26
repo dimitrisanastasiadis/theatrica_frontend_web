@@ -31,7 +31,7 @@ function ArtistsList(props){
             
             <div className={classes.container}>
                 <h1 style={{width: "100%"}}>Artists</h1>
-                {artistData.length ?
+                {artistData ?
                     artistData.map((artist, index) => 
                     <ArtistCard 
                         id={artist.id}

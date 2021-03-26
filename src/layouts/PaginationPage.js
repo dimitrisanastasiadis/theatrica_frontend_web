@@ -35,7 +35,13 @@ function PaginationPage(props) {
     return (
         <Grid container className={classes.grid} justify="center">
             <Grid item xs={12} md={9}>
-                <ArtistsList page={query-1}/>
+                {query && 
+                    <React.Fragment>
+                        <ArtistsList page={query-1}/>
+                        {/* <div className={classes.hiddenPreload}><ArtistsList page={query}/></div> */}
+                    </React.Fragment>
+                    
+                }
             </Grid>
             <Grid item xs={12} md={9}>
                 <div className={classes.paginationContainer}>

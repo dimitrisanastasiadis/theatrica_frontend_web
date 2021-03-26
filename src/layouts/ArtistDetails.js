@@ -5,9 +5,9 @@ import { Slide } from "@material-ui/core"
 
 function ArtistDetails(props) {
     const { id } = useParams();
-    const [ data ] = useArtistData(undefined, undefined, id);
-    const [ showData, setShowData ] = useState(false)
-
+    const data = useArtistData(undefined, undefined, id);
+    const [ showData, setShowData ] = useState(false);
+    
     return (
         <React.Fragment>
             <Slide 
@@ -22,8 +22,8 @@ function ArtistDetails(props) {
                 </div>
             </Slide>
                 {showData && <div>
-                    <h1>{data.fullName}</h1>
-                    {data.productions.map((production, index) => 
+                    <h1>{data[0].fullName}</h1>
+                    {data[0].productions.map((production, index) => 
                         <h2 key={index}>{production.title} - {production.role}</h2>
                     )}
                 </div>}

@@ -11,7 +11,7 @@ const useStyles = makeStyles(style)
 
 function Home(props) {
     const classes = useStyles();
-    const artistData = useArtistData(0, 10);
+    const artistData = useArtistData(0, 20);
 
     return (
         <Grid container className={classes.grid} justify="center">
@@ -24,7 +24,7 @@ function Home(props) {
                 </Grid>
             </Hidden>
             <Grid item xs={12} md={9} className={classes.gridItem}>
-                {artistData.length ?
+                {artistData ?
                 <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί" drawerOpen={props.drawerOpen}>
                     {artistData.map((artist, index) => 
                         <ArtistCard 

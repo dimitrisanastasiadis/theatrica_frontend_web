@@ -11,6 +11,7 @@ import Home from "../layouts/Home";
 import PaginationPage from "../layouts/PaginationPage";
 import Show from "../layouts/Show";
 import ArtistDetails from "../layouts/ArtistDetails";
+import { SWRConfig } from "swr";
 
 function App() {
   
@@ -33,27 +34,33 @@ function App() {
   return (
     <ThemeProvider theme = {darkMode ? DarkTheme : LightTheme}>
       <CssBaseline />
-      <Navbar 
-        darkMode={darkMode} toggleDarkMode={toggleDarkMode} toggleDrawer={toggleDrawer} />
-      <BottomNav />
-      <div style={{display: "flex"}}>
-        <Sidebar drawerOpen={drawerOpen} />
-        <Switch>
-          <Route path={"/home"} exact>
-            <Home drawerOpen={drawerOpen} />
-          </Route>
-          <Route path="/artists/id/:id">
-            <ArtistDetails />
-          </Route>
-          <Route path={"/artists"}>
-            <PaginationPage path="/artists" fetchURL="http://192.168.2.10:8080/api/people?page=0&size=20"/>
-          </Route>
-          <Route path={"/show"} exact>
-            <Show />
-          </Route>
-          <Redirect from="/" to="/home" />
-        </Switch>
-      </div>
+      <SWRConfig
+        value={{
+          revalidateOnFocus: false,
+          dedupingInterval: 30000
+        }}>
+        <Navbar 
+          darkMode={darkMode} toggleDarkMode={toggleDarkMode} toggleDrawer={toggleDrawer} />
+        <BottomNav />
+        <div style={{display: "flex"}}>
+          <Sidebar drawerOpen={drawerOpen} />
+          <Switch>
+            <Route path={"/home"} exact>
+              <Home drawerOpen={drawerOpen} />
+            </Route>
+            <Route path="/artists/id/:id">
+              <ArtistDetails />
+            </Route>
+            <Route path={"/artists"}>
+              <PaginationPage path="/artists" fetchURL="http://192.168.2.10:8080/api/people?page=0&size=20"/>
+            </Route>
+            <Route path={"/show"} exact>
+              <Show />
+            </Route>
+            <Redirect from="/" to="/home" />
+          </Switch>
+        </div>
+      </SWRConfig>
     </ThemeProvider>
   );
 }

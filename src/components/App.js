@@ -37,7 +37,7 @@ function App() {
       <SWRConfig
         value={{
           revalidateOnFocus: false,
-          dedupingInterval: 30000
+          dedupingInterval: 300000
         }}>
         <Navbar 
           darkMode={darkMode} toggleDarkMode={toggleDarkMode} toggleDrawer={toggleDrawer} />
@@ -52,7 +52,7 @@ function App() {
               <ArtistDetails />
             </Route>
             <Route path={"/artists"}>
-              <PaginationPage path="/artists" fetchURL="http://192.168.2.10:8080/api/people?page=0&size=20"/>
+              <PaginationPage path="/artists" fetchURL="/people"/>
             </Route>
             <Route path={"/show"} exact>
               <Show />

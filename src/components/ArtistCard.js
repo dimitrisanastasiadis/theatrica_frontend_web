@@ -1,38 +1,50 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles, Typography, Avatar, Zoom } from "@material-ui/core";
+import React from "react";
+import { makeStyles, Typography, Avatar, Zoom, useMediaQuery, useTheme } from "@material-ui/core";
 import style from "../assets/jss/components/artistCardStyle";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import useArtistData from "../hooks/useArtistData"
+import { Skeleton } from "@material-ui/lab"
 
 const useStyles = makeStyles(style);
 
 function ArtistCard(props) {
     const classes = useStyles();
-
-    const [checked, setChecked] = useState(false);
-
-    useEffect(() => {
-        setChecked(true);
-    }, [])
+    const artistData = useArtistData(props.id);
+    const theme = useTheme();
+    const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
 
     return (
-        <Zoom in={checked} style={{ transitionDelay: checked ? `${props.delay * 200}ms` : '0ms' }}>
-            <Link to={`/artists/id/${props.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
-                <div className={classes.container}>
-                    <Avatar className={classes.avatar} alt="Artist Photo" src={props.img} />
-                    <Typography variant="body1" component="h4">{props.name}</Typography>
-                    <Typography variant="body2" component="h5" className={classes.subtitle}>{props.play}</Typography>
+        <React.Fragment>
+            {artistData ?
+                <Zoom in={true} style={{ transitionDelay: props.delay ? `${props.delay * 200}ms` : '0ms' }}>
+                    <Link to={`/artists/id/${props.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
+                        <div className={classes.container}>
+                            <Avatar className={classes.avatar} alt="Artist Photo" src={props.img} />
+                            <Typography variant="body1" component="h4">{artistData.fullName}</Typography>
+                            {artistData.productions &&
+                                <Typography variant="body2" component="h5" className={classes.subtitle}>{artistData.productions.length ? artistData.productions[0].title : ""}</Typography>
+                            }
+                        </div>
+                    </Link>
+                </Zoom> : 
+                <div>
+                    <Skeleton variant="circle" width={isSmUp ? 180 : 135} height={isSmUp ? 180 : 135} />
+                    <Typography variant="body1">
+                        <Skeleton />
+                    </Typography>
+                    <Typography variant="body2">
+                        <Skeleton />
+                    </Typography>
                 </div>
-            </Link>
-        </Zoom>
+            }
+        </React.Fragment>
     )
 }
 
 ArtistCard.propTypes = {
     id: PropTypes.number.isRequired,
-    name: PropTypes.string,
     img: PropTypes.string,
-    play: PropTypes.string,
     delay: PropTypes.number
 }
 

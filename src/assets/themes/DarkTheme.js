@@ -15,7 +15,8 @@ let DarkTheme = createMuiTheme({
     palette: {
         background: {
             default: "#191919",
-            paper: "2A2A2A"
+            paper: "#2A2A2A",
+            paper2: "#373737"
         },
         primary: {
             light: "#303030",
@@ -23,7 +24,9 @@ let DarkTheme = createMuiTheme({
             dark: "#212121"
         },
         secondary: {
-            main: "#71FFFA"
+            light: "#AAFFFF",
+            main: "#71FFFA",
+            dark: "#2ECBC7"
         },
         type: "dark"
     }

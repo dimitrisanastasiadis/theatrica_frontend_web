@@ -13,6 +13,11 @@ let LightTheme = createMuiTheme({
         }
     },
     palette: {
+        background: {
+            default: "#EEEEEE",
+            paper: "#DDDDDD",
+            paper2: "#CCCCCC"
+        },
         primary: {
             main: "#b3e5fc",
             light: "#82b3c9",

@@ -12,6 +12,7 @@ import PaginationPage from "../layouts/PaginationPage";
 import Show from "../layouts/Show";
 import ArtistDetails from "../layouts/ArtistDetails";
 import { SWRConfig } from "swr";
+import ShowDetails from "../layouts/ShowDetails";
 
 function App() {
   
@@ -48,13 +49,16 @@ function App() {
             <Route path={"/home"} exact>
               <Home drawerOpen={drawerOpen} />
             </Route>
-            <Route path="/artists/id/:id">
+            <Route path="/artists/:id">
               <ArtistDetails />
             </Route>
             <Route path={"/artists"}>
               <PaginationPage path="/artists" fetchURL="/people"/>
             </Route>
-            <Route path={"/show"} exact>
+            <Route path={"/shows/:id"} exact>
+              <ShowDetails />
+            </Route>
+            <Route path={"/shows"} exact>
               <Show />
             </Route>
             <Redirect from="/" to="/home" />

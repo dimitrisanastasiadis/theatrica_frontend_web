@@ -18,9 +18,9 @@ function ArtistCard(props) {
         <React.Fragment>
             {artistData ?
                 <Zoom in={true} style={{ transitionDelay: props.delay ? `${props.delay * 200}ms` : '0ms' }}>
-                    <Link to={`/artists/id/${props.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
+                    <Link to={`/artists/${props.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                         <div className={classes.container}>
-                            <Avatar className={classes.avatar} alt="Artist Photo" src={props.img} />
+                            <Avatar className={classes.avatar} alt="Artist Photo" src={artistData.image} />
                             <Typography variant="body1" component="h4">{artistData.fullName}</Typography>
                             {artistData.productions &&
                                 <Typography variant="body2" component="h5" className={classes.subtitle}>{artistData.productions.length ? artistData.productions[0].title : ""}</Typography>

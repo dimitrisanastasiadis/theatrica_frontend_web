@@ -5,13 +5,12 @@ import ContentSlider from "../components/ContentSlider"
 import ArtistCard from "../components/ArtistCard"
 import data from "../mockData"
 import VideoContainer from "../components/VideoContainer"
-import useItemsIDs from "../hooks/useItemsIDs"
 
 const useStyles = makeStyles(style)
 
 function Home(props) {
     const classes = useStyles();
-    const {items: artists} = useItemsIDs("/people", 0, 20);
+    const artists = [1908, 1928, 2000, 2007, 2027, 2029, 2037, 2039, 2113, 2124, 2165, 2167, 2168, 2189, 2191]
 
     return (
         <Grid container className={classes.grid} justify="center">
@@ -26,9 +25,9 @@ function Home(props) {
             <Grid item xs={12} md={9} className={classes.gridItem}>
                 {artists ?
                     <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί" drawerOpen={props.drawerOpen}>
-                        {artists.map((artist, index) => 
+                        {artists.map((id, index) => 
                             <ArtistCard 
-                                id={artist.id}
+                                id={id}
                                 key={index}
                                 delay={index} />)}
                     </ContentSlider> : 

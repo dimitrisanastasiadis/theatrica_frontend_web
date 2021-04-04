@@ -27,19 +27,17 @@ function ArtistsList(props){
     )
 
     return (
-        <React.Fragment>
-            <div className={classes.container}>
-                <h1 style={{width: "100%"}}>Artists</h1>
-                {artistData ?
-                    artistData.map((artist, index) => 
-                    <ArtistCard 
-                        id={artist.id}
-                        key={index}
-                    />) :
-                    loadingSkeletons.map(skeleton => skeleton)
-                }
-            </div>
-        </React.Fragment>
+        <div className={classes.container}>
+            <h1 style={{width: "100%"}}>Artists</h1>
+            {artistData ?
+                artistData.map((artist, index) => 
+                <ArtistCard 
+                    id={artist.id}
+                    key={index}
+                />) :
+                loadingSkeletons.map(skeleton => skeleton)
+            }
+        </div>
     )
 }
 

@@ -1,21 +1,84 @@
 import React from "react";
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import useArtistData from "../hooks/useArtistData"
+import { Grid, makeStyles, Avatar, Paper, Typography, Accordion, AccordionDetails, AccordionSummary, List, ListItem, ListItemText, Divider } from "@material-ui/core"
+import style from "../assets/jss/components/artistDetailsStyle"
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+
+const useStyles = makeStyles(style);
 
 function ArtistDetails(props) {
+    const classes = useStyles();
     const { id } = useParams();
     const data = useArtistData(id);
+    let productionGroups = {};
+    const [expanded, setExpanded] = React.useState("panel0");
+
+    const handleChange = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+    };
     
+    if (data){
+        if (data.productions){
+            productionGroups = data.productions.reduce((r, a) => {
+                r[a.role] = [...r[a.role] || [], a];
+                return r;
+               }, {});
+        }
+    }
+    
+
     return (
-        <React.Fragment>
-            {data && <div>
-                <h1>{data.fullName}</h1>
-                {data.productions && 
-                    data.productions.map((production, index) => 
-                    <h2 key={index}>{production.title} - {production.role}</h2>
-                )}
-            </div>}
-        </React.Fragment>
+        <Grid container justify="center" className={classes.grid}>
+            <Grid item xs={12} md={9} lg={7} className={classes.gridItem}>
+                <Paper elevation={3} className={classes.card}>
+                    {
+                        data && 
+                            <div className={classes.container}>
+                                <Avatar src={data.image} variant="rounded" alt={`Photo of ${data.fullName}`} className={classes.avatar}/>
+                                <div style={{overflow: "auto", textAlign: "center"}}>
+                                    <Typography variant="h4">{data.fullName}</Typography>
+                                </div>
+                            </div>
+                    }
+                </Paper>
+            </Grid>
+            <Grid item xs={12} md={9} lg={7} className={classes.gridItem}>
+                <Paper elevation={3} className={classes.card}>
+                        <Typography variant="h4">Θεατρικές Παραστάσεις</Typography>
+                        <div className={classes.accordionContainer}>
+                            {
+                                Object.entries(productionGroups).map(([key, value], index) => 
+                                    <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)} className={classes.accordion}>
+                                        <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls={`panel-${key}-content`}
+                                        id={`panel-${key}-header`}>
+                                            <Typography className={classes.categoryTitle} variant="h6">{key}</Typography>                                                
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                            <List style={{width: "100%"}}>
+                                                {value.map((play, index) => 
+                                                    <React.Fragment>
+                                                        {index > 0 && <Divider/>}
+                                                        <ListItem key={index}>
+                                                            <Link to={`/shows/${play.productionId}`} style={{textDecoration: "none", color: "inherit"}}>
+                                                                <ListItemText primary={play.title} />
+                                                            </Link>
+                                                        </ListItem>
+                                                    </React.Fragment>
+                                                )}
+                                            </List>
+                                            
+                                            
+                                        </AccordionDetails>
+                                    </Accordion>
+                                )
+                            }
+                        </div>
+                </Paper>
+            </Grid>
+        </Grid>
     )
 }
 

@@ -22,8 +22,8 @@ const routes = [
         icon: <PersonIcon fontSize="default"/>
     },
     {
-        path: "/show",
-        name: "Show",
+        path: "/shows",
+        name: "Shows",
         isExact: true,
         component: Show,
         icon: <TheatersIcon fontSize="default" />

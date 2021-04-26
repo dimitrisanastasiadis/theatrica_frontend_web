@@ -4,7 +4,7 @@ import PaginationPage from "./layouts/PaginationPage";
 import Show from "./layouts/Show";
 import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
-import TheatersIcon from '@material-ui/icons/Theaters';
+import {FaTheaterMasks} from 'react-icons/fa'
 
 const routes = [
     {
@@ -26,7 +26,7 @@ const routes = [
         name: "Shows",
         isExact: true,
         component: Show,
-        icon: <TheatersIcon fontSize="default" />
+        icon: <FaTheaterMasks fontSize={24} />
     }
 ]
 

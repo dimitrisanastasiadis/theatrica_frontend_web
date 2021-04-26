@@ -42,6 +42,16 @@ const artistDetailsStyle = theme => ({
     },
     accordionContainer: {
         marginTop: 10
+    },
+    link: {
+        textDecoration: "none",
+        color: "inherit",
+        "&:hover": {
+            textDecoration: "underline"
+        },
+        "&:active": {
+            color: theme.palette.secondary.light
+        }
     }
 })
 

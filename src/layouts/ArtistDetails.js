@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom"
 import useArtistData from "../hooks/useArtistData"
 import { Grid, makeStyles, Avatar, Paper, Typography, Accordion, AccordionDetails, AccordionSummary, List, ListItem, ListItemText, Divider } from "@material-ui/core"
-import style from "../assets/jss/components/artistDetailsStyle"
+import style from "../assets/jss/layouts/artistDetailsStyle"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 const useStyles = makeStyles(style);
@@ -59,10 +59,10 @@ function ArtistDetails(props) {
                                         <AccordionDetails>
                                             <List style={{width: "100%"}}>
                                                 {value.map((play, index) => 
-                                                    <React.Fragment>
+                                                    <React.Fragment key={index}>
                                                         {index > 0 && <Divider/>}
-                                                        <ListItem key={index}>
-                                                            <Link to={`/shows/${play.productionId}`} style={{textDecoration: "none", color: "inherit"}}>
+                                                        <ListItem>
+                                                            <Link to={`/shows/${play.productionId}`} className={classes.link}>
                                                                 <ListItemText primary={play.title} />
                                                             </Link>
                                                         </ListItem>

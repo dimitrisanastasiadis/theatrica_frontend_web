@@ -22,8 +22,10 @@ function ArtistCard(props) {
                         <div className={classes.container}>
                             <Avatar className={classes.avatar} alt="Artist Photo" src={artistData.image} />
                             <Typography variant="body1" component="h4">{artistData.fullName}</Typography>
-                            {artistData.productions &&
-                                <Typography variant="body2" component="h5" className={classes.subtitle}>{artistData.productions.length ? artistData.productions[0].title : ""}</Typography>
+                            {props.role ? 
+                                <Typography variant="body2" component="h5" className={classes.subtitle}>{props.role}</Typography>
+                                :(artistData.productions &&
+                                    <Typography variant="body2" component="h5" className={classes.subtitle}>{artistData.productions.length ? artistData.productions[0].title : ""}</Typography>)
                             }
                         </div>
                     </Link>
@@ -45,6 +47,7 @@ function ArtistCard(props) {
 ArtistCard.propTypes = {
     id: PropTypes.number.isRequired,
     img: PropTypes.string,
+    role: PropTypes.string,
     delay: PropTypes.number
 }
 

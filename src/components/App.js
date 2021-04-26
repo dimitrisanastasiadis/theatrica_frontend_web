@@ -13,6 +13,7 @@ import Show from "../layouts/Show";
 import ArtistDetails from "../layouts/ArtistDetails";
 import { SWRConfig } from "swr";
 import ShowDetails from "../layouts/ShowDetails";
+import { mainFetcher } from "../utils/AxiosInstances";
 
 function App() {
   
@@ -38,7 +39,9 @@ function App() {
       <SWRConfig
         value={{
           revalidateOnFocus: false,
-          dedupingInterval: 300000
+          dedupingInterval: 300000,
+          errorRetryCount: 2,
+          fetcher: mainFetcher
         }}>
         <Navbar 
           darkMode={darkMode} toggleDarkMode={toggleDarkMode} toggleDrawer={toggleDrawer} />
@@ -46,19 +49,19 @@ function App() {
         <div style={{display: "flex"}}>
           <Sidebar drawerOpen={drawerOpen} />
           <Switch>
-            <Route path={"/home"} exact>
+            <Route path="/home" exact>
               <Home drawerOpen={drawerOpen} />
             </Route>
-            <Route path="/artists/:id">
+            <Route path="/artists/:id" exact>
               <ArtistDetails />
             </Route>
-            <Route path={"/artists"}>
+            <Route path="/artists">
               <PaginationPage path="/artists" fetchURL="/people"/>
             </Route>
-            <Route path={"/shows/:id"} exact>
+            <Route path="/shows/:id" exact>
               <ShowDetails />
             </Route>
-            <Route path={"/shows"} exact>
+            <Route path="/shows" exact>
               <Show />
             </Route>
             <Redirect from="/" to="/home" />

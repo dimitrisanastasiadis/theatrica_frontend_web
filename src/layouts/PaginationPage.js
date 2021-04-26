@@ -14,15 +14,16 @@ function PaginationPage(props) {
     const classes = useStyles();
     const query = Number(useQuery().get("page"));
     const history = useHistory();
-    const {totalPages: pageCount} = useItemsIDs(props.fetchURL, 0, 20);
+    const {totalPages: pageCount, items} = useItemsIDs(props.fetchURL, query-1, 20);
+    const {items: nextItems} = useItemsIDs(props.fetchURL, query, 20);
     
     useEffect(() => {
         if (!query){
-            history.push(`${props.path}?page=1`)
+            history.replace(`${props.path}?page=1`)
         }
         if (pageCount){
             if (query < 1 || query > pageCount){
-                history.push(`${props.path}?page=1`)
+                history.replace(`${props.path}?page=1`)
             }
         }
     }, [pageCount, query, history, props.path])
@@ -38,8 +39,8 @@ function PaginationPage(props) {
                 <Grid container className={classes.grid} justify="center">
                     <Grid item xs={12} md={9}>
                         <React.Fragment>
-                            <ArtistsList page={query-1}/>
-                            <div className={classes.hiddenPreload}><ArtistsList page={query}/></div>
+                            <ArtistsList items={items} size={20} title />
+                            <div className={classes.hiddenPreload}><ArtistsList items={nextItems} size={20}/></div>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={12} md={9}>
@@ -51,7 +52,8 @@ function PaginationPage(props) {
                                     onChange={handleChange}/>
                         </div>
                     </Grid>
-                </Grid>}
+                </Grid>
+            }
         </React.Fragment>
     )
 }

@@ -46,7 +46,6 @@ function ArtistCard(props) {
 
 ArtistCard.propTypes = {
     id: PropTypes.number.isRequired,
-    img: PropTypes.string,
     role: PropTypes.string,
     delay: PropTypes.number
 }

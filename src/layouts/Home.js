@@ -5,6 +5,7 @@ import ContentSlider from "../components/ContentSlider"
 import ArtistCard from "../components/ArtistCard"
 import data from "../mockData"
 import VideoContainer from "../components/VideoContainer"
+import PropTypes from "prop-types"
 
 const useStyles = makeStyles(style)
 
@@ -44,6 +45,10 @@ function Home(props) {
             </Hidden>
         </Grid>
     )
+}
+
+Home.propTypes = {
+    drawerOpen: PropTypes.bool
 }
 
 export default Home;

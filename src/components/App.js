@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import { ThemeProvider } from '@material-ui/core/styles';
 import DarkTheme from '../assets/themes/DarkTheme'
 import LightTheme from '../assets/themes/LightTheme'
@@ -21,6 +21,8 @@ function App() {
     true : localStorage.getItem("darkMode") === "true");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+  const location = useLocation();
+
   const toggleDarkMode = () => {
     setDarkMode(prevDarkMode => !prevDarkMode);
   }
@@ -28,6 +30,10 @@ function App() {
   React.useEffect(() => {
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode])
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location])
 
   const toggleDrawer = () => {
     setDrawerOpen(prevDrawerOpen => !prevDrawerOpen);

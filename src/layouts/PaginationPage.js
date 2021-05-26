@@ -30,7 +30,6 @@ function PaginationPage(props) {
 
     const handleChange = (event, value) => {
         history.push(`${props.path}?page=${value}`);
-        window.scrollTo(0, 0)
     }
     
     return (

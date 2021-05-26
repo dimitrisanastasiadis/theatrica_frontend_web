@@ -38,8 +38,17 @@ function PaginationPage(props) {
             {(query > 0 && query <= pageCount) &&
                 <Grid container className={classes.grid} justify="center">
                     <Grid item xs={12} md={9}>
+                        <div className={classes.paginationContainer}>
+                            <Pagination 
+                                    count={pageCount || 10} 
+                                    page={query} 
+                                    color="secondary" 
+                                    onChange={handleChange}/>
+                        </div>
+                    </Grid>
+                    <Grid item xs={12} md={9} className={classes.list}>
                         <React.Fragment>
-                            <ArtistsList items={items} size={20} title />
+                            <ArtistsList items={items} size={20} />
                             <div className={classes.hiddenPreload}><ArtistsList items={nextItems} size={20}/></div>
                         </React.Fragment>
                     </Grid>

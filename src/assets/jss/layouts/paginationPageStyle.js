@@ -2,15 +2,18 @@ const paginationPageStyle = theme => ({
     grid: {
         flexGrow: 1,
         minWidth: 0,
-        padding: "8px 0px 76px 0px"
+        padding: "8px 0px 76px 0px",
+        marginTop: 50
     },
     paginationContainer: {
         display: "flex",
-        justifyContent: "center",
-        marginTop: 50
+        justifyContent: "center"
     },
     hiddenPreload: {
         display: "none"
+    },
+    list: {
+        margin: "30px 0px 50px 0px"
     }
 })
 

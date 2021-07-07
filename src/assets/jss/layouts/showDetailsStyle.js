@@ -31,6 +31,15 @@ const showDetailsStyle = theme => ({
             display: "flex",
             justifyContent: "center"
         }
+    },
+    title: {
+        [theme.breakpoints.down("sm")]: {
+            padding: 16
+        }
+    },
+    loadingContainer: {
+        height: "calc(100vh - 64px)",
+        width: "100%"
     }
 })
 

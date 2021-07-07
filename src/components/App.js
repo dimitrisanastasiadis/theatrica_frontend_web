@@ -68,7 +68,7 @@ function App() {
               <ShowDetails />
             </Route>
             <Route path="/shows" exact>
-              <Show />
+              <PaginationPage path="/shows" fetchURL="/productions" />
             </Route>
             <Redirect from="/" to="/home" />
           </Switch>

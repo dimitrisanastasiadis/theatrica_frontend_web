@@ -8,6 +8,7 @@ import VideoContainer from "../components/VideoContainer"
 import PropTypes from "prop-types"
 import useItemsIDs from "../hooks/useItemsIDs"
 import ShowCard from "../components/ShowCard"
+import LoadingScene from "../components/LoadingScene"
 
 const useStyles = makeStyles(style)
 
@@ -35,10 +36,7 @@ function Home(props) {
                                 key={index}
                                 delay={index} />)}
                     </ContentSlider> : 
-                    <div className={classes.loading}>
-                        <Typography variant="h5">Interviewing actors. Please wait...</Typography>
-                        <LinearProgress color="secondary" className={classes.progressBar}/>
-                    </div>
+                    <LoadingScene />
                 }
             </Grid>
             <Hidden mdDown>
@@ -55,10 +53,7 @@ function Home(props) {
                                 key={item.id} 
                             />)}
                     </ContentSlider> : 
-                    <div className={classes.loading}>
-                        <Typography variant="h5">Interviewing actors. Please wait...</Typography>
-                        <LinearProgress color="secondary" className={classes.progressBar}/>
-                    </div>
+                    <LoadingScene />
                 }
             </Grid>
             <Hidden mdDown>

@@ -5,6 +5,7 @@ import { Grid, makeStyles, Typography, Paper, Tab, Tabs, AppBar, Table, TableBod
 import style from "../assets/jss/layouts/showDetailsStyle"
 import he from "he"
 import ArtistsList from "../components/ArtistsList"
+import LoadingScene from "../components/LoadingScene"
 
 const useStyles = makeStyles(style);
 
@@ -40,7 +41,7 @@ function ShowDetails(props) {
             {data ?
                 <React.Fragment>
                     <Grid container className={classes.grid} justify="center">
-                        <Grid item xs={12} md={9}>
+                        <Grid item xs={12} md={9} className={classes.title}>
                             <Typography variant="h3" component="h1">{data.title}</Typography>
                         </Grid>
                         <Grid item xs={12} md={9} className={classes.imageGrid}>
@@ -141,7 +142,9 @@ function ShowDetails(props) {
                         </Grid>
                     </Grid>
                 </React.Fragment> :
-                <Typography variant="h1">Loading...</Typography>
+                <div className={classes.loadingContainer}>
+                    <LoadingScene />
+                </div>
             }
         </React.Fragment>
         

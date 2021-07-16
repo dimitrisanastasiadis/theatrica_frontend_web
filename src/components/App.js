@@ -9,7 +9,6 @@ import Sidebar from "./Navbar/Sidebar";
 import BottomNav from "./Navbar/BottomNav";
 import Home from "../layouts/Home";
 import PaginationPage from "../layouts/PaginationPage";
-import Show from "../layouts/Show";
 import ArtistDetails from "../layouts/ArtistDetails";
 import { SWRConfig } from "swr";
 import ShowDetails from "../layouts/ShowDetails";
@@ -61,7 +60,7 @@ function App() {
             <Route path="/artists/:id" exact>
               <ArtistDetails />
             </Route>
-            <Route path="/artists">
+            <Route path="/artists" exact>
               <PaginationPage path="/artists" fetchURL="/people"/>
             </Route>
             <Route path="/shows/:id" exact>

@@ -4,6 +4,7 @@ import useArtistData from "../hooks/useArtistData"
 import { Grid, makeStyles, Avatar, Paper, Typography, Accordion, AccordionDetails, AccordionSummary, List, ListItem, ListItemText, Divider } from "@material-ui/core"
 import style from "../assets/jss/layouts/artistDetailsStyle"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import LoadingScene from "../components/LoadingScene";
 
 const useStyles = makeStyles(style);
 
@@ -29,18 +30,16 @@ function ArtistDetails(props) {
     
 
     return (
+        data ?
         <Grid container justify="center" className={classes.grid}>
             <Grid item xs={12} md={9} lg={7} className={classes.gridItem}>
                 <Paper elevation={3} className={classes.card}>
-                    {
-                        data && 
-                            <div className={classes.container}>
-                                <Avatar src={data.image} variant="rounded" alt={`Photo of ${data.fullName}`} className={classes.avatar}/>
-                                <div style={{overflow: "auto", textAlign: "center"}}>
-                                    <Typography variant="h4">{data.fullName}</Typography>
-                                </div>
-                            </div>
-                    }
+                    <div className={classes.container}>
+                        <Avatar src={data.image} variant="rounded" alt={`Photo of ${data.fullName}`} className={classes.avatar}/>
+                        <div style={{overflow: "auto", textAlign: "center"}}>
+                            <Typography variant="h4">{data.fullName}</Typography>
+                        </div>
+                    </div>
                 </Paper>
             </Grid>
             <Grid item xs={12} md={9} lg={7} className={classes.gridItem}>
@@ -78,7 +77,8 @@ function ArtistDetails(props) {
                         </div>
                 </Paper>
             </Grid>
-        </Grid>
+        </Grid> :
+        <LoadingScene fullScreen />
     )
 }
 

@@ -4,7 +4,7 @@ import useShowData from "../hooks/useShowData"
 import { Grid, makeStyles, Typography, Paper, Tab, Tabs, AppBar, Table, TableBody, TableRow, TableCell, TableContainer, Toolbar } from "@material-ui/core"
 import style from "../assets/jss/layouts/showDetailsStyle"
 import he from "he"
-import ArtistsList from "../components/ArtistsList"
+import ItemsList from "../components/ItemsList"
 import LoadingScene from "../components/LoadingScene"
 
 const useStyles = makeStyles(style);
@@ -37,7 +37,7 @@ function ShowDetails(props) {
     }
 
     return (
-        <React.Fragment>
+    <React.Fragment>
             {data ?
                 <React.Fragment>
                     <Grid container className={classes.grid} justify="center">
@@ -75,7 +75,7 @@ function ShowDetails(props) {
                                     }
                                     </TabPanel>
                                     <TabPanel value={tabValue} index={1}>
-                                        <ArtistsList items={data.people} size={20} role title={false} />
+                                        <ItemsList items={data.people} size={20} role title={false} type="/artists"/>
                                     </TabPanel>
                                     <TabPanel value={tabValue} index={2} className={classes.tabPanel}>
                                         <AppBar position="static">
@@ -142,9 +142,7 @@ function ShowDetails(props) {
                         </Grid>
                     </Grid>
                 </React.Fragment> :
-                <div className={classes.loadingContainer}>
-                    <LoadingScene />
-                </div>
+                <LoadingScene fullScreen/>
             }
         </React.Fragment>
         

@@ -1,4 +1,4 @@
-import { Grid, makeStyles, Hidden, Divider, LinearProgress, Typography } from "@material-ui/core"
+import { Grid, makeStyles, Hidden, Divider } from "@material-ui/core"
 import React from "react"
 import style from "../assets/jss/layouts/homeStyle"
 import ContentSlider from "../components/ContentSlider"

@@ -4,9 +4,10 @@ import { makeStyles, Grid } from "@material-ui/core"
 import style from "../assets/jss/layouts/paginationPageStyle"
 import { Pagination } from "@material-ui/lab"
 import useQuery from "../hooks/useQuery"
-import ArtistsList from "../components/ArtistsList"
+import ItemsList from "../components/ItemsList"
 import useItemsIDs from "../hooks/useItemsIDs"
 import PropTypes from "prop-types"
+import LoadingScene from "../components/LoadingScene"
 
 const useStyles = makeStyles(style);
 
@@ -34,7 +35,7 @@ function PaginationPage(props) {
     
     return (
         <React.Fragment>
-            {(query > 0 && query <= pageCount) &&
+            {(query > 0 && query <= pageCount) ?
                 <Grid container className={classes.grid} justify="center">
                     <Grid item xs={12} md={9}>
                         <div className={classes.paginationContainer}>
@@ -47,8 +48,8 @@ function PaginationPage(props) {
                     </Grid>
                     <Grid item xs={12} md={9} className={classes.list}>
                         <React.Fragment>
-                            <ArtistsList items={items} size={20} />
-                            <div className={classes.hiddenPreload}><ArtistsList items={nextItems} size={20}/></div>
+                            <ItemsList items={items} size={20} type={props.path} />
+                            <div className={classes.hiddenPreload}><ItemsList items={nextItems} size={20} type={props.path} /></div>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={12} md={9}>
@@ -60,7 +61,8 @@ function PaginationPage(props) {
                                     onChange={handleChange}/>
                         </div>
                     </Grid>
-                </Grid>
+                </Grid> : 
+                <LoadingScene fullScreen/>
             }
         </React.Fragment>
     )

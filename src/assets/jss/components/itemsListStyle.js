@@ -1,4 +1,4 @@
-const artistsListStyle = theme => ({
+const ItemsListStyle = theme => ({
     container: {
         display: "flex", 
         width: "100%", 
@@ -10,7 +10,10 @@ const artistsListStyle = theme => ({
         "& > *": {
             margin: 10
         }
+    },
+    isLoading: {
+        padding: 200
     }
 })
 
-export default artistsListStyle;
+export default ItemsListStyle;

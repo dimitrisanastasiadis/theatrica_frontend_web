@@ -48,8 +48,8 @@ function PaginationPage(props) {
                     </Grid>
                     <Grid item xs={12} md={9} className={classes.list}>
                         <React.Fragment>
-                            <ItemsList items={items} size={20} type={props.path} />
-                            <div className={classes.hiddenPreload}><ItemsList items={nextItems} size={20} type={props.path} /></div>
+                            <ItemsList items={items} type={props.path} />
+                            <div className={classes.hiddenPreload}><ItemsList items={nextItems} type={props.path} /></div>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={12} md={9}>

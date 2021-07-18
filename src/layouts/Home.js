@@ -5,7 +5,6 @@ import ContentSlider from "../components/ContentSlider"
 import ArtistCard from "../components/ArtistCard"
 import data from "../mockData"
 import VideoContainer from "../components/VideoContainer"
-import PropTypes from "prop-types"
 import useItemsIDs from "../hooks/useItemsIDs"
 import ShowCard from "../components/ShowCard"
 import LoadingScene from "../components/LoadingScene"
@@ -29,7 +28,7 @@ function Home(props) {
             </Hidden>
             <Grid item xs={12} md={9} className={classes.gridItem}>
                 {artists ?
-                    <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί" drawerOpen={props.drawerOpen}>
+                    <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί">
                         {artists.map((id, index) => 
                             <ArtistCard 
                                 id={id}
@@ -46,7 +45,7 @@ function Home(props) {
             </Hidden>
             <Grid item xs={12} md={9} className={classes.gridItem}>
                 {latestShows ?
-                    <ContentSlider title="Νέες Παραστάσεις" drawerOpen={props.drawerOpen}>
+                    <ContentSlider title="Νέες Παραστάσεις">
                         {latestShows.map((item) => 
                             <ShowCard 
                                 id={item.id}
@@ -63,10 +62,6 @@ function Home(props) {
             </Hidden>
         </Grid>
     )
-}
-
-Home.propTypes = {
-    drawerOpen: PropTypes.bool
 }
 
 export default Home;

@@ -1,11 +1,18 @@
 const showCardStyle = theme => ({
     cardContainer: {
+        margin: "12px 0 15px",
         border: "2px solid transparent",
         borderRadius: "6px",
         "&:hover": {
+            transform: "translate(0px, -10px)",
             borderRadius: "6px",
-            border: `2px solid ${theme.palette.secondary.main}`
-        }
+            border: `2px solid ${theme.palette.secondary.main}`,
+            boxShadow: "0 7px 10px rgba(0, 0, 0, 1)"
+        },
+        transition: theme.transitions.create('transform', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.short,
+        }),
     },
     card: {
         height: 280,

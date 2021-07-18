@@ -1,21 +1,25 @@
-import React from "react"
+import React, { useContext } from "react"
 import { AppBar, Toolbar, IconButton, InputBase, makeStyles, Button } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu";
 import style from "../../assets/jss/components/navbarStyle"
 import SearchIcon from "@material-ui/icons/Search"
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
-import PropTypes from "prop-types";
+import { DrawerContext } from "../../contexts/DrawerContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const useStyles = makeStyles(style)
 
 function Navbar(props){
     const classes = useStyles();
+    const { toggleDrawer } = useContext(DrawerContext);
+    const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+
     return (
         <React.Fragment>
             <AppBar className={classes.appbar}>
                 <Toolbar className={classes.navbar}>
-                    <IconButton onClick={props.toggleDrawer}>
+                    <IconButton onClick={toggleDrawer}>
                         <MenuIcon />
                     </IconButton>
                     <div className={classes.search}>
@@ -30,8 +34,8 @@ function Navbar(props){
                             <SearchIcon />
                         </Button>
                     </div>
-                    <IconButton onClick={props.toggleDarkMode}>
-                        {props.darkMode ? <BrightnessHighIcon /> : <Brightness3Icon />}
+                    <IconButton onClick={toggleDarkMode}>
+                        {darkMode ? <BrightnessHighIcon /> : <Brightness3Icon />}
                     </IconButton>
                 </Toolbar>    
             </AppBar>
@@ -39,12 +43,6 @@ function Navbar(props){
             
         </React.Fragment>
     )
-}
-
-Navbar.propTypes = {
-    darkMode: PropTypes.bool,
-    toggleDarkMode: PropTypes.func,
-    toggleDrawer: PropTypes.func
 }
 
 export default Navbar

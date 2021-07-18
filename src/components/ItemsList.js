@@ -42,7 +42,6 @@ function ItemsList(props){
 ItemsList.propTypes = {
     type: PropTypes.string.isRequired,
     items: PropTypes.array,
-    size: PropTypes.number,
     role: PropTypes.bool,
     title: PropTypes.bool
 }

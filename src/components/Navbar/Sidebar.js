@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import clsx from 'clsx';
 import { makeStyles, List, ListItem, ListItemText, ListItemIcon, Drawer, Hidden } from "@material-ui/core";
 import { Link, useLocation } from "react-router-dom";
 import Routes from "../../routes";
 import style from "../../assets/jss/components/sidebarStyle";
-import PropTypes from "prop-types";
+import { DrawerContext } from "../../contexts/DrawerContext";
 
 const useStyles = makeStyles(style)
 
 function Sidebar(props) {
     const classes = useStyles();
     const location = useLocation();
+    const { drawerOpen } = useContext(DrawerContext);
 
     return (
         <Hidden xsDown>
             <Drawer 
                 variant="permanent"
                 className={clsx(classes.drawer, {
-                    [classes.drawerOpen]: props.drawerOpen,
-                    [classes.drawerClose]: !props.drawerOpen
+                    [classes.drawerOpen]: drawerOpen,
+                    [classes.drawerClose]: !drawerOpen
                 }) }
                 classes={{paper: clsx(classes.drawerPaper, {
-                    [classes.drawerOpen]: props.drawerOpen,
-                    [classes.drawerClose]: !props.drawerOpen
+                    [classes.drawerOpen]: drawerOpen,
+                    [classes.drawerClose]: !drawerOpen
                 }) }}>
                 <div className={classes.toolbar}/>
                 <List>
@@ -46,10 +47,6 @@ function Sidebar(props) {
         </Hidden>
             
     )
-}
-
-Sidebar.propTypes = {
-    drawerOpen: PropTypes.bool
 }
 
 export default Sidebar;

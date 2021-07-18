@@ -28,7 +28,6 @@ function ArtistDetails(props) {
         }
     }
     
-
     return (
         data ?
         <Grid container justify="center" className={classes.grid}>

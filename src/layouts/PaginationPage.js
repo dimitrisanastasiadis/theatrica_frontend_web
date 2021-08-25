@@ -16,7 +16,6 @@ function PaginationPage(props) {
     const query = Number(useQuery().get("page"));
     const history = useHistory();
     const {totalPages: pageCount, items} = useItemsIDs(props.fetchURL, query-1, 20);
-    const {items: nextItems} = useItemsIDs(props.fetchURL, query, 20);
     
     useEffect(() => {
         if (!query){
@@ -49,7 +48,6 @@ function PaginationPage(props) {
                     <Grid item xs={12} md={9} className={classes.list}>
                         <React.Fragment>
                             <ItemsList items={items} type={props.path} />
-                            <div className={classes.hiddenPreload}><ItemsList items={nextItems} type={props.path} /></div>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={12} md={9}>

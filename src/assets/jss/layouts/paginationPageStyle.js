@@ -9,9 +9,6 @@ const paginationPageStyle = theme => ({
         display: "flex",
         justifyContent: "center"
     },
-    hiddenPreload: {
-        display: "none"
-    },
     list: {
         margin: "30px 0px 50px 0px"
     }

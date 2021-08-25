@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom"
 import useArtistData from "../hooks/useArtistData"
 import { Grid, makeStyles, Avatar, Paper, Typography, Accordion, AccordionDetails, AccordionSummary, List, ListItem, ListItemText, Divider } from "@material-ui/core"
@@ -11,32 +11,30 @@ const useStyles = makeStyles(style);
 function ArtistDetails(props) {
     const classes = useStyles();
     const { id } = useParams();
-    const data = useArtistData(id);
+    const {artist, productions} = useArtistData(id);
     let productionGroups = {};
     const [expanded, setExpanded] = React.useState("panel0");
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
-    };
+    }
     
-    if (data){
-        if (data.productions){
-            productionGroups = data.productions.reduce((r, a) => {
-                r[a.role] = [...r[a.role] || [], a];
-                return r;
-               }, {});
-        }
+    if (productions){
+        productionGroups = productions.content.reduce((r, a) => {
+            r[a.role] = [...r[a.role] || [], a];
+            return r;
+            }, {});
     }
     
     return (
-        data ?
+        (artist && productions) ?
         <Grid container justify="center" className={classes.grid}>
             <Grid item xs={12} md={9} lg={7} className={classes.gridItem}>
                 <Paper elevation={3} className={classes.card}>
                     <div className={classes.container}>
-                        <Avatar src={data.image} variant="rounded" alt={`Photo of ${data.fullName}`} className={classes.avatar}/>
+                        <Avatar src={artist.image} variant="rounded" alt={`Photo of ${artist.fullName}`} className={classes.avatar}/>
                         <div style={{overflow: "auto", textAlign: "center"}}>
-                            <Typography variant="h4">{data.fullName}</Typography>
+                            <Typography variant="h4">{artist.fullName}</Typography>
                         </div>
                     </div>
                 </Paper>

@@ -15,18 +15,18 @@ function ShowCard(props){
 
     return (
         showData ?
-        <Link to={`/shows/${showData.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
+        <Link to={`/shows/${showData.show.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <div className={classes.cardContainer}>
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.cardImg}
                         component="img"
-                        alt={`${showData.title} thumbnail`}
+                        alt={`${showData.show.title} thumbnail`}
                         image={showData.media}
                     />
                     <CardContent className={classes.cardTitle}>
                         <Typography variant="body1" component="h2">
-                            {showData.title}
+                            {showData.show.title}
                         </Typography>
                     </CardContent>
                 </Card>

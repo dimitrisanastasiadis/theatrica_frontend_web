@@ -10,22 +10,22 @@ const useStyles = makeStyles(style);
 
 function ArtistCard(props) {
     const classes = useStyles();
-    const artistData = useArtistData(props.id);
+    const {artist, productions} = useArtistData(props.id);
     const theme = useTheme();
     const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
 
     return (
         <React.Fragment>
-            {artistData ?
+            {artist ?
                 <Zoom in={true} style={{ transitionDelay: props.delay ? `${props.delay * 200}ms` : '0ms' }}>
                     <Link to={`/artists/${props.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                         <div className={classes.container}>
-                            <Avatar className={classes.avatar} alt="Artist Photo" src={artistData.image} />
-                            <Typography variant="body1" component="h4">{artistData.fullName}</Typography>
+                            <Avatar className={classes.avatar} alt="Artist Photo" src={artist.image} />
+                            <Typography variant="body1" component="h4">{artist.fullName}</Typography>
                             {props.role ? 
                                 <Typography variant="body2" component="h5" className={classes.subtitle}>{props.role}</Typography>
-                                :(artistData.productions &&
-                                    <Typography variant="body2" component="h5" className={classes.subtitle}>{artistData.productions.length ? artistData.productions[0].title : ""}</Typography>)
+                                :(productions &&
+                                    <Typography variant="body2" component="h5" className={classes.subtitle}>{productions.length ? productions[0].title : ""}</Typography>)
                             }
                         </div>
                     </Link>

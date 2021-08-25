@@ -20,21 +20,52 @@ function TabPanel(props) {
     );
 }
 
+const getArtistsByRole = (data) => {
+    let actors, crew;
+    if (data){
+        if (data.people){
+            let artistGroups = data.people.reduce((r, a) => {
+                r[a.role] = [...r[a.role] || [], a];
+                return r;
+               }, {});
+            const {"Ηθοποιός": actorsTemp, ...crewTemp} = artistGroups;
+            actors = actorsTemp;
+            crew = crewTemp;
+        }
+    }
+    return {actors, crew}
+}
+
 function ShowDetails(props) {
     const classes = useStyles();
     const { id } = useParams();
     const data = useShowData(id);
     const [tabValue, setTabValue] = useState(0);
 
-    let description;
+    let description = "";
 
     const handleTabChange = (event, newValue) => {
         setTabValue(newValue);
     } 
 
-    if (data){
-        description = data.description.split("\n");
+    if (data.show.description){
+        description = data.show.description.split("\n");
     }
+
+    
+
+    const artists = React.useMemo(() => {
+        return getArtistsByRole(data)
+    }, [data])
+
+    
+
+    React.useEffect(() => {
+        if(artists.actors && artists.crew){
+            console.log(artists.actors);
+            console.log(artists.crew);
+        }
+    }, [artists])
 
     return (
     <React.Fragment>
@@ -42,7 +73,7 @@ function ShowDetails(props) {
                 <React.Fragment>
                     <Grid container className={classes.grid} justify="center">
                         <Grid item xs={12} md={9} className={classes.title}>
-                            <Typography variant="h3" component="h1">{data.title}</Typography>
+                            <Typography variant="h3" component="h1">{data.show.title}</Typography>
                         </Grid>
                         <Grid item xs={12} md={9} className={classes.imageGrid}>
                             {
@@ -68,14 +99,14 @@ function ShowDetails(props) {
                                         </Tabs>
                                     </AppBar>
                                     <TabPanel value={tabValue} index={0} className={classes.tabPanel}>
-                                    {
+                                    {data.show.description &&
                                         description.map((sentence, index) => 
                                             <Typography key={index} paragraph variant="body1" style={{wordWrap: "break-word"}}>{he.decode(sentence)} </Typography>
                                         )
                                     }
                                     </TabPanel>
                                     <TabPanel value={tabValue} index={1}>
-                                        <ItemsList items={data.people} size={20} role title={false} type="/artists"/>
+                                        <ItemsList items={data.people} role title={false} type="/artists"/>
                                     </TabPanel>
                                     <TabPanel value={tabValue} index={2} className={classes.tabPanel}>
                                         <AppBar position="static">

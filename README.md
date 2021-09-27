@@ -11,7 +11,7 @@
 Αναλυτική Περιγραφή μπορείτε να βρείτε στο doc [αρχείο](./Περιγραφή_Εφαρμογής.docx) που βρίσκεται σε αυτό το repository.
 
 ## Design
-Μπορείται να βρείτε ένα prototype της εφαρμογής φτιαγμένο σε figma [εδώ](https://www.figma.com/proto/9hnEd0EIZnFsj0guRA3iFa/Theatrica-Front-End?node-id=4%3A3&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=4%3A3).
+Μπορείτε να βρείτε ένα prototype της εφαρμογής φτιαγμένο σε figma [εδώ](https://www.figma.com/proto/9hnEd0EIZnFsj0guRA3iFa/Theatrica-Front-End?node-id=4%3A3&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=4%3A3).
 
 ## Τεχνολογίες
 

@@ -15,4 +15,4 @@
 
 ## Τεχνολογίες
 
-Η εφαρμογή αναπτύσσεται χρησιμοποιώντας [React]((https://reactjs.org/)), καθώς και [Material UI](https://mui.com) για την δημιουργία του interface.
+Η εφαρμογή αναπτύσσεται χρησιμοποιώντας [React](https://reactjs.org/), καθώς και [Material UI](https://mui.com) για την δημιουργία του interface.

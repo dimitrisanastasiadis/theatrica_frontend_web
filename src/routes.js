@@ -5,7 +5,7 @@ import {FaTheaterMasks} from 'react-icons/fa'
 
 const routes = [
     {
-        path: "/home",
+        path: "/",
         name: "Home",
         isExact: true,
         icon: <HomeIcon fontSize="default"/>

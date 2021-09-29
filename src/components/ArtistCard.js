@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles, Typography, Avatar, Zoom, useMediaQuery, useTheme } from "@material-ui/core";
 import style from "../assets/jss/components/artistCardStyle";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import useArtistData from "../hooks/useArtistData"
 import { Skeleton } from "@material-ui/lab"
 
@@ -18,7 +17,7 @@ function ArtistCard(props) {
         <React.Fragment>
             {artist ?
                 <Zoom in={true} style={{ transitionDelay: props.delay ? `${props.delay * 200}ms` : '0ms' }}>
-                    <Link to={`/artists/${props.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
+                    {/* <Link to={`/artists/${props.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}> */}
                         <div className={classes.container}>
                             <Avatar className={classes.avatar} alt="Artist Photo" src={artist.image} />
                             <Typography variant="body1" component="h4">{artist.fullName}</Typography>
@@ -28,7 +27,7 @@ function ArtistCard(props) {
                                     <Typography variant="body2" component="h5" className={classes.subtitle}>{productions.length ? productions[0].title : ""}</Typography>)
                             }
                         </div>
-                    </Link>
+                    {/* </Link> */}
                 </Zoom> : 
                 <div>
                     <Skeleton variant="circle" width={isSmUp ? 180 : 135} height={isSmUp ? 180 : 135} />

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconButton, makeStyles, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import style from "../assets/jss/components/contentSliderStyle";
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -6,7 +6,6 @@ import "swiper/swiper-bundle.css"
 import NavigateNextRoundedIcon from '@material-ui/icons/NavigateNextRounded';
 import NavigateBeforeRoundedIcon from '@material-ui/icons/NavigateBeforeRounded';
 import PropTypes from "prop-types";
-import { DrawerContext } from "../contexts/DrawerContext";
 
 const useStyles = makeStyles(style);
 
@@ -18,29 +17,10 @@ function ContentSlider(props) {
     const isXlUp = useMediaQuery(theme.breakpoints.up("xl"));
     const isXxlUp = useMediaQuery(theme.breakpoints.up("xxl"));
 
-    const { drawerOpen } = useContext(DrawerContext)
-
     const [progress, setProgress] = useState(0);
     const [slidesPerView, setSlidesPerView] = useState(2);
 
     const swiperRef = React.useRef(null);
-
-    useEffect(() => {
-        const delay = 15;
-        const timeout = drawerOpen ?
-                        theme.transitions.duration.enteringScreen :
-                        theme.transitions.duration.leavingScreen;
-        const interval = setInterval(() => {
-            swiperRef.current.swiper.update();
-        }, delay);
-        const timer = setTimeout(() => {
-            clearInterval(interval);
-        }, timeout);
-        return () => {
-            clearTimeout(timer);
-            clearInterval(interval)
-        }; 
-    }, [drawerOpen, theme.transitions.duration.enteringScreen, theme.transitions.duration.leavingScreen])
 
     useEffect(() => {
         if (isXxlUp){

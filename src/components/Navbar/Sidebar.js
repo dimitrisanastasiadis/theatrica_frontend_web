@@ -1,17 +1,19 @@
 import React, { useContext } from "react";
 import clsx from 'clsx';
 import { makeStyles, List, ListItem, ListItemText, ListItemIcon, Drawer, Hidden } from "@material-ui/core";
-import { Link, useLocation } from "react-router-dom";
+// import { Link, useLocation } from "react-router-dom";
 import Routes from "../../routes";
 import style from "../../assets/jss/components/sidebarStyle";
 import { DrawerContext } from "../../contexts/DrawerContext";
+import { useRouter } from 'next/router';
 
 const useStyles = makeStyles(style)
 
 function Sidebar(props) {
     const classes = useStyles();
-    const location = useLocation();
+    // const location = useLocation();
     const { drawerOpen } = useContext(DrawerContext);
+    const router = useRouter();
 
     return (
         <Hidden xsDown>
@@ -32,9 +34,9 @@ function Sidebar(props) {
                             <ListItem
                                 className={classes.item}
                                 classes={{selected: classes.selected}}
-                                selected={location.pathname.startsWith(route.path)}
+                                selected={router.pathname === route.path}
                                 button 
-                                component={Link} 
+                                // component={Link} 
                                 to={route.path} 
                                 key={route.name}>
                                 <ListItemIcon>{route.icon}</ListItemIcon>

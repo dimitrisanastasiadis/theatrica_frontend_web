@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react"
 import useSWR from "swr"
-import DefaultImage from "../assets/img/DefaultShowImage.webp"
+import DefaultImage from "../../public/DefaultShowImage.webp"
 
 const initialData = {
     show: {},

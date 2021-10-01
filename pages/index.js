@@ -4,10 +4,9 @@ import ContentSlider from "../src/components/ContentSlider"
 import ArtistCard from "../src/components/ArtistCard"
 import data from "../src/mockData"
 import VideoContainer from "../src/components/VideoContainer"
-import useItemsIDs from "../src/hooks/useItemsIDs"
 import ShowCard from "../src/components/ShowCard"
-import LoadingScene from "../src/components/LoadingScene"
 import { mainFetcher } from "../src/utils/AxiosInstances"
+import getShowImage from "../src/utils/getShowImage"
 
 const useStyles = makeStyles(style)
 
@@ -22,16 +21,20 @@ export const getStaticProps = async () => {
         
     artists = artists.filter(Boolean);
 
+    let latestShows = await mainFetcher("/productions/latest?page=0&size=10");
+    latestShows = latestShows.content.map(show => ({
+        id: show.id,
+        title: show.title,
+        image: getShowImage(show.mediaURL)
+    }))
+
     return {
-        props: { artists }
+        props: { artists, latestShows }
     }
 }
 
-function Home({ artists }) {
+function Home({ artists, latestShows }) {
     const classes = useStyles();
-    const {items: latestShows} = useItemsIDs("/productions/latest", 0, 10);
-
-    console.log(artists)
 
     return (
         <Grid container className={classes.grid} justify="center">
@@ -44,18 +47,15 @@ function Home({ artists }) {
                 </Grid>
             </Hidden>
             <Grid item xs={12} md={9} className={classes.gridItem}>
-                {artists ?
-                    <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί">
-                        {artists.map((artist, index) => 
-                            <ArtistCard 
-                                id={artist.id}
-                                fullName = {artist.fullName}
-                                image = {artist.image}
-                                key={index}
-                                delay={index} />)}
-                    </ContentSlider> : 
-                    <LoadingScene />
-                }
+                <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί">
+                    {artists.map((artist, index) => 
+                        <ArtistCard 
+                            id={artist.id}
+                            fullName = {artist.fullName}
+                            image = {artist.image}
+                            key={index}
+                            delay={index} />)}
+                </ContentSlider>
             </Grid>
             <Hidden mdDown>
                 <Grid item md={9}>
@@ -63,16 +63,15 @@ function Home({ artists }) {
                 </Grid>
             </Hidden>
             <Grid item xs={12} md={9} className={classes.gridItem}>
-                {latestShows ?
-                    <ContentSlider title="Νέες Παραστάσεις">
-                        {latestShows.map((item) => 
-                            <ShowCard 
-                                id={item.id}
-                                key={item.id} 
-                            />)}
-                    </ContentSlider> : 
-                    <LoadingScene />
-                }
+                <ContentSlider title="Νέες Παραστάσεις">
+                    {latestShows.map((item) => 
+                        <ShowCard 
+                            id={item.id}
+                            title={item.title}
+                            media={item.image}
+                            key={item.id} 
+                        />)}
+                </ContentSlider>
             </Grid>
             <Hidden mdDown>
                 <Grid item md={9}>

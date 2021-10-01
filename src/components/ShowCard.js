@@ -8,45 +8,34 @@ import { Skeleton } from "@material-ui/lab"
 
 const useStyles = makeStyles(style);
 
-function ShowCard(props){
+function ShowCard({ id, title, media }){
     const classes = useStyles();
-    const showData = useShowData(props.id);
 
     return (
-        showData ?
-        // <Link to={`/shows/${showData.show.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
-            <div className={classes.cardContainer}>
-                <Card className={classes.card}>
-                    <CardMedia
-                        className={classes.cardImg}
-                        component="img"
-                        alt={`${showData.show.title} thumbnail`}
-                        image={showData.media}
-                    />
-                    <CardContent className={classes.cardTitle}>
-                        <Typography variant="body1" component="h2">
-                            {showData.show.title}
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </div>
-        // </Link>
-        :
-        <Card className={classes.card}>
-            <CardMedia className={classes.cardImg}>
-                <Skeleton animation="wave" variant="rect" height="100%"/>
-            </CardMedia>
-            <CardContent className={classes.cardTitle}>
-                <Typography variant="body1" component="h2">
-                    <Skeleton />
-                </Typography>
-            </CardContent>
-        </Card>
+    // <Link to={`/shows/${showData.show.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
+        <div className={classes.cardContainer}>
+            <Card className={classes.card}>
+                <CardMedia
+                    className={classes.cardImg}
+                    component="img"
+                    alt={`${title} thumbnail`}
+                    image={media}
+                />
+                <CardContent className={classes.cardTitle}>
+                    <Typography variant="body1" component="h2">
+                        {title}
+                    </Typography>
+                </CardContent>
+            </Card>
+        </div>
+    // </Link>
     )
 }
 
 ShowCard.propTypes = {
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string,
+    media: PropTypes.string
 }
 
 export default ShowCard;

@@ -6,12 +6,12 @@ import Routes from "../../routes";
 import style from "../../assets/jss/components/sidebarStyle";
 import { DrawerContext } from "../../contexts/DrawerContext";
 import { useRouter } from 'next/router';
+import Link from "next/link"
 
 const useStyles = makeStyles(style)
 
 function Sidebar(props) {
     const classes = useStyles();
-    // const location = useLocation();
     const { drawerOpen } = useContext(DrawerContext);
     const router = useRouter();
 
@@ -31,17 +31,20 @@ function Sidebar(props) {
                 <List>
                     {Routes.map(route => {
                         return (
-                            <ListItem
-                                className={classes.item}
-                                classes={{selected: classes.selected}}
-                                selected={router.pathname === route.path}
-                                button 
-                                // component={Link} 
-                                to={route.path} 
-                                key={route.name}>
-                                <ListItemIcon>{route.icon}</ListItemIcon>
-                                <ListItemText primary={route.name}/>
-                            </ListItem>
+                            <Link href={route.path} key={route.name}>
+                                <a className="linksNoDecoration">
+                                    <ListItem
+                                        className={classes.item}
+                                        classes={{selected: classes.selected}}
+                                        selected={router.pathname === route.path}
+                                        button 
+                                        // component={Link}
+                                        >
+                                        <ListItemIcon>{route.icon}</ListItemIcon>
+                                        <ListItemText primary={route.name}/>
+                                    </ListItem>
+                                </a>
+                            </Link>
                         )
                     })}
                 </List>

@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
           <Navbar />
           <BottomNav />
           <Sidebar />
-          <main>
+          <main style={{marginLeft: 55}}>
             {children}
           </main>
         </SWRConfig>

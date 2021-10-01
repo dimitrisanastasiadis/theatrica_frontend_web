@@ -8,8 +8,6 @@ import ShowCard from "../src/components/ShowCard"
 import { mainFetcher } from "../src/utils/AxiosInstances"
 import getShowImage from "../src/utils/getShowImage"
 
-const useStyles = makeStyles(style)
-
 export const getStaticProps = async () => {
     const artistIDs = [1908, 1928, 2000, 2007, 2027, 2029, 2037, 2039, 2113, 2124, 2165, 2167, 2168, 2189, 2191];
     let artists = await Promise.all(
@@ -32,6 +30,8 @@ export const getStaticProps = async () => {
         props: { artists, latestShows }
     }
 }
+
+const useStyles = makeStyles(style)
 
 function Home({ artists, latestShows }) {
     const classes = useStyles();

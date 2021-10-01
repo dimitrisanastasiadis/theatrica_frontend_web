@@ -7,45 +7,29 @@ import { Skeleton } from "@material-ui/lab"
 
 const useStyles = makeStyles(style);
 
-function ArtistCard(props) {
+function ArtistCard({ id, fullName, image, delay }) {
     const classes = useStyles();
-    const {artist, productions} = useArtistData(props.id);
     const theme = useTheme();
     const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
 
     return (
         <React.Fragment>
-            {artist ?
-                <Zoom in={true} style={{ transitionDelay: props.delay ? `${props.delay * 200}ms` : '0ms' }}>
-                    {/* <Link to={`/artists/${props.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}> */}
-                        <div className={classes.container}>
-                            <Avatar className={classes.avatar} alt="Artist Photo" src={artist.image} />
-                            <Typography variant="body1" component="h4">{artist.fullName}</Typography>
-                            {props.role ? 
-                                <Typography variant="body2" component="h5" className={classes.subtitle}>{props.role}</Typography>
-                                :(productions &&
-                                    <Typography variant="body2" component="h5" className={classes.subtitle}>{productions.length ? productions[0].title : ""}</Typography>)
-                            }
-                        </div>
-                    {/* </Link> */}
-                </Zoom> : 
-                <div>
-                    <Skeleton variant="circle" width={isSmUp ? 180 : 135} height={isSmUp ? 180 : 135} />
-                    <Typography variant="body1">
-                        <Skeleton />
-                    </Typography>
-                    <Typography variant="body2">
-                        <Skeleton />
-                    </Typography>
-                </div>
-            }
+            <Zoom in={true} style={{ transitionDelay: delay ? `${delay * 200}ms` : '0ms' }}>
+                {/* <Link to={`/artists/${props.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}> */}
+                    <div className={classes.container}>
+                        <Avatar className={classes.avatar} alt="Artist Photo" src={image} />
+                        <Typography variant="body1" component="h4">{fullName}</Typography>
+                    </div>
+                {/* </Link> */}
+            </Zoom>
         </React.Fragment>
     )
 }
 
 ArtistCard.propTypes = {
     id: PropTypes.number.isRequired,
-    role: PropTypes.string,
+    fullName: PropTypes.string,
+    image: PropTypes.string,
     delay: PropTypes.number
 }
 

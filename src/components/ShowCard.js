@@ -1,10 +1,9 @@
 import React from "react"
 import { makeStyles, Card, CardMedia, CardContent, Typography } from "@material-ui/core"
 import style from "../assets/jss/components/showCardStyle"
-import useShowData from "../hooks/useShowData"
 import PropTypes from "prop-types"
-import { Skeleton } from "@material-ui/lab"
-
+import DefaultImage from "../../public/DefaultShowImage.webp"
+import Image from "next/image"
 
 const useStyles = makeStyles(style);
 
@@ -15,12 +14,9 @@ function ShowCard({ id, title, media }){
     // <Link to={`/shows/${showData.show.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
         <div className={classes.cardContainer}>
             <Card className={classes.card}>
-                <CardMedia
-                    className={classes.cardImg}
-                    component="img"
-                    alt={`${title} thumbnail`}
-                    image={media}
-                />
+                <CardMedia className={classes.cardImg}>
+                    <Image src={media ? media : DefaultImage} alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
+                </CardMedia> 
                 <CardContent className={classes.cardTitle}>
                     <Typography variant="body1" component="h2">
                         {title}

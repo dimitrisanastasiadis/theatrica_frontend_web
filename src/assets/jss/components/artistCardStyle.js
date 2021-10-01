@@ -1,5 +1,6 @@
 const artistCardStyle = theme => ({
     avatar: {
+        background: "transparent",
         width: 135,
         height: 135,
         "&:hover": {

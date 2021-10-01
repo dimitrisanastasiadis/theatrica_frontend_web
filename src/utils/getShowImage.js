@@ -1,7 +1,5 @@
-import DefaultImage from "../../public/DefaultShowImage.webp"
-
 export default function getShowImage(mediaURL) {
-  let media = DefaultImage.src;
+  let media = ""
     
   if (mediaURL){
     if (mediaURL.includes("viva")){

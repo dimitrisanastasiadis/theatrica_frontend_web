@@ -4,6 +4,7 @@ import style from "../assets/jss/components/showCardStyle"
 import PropTypes from "prop-types"
 import DefaultImage from "../../public/DefaultShowImage.webp"
 import Image from "next/image"
+import Link from "next/link"
 
 const useStyles = makeStyles(style);
 
@@ -11,20 +12,22 @@ function ShowCard({ id, title, media }){
     const classes = useStyles();
 
     return (
-    // <Link to={`/shows/${showData.show.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
-        <div className={classes.cardContainer}>
-            <Card className={classes.card}>
-                <CardMedia className={classes.cardImg}>
-                    <Image src={media ? media : DefaultImage} alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
-                </CardMedia> 
-                <CardContent className={classes.cardTitle}>
-                    <Typography variant="body1" component="h2">
-                        {title}
-                    </Typography>
-                </CardContent>
-            </Card>
-        </div>
-    // </Link>
+    <Link href={`/shows/${id}`}>
+        <a className="linksNoDecoration">
+            <div className={classes.cardContainer}>
+                <Card className={classes.card}>
+                    <CardMedia className={classes.cardImg}>
+                        <Image src={media ? media : DefaultImage} alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
+                    </CardMedia> 
+                    <CardContent className={classes.cardTitle}>
+                        <Typography variant="body1" component="h2">
+                            {title}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </div>
+        </a>
+    </Link>
     )
 }
 

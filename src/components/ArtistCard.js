@@ -19,7 +19,9 @@ function ArtistCard({ id, fullName, image, delay }) {
                     <a className="linksNoDecoration">
                         <div className={classes.container}>
                             <Avatar className={classes.avatar} alt="Artist Photo">
-                                <Image src={image} alt="Artist Photo" width={300} height={450} />
+                                {image && 
+                                    <Image src={image} alt="Artist Photo" width={300} height={450} />
+                                }
                             </Avatar>
                             <Typography variant="body1" component="h4">{fullName}</Typography>
                         </div>

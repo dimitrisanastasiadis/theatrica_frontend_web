@@ -1,5 +1,4 @@
 import React from "react";
-// import { useParams, Link } from "react-router-dom"
 import { Grid, makeStyles, Avatar, Paper, Typography, Accordion, AccordionDetails, AccordionSummary, List, ListItem, ListItemText, Divider } from "@material-ui/core"
 import style from "../../src/assets/jss/layouts/artistDetailsStyle"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'

@@ -6,8 +6,14 @@ import { mainFetcher } from "../utils/AxiosInstances"
 import Navbar from "./Navbar/Navbar"
 import BottomNav from "./Navbar/BottomNav"
 import Sidebar from "./Navbar/Sidebar"
+import { makeStyles } from "@material-ui/core"
+import style from "../assets/jss/components/layoutStyle"
+
+const useStyles = makeStyles(style);
 
 const Layout = ({ children }) => {
+  const classes = useStyles();
+
   return ( 
     <DrawerContextProvider>
       <ThemeContextProvider>
@@ -22,7 +28,7 @@ const Layout = ({ children }) => {
           <Navbar />
           <BottomNav />
           <Sidebar />
-          <main style={{marginLeft: 55}}>
+          <main className={classes.main}>
             {children}
           </main>
         </SWRConfig>

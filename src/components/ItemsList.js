@@ -30,7 +30,12 @@ function ItemsList(props){
                         )
                     else if (props.type === "/shows")
                         return (
-                            <ShowCard id={item.id} key={index}/>
+                            <ShowCard 
+                                id={item.id}
+                                title={item.title}
+                                media={item.image}
+                                key={index} 
+                            />
                         )
                     return null;
                 })

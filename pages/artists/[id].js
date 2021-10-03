@@ -5,6 +5,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import LoadingScene from "../../src/components/LoadingScene";
 import { useRouter } from "next/router"
 import { mainFetcher } from "../../src/utils/AxiosInstances";
+import Link from "next/link"
 
 export const getStaticPaths = async () => {
   const artistIDs = [1908, 1928, 2000, 2007, 2027, 2029, 2037, 2039, 2113, 2124, 2165, 2167, 2168, 2189, 2191];
@@ -89,10 +90,11 @@ function ArtistDetails({ artist, productions }) {
                         <React.Fragment key={index}>
                           {index > 0 && <Divider/>}
                             <ListItem>
-                              <ListItemText primary={play.title} />
-                              {/* <Link to={`/shows/${play.productionId}`} className={classes.link}>
-                                  
-                              </Link> */}
+                              <Link href={`/shows/${play.productionId}`} >
+                                <a className={classes.link}>
+                                  <ListItemText primary={play.title} />
+                                </a>
+                              </Link>
                             </ListItem>
                         </React.Fragment>
                       )}

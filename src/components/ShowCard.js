@@ -1,53 +1,40 @@
 import React from "react"
 import { makeStyles, Card, CardMedia, CardContent, Typography } from "@material-ui/core"
 import style from "../assets/jss/components/showCardStyle"
-import useShowData from "../hooks/useShowData"
-import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
-import { Skeleton } from "@material-ui/lab"
-
+import DefaultImage from "../../public/DefaultShowImage.webp"
+import Image from "next/image"
+import Link from "next/link"
 
 const useStyles = makeStyles(style);
 
-function ShowCard(props){
+function ShowCard({ id, title, media }){
     const classes = useStyles();
-    const showData = useShowData(props.id);
 
     return (
-        showData ?
-        <Link to={`/shows/${showData.show.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
+    <Link href={`/shows/${id}`}>
+        <a className="linksNoDecoration">
             <div className={classes.cardContainer}>
                 <Card className={classes.card}>
-                    <CardMedia
-                        className={classes.cardImg}
-                        component="img"
-                        alt={`${showData.show.title} thumbnail`}
-                        image={showData.media}
-                    />
+                    <CardMedia className={classes.cardImg}>
+                        <Image src={media ? media : DefaultImage} alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
+                    </CardMedia> 
                     <CardContent className={classes.cardTitle}>
                         <Typography variant="body1" component="h2">
-                            {showData.show.title}
+                            {title}
                         </Typography>
                     </CardContent>
                 </Card>
             </div>
-        </Link>
-        :
-        <Card className={classes.card}>
-            <CardMedia className={classes.cardImg}>
-                <Skeleton animation="wave" variant="rect" height="100%"/>
-            </CardMedia>
-            <CardContent className={classes.cardTitle}>
-                <Typography variant="body1" component="h2">
-                    <Skeleton />
-                </Typography>
-            </CardContent>
-        </Card>
+        </a>
+    </Link>
     )
 }
 
 ShowCard.propTypes = {
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string,
+    media: PropTypes.string
 }
 
 export default ShowCard;

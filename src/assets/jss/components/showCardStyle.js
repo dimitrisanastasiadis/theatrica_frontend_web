@@ -25,7 +25,9 @@ const showCardStyle = theme => ({
         }
     },
     cardImg: {
-        flexGrow: 1,
+        position: "relative",
+        width: "100%",
+        height: "100%",
         maxHeight: "50%",
         [theme.breakpoints.up("sm")]: {
             maxHeight: "70%"

@@ -23,12 +23,19 @@ function ItemsList(props){
                         return (
                             <ArtistCard 
                                 id={item.id}
+                                fullName={item.fullName}
+                                image={item.image}
                                 key={index}
-                                role={props.role && item.role}/>
+                                />
                         )
                     else if (props.type === "/shows")
                         return (
-                            <ShowCard id={item.id} key={index}/>
+                            <ShowCard 
+                                id={item.id}
+                                title={item.title}
+                                media={item.image}
+                                key={index} 
+                            />
                         )
                     return null;
                 })

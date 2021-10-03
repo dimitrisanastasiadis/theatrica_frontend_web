@@ -5,7 +5,11 @@ export const mainAxios = axios.create({
 })
 
 export const mainFetcher = async url => {
-    const response = await mainAxios.get(url);
-    const data = response.data.data;
-    return data;
+    try{
+        const response = await mainAxios.get(url);
+        const data = response.data.data;
+        return data;
+    }catch(error){
+        console.log(error)
+    }
 }

@@ -2,30 +2,34 @@ import React from "react";
 import { makeStyles, BottomNavigation, BottomNavigationAction, Hidden } from "@material-ui/core";
 import style from "../../assets/jss/components/bottomNavStyle";
 import Routes from "../../routes";
-import { Link, useLocation } from "react-router-dom"
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles(style);
 
 function BottomNav(props) {
     const classes = useStyles();
-    const location = useLocation();
+    const router = useRouter();
+
+    const handleClick = route => {
+        router.push(route);
+    }
 
     return (
         <Hidden smUp>
             <BottomNavigation 
                 className={classes.root} 
                 showLabels 
-                value={`/${location.pathname.split("/")[1]}`}>
+                value={router.pathname.split("/").slice(0, 2).join("/")}>
             {Routes.map(route => {
                 return (
                     <BottomNavigationAction 
-                        classes={{selected: classes.selected }}
-                        key={route.name}
+                        classes={{selected: classes.selected, label: classes.label }}
                         label={route.name} 
                         value={route.path}
-                        icon={route.icon} 
-                        component={Link} 
-                        to={route.path}/>
+                        icon={route.icon}
+                        key={route.name}
+                        onClick={() => handleClick(route.path)}
+                    />
                 )
             })}
             </BottomNavigation>

@@ -4,7 +4,7 @@ const artistCardStyle = theme => ({
         height: 135,
         "&:hover": {
             transform: "translate(0px, -10px)",
-            border: `2px solid ${theme.palette.secondary.main}`,
+            outline: `2px solid ${theme.palette.secondary.main}`,
             boxShadow: "0 7px 10px rgba(0, 0, 0, 1)"
         },
         transition: theme.transitions.create('transform', {
@@ -16,8 +16,7 @@ const artistCardStyle = theme => ({
             width: 180,
             height: 180
         },
-        marginTop: 10,
-        border: "2px solid transparent"
+        marginTop: 10
     },
     container: {
         display: "flex",

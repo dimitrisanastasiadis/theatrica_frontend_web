@@ -16,6 +16,8 @@ export const getStaticProps = async () => {
             return artist;
         })
     )
+
+    // const trailersIDs = [259, 292, 293, 322];
         
     artists = artists.filter(Boolean);
 

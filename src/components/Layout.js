@@ -1,5 +1,4 @@
 import { DrawerContextProvider } from "../contexts/DrawerContext"
-import { ThemeContextProvider } from "../contexts/ThemeContext"
 import { SWRConfig } from "swr"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { mainFetcher } from "../utils/AxiosInstances"
@@ -11,7 +10,6 @@ const Layout = ({ children }) => {
 
   return ( 
     <DrawerContextProvider>
-      <ThemeContextProvider>
         <CssBaseline />
         <SWRConfig
             value={{
@@ -27,7 +25,6 @@ const Layout = ({ children }) => {
             {children}
           </main>
         </SWRConfig>
-      </ThemeContextProvider>
     </DrawerContextProvider>
   );
 }

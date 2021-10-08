@@ -1,14 +1,17 @@
 import { createContext, useState, useEffect } from "react";
-import { ThemeProvider } from '@material-ui/core/styles';
 import DarkTheme from '../assets/themes/DarkTheme'
 import LightTheme from '../assets/themes/LightTheme'
+import dynamic from 'next/dynamic'
+
+const ThemeProvider = dynamic(
+    () => import('@material-ui/core/styles').then((mod) => mod.ThemeProvider),
+    { ssr: false }
+)
 
 export const ThemeContext = createContext();
 
 export function ThemeContextProvider(props){
     const [darkMode, setDarkMode] = useState();
-
-
 
     const toggleDarkMode = () => {
         setDarkMode(prevDarkMode => !prevDarkMode);

@@ -32,10 +32,10 @@ let DarkTheme = createMuiTheme({
     },
     typography: {
         h1: {
-            fontSize: "3em"
+            fontSize: "2.5em"
         },
         h2: {
-            fontSize: "2.25em"
+            fontSize: "2em"
         },
         h3: {
             fontSize: "1.8em"

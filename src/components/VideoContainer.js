@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { makeStyles, Button, Fade, Typography, Hidden } from "@material-ui/core";
+import { IconButton, makeStyles, Button, Fade, Typography, Hidden } from "@material-ui/core";
 import style from "../assets/jss/components/videoContainerStyle";
 import NavigateNextRoundedIcon from '@material-ui/icons/NavigateNextRounded';
 import NavigateBeforeRoundedIcon from '@material-ui/icons/NavigateBeforeRounded';
@@ -75,9 +75,9 @@ function VideoContainer(props) {
                     </a>
                 </Link>
                 <Typography component="p" variant="body2" className={!descriptionExpanded ? classes.descriptionHidden : ""}>{production.description}</Typography>
-                <Button size="small" className={`${classes.expandButton} ${descriptionExpanded ? classes.collapseButton : "" }`} onClick={toggleDescription}> 
+                <IconButton size="small" className={`${classes.expandButton} ${descriptionExpanded ? classes.collapseButton : "" }`} onClick={toggleDescription}> 
                     <ExpandMoreIcon />
-                </Button>
+                </IconButton>
             </div>
         </div>  
     )

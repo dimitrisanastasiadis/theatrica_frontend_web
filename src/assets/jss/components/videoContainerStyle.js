@@ -64,9 +64,11 @@ const videoContainerStyle = theme => ({
     },
     expandButton: {
         margin: "0 auto",
-        borderRadius: "50%",
-        minWidth: "unset",
-        marginTop: 16
+        padding: 8,
+        marginTop: 16,
+        "&:hover": {
+            color: theme.palette.secondary.main
+        }
     },
     collapseButton: {
         transform: "rotate(180deg)"

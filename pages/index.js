@@ -40,23 +40,28 @@ function Home({ artists, latestShows }) {
 
     return (
         <div className={classes.container}>
-            <VideoContainer production={data.productions} />
-            <Hidden mdDown>
+            <section>
+                <VideoContainer production={data.productions} />
+            </section>
+            <Hidden smDown>
                 <Divider className={classes.divider} flexItem />
             </Hidden>
+            <section>
                 <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί">
                     {artists.map((artist, index) => 
                         <ArtistCard 
                             id={artist.id}
                             fullName = {artist.fullName}
-                            image = {artist.image}
+                            image = {artist.image[0]}
                             key={index}
                             delay={index} />)}
                 </ContentSlider>
-            <Hidden mdDown>
+            </section>
+            <Hidden smDown>
                 <Divider className={classes.divider} flexItem />
             </Hidden>
-                <ContentSlider title="Νέες Παραστάσεις">
+            <section>
+                <ContentSlider title="Παραστάσεις" description="Νέες Κυκλοφορίες">
                     {latestShows.map((item) => 
                         <ShowCard 
                             id={item.id}
@@ -65,9 +70,7 @@ function Home({ artists, latestShows }) {
                             key={item.id} 
                         />)}
                 </ContentSlider>
-            <Hidden mdDown>
-                    <Divider className={classes.divider} flexItem />
-            </Hidden>
+            </section>
         </div>
     )
 }

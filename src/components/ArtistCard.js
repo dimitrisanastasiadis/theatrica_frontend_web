@@ -7,27 +7,25 @@ import Link from "next/link"
 
 const useStyles = makeStyles(style);
 
-function ArtistCard({ id, fullName, image, delay }) {
+function ArtistCard({ id, fullName, image }) {
     const classes = useStyles();
     const theme = useTheme();
     const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
 
     return (
         <React.Fragment>
-            <Zoom in={true} style={{ transitionDelay: delay ? `${delay * 200}ms` : '0ms' }}>
-                <Link href={`/artists/${id}`}>
-                    <a className="linksNoDecoration">
-                        <div className={classes.container}>
-                            <Avatar className={classes.avatar} alt="Artist Photo">
-                                {image && 
-                                    <Image src={image} alt="Artist Photo" width={300} height={450} />
-                                }
-                            </Avatar>
-                            <Typography variant="body1" component="h4">{fullName}</Typography>
-                        </div>
-                    </a>
-                </Link>
-            </Zoom>
+            <Link href={`/artists/${id}`}>
+                <a className="linksNoDecoration">
+                    <div className={classes.container}>
+                        <Avatar className={`${classes.avatar} ${image && classes.transparent}`} alt="Artist Photo">
+                            {image && 
+                                <Image src={image} alt="Artist Photo" width={300} height={450} />
+                            }
+                        </Avatar>
+                        <Typography variant="body1" component="p" className={classes.name}>{fullName}</Typography>
+                    </div>
+                </a>
+            </Link>
         </React.Fragment>
     )
 }
@@ -35,8 +33,7 @@ function ArtistCard({ id, fullName, image, delay }) {
 ArtistCard.propTypes = {
     id: PropTypes.number.isRequired,
     fullName: PropTypes.string,
-    image: PropTypes.string,
-    delay: PropTypes.number
+    image: PropTypes.string
 }
 
 export default ArtistCard;

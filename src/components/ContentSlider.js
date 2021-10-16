@@ -58,7 +58,7 @@ function ContentSlider(props) {
             <div className={classes.container}>
                 <div className={classes.headerContainer}>
                     <div>
-                        <Typography variant="h4" component="h2">{props.title}</Typography>
+                        <Typography variant="h3" component="h2">{props.title}</Typography>
                         <Typography variant="subtitle1" component="h3">{props.description}</Typography>
                     </div>
                     <div className={classes.buttonsContainer}>
@@ -70,7 +70,7 @@ function ContentSlider(props) {
                         </IconButton>
                     </div>
                 </div>
-                <div>
+                <div className={classes.swiper}>
                     <Swiper 
                     ref={swiperRef}
                     slidesPerView={slidesPerView}

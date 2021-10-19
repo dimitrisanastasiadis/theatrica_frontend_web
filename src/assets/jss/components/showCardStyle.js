@@ -2,10 +2,9 @@ const showCardStyle = theme => ({
     cardContainer: {
         margin: "12px 0 15px",
         border: "2px solid transparent",
-        borderRadius: "6px",
         "&:hover": {
             transform: "translate(0px, -10px)",
-            borderRadius: "6px",
+            borderRadius: "9px",
             border: `2px solid ${theme.palette.secondary.main}`,
             boxShadow: "0 7px 10px rgba(0, 0, 0, 1)"
         },
@@ -15,26 +14,51 @@ const showCardStyle = theme => ({
         }),
     },
     card: {
-        height: 280,
-        width: 150,
+        height: 320,
+        width: 160,
         display: "flex",
         flexDirection: "column",
+        borderRadius: "9px",
         [theme.breakpoints.up("sm")]: {
-            height: 360,
-            width: 200
+            height: 320,
+            width: 180
         }
     },
     cardImg: {
         position: "relative",
         width: "100%",
-        height: "100%",
-        maxHeight: "50%",
-        [theme.breakpoints.up("sm")]: {
-            maxHeight: "70%"
-        }
+        height: "70%",
+        maxHeight: "70%"
     },
     cardTitle: {
-        margin: "auto 0px auto 0px"
+        padding: "9px 9px 7px 7px",
+        height: "30%",
+        maxHeight: "30%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        "&:last-child": {
+            paddingBottom: 7
+        }
+    },
+    icons: {
+        display: "flex",
+        justifyContent: "space-between"
+    },
+    link: {
+        textDecoration: "none",
+        color: "inherit",
+        "&:hover": {
+            textDecoration: "underline"
+        },
+        "&:active": {
+            color: theme.palette.secondary.light
+        }
+    },
+    button: {
+        "&:hover": {
+            background: "none"
+        }
     }
 })
 

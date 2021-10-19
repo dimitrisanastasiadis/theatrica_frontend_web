@@ -1,7 +1,7 @@
 const homeStyle = theme => ({
     divider: {
         height: 3,
-        margin: "70px 0px 40px 0px"
+        margin: "50px 0px"
     },
     loading: {
         height: "100%",
@@ -19,7 +19,13 @@ const homeStyle = theme => ({
         display: "flex",
         flexDirection: "column",
         "& section": {
-            margin: "25px 0"
+            margin: "40px 0",
+            "&:first-child": {
+                marginTop: 0,
+            },
+            [theme.breakpoints.up("md")]: {
+                margin: "25px 0"
+            }
         }
     }
 })

@@ -9,20 +9,28 @@ const videoContainerStyle = theme => ({
         color: "white"
     },
     buttonNext: {
-        right: "34%",
-        [theme.breakpoints.down("md")]: {
-            right: 0
-        }
+        right: 0
     },
     buttonPrev: {
         left: 0
     },
     container: {
-        display: "flex",
-        flexDirection: "column"
+        [theme.breakpoints.up("md")]:{
+            display: "flex"
+        }
     },
     description: {
-        padding: "20px 0px"
+        display: "flex",
+        flexDirection: "column",
+        padding: 20,
+        backgroundColor: theme.palette.primary.dark,
+        [theme.breakpoints.up("md")]:{
+            maxWidth: "33.3%"
+        },
+        "& h2": {
+            marginBottom: "10px",
+            padding: 2
+        }
     },
     headerContainer: {
         marginBottom: 24,
@@ -30,7 +38,40 @@ const videoContainerStyle = theme => ({
     },
     bodyContainer: {
         padding: "0px 0px",
-        position: "relative"
+        position: "relative",
+        height: "100%",
+        [theme.breakpoints.up("md")]:{
+            width: "66.6%"
+        }
+    },
+    descriptionHidden: {
+        overflow: "hidden",
+        maxHeight: "170px",
+        position: "relative",
+        "&:after": {
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            height: "100%",
+            width: "100%",
+            content: "''",
+            background: `linear-gradient(
+                transparent 40%, 
+                ${theme.palette.primary.dark} 95%
+            )`,
+            pointerEvents: "none"
+        }
+    },
+    expandButton: {
+        margin: "0 auto",
+        padding: 8,
+        marginTop: 16,
+        "&:hover": {
+            color: theme.palette.secondary.main
+        }
+    },
+    collapseButton: {
+        transform: "rotate(180deg)"
     }
 })
 

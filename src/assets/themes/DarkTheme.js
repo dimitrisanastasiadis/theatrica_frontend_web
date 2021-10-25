@@ -29,6 +29,26 @@ let DarkTheme = createMuiTheme({
             dark: "#2ECBC7"
         },
         type: "dark"
+    },
+    typography: {
+        h1: {
+            fontSize: "2.5em"
+        },
+        h2: {
+            fontSize: "2em"
+        },
+        h3: {
+            fontSize: "1.8em"
+        },
+        h4: {
+            fontSize: "1.5em"
+        },
+        h5: {
+            fontSize: "1.2em"
+        },
+        h6: {
+            fontSize: "1em"
+        }
     }
 })
 

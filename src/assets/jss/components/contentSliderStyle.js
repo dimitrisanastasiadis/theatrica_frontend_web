@@ -23,6 +23,9 @@ const contentSliderStyle = theme => ({
         alignItems: "center",
         marginBottom: 16,
         padding: "0px 16px",
+    },
+    swiper: {
+        marginTop: 20
     }
 })
 

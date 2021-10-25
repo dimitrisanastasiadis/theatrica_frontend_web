@@ -24,7 +24,7 @@ function ItemsList(props){
                             <ArtistCard 
                                 id={item.id}
                                 fullName={item.fullName}
-                                image={item.image}
+                                image={item.image[0]}
                                 key={index}
                                 />
                         )
@@ -49,7 +49,6 @@ function ItemsList(props){
 ItemsList.propTypes = {
     type: PropTypes.string.isRequired,
     items: PropTypes.array,
-    role: PropTypes.bool,
     title: PropTypes.bool
 }
 

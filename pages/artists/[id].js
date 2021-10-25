@@ -64,7 +64,7 @@ function ArtistDetails({ artist, productions }) {
       <Grid item xs={12} md={9} lg={7} className={classes.gridItem}>
         <Paper elevation={3} className={classes.card}>
           <div className={classes.container}>
-            <Avatar src={artist.image} variant="rounded" alt={`Photo of ${artist.fullName}`} className={classes.avatar}/>
+            <Avatar src={artist.image[0]} variant="rounded" alt={`Photo of ${artist.fullName}`} className={classes.avatar}/>
             <div style={{overflow: "auto", textAlign: "center"}}>
                 <Typography variant="h4">{artist.fullName}</Typography>
             </div>

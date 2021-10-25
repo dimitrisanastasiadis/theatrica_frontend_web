@@ -8,13 +8,8 @@ const style = theme => ({
         "& > *": {
             gridArea: "1 / 1 / 2 / 2"
         },
-        width: "66%",
         flexShrink: 0,
-        [theme.breakpoints.down("md")]: {
-            width: "100%"
-        },
-        float: "left",
-        marginRight: 20
+        width: "100%"
     }
 })
 

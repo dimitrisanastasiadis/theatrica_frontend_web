@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { makeStyles, Button, Fade, Typography, Hidden } from "@material-ui/core";
+import { useState } from "react";
+import { IconButton, makeStyles, Button, Fade, Typography, Hidden } from "@material-ui/core";
 import style from "../assets/jss/components/videoContainerStyle";
 import NavigateNextRoundedIcon from '@material-ui/icons/NavigateNextRounded';
 import NavigateBeforeRoundedIcon from '@material-ui/icons/NavigateBeforeRounded';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PropTypes from "prop-types";
 import ReactPlayer from 'react-player/youtube';
 import AspectRatioSizer from "../utils/AspectRatioSizer"
+import Link from "next/link"
 
 const useStyles = makeStyles(style);
 
@@ -13,6 +15,7 @@ function VideoContainer(props) {
     const classes = useStyles();
     const [ production, setProduction ] = useState(props.production[0]);
     const [ playing, setPlaying ] = useState(false);
+    const [ descriptionExpanded, setDescriptionExpanded] = useState(false);
 
     const handleNext = () => {
         const currentIndex = props.production.indexOf(production);
@@ -32,12 +35,12 @@ function VideoContainer(props) {
         }
     }
 
+    const toggleDescription = () => {
+        setDescriptionExpanded(prev => !prev)
+    }
+
     return (
         <div className={classes.container}>
-            <div className={classes.headerContainer}>
-                <Typography variant="h4" component="h2">Trailers</Typography>
-                <Typography variant="h5" component="h3">{production.title}</Typography>
-            </div>
             <div className={classes.bodyContainer}>
                 <AspectRatioSizer widthRatio={16} heightRatio={9}>
                     <ReactPlayer 
@@ -51,24 +54,30 @@ function VideoContainer(props) {
                     />
                 </AspectRatioSizer>
                 <Fade in={!playing}>
-                        <Button
-                            onClick={handlePrev}
-                            className={`${classes.button} ${classes.buttonPrev}`}>
-                            <NavigateBeforeRoundedIcon fontSize="large"/>
-                        </Button>
-                    </Fade>
-                    <Fade in={!playing}>
-                        <Button
-                            onClick={handleNext}
-                            className={`${classes.button} ${classes.buttonNext}`}>
-                            <NavigateNextRoundedIcon fontSize="large"/>
-                        </Button>
-                    </Fade>
-                <div className={classes.description}>
-                    <Hidden mdDown>
-                        <Typography component="p" variant="body1">{production.description}</Typography>
-                    </Hidden>
-                </div>
+                    <Button
+                        onClick={handlePrev}
+                        className={`${classes.button} ${classes.buttonPrev}`}>
+                        <NavigateBeforeRoundedIcon fontSize="large"/>
+                    </Button>
+                </Fade>
+                <Fade in={!playing}>
+                    <Button
+                        onClick={handleNext}
+                        className={`${classes.button} ${classes.buttonNext}`}>
+                        <NavigateNextRoundedIcon fontSize="large"/>
+                    </Button>
+                </Fade>
+            </div>
+            <div className={classes.description}>
+                <Link href={`shows/${production.id}`}>
+                    <a className="linksNoDecoration">
+                        <Typography variant="h3" component="h2">{production.title}</Typography>
+                    </a>
+                </Link>
+                <Typography component="p" variant="body2" className={!descriptionExpanded ? classes.descriptionHidden : ""}>{production.description}</Typography>
+                <IconButton size="small" className={`${classes.expandButton} ${descriptionExpanded ? classes.collapseButton : "" }`} onClick={toggleDescription}> 
+                    <ExpandMoreIcon />
+                </IconButton>
             </div>
         </div>  
     )

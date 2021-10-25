@@ -58,21 +58,21 @@ function TabPanel(props) {
   );
 }
 
-const getArtistsByRole = (people) => {
-  let actors, crew;
+// const getArtistsByRole = (people) => {
+//   let actors, crew;
 
-  if (people){
-    let artistGroups = people.reduce((r, a) => {
-      r[a.role] = [...r[a.role] || [], a];
-      return r;
-      }, {});
-    const {"Ηθοποιός": actorsTemp, ...crewTemp} = artistGroups;
-    actors = actorsTemp;
-    crew = crewTemp;
-  }
+//   if (people){
+//     let artistGroups = people.reduce((r, a) => {
+//       r[a.role] = [...r[a.role] || [], a];
+//       return r;
+//       }, {});
+//     const {"Ηθοποιός": actorsTemp, ...crewTemp} = artistGroups;
+//     actors = actorsTemp;
+//     crew = crewTemp;
+//   }
 
-  return {actors, crew}
-}
+//   return {actors, crew}
+// }
 
 function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
   const classes = useStyles();

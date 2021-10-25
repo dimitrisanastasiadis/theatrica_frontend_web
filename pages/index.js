@@ -1,4 +1,4 @@
-import { Grid, makeStyles, Hidden, Divider } from "@material-ui/core"
+import { makeStyles, Hidden, Divider } from "@material-ui/core"
 import style from "../src/assets/jss/layouts/homeStyle"
 import ContentSlider from "../src/components/ContentSlider"
 import ArtistCard from "../src/components/ArtistCard"
@@ -11,11 +11,13 @@ import getShowImage from "../src/utils/getShowImage"
 export const getStaticProps = async () => {
     const artistIDs = [1908, 1928, 2000, 2007, 2027, 2029, 2037, 2039, 2113, 2124, 2165, 2167, 2168, 2189, 2191];
     let artists = await Promise.all(
-            artistIDs.map(async id => {
-                const artist = await mainFetcher(`/people/${id}`);
-                return artist;
-            })
-        )
+        artistIDs.map(async id => {
+            const artist = await mainFetcher(`/people/${id}`);
+            return artist;
+        })
+    )
+
+    // const trailersIDs = [259, 292, 293, 322];
         
     artists = artists.filter(Boolean);
 
@@ -37,33 +39,29 @@ function Home({ artists, latestShows }) {
     const classes = useStyles();
 
     return (
-        <Grid container className={classes.grid} justify="center">
-            <Grid item xs={12} md={9} className={classes.gridItem}>
+        <div className={classes.container}>
+            <section>
                 <VideoContainer production={data.productions} />
-            </Grid>
-            <Hidden mdDown>
-                <Grid item md={9}>
-                    <Divider className={classes.divider} flexItem />
-                </Grid>
+            </section>
+            <Hidden smDown>
+                <Divider className={classes.divider} flexItem />
             </Hidden>
-            <Grid item xs={12} md={9} className={classes.gridItem}>
+            <section>
                 <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί">
                     {artists.map((artist, index) => 
                         <ArtistCard 
                             id={artist.id}
                             fullName = {artist.fullName}
-                            image = {artist.image}
+                            image = {artist.image[0]}
                             key={index}
                             delay={index} />)}
                 </ContentSlider>
-            </Grid>
-            <Hidden mdDown>
-                <Grid item md={9}>
-                    <Divider className={classes.divider} flexItem />
-                </Grid>
+            </section>
+            <Hidden smDown>
+                <Divider className={classes.divider} flexItem />
             </Hidden>
-            <Grid item xs={12} md={9} className={classes.gridItem}>
-                <ContentSlider title="Νέες Παραστάσεις">
+            <section>
+                <ContentSlider title="Παραστάσεις" description="Νέες Κυκλοφορίες">
                     {latestShows.map((item) => 
                         <ShowCard 
                             id={item.id}
@@ -72,13 +70,8 @@ function Home({ artists, latestShows }) {
                             key={item.id} 
                         />)}
                 </ContentSlider>
-            </Grid>
-            <Hidden mdDown>
-                <Grid item md={9}>
-                    <Divider className={classes.divider} flexItem />
-                </Grid>
-            </Hidden>
-        </Grid>
+            </section>
+        </div>
     )
 }
 

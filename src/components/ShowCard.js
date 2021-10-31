@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { makeStyles, Card, CardMedia, CardContent, Typography, IconButton } from "@material-ui/core"
 import style from "../assets/jss/components/showCardStyle"
 import PropTypes from "prop-types"

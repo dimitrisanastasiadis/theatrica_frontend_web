@@ -1,11 +1,14 @@
-import React from "react";
-import { Grid, makeStyles, Avatar, Paper, Typography, Accordion, AccordionDetails, AccordionSummary, List, ListItem, ListItemText, Divider } from "@material-ui/core"
+import React, { useMemo } from "react";
+import { makeStyles, Avatar, Typography, List, ListItem, ListItemText, Divider, IconButton, useMediaQuery } from "@material-ui/core"
 import style from "../../src/assets/jss/layouts/artistDetailsStyle"
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import LoadingScene from "../../src/components/LoadingScene";
 import { useRouter } from "next/router"
 import { mainFetcher } from "../../src/utils/AxiosInstances";
 import Link from "next/link"
+import Image from "next/image"
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import useFavoriteArtist from "../../src/hooks/useFavoriteArtist"
 
 export const getStaticPaths = async () => {
   const artistIDs = [1908, 1928, 2000, 2007, 2027, 2029, 2037, 2039, 2113, 2124, 2165, 2167, 2168, 2189, 2191];
@@ -30,27 +33,24 @@ export const getStaticProps = async ({ params }) => {
   
   const productions = await mainFetcher(`/people/${params.id}/productions`)
 
+  const images = [
+    "https://image.tmdb.org/t/p/w300/bjYL6zFdE6R4ycMRzCueFwy1xhn.jpg",
+    "https://image.tmdb.org/t/p/w300/8rr9KTDZ4iSJWKjNrJo5ZPsRbCj.jpg",
+    "https://image.tmdb.org/t/p/w300/bEhOnNpRPbROUn0Gudf64cGOmPZ.jpg",
+    "https://image.tmdb.org/t/p/w300/hlrtsa0ivHsKzbQGcI78cBZn1gd.jpg",
+    "https://image.tmdb.org/t/p/w300/bjYL6zFdE6R4ycMRzCueFwy1xhn.jpg",
+    "https://image.tmdb.org/t/p/w300/8rr9KTDZ4iSJWKjNrJo5ZPsRbCj.jpg"
+  ]
+
   return {
-    props: { artist, productions }
+    props: { artist, productions, images }
   }
 }
 
 const useStyles = makeStyles(style);
 
-function ArtistDetails({ artist, productions }) {
-  const router = useRouter();
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState("panel0");
-
-  if (router.isFallback){
-    return <LoadingScene fullScreen />
-  }
-
+const getProductionsByRole = (productions) => {
   let productionGroups = {};
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  }
   
   if (productions){
     productionGroups = productions.content.reduce((r, a) => {
@@ -58,55 +58,104 @@ function ArtistDetails({ artist, productions }) {
       return r;
     }, {});
   }
+
+  return productionGroups;
+}
+
+function ArtistDetails({ artist, productions, images }) {
+  const router = useRouter();
+
+  const classes = useStyles();
+  const mdDown = useMediaQuery("(max-width:960px)");
+  
+  const { isFavorite, setIsFavorite } = useFavoriteArtist(artist.id);
+
+  const productionGroups = useMemo(() => {
+    return getProductionsByRole(productions)
+  }, [productions])
+
+  if (router.isFallback){
+    return <LoadingScene fullScreen />
+  }
+
+  const handleFavorite = () => {
+    setIsFavorite(prev => !prev);
+  }
+
+  console.log(Object.entries(productionGroups))
   
   return (
-    <Grid container justify="center" className={classes.grid}>
-      <Grid item xs={12} md={9} lg={7} className={classes.gridItem}>
-        <Paper elevation={3} className={classes.card}>
-          <div className={classes.container}>
-            <Avatar src={artist.image[0]} variant="rounded" alt={`Photo of ${artist.fullName}`} className={classes.avatar}/>
-            <div style={{overflow: "auto", textAlign: "center"}}>
-                <Typography variant="h4">{artist.fullName}</Typography>
-            </div>
-          </div>
-        </Paper>
-      </Grid>
-      <Grid item xs={12} md={9} lg={7} className={classes.gridItem}>
-        <Paper elevation={3} className={classes.card}>
-          <Typography variant="h4">Θεατρικές Παραστάσεις</Typography>
-          <div className={classes.accordionContainer}>
-            {
-              Object.entries(productionGroups).map(([key, value], index) => 
-                <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)} className={classes.accordion}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls={`panel-${key}-content`}
-                    id={`panel-${key}-header`}>
-                    <Typography className={classes.categoryTitle} variant="h6">{key}</Typography>                                                
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <List style={{width: "100%"}}>
-                      {value.map((play, index) => 
-                        <React.Fragment key={index}>
-                          {index > 0 && <Divider/>}
-                            <ListItem>
-                              <Link href={`/shows/${play.productionId}`} >
-                                <a className={classes.link}>
-                                  <ListItemText primary={play.title} />
-                                </a>
-                              </Link>
-                            </ListItem>
-                        </React.Fragment>
-                      )}
-                    </List>
-                  </AccordionDetails>
-                </Accordion>
+    <div className={classes.container}>
+      <section className={classes.overview}>
+        <Avatar alt="Artist Photo" variant="square" className={classes.avatar}>
+          {artist.image[0] && 
+              <Image src={artist.image[0]} alt="Artist Photo" width={300} height={450} />
+          }
+        </Avatar>
+        <Typography variant="h2" component="h1" className={classes.name}>{artist.fullName}</Typography>
+        <IconButton size="small" className={classes.favoriteIcon} onClick={handleFavorite}>
+          {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        </IconButton>
+        <Typography variant="body1" className={classes.bio}>
+          Quisque tincidunt porta neque, vitae aliquet quam hendrerit id. Nulla facilisi. Sed hendrerit elit eu vulputate auctor. Mauris ac tincidunt dui. Suspendisse nec sagittis neque, et efficitur nisl. Proin molestie mollis tortor, id sodales risus. Phasellus mi ante, viverra vel euismod eget, vulputate vel libero. Curabitur sem tellus, posuere id est eu, auctor imperdiet mauris. Morbi euismod facilisis dolor, in vestibulum mauris mattis non. Donec sit amet tempor augue, a elementum nisl.
+        </Typography>
+        <Typography variant="body1" className={classes.birthday}><strong>Ημερομηνία Γέννησης: </strong>11 Μαρτίου, 1977</Typography>
+      </section>
+      <section>
+        <Typography variant="h4" component="h2" className={classes.sectionTitle}>Φωτογραφίες</Typography>
+        <div className={classes.photographsContainer}>
+          {images.map((url, index) => {
+            if ((mdDown && index < 4) || !mdDown){
+              return (
+                <div key={index} className={classes.photograph}>
+                  <Image src={url} alt={`${artist.fullName} profile picture`} layout="fill" objectFit="cover" />
+                </div>
               )
             }
-          </div>
-        </Paper>
-      </Grid>
-    </Grid>
+          })}
+        </div>
+      </section>
+      {Object.entries(productionGroups).map(([key, value], index) => 
+        <section key={index}>
+          <Typography variant="h4" component="h2" className={classes.sectionTitle}>{key}</Typography>
+          <List className={classes.list}>
+            {value.map((play, index) => 
+              <ListItem key={index} className={classes.listItem}>
+                <Link href={`/shows/${play.productionId}`} >
+                  <a className={classes.link}>
+                    <ListItemText primary={play.title} />
+                  </a>
+                </Link>
+                <ListItemText className={classes.year} primary="2020" />
+              </ListItem>
+            )}
+          </List>
+        </section>
+      )}
+      <section>
+        <Typography variant="h4" component="h2" className={classes.sectionTitle}>Social</Typography>
+        <div className={classes.socialContainer}>
+          <a href="https://www.twitter.com" className={`linksNoDecoration ${classes.social}`}>
+            <div className={classes.socialLogo}>
+              <Image src="/TwitterLogo.svg" width={32} height={32} alt="Twitter Logo" />
+            </div>
+            <Typography variant="body1">Twitter</Typography>
+          </a>
+          <a href="https://www.facebook.com" className={`linksNoDecoration ${classes.social}`}>
+            <div className={classes.socialLogo}>
+              <Image src="/FacebookLogo.svg" width={32} height={32} alt="Facebook Logo" />
+            </div>
+            <Typography variant="body1">Facebook</Typography>
+          </a>
+          <a href="https://www.instagram.com" className={`linksNoDecoration ${classes.social}`}>
+            <div className={classes.socialLogo}>
+              <Image src="/InstagramLogo.svg" width={32} height={32} alt="Instagram Logo" />
+            </div>
+            <Typography variant="body1">Instagram</Typography>
+          </a>
+        </div>
+      </section>
+    </div>
   )
 }
 

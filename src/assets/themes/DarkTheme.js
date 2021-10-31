@@ -35,19 +35,19 @@ let DarkTheme = createMuiTheme({
             fontSize: "2.5em"
         },
         h2: {
-            fontSize: "2em"
+            fontSize: "1.9em"
         },
         h3: {
-            fontSize: "1.8em"
+            fontSize: "1.7em"
         },
         h4: {
-            fontSize: "1.5em"
+            fontSize: "1.4em"
         },
         h5: {
-            fontSize: "1.2em"
+            fontSize: "1.1em"
         },
         h6: {
-            fontSize: "1em"
+            fontSize: "0.9em"
         }
     }
 })

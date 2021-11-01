@@ -39,38 +39,40 @@ function Home({ artists, latestShows }) {
     const classes = useStyles();
 
     return (
-        <div className={classes.container}>
-            <section>
-                <VideoContainer production={data.productions} />
-            </section>
-            <Hidden smDown>
-                <Divider className={classes.divider} flexItem />
-            </Hidden>
-            <section>
-                <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί">
-                    {artists.map((artist, index) => 
-                        <ArtistCard 
-                            id={artist.id}
-                            fullName = {artist.fullName}
-                            image = {artist.image[0]}
-                            key={index}
-                            delay={index} />)}
-                </ContentSlider>
-            </section>
-            <Hidden smDown>
-                <Divider className={classes.divider} flexItem />
-            </Hidden>
-            <section>
-                <ContentSlider title="Παραστάσεις" description="Νέες Κυκλοφορίες">
-                    {latestShows.map((item) => 
-                        <ShowCard 
-                            id={item.id}
-                            title={item.title}
-                            media={item.image}
-                            key={item.id} 
-                        />)}
-                </ContentSlider>
-            </section>
+        <div className={classes.wrapper}>
+            <div className={classes.container}>
+                <section>
+                    <VideoContainer production={data.productions} />
+                </section>
+                <Hidden smDown>
+                    <Divider className={classes.divider} flexItem />
+                </Hidden>
+                <section>
+                    <ContentSlider title="Καλλιτέχνες" description="Δημοφιλείς Ηθοποιοί">
+                        {artists.map((artist, index) => 
+                            <ArtistCard 
+                                id={artist.id}
+                                fullName = {artist.fullName}
+                                image = {artist.image[0]}
+                                key={index}
+                                delay={index} />)}
+                    </ContentSlider>
+                </section>
+                <Hidden smDown>
+                    <Divider className={classes.divider} flexItem />
+                </Hidden>
+                <section>
+                    <ContentSlider title="Παραστάσεις" description="Νέες Κυκλοφορίες">
+                        {latestShows.map((item) => 
+                            <ShowCard 
+                                id={item.id}
+                                title={item.title}
+                                media={item.image}
+                                key={item.id} 
+                            />)}
+                    </ContentSlider>
+                </section>
+            </div>
         </div>
     )
 }

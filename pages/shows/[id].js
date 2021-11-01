@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Grid, makeStyles, Typography, Paper, Tab, Tabs, AppBar, Table, TableBody, TableRow, TableCell, TableContainer, Toolbar } from "@material-ui/core"
+import { makeStyles, Typography, Paper, Tab, Tabs, AppBar, Table, TableBody, TableRow, TableCell, TableContainer, Toolbar } from "@material-ui/core"
 import style from "../../src/assets/jss/layouts/showDetailsStyle"
 import he from "he"
 import ItemsList from "../../src/components/ItemsList"
@@ -10,6 +10,7 @@ import getShowImage from "../../src/utils/getShowImage"
 import getShowEvents from "../../src/utils/getShowEvents"
 import DefaultImage from "../../public/DefaultShowImage.webp"
 import { useRouter } from "next/router"
+import clsx from 'clsx'
 
 export const getStaticPaths = async () => {
   const latestShows = await mainFetcher("/productions/latest?page=0&size=10");
@@ -100,30 +101,51 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
   
 
   return (
-      <React.Fragment>
-        <Grid container className={classes.grid} justify="center">
-          <Grid item xs={12} md={9} className={classes.title}>
-            <Typography variant="h3" component="h1">{show.title}</Typography>
-          </Grid>
-          <Grid item xs={12} md={9} className={classes.imageGrid} style={{position: "relative", height: 200}}>
-            <Image src={media ? media : DefaultImage} alt={show.title} className={classes.image} layout="fill" objectFit="contain" />
-          </Grid>
-          <Grid item xs={12} md={9}>
-            <Paper elevation={6} style={{padding: 10}}>
-              <Paper className={classes.paper2}>
-                <AppBar position="static" color="default" className={classes.appBar}>
+        <div className={classes.pageWrapper}>
+          <div className={classes.overview}>
+            <Typography variant="h2" component="h1">{show.title}</Typography>
+            <div style={{width: 200, height: 200, position: "relative"}}>
+              <Image src={media ? media : DefaultImage} alt={show.title} className={classes.image} layout="fill" objectFit="contain" />
+            </div>
+          </div>
+          <div className={classes.detailsBackground}>
+            <div className={classes.details}>
+                <div className={classes.tabsWrapper}>
                   <Tabs 
+                    className={classes.tabs}
                     value={tabValue}
                     onChange={handleTabChange}
-                    indicatorColor="secondary"
-                    textColor="secondary"
                     variant="scrollable"
-                    scrollButtons="auto">
-                    <Tab label="ΠΕΡΙΓΡΑΦΗ" />
-                    <Tab label="ΣΥΝΤΕΛΕΣΤΕΣ" />
-                    <Tab label="ΕΚΔΗΛΩΣΕΙΣ" />
+                    scrollButtons="auto"
+                    TabIndicatorProps={{
+                      style:{display: "none"}
+                    }}>
+                    <Tab 
+                      classes={{
+                        wrapper: clsx(classes.tab, {
+                          [classes.tabActive]: tabValue===0
+                        })}} 
+                      label="Περιγραφή" 
+                      disableTouchRipple
+                    />
+                    <Tab 
+                      classes={{
+                        wrapper: clsx(classes.tab, {
+                          [classes.tabActive]: tabValue===1
+                        })}} 
+                      label="Συντελεστές" 
+                      disableTouchRipple
+                    />
+                    <Tab 
+                      classes={{
+                        wrapper: clsx(classes.tab, {
+                          [classes.tabActive]: tabValue===2
+                        })}} 
+                      label="Εκδηλώσεις" 
+                      disableTouchRipple
+                    />
                   </Tabs>
-                </AppBar>
+                </div>
                 <TabPanel value={tabValue} index={0} className={classes.tabPanel}>
                   {show.description &&
                     description.map((sentence, index) => 
@@ -195,11 +217,9 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
                     </Table>
                   </TableContainer>
                 </TabPanel>
-              </Paper>
-            </Paper>
-          </Grid>
-        </Grid>
-      </React.Fragment> 
+            </div>
+          </div>
+        </div>
   )
 }
 

@@ -13,6 +13,15 @@ const homeStyle = theme => ({
     progressBar: {
         width: "60%"
     },
+    wrapper: {
+        [theme.breakpoints.up("sm")]: {
+            marginLeft: 55
+        },
+        [theme.breakpoints.up("md")]: {
+            marginTop: 35,
+            padding: "0 20px"
+        }
+    },
     container: {
         maxWidth: 1250,
         margin: "0 auto",

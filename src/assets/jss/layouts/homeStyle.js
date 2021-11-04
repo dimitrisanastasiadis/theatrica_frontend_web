@@ -14,6 +14,7 @@ const homeStyle = theme => ({
         width: "60%"
     },
     wrapper: {
+        marginBottom: 25,
         [theme.breakpoints.up("sm")]: {
             marginLeft: 55
         },

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { makeStyles, Typography, Paper, Tab, Tabs, AppBar, Table, TableBody, TableRow, TableCell, TableContainer, Toolbar } from "@material-ui/core"
+import { makeStyles, Typography, Paper, Tab, Tabs, AppBar, Table, TableBody, TableRow, TableCell, TableContainer, Toolbar, IconButton } from "@material-ui/core"
 import style from "../../src/assets/jss/layouts/showDetailsStyle"
 import he from "he"
 import ItemsList from "../../src/components/ItemsList"
@@ -11,6 +11,15 @@ import getShowEvents from "../../src/utils/getShowEvents"
 import DefaultImage from "../../public/DefaultShowImage.webp"
 import { useRouter } from "next/router"
 import clsx from 'clsx'
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import useFavoriteShow from "../../src/hooks/useFavoriteShow";
+import useWatchlist from "../../src/hooks/useWatchlist"
+import AspectRatioSizer from "../../src/utils/AspectRatioSizer"
+import ReactPlayer from "react-player/youtube"
+import Link from "next/link"
 
 export const getStaticPaths = async () => {
   const latestShows = await mainFetcher("/productions/latest?page=0&size=10");
@@ -59,26 +68,39 @@ function TabPanel(props) {
   );
 }
 
-// const getArtistsByRole = (people) => {
-//   let actors, crew;
+const getArtistsByRole = (people) => {
+  let actors, crew;
 
-//   if (people){
-//     let artistGroups = people.reduce((r, a) => {
-//       r[a.role] = [...r[a.role] || [], a];
-//       return r;
-//       }, {});
-//     const {"Ηθοποιός": actorsTemp, ...crewTemp} = artistGroups;
-//     actors = actorsTemp;
-//     crew = crewTemp;
-//   }
+  if (people){
+    let artistGroups = people.reduce((r, a) => {
+      r[a.role] = [...r[a.role] || [], a];
+      return r;
+      }, {});
+    const {"Ηθοποιός": actorsTemp, ...crewTemp} = artistGroups;
+    actors = actorsTemp;
+    crew = crewTemp;
+  }
 
-//   return {actors, crew}
-// }
+  return {actors, crew}
+}
 
 function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
   const router = useRouter();
+
+  const { isFavorite, setIsFavorite } = useFavoriteShow(show && show.id);
+  const { inWatchlist, setInWatchlist } = useWatchlist(show && show.id);
+
+  const hasTrailer = React.useMemo(() => {
+    return (
+      show && show.mediaURL && (show.mediaURL.includes("youtube") || show.mediaURL.includes("youtu.be"))
+    )
+  }, [show])
+
+  const artists = React.useMemo(() => {
+    return getArtistsByRole(people)
+  }, [people])
 
   if(router.isFallback){
     return <LoadingScene fullScreen />
@@ -94,19 +116,110 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
     description = show.description.split("\n");
   }
 
-  // const artists = React.useMemo(() => {
-  //   return getArtistsByRole(people)
-  // }, [people])
+  const handleFavorite = () => {
+    setIsFavorite(prev => !prev);
+  }
 
-  
+  const handleWatchlist = () => {
+    setInWatchlist(prev => !prev);
+  }
+
+  console.log(artists)
 
   return (
         <div className={classes.pageWrapper}>
           <div className={classes.overview}>
-            <Typography variant="h2" component="h1">{show.title}</Typography>
-            <div style={{width: 200, height: 200, position: "relative"}}>
-              <Image src={media ? media : DefaultImage} alt={show.title} className={classes.image} layout="fill" objectFit="contain" />
+            <div className={classes.titleActions}>
+              <Typography variant="h2" component="h1">{show.title}</Typography>
+              <div className={classes.actionIcons}>
+                <IconButton size="small" className={classes.button} onClick={handleWatchlist}>
+                  {inWatchlist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}
+                </IconButton>
+                <IconButton size="small" className={classes.button} onClick={handleFavorite}>
+                  {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                </IconButton>
+              </div>
             </div>
+            <div className={classes.meta}>
+              {pastEvents.length &&
+                <Typography variant="body2">{pastEvents[pastEvents.length - 1].year}</Typography>
+              }
+              <Typography variant="body2" className="dotSeparator">2 ώρες 30 λεπτά</Typography>
+            </div>
+            <div className={classes.mediaContainer}>
+              {(!hasTrailer) ?
+                <div className={classes.imageNoTrailer}>
+                  <Image src={media ? media : DefaultImage} alt={show.title} className={classes.image} layout="fill" objectFit="cover" />
+                </div>
+              : 
+                <>
+                  <div className={classes.imageTrailer}>
+                    <Image src={media ? media : DefaultImage} alt={show.title} className={classes.image} layout="fill" objectFit="cover" />
+                  </div>
+                  <AspectRatioSizer widthRatio={16} heightRatio={9}>
+                      <ReactPlayer 
+                          url={show.mediaURL}
+                          controls
+                          width="100%"
+                          height="100%"
+                      />
+                  </AspectRatioSizer>
+                </>
+              }
+            </div>
+            {people.length !== 0 &&
+              <div className={classes.crewContainer}>
+              {artists.crew[Object.keys(artists.crew)[0]] &&
+                <div className={classes.crewCategory}>
+                  <Typography variant="body1" className={classes.crewCategoryTitle}>{Object.keys(artists.crew)[0]}</Typography>
+                  {artists.crew[Object.keys(artists.crew)[0]].map((artist, index) => 
+                    <Link key={index} href={`/artists/${artist.id}`}>
+                      <a className={classes.link}>
+                        <Typography 
+                          variant="body1"
+                          className={(index>0) ? "dotSeparator" : ""}>
+                            {artist.fullName}
+                        </Typography>
+                      </a>
+                    </Link>
+                  )}
+                </div>
+              }
+              {artists.crew[Object.keys(artists.crew)[1]] &&
+                <div className={classes.crewCategory}>
+                  <Typography variant="body1" className={classes.crewCategoryTitle}>{Object.keys(artists.crew)[1]}</Typography>
+                  {artists.crew[Object.keys(artists.crew)[1]].map((artist, index) => 
+                    <Link key={index} href={`/artists/${artist.id}`}>
+                      <a className={classes.link}>
+                        <Typography 
+                          variant="body1"
+                          className={(index>0) ? "dotSeparator" : ""}>
+                            {artist.fullName}
+                        </Typography>
+                      </a>
+                    </Link>
+                  )}
+                </div>
+              }
+              {
+                artists.actors && 
+                  <div className={classes.crewCategory}>
+                    <Typography variant="body1" className={classes.crewCategoryTitle}>Ερμηνεύουν</Typography>
+                    {artists.actors.slice(0, 3).map((artist, index) => 
+                      <Link key={index} href={`/artists/${artist.id}`}>
+                        <a className={classes.link}>
+                          <Typography 
+                            variant="body1"
+                            className={(index>0) ? "dotSeparator" : ""}>
+                              {artist.fullName}
+                          </Typography>
+                        </a>
+                      </Link>
+                    )}
+                  </div>
+              }
+              </div>
+            }
           </div>
           <div className={classes.detailsBackground}>
             <div className={classes.details}>
@@ -154,7 +267,7 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
                   }
                 </TabPanel>
                 <TabPanel value={tabValue} index={1}>
-                    <ItemsList items={people} role title={false} type="/artists"/>
+                    <ItemsList items={people} title={false} type="/artists"/>
                 </TabPanel>
                 <TabPanel value={tabValue} index={2} className={classes.tabPanel}>
                   <AppBar position="static">

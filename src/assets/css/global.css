@@ -2,3 +2,18 @@
   color: inherit;
   text-decoration: inherit;
 }
+
+.dotSeparator {
+  position: relative
+}
+
+.dotSeparator::before {
+  content: '';
+  position: relative;
+  padding: 1.5px;
+  background-color: currentColor;
+  margin: 0 8px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}

@@ -24,7 +24,7 @@ function ItemsList(props){
                             <ArtistCard 
                                 id={item.id}
                                 fullName={item.fullName}
-                                image={item.image[0]}
+                                image={item.image}
                                 key={index}
                                 />
                         )

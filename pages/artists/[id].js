@@ -68,7 +68,7 @@ function ArtistDetails({ artist, productions, images }) {
   const classes = useStyles();
   const mdDown = useMediaQuery("(max-width:960px)");
   
-  const { isFavorite, setIsFavorite } = useFavoriteArtist(artist.id);
+  const { isFavorite, setIsFavorite } = useFavoriteArtist(artist && artist.id);
 
   const productionGroups = useMemo(() => {
     return getProductionsByRole(productions)
@@ -81,8 +81,6 @@ function ArtistDetails({ artist, productions, images }) {
   const handleFavorite = () => {
     setIsFavorite(prev => !prev);
   }
-
-  console.log(Object.entries(productionGroups))
   
   return (
     <div className={classes.wrapper}>

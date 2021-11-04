@@ -8,7 +8,6 @@ const style = theme => ({
         "& > *": {
             gridArea: "1 / 1 / 2 / 2"
         },
-        flexShrink: 0,
         width: "100%"
     }
 })

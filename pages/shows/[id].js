@@ -124,7 +124,7 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
     setInWatchlist(prev => !prev);
   }
 
-  console.log(artists)
+  console.log(Object.entries(artists.crew))
 
   return (
         <div className={classes.pageWrapper}>
@@ -246,13 +246,21 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
                         wrapper: clsx(classes.tab, {
                           [classes.tabActive]: tabValue===1
                         })}} 
-                      label="Συντελεστές" 
+                      label="Φωτογραφίες" 
                       disableTouchRipple
                     />
                     <Tab 
                       classes={{
                         wrapper: clsx(classes.tab, {
                           [classes.tabActive]: tabValue===2
+                        })}} 
+                      label="Συντελεστές" 
+                      disableTouchRipple
+                    />
+                    <Tab 
+                      classes={{
+                        wrapper: clsx(classes.tab, {
+                          [classes.tabActive]: tabValue===3
                         })}} 
                       label="Εκδηλώσεις" 
                       disableTouchRipple
@@ -266,10 +274,33 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
                     )
                   }
                 </TabPanel>
-                <TabPanel value={tabValue} index={1}>
-                    <ItemsList items={people} title={false} type="/artists"/>
-                </TabPanel>
                 <TabPanel value={tabValue} index={2} className={classes.tabPanel}>
+                  <ItemsList items={artists.actors} title={false} type="/artists"/>
+                  {
+                    Object.keys(artists.crew).length !== 0 &&
+                      <div className={classes.crewContainer}>
+                        {
+                          Object.entries(artists.crew).map(([category, artists], index) => 
+                            <div key={index} className={classes.crewCategory}>
+                              <Typography variant="body1" className={classes.crewCategoryTitle}>{category}</Typography>
+                              {artists.map((artist, index) => 
+                                <Link key={index} href={`/artists/${artist.id}`}>
+                                  <a className={classes.link}>
+                                    <Typography 
+                                      variant="body1"
+                                      className={(index>0) ? "dotSeparator" : ""}>
+                                        {artist.fullName}
+                                    </Typography>
+                                  </a>
+                                </Link>
+                              )}
+                            </div>
+                          )
+                        }
+                      </div>
+                  }
+                </TabPanel>
+                <TabPanel value={tabValue} index={3} className={classes.tabPanel}>
                   <AppBar position="static">
                     <Toolbar>
                       <Typography variant="h6">Προσεχώς</Typography>

@@ -115,18 +115,38 @@ const showDetailsStyle = theme => ({
         backgroundColor: theme.palette.background.paper2,
         boxShadow: "0px 2px 2px 0px rgba(0,0,0,0.25)"
     },
-
-
     tabPanel: {
-        padding: 10
+        padding: "30px 10px"
     },
-    appBar: {
-        marginBottom: 20
+    titleDecoration: {
+        fontWeight: 500,
+        position: "relative",
+        paddingLeft: "0.55em",
+        marginBottom: 25,
+        "&::before": {
+            content: "''",
+            position: "absolute",
+            width: 5,
+            backgroundColor: theme.palette.secondary.main,
+            height: "80%",
+            marginLeft: "-0.55em",
+            top: "0.1em"
+        }
+    },
+    table: {
+        backgroundColor: "transparent",
+        border: `2px solid ${theme.palette.primary.light}`
+    },
+    tableMargin: {
+        marginBottom: 60
     },
     tableRow: {
         "&:last-child th, &:last-child td": {
             borderBottom: 0
         },
+    },
+    tableCell: {
+        borderBottom: `1px solid ${theme.palette.background.paper2}`
     }
 })
 

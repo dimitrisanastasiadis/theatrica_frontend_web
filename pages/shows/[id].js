@@ -124,8 +124,6 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
     setInWatchlist(prev => !prev);
   }
 
-  console.log(Object.entries(artists.crew))
-
   return (
         <div className={classes.pageWrapper}>
           <div className={classes.overview}>
@@ -275,7 +273,10 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
                   }
                 </TabPanel>
                 <TabPanel value={tabValue} index={2} className={classes.tabPanel}>
-                  <ItemsList items={artists.actors} title={false} type="/artists"/>
+                  {
+                    artists.actors &&
+                      <ItemsList items={artists.actors} title={false} type="/artists"/>
+                  }
                   {
                     Object.keys(artists.crew).length !== 0 &&
                       <div className={classes.crewContainer}>
@@ -301,65 +302,53 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
                   }
                 </TabPanel>
                 <TabPanel value={tabValue} index={3} className={classes.tabPanel}>
-                  <AppBar position="static">
-                    <Toolbar>
-                      <Typography variant="h6">Προσεχώς</Typography>
-                    </Toolbar>
-                  </AppBar>
-                  <TableContainer component={Paper}>
-                    <Table>
-                      <TableBody>
-                        {upcomingEvents.length ? upcomingEvents.map((event, index) => 
-                          <TableRow hover key={index} className={classes.tableRow}>
-                            <TableCell>
+                  <Typography variant="h4" className={classes.titleDecoration}>Προσεχώς</Typography>
+                  <Table className={`${classes.table} ${classes.tableMargin}`} >
+                    <TableBody>
+                      {upcomingEvents.length ? upcomingEvents.map((event, index) => 
+                        <TableRow key={index} className={classes.tableRow}>
+                          <TableCell className={classes.tableCell}>
+                            <Typography>{event.stringDate}</Typography>
+                            <Typography>{event.time}</Typography>
+                          </TableCell>
+                          <TableCell className={classes.tableCell}>
+                            <Typography>{event.title}</Typography>
+                          </TableCell>
+                          <TableCell className={classes.tableCell}>
+                            <Typography>{event.priceRange}</Typography>
+                          </TableCell>
+                        </TableRow>
+                    ) : <TableRow className={classes.tableRow}>
+                          <TableCell className={classes.tableCell}>
+                            <Typography>Δεν υπάρχουν εκδηλώσεις</Typography>
+                          </TableCell>
+                        </TableRow>}
+                    </TableBody>
+                  </Table>
+                  <Typography variant="h4" className={classes.titleDecoration}>Ιστορικό Εκδηλώσεων</Typography>
+                  <Table className={classes.table}>
+                    <TableBody>
+                      {pastEvents.length ? pastEvents.map((event, index) => 
+                        <TableRow key={index} className={classes.tableRow}>
+                          <TableCell className={classes.tableCell}>
                               <Typography>{event.stringDate}</Typography>
                               <Typography>{event.time}</Typography>
-                            </TableCell>
-                            <TableCell>
+                          </TableCell>
+                          <TableCell className={classes.tableCell}>
                               <Typography>{event.title}</Typography>
-                            </TableCell>
-                            <TableCell>
+                          </TableCell>
+                          <TableCell className={classes.tableCell}>
                               <Typography>{event.priceRange}</Typography>
-                            </TableCell>
-                          </TableRow>
-                      ) : <TableRow className={classes.tableRow}>
-                            <TableCell>
-                              <Typography>Δεν υπάρχουν εκδηλώσεις</Typography>
-                            </TableCell>
-                          </TableRow>}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                  <AppBar position="static"  style={{marginTop: 50}}>
-                    <Toolbar>
-                      <Typography variant="h6">Ιστορικό Εκδηλώσεων</Typography>
-                    </Toolbar>
-                  </AppBar>
-                  <TableContainer component={Paper}>
-                    <Table>
-                      <TableBody>
-                        {pastEvents.length ? pastEvents.map((event, index) => 
-                          <TableRow hover key={index} className={classes.tableRow}>
-                            <TableCell>
-                                <Typography>{event.stringDate}</Typography>
-                                <Typography>{event.time}</Typography>
-                            </TableCell>
-                            <TableCell>
-                                <Typography>{event.title}</Typography>
-                            </TableCell>
-                            <TableCell>
-                                <Typography>{event.priceRange}</Typography>
-                            </TableCell>
-                          </TableRow>
-                      ) : <TableRow className={classes.tableRow}>
-                            <TableCell>
-                              <Typography>Δεν υπάρχουν εκδηλώσεις</Typography>
-                            </TableCell>
-                          </TableRow>
-                        }
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
+                          </TableCell>
+                        </TableRow>
+                    ) : <TableRow className={classes.tableRow}>
+                          <TableCell className={classes.tableCell}>
+                            <Typography>Δεν υπάρχουν εκδηλώσεις</Typography>
+                          </TableCell>
+                        </TableRow>
+                      }
+                    </TableBody>
+                  </Table>
                 </TabPanel>
             </div>
           </div>

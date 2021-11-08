@@ -3,20 +3,17 @@
   text-decoration: inherit;
 }
 
-main {
-  margin: 35px 0;
-  margin-top: 0;
+.dotSeparator {
+  position: relative
 }
 
-@media only screen and (min-width: 600px) {
-  main {
-    margin-left: 55px;
-  }
-}
-
-@media only screen and (min-width: 960px) {
-  main {
-    margin-top: 35px;
-    padding: 0 20px;
-  }
+.dotSeparator::before {
+  content: '';
+  position: relative;
+  padding: 1.5px;
+  background-color: currentColor;
+  margin: 0 8px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
 }

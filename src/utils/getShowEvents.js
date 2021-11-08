@@ -5,6 +5,7 @@ export default function getShowEvents(events) {
       const date = new Date(event.date);
       event.stringDate = date.toLocaleDateString("el", {weekday: "long", day: "numeric", month: "long", year: "numeric"});
       event.time = date.toLocaleTimeString("el", {hour: "numeric", minute: "numeric", hour12: false});
+      event.year = date.getFullYear();
       if (event.date > Date.now()){
           upcomingEvents.push(event);
       }else{

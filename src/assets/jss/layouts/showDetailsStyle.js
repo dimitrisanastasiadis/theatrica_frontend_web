@@ -118,6 +118,28 @@ const showDetailsStyle = theme => ({
     tabPanel: {
         padding: "30px 10px"
     },
+    photoTab: {
+        paddingBottom: 20,
+        [theme.breakpoints.up("sm")]: {
+            padding: "30px 10px"
+        }
+    },
+    photoFlexContainer: {
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "space-between"
+    },
+    photograph: {
+        position: "relative",
+        width: "33%",
+        paddingTop: "33%",
+        marginBottom: ".5%",
+        [theme.breakpoints.up("sm")]: {
+            width: "31%",
+            paddingTop: "31%",
+            marginBottom: "3.5%",
+        }
+    },
     titleDecoration: {
         fontWeight: 500,
         position: "relative",

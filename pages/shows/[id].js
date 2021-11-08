@@ -50,8 +50,17 @@ export const getStaticProps = async ({ params }) => {
 
   const { pastEvents, upcomingEvents } = getShowEvents(events)
 
+  const images = [
+    "https://image.tmdb.org/t/p/w300/bjYL6zFdE6R4ycMRzCueFwy1xhn.jpg",
+    "https://image.tmdb.org/t/p/w300/8rr9KTDZ4iSJWKjNrJo5ZPsRbCj.jpg",
+    "https://image.tmdb.org/t/p/w300/bEhOnNpRPbROUn0Gudf64cGOmPZ.jpg",
+    "https://image.tmdb.org/t/p/w300/hlrtsa0ivHsKzbQGcI78cBZn1gd.jpg",
+    "https://image.tmdb.org/t/p/w300/bjYL6zFdE6R4ycMRzCueFwy1xhn.jpg",
+    "https://image.tmdb.org/t/p/w300/8rr9KTDZ4iSJWKjNrJo5ZPsRbCj.jpg"
+  ]
+
   return {
-    props: { show, people, pastEvents, upcomingEvents, media }
+    props: { show, people, pastEvents, upcomingEvents, media, images }
   }
 }
 
@@ -84,7 +93,7 @@ const getArtistsByRole = (people) => {
   return {actors, crew}
 }
 
-function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
+function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }) {
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
   const router = useRouter();
@@ -271,6 +280,15 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media }) {
                       <Typography key={index} paragraph variant="body1" style={{wordWrap: "break-word"}}>{he.decode(sentence)} </Typography>
                     )
                   }
+                </TabPanel>
+                <TabPanel value={tabValue} index={1} className={classes.photoTab}>
+                  <div className={classes.photoFlexContainer}>
+                    {images.map((url, index) => 
+                      <div key={index} className={classes.photograph}>
+                          <Image src={url} alt="Play Photograph" layout="fill" objectFit="cover" />
+                      </div>
+                    )}
+                  </div>
                 </TabPanel>
                 <TabPanel value={tabValue} index={2} className={classes.tabPanel}>
                   {

@@ -87,8 +87,8 @@ function ArtistDetails({ artist, productions, images }) {
       <div className={classes.container}>
         <section className={classes.overview}>
           <Avatar alt="Artist Photo" variant="square" className={classes.avatar}>
-            {artist.image[0] && 
-                <Image src={artist.image[0]} alt="Artist Photo" width={300} height={450} />
+            {artist.image ? 
+                <Image src={artist.image} alt="Artist Photo" width={300} height={450} /> : null
             }
           </Avatar>
           <Typography variant="h2" component="h1" className={classes.name}>{artist.fullName}</Typography>

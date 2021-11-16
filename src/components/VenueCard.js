@@ -1,4 +1,4 @@
-import { makeStyles, Card, CardMedia, CardContent, Typography, IconButton } from "@material-ui/core"
+import { makeStyles, Card, CardMedia, Typography, IconButton } from "@material-ui/core"
 import style from "../assets/jss/components/showCardStyle"
 import PropTypes from "prop-types"
 import DefaultImage from "../../public/DefaultShowImage.webp"
@@ -29,20 +29,20 @@ function ShowCard({ id, title }){
                         </a>
                     </Link> 
                 </CardMedia>
-                <CardContent className={classes.cardTitle}>
-                <Link href={`/venues/${id}`}>
-                    <a className={classes.link}>
-                      <Typography variant="body1" component="h2">
-                          {title}
-                      </Typography>
-                    </a>
-                </Link> 
-                    <div className={classes.icons} style={{justifyContent: "flex-end"}}>
-                        <IconButton size="small" className={classes.button} onClick={handleFavorite}>
-                            {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                        </IconButton>
-                    </div>
-                </CardContent>
+                <div className={classes.cardTitle}>
+                    <Link href={`/venues/${id}`}>
+                        <a className={classes.link}>
+                        <Typography variant="body1" component="h2">
+                            {title}
+                        </Typography>
+                        </a>
+                    </Link> 
+                </div>
+                <div className={classes.icons} style={{justifyContent: "flex-end"}}>
+                    <IconButton size="small" className={classes.button} onClick={handleFavorite}>
+                        {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                    </IconButton>
+                </div>
             </Card>
         </div>
     )

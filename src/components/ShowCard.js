@@ -1,5 +1,5 @@
 import React from "react"
-import { makeStyles, Card, CardMedia, CardContent, Typography, IconButton } from "@material-ui/core"
+import { makeStyles, Card, CardMedia, Typography, IconButton } from "@material-ui/core"
 import style from "../assets/jss/components/showCardStyle"
 import PropTypes from "prop-types"
 import DefaultImage from "../../public/DefaultShowImage.webp"
@@ -38,23 +38,23 @@ function ShowCard({ id, title, media }){
                         </a>
                     </Link> 
                 </CardMedia>
-                <CardContent className={classes.cardTitle}>
-                <Link href={`/shows/${id}`}>
-                    <a className={classes.link}>
-                        <Typography variant="body1" component="h2">
-                            {title}
-                        </Typography>
-                    </a>
-                </Link> 
-                    <div className={classes.icons} >
-                        <IconButton size="small" className={classes.button} onClick={handleWatchlist}>
-                            {inWatchlist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}
-                        </IconButton>
-                        <IconButton size="small" className={classes.button} onClick={handleFavorite}>
-                            {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                        </IconButton>
-                    </div>
-                </CardContent>
+                <div className={classes.cardTitle}>
+                    <Link  href={`/shows/${id}`}>
+                        <a className={classes.link}>
+                            <Typography variant="body1" component="h2">
+                                {title}
+                            </Typography>
+                        </a>
+                    </Link> 
+                </div>
+                <div className={classes.icons} >
+                    <IconButton size="small" className={classes.button} onClick={handleWatchlist}>
+                        {inWatchlist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}
+                    </IconButton>
+                    <IconButton size="small" className={classes.button} onClick={handleFavorite}>
+                        {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                    </IconButton>
+                </div>
             </Card>
         </div>
     )

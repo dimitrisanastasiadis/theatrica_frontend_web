@@ -6,6 +6,7 @@ import "swiper/swiper-bundle.css"
 import NavigateNextRoundedIcon from '@material-ui/icons/NavigateNextRounded';
 import NavigateBeforeRoundedIcon from '@material-ui/icons/NavigateBeforeRounded';
 import PropTypes from "prop-types";
+import clsx from "clsx"
 
 const useStyles = makeStyles(style);
 
@@ -58,7 +59,7 @@ function ContentSlider(props) {
             <div className={classes.container}>
                 <div className={classes.headerContainer}>
                     <div>
-                        <Typography variant="h3" component="h2">{props.title}</Typography>
+                        <Typography className={clsx({[classes.title]: props.decoratedTitle})} variant="h3" component="h2">{props.title}</Typography>
                         <Typography variant="subtitle1" component="h3">{props.description}</Typography>
                     </div>
                     <div className={classes.buttonsContainer}>

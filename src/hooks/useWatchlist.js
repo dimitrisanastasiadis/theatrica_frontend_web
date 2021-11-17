@@ -10,6 +10,8 @@ export default function useWatchlist(id) {
         const watchlist = JSON.parse(localStorage.watchlist);
         if (watchlist.includes(id)){
             setInWatchlist(true);
+        }else{
+          setInWatchlist(false);
         }
     }
   }, [id])

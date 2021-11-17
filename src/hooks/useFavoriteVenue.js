@@ -10,6 +10,8 @@ export default function useFavoriteShow(id){
         const favoriteVenues = JSON.parse(localStorage.favoriteVenues);
         if (favoriteVenues.includes(id)){
             setIsFavorite(true);
+        }else{
+          setIsFavorite(false);
         }
     }
   }, [id])

@@ -10,6 +10,8 @@ export default function useFavoriteArtist(id){
       const favoriteArtists = JSON.parse(localStorage.favoriteArtists);
       if (favoriteArtists.includes(id)){
         setIsFavorite(true);
+      }else{
+        setIsFavorite(false);
       }
     }
   }, [id])

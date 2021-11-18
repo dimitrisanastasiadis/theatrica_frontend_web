@@ -43,7 +43,9 @@ const showCardStyle = theme => ({
     },
     icons: {
         display: "flex",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        padding: "0 9px 7px 7px",
+        marginTop: "auto"
     },
     link: {
         textDecoration: "none",

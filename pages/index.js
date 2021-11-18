@@ -53,7 +53,7 @@ function Home({ artists, latestShows }) {
                             <ArtistCard 
                                 id={artist.id}
                                 fullName = {artist.fullName}
-                                image = {artist.image[0]}
+                                image = {artist.image}
                                 key={index}
                                 delay={index} />)}
                     </ContentSlider>

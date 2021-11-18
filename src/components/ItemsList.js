@@ -6,6 +6,7 @@ import PropTypes from "prop-types"
 import LoadingScene from "./LoadingScene"
 import clsx from "clsx"
 import ShowCard from "./ShowCard"
+import VenueCard from "./VenueCard"
 
 const useStyles = makeStyles(style);
 
@@ -35,6 +36,14 @@ function ItemsList(props){
                                 title={item.title}
                                 media={item.image}
                                 key={index} 
+                            />
+                        )
+                    else if (props.type === "/venues")
+                        return (
+                            <VenueCard
+                                id={item.id}
+                                title={item.title}
+                                key={index}
                             />
                         )
                     return null;

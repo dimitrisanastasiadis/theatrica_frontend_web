@@ -30,8 +30,10 @@ const homeStyle = theme => ({
         flexDirection: "column",
         "& section": {
             margin: "40px 0",
+            padding: "0 16px",
             "&:first-child": {
                 marginTop: 0,
+                padding: 0
             },
             [theme.breakpoints.up("md")]: {
                 margin: "25px 0"

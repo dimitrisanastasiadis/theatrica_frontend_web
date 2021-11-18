@@ -21,12 +21,24 @@ const contentSliderStyle = theme => ({
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        marginBottom: 16,
-        padding: "0px 16px",
+        marginBottom: 16
     },
     swiper: {
         marginTop: 20
-    }
+    },
+    title: {
+        position: "relative",
+        paddingLeft: "0.55em",
+        "&::before": {
+            content: "''",
+            position: "absolute",
+            width: 5,
+            backgroundColor: theme.palette.secondary.main,
+            height: "80%",
+            marginLeft: "-0.55em",
+            top: "0.1em"
+        }
+    },
 })
 
 export default contentSliderStyle;

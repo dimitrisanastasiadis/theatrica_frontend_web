@@ -330,7 +330,11 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }
                             <Typography>{event.time}</Typography>
                           </TableCell>
                           <TableCell className={classes.tableCell}>
-                            <Typography>{event.title}</Typography>
+                            <Link href={`/venues/${event.venueId}`}>
+                              <a className={classes.link}>
+                                <Typography>{event.title}</Typography>
+                              </a>
+                            </Link>
                           </TableCell>
                           <TableCell className={classes.tableCell}>
                             <Typography>{event.priceRange}</Typography>
@@ -353,7 +357,11 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }
                               <Typography>{event.time}</Typography>
                           </TableCell>
                           <TableCell className={classes.tableCell}>
-                              <Typography>{event.title}</Typography>
+                            <Link href={`/venues/${event.venueId}`}>
+                              <a className={classes.link}>
+                                <Typography>{event.title}</Typography>
+                              </a>
+                            </Link>
                           </TableCell>
                           <TableCell className={classes.tableCell}>
                               <Typography>{event.priceRange}</Typography>

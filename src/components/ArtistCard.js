@@ -18,8 +18,8 @@ function ArtistCard({ id, fullName, image }) {
                 <a className="linksNoDecoration">
                     <div className={classes.container}>
                         <Avatar className={`${classes.avatar} ${image && classes.transparent}`} alt="Artist Photo">
-                            {image && 
-                                <Image src={image} alt="Artist Photo" width={300} height={450} />
+                            {image ? 
+                                <Image src={image} alt="Artist Photo" width={300} height={450} /> : null
                             }
                         </Avatar>
                         <Typography variant="body1" component="p" className={classes.name}>{fullName}</Typography>

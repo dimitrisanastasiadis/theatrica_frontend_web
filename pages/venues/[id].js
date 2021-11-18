@@ -6,6 +6,7 @@ import LoadingScene from "../../src/components/LoadingScene";
 import Image from "next/image";
 import ContentSlider from "../../src/components/ContentSlider";
 import ShowCard from "../../src/components/ShowCard";
+import PhoneIcon from '@material-ui/icons/Phone';
 
 export const getStaticPaths = async () => {
   const venueIDs = [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93];
@@ -31,14 +32,19 @@ export const getStaticProps = async ({ params }) => {
   let productions = await mainFetcher(`/venues/${params.id}/productions`);
   productions = productions.content;
 
+  const URI = encodeURI(`https://maps.googleapis.com/maps/api/geocode/json?address=${venue.title}&region=gr&key=${process.env.GEOCODING_API}&language=el`)
+  const response = await fetch(URI)
+  let location = await response.json()
+  location = location.results[0]
+
   return {
-    props: { venue, productions }
+    props: { venue, productions, location }
   }
 }
 
 const useStyles = makeStyles(style);
 
-function VenueDetails({ venue, productions }) {
+function VenueDetails({ venue, productions, location }) {
   const classes = useStyles();
   const router = useRouter();
 
@@ -46,7 +52,7 @@ function VenueDetails({ venue, productions }) {
     return <LoadingScene fullScreen />
   }
 
-  console.log(productions[0].title)
+  console.log(location)
 
   return (
     <div className={classes.pageWrapper}>
@@ -64,7 +70,7 @@ function VenueDetails({ venue, productions }) {
       <div className={classes.content}>
         <div style={{marginTop: -100, marginBottom: "5em"}}>
           <Typography variant="h2" component="h1">{venue.title}</Typography>
-          <Typography variant="body2" component="h2">{venue.address}</Typography>
+          <Typography variant="body2" component="h2">{`${location.address_components[1].long_name} ${location.address_components[0].long_name}, ${location.address_components[2].long_name}`}</Typography>
         </div>
         <section>
           <Typography className={classes.sectionTitle} variant="h3">Πληροφορίες</Typography>
@@ -83,6 +89,39 @@ function VenueDetails({ venue, productions }) {
               />
             )}
           </ContentSlider>
+        </section>
+        <section>
+          <Typography className={classes.sectionTitle} variant="h3">Χάρτης</Typography>
+          <iframe 
+            width="100%" 
+            height="400" 
+            style={{border:0}} 
+            loading="lazy" 
+            allowFullScreen 
+            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_MAPS_EMBED_API}&q=place_id:${location.place_id}`}></iframe>
+        </section>
+        <section>
+          <Typography variant="h3" className={classes.sectionTitle}>Επικοινωνία</Typography>
+          <div className={classes.socialContainer}>
+            <a href="https://www.facebook.com" className={`linksNoDecoration ${classes.social}`}>
+              <div className={classes.socialLogo}>
+                <Image src="/FacebookLogo.svg" width={32} height={32} alt="Facebook Logo" />
+              </div>
+              <Typography variant="body1">Facebook</Typography>
+            </a>
+            <a href="https://www.instagram.com" className={`linksNoDecoration ${classes.social}`}>
+              <div className={classes.socialLogo}>
+                <Image src="/InstagramLogo.svg" width={32} height={32} alt="Instagram Logo" />
+              </div>
+              <Typography variant="body1">Instagram</Typography>
+            </a>
+            <div className={`linksNoDecoration ${classes.social}`}>
+              <div className={classes.socialLogo}>
+                <PhoneIcon fontSize="large" />
+              </div>
+              <Typography variant="body1">211 000 0000</Typography>
+            </div>
+          </div>
         </section>
       </div>
     </div>

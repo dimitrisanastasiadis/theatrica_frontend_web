@@ -60,6 +60,26 @@ const venueDetailsStyle = theme => ({
   },
   paragraph: {
     marginBottom: "1em"
+  },
+  socialContainer: {
+    display: "flex",
+    flexWrap: "wrap",
+    paddingBottom: 20,
+    [theme.breakpoints.up("sm")]: {
+        padding: 20,
+        paddingTop: 0
+    }
+  },
+  social: {
+      display: "flex",
+      alignItems: "center",
+      padding: 15,
+      marginRight: "6%"
+  },
+  socialLogo: {
+      marginRight: 13,
+      width: 32,
+      height: 32
   }
 })
 

@@ -35,8 +35,9 @@ export const getStaticProps = async ({ params }) => {
   const URI = encodeURI(`https://maps.googleapis.com/maps/api/geocode/json?address=${venue.title}&region=gr&key=${process.env.GEOCODING_API}&language=el`)
   const response = await fetch(URI)
   let location = await response.json()
-  location = location.results[0]
 
+  location = location.results[0]
+  
   return {
     props: { venue, productions, location }
   }
@@ -51,8 +52,6 @@ function VenueDetails({ venue, productions, location }) {
   if (router.isFallback) {
     return <LoadingScene fullScreen />
   }
-
-  console.log(location)
 
   return (
     <div className={classes.pageWrapper}>

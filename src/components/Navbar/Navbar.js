@@ -7,6 +7,8 @@ import Brightness3Icon from '@material-ui/icons/Brightness3';
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import { DrawerContext } from "../../contexts/DrawerContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import NextNprogress from 'nextjs-progressbar';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(style)
 
@@ -14,6 +16,7 @@ function Navbar(props){
     const classes = useStyles();
     const { toggleDrawer } = useContext(DrawerContext);
     const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+    const theme = useTheme();
 
     return (
         <React.Fragment>
@@ -38,6 +41,7 @@ function Navbar(props){
                         {darkMode ? <BrightnessHighIcon /> : <Brightness3Icon />}
                     </IconButton>
                 </Toolbar>    
+                <NextNprogress color={theme.palette.secondary.main}/>
             </AppBar>
             <Toolbar />
             

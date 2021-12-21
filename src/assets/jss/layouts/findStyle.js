@@ -57,7 +57,8 @@ const discoverStyle = theme => ({
   },
   button: {
     padding: "12px 20px",
-    borderRadius: 12
+    borderRadius: 12,
+    textTransform: "none"
   }
 })
 

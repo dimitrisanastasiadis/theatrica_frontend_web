@@ -46,8 +46,10 @@ const discoverStyle = theme => ({
     display: "flex",
     flexDirection: "column",
     marginTop: 55,
-    alignItems: "flex-start",
-    gap: 50
+    gap: 70
+  },
+  radioButtons: {
+    marginBottom: 25
   },
   formDates: {
     display: "flex",
@@ -55,10 +57,17 @@ const discoverStyle = theme => ({
     alignSelf: "stretch",
     flexWrap: "wrap"
   },
+  addressWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 25
+  },
   button: {
     padding: "12px 20px",
     borderRadius: 12,
-    textTransform: "none"
+    textTransform: "none",
+    alignSelf: "flex-start"
   }
 })
 

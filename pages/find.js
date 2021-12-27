@@ -8,6 +8,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Script from "next/script"
 import { useRouter } from "next/router"
 import events from "../public/events.json"
+import { mainFetcher } from "../src/utils/AxiosInstances"
 
 let sessionToken;
 const date = new Date();
@@ -24,7 +25,7 @@ const initialFormData = {
   address: '',
   dateStart: date.toISOString().split('T')[0],
   dateEnd: '',
-  maxDistance: 10
+  maxDistance: 5
 }
 
 const initialErrorData = {
@@ -40,31 +41,76 @@ const reducer = (state, { field, value }) => {
   }
 }
 
-// export const getServerSideProps = async ({ query }) => {
+export const getServerSideProps = async ({ query }) => {
 
-//   const dateStart = new Date(query.dateStart)  
+  let filteredEvents = [];
+  let filteredVenues = [];
 
-//   const filteredEvents = events.filter(event => {
-//     const eventDate = new Date(event.DateEvent)
-//     if (eventDate.getDate() === dateStart.getDate() &&
-//         eventDate.getMonth() === dateStart.getMonth() &&
-//         eventDate.getFullYear() === dateStart.getFullYear()){
-//           return true;
-//         }
-//   })
+  if (query.dateStart) {
+    const dateStart = new Date(query.dateStart)
 
-//   console.log(filteredEvents)
+    if (query.dateEnd) {
+      const dateEnd = new Date(query.dateEnd)
+      dateEnd.setUTCHours(23, 59, 59, 999)
+      filteredEvents = events.filter(event => {
+        const eventDate = new Date(event.DateEvent)
+        if (eventDate > dateStart && eventDate < dateEnd) {
+          return true;
+        }
+      })
+    } else {
+      filteredEvents = events.filter(event => {
+        const eventDate = new Date(event.DateEvent)
+        if (eventDate.getDate() === dateStart.getDate() &&
+          eventDate.getMonth() === dateStart.getMonth() &&
+          eventDate.getFullYear() === dateStart.getFullYear()) {
+          return true;
+        }
+      })
+    }
 
-//   return {
-//     props: {
-//       shows: '',
-//       pageCount: '',
-//       page: ''
-//     }
-//   }
-// }
+    if (query.address && query.maxDistance) {
+      const maxDistance = query.maxDistance * 1000;
+      const venueIDs = [...new Set(filteredEvents.map(event => event.VenueID))];
 
-const FindShow = () => {
+
+      const venues = await Promise.all(venueIDs.map(async id => {
+        const venue = await mainFetcher(`/venues/${id}`)
+        return venue
+      }))
+
+      filteredVenues = await Promise.all(venues.map(async venue => {
+        if (venue.id === 81) {
+          return venue
+        }
+        const URI = encodeURI(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${query.address}&destinations=${venue.title}&region=gr&key=${process.env.DISTANCE_MATRIX_API}`)
+        const response = await fetch(URI)
+        let distance = await response.json()
+        if (distance.rows[0].elements[0].distance.value <= maxDistance) {
+          return venue
+        }
+      }))
+
+      filteredVenues = filteredVenues.filter(venue => venue)
+      const filteredVenueIDs = filteredVenues.map(venue => venue.id)
+
+      filteredEvents = filteredEvents.filter(event => {
+        if (filteredVenueIDs.includes(Number(event.VenueID))) {
+          return true
+        }
+      })
+    }
+  }
+
+  return {
+    props: {
+      events: filteredEvents,
+      venues: filteredVenues,
+    }
+  }
+}
+
+const FindShow = ({ events, venues }) => {
   const classes = useStyles();
 
   const router = useRouter();
@@ -267,7 +313,7 @@ const FindShow = () => {
                   id="maxDistance"
                   color="secondary"
                   valueLabelDisplay="auto"
-                  min={10}
+                  min={5}
                   value={formData.maxDistance}
                   onChange={handleSliderChange}
                   className={classes.slider}

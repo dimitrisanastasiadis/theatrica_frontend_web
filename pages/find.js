@@ -1,14 +1,15 @@
 import { makeStyles, Typography, TextField, Slider, Button, InputAdornment, Switch, FormControlLabel, Radio } from "@material-ui/core";
 import style from "../src/assets/jss/layouts/findStyle"
-import { useReducer, useEffect, useState } from "react";
+import { useReducer, useEffect, useState, useRef } from "react";
 import SearchIcon from '@material-ui/icons/Search';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import { FaCalendarAlt } from 'react-icons/fa'
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Script from "next/script"
 import { useRouter } from "next/router"
 import events from "../public/events.json"
 import { mainFetcher } from "../src/utils/AxiosInstances"
+import EventsCard from "../src/components/EventsCard"
+import { Pagination } from '@material-ui/lab';
 
 let sessionToken;
 const date = new Date();
@@ -69,23 +70,23 @@ export const getServerSideProps = async ({ query }) => {
       })
     }
 
+    const venueIDs = [...new Set(filteredEvents.map(event => event.VenueID))];
+
+    filteredVenues = await Promise.all(venueIDs.map(async id => {
+      const venue = await mainFetcher(`/venues/${id}`)
+      return venue
+    }))
+
     if (query.address && query.maxDistance) {
       const maxDistance = query.maxDistance * 1000;
-      const venueIDs = [...new Set(filteredEvents.map(event => event.VenueID))];
 
-
-      const venues = await Promise.all(venueIDs.map(async id => {
-        const venue = await mainFetcher(`/venues/${id}`)
-        return venue
-      }))
-
-      filteredVenues = await Promise.all(venues.map(async venue => {
+      filteredVenues = await Promise.all(filteredVenues.map(async venue => {
         if (venue.id === 81) {
           return venue
         }
         const URI = encodeURI(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${query.address}&destinations=${venue.title}&region=gr&key=${process.env.DISTANCE_MATRIX_API}`)
         const response = await fetch(URI)
-        let distance = await response.json()
+        const distance = await response.json()
         if (distance.rows[0].elements[0].distance.value <= maxDistance) {
           return venue
         }
@@ -102,26 +103,54 @@ export const getServerSideProps = async ({ query }) => {
     }
   }
 
+  const productionIDs = [...new Set(filteredEvents.map(event => event.ProductionID))]
+  const productions = await Promise.all(productionIDs.map(async id => {
+    const production = await mainFetcher(`/productions/${id}`)
+    return production
+  }))
+
+  const shows = productions.map(production => {
+    let eventsFinal = filteredEvents.filter(event => Number(event.ProductionID) === production.id)
+    eventsFinal = eventsFinal.map(event => {
+      const venue = filteredVenues.find(venue => Number(event.VenueID) === venue.id)
+      return {
+        date: event.DateEvent,
+        venue,
+        price: event.PriceRange
+      }
+    })
+    return {
+      id: production.id,
+      title: production.title,
+      duration: production.duration,
+      events: eventsFinal,
+      url: production.url
+    }
+  })
+
   return {
     props: {
-      events: filteredEvents,
-      venues: filteredVenues,
+      shows
     }
   }
 }
 
-const FindShow = ({ events, venues }) => {
+const FindShow = ({ shows }) => {
   const classes = useStyles();
 
   const router = useRouter();
 
   const [autocompleteService, setAutocompleteService] = useState(null)
   const [predictions, setPredictions] = useState([])
+
   const [checked, setChecked] = useState(true)
   const [radioState, setRadioState] = useState('a')
 
   const [formData, dispatch] = useReducer(reducer, initialFormData)
   const [errorText, dispatchError] = useReducer(reducer, initialErrorData)
+
+  const scrollRef = useRef(null)
+  const [page, setPage] = useState(1);
 
   const handleChange = (event) => {
     dispatch({ field: event.target.id, value: event.target.value })
@@ -140,6 +169,11 @@ const FindShow = ({ events, venues }) => {
     setRadioState(event.target.value);
   };
 
+  const handlePagination = (event, value) => {
+    setPage(value);
+    scrollRef.current.scrollIntoView();
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
     const query = '';
@@ -152,6 +186,7 @@ const FindShow = ({ events, venues }) => {
         query += `&address=${formData.address}&maxDistance=${formData.maxDistance}`
       }
       router.push(`/find?${query}`)
+      setPage(1)
     }
   }
 
@@ -190,14 +225,12 @@ const FindShow = ({ events, venues }) => {
     }
   }, [autocompleteService, formData.address])
 
-
-
   return (
     <>
       <Script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAPS_JAVASCRIPT_API}&libraries=places`} onLoad={() => handleScriptLoad(setAutocompleteService)} />
       <div className={classes.pageWrapper}>
         <div className={classes.content}>
-          <Typography variant="h2" component="h1" className={classes.underlineDecoration}>Βρες Μια Παράσταση</Typography>
+          <Typography variant="h3" component="h1" className={classes.underlineDecoration}>Βρες Μια Παράσταση</Typography>
           <form id="searchForm" onSubmit={handleSubmit} className={classes.form}>
             <div>
               <div className={classes.radioButtons}>
@@ -235,13 +268,6 @@ const FindShow = ({ events, venues }) => {
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <FaCalendarAlt fontSize={24} />
-                      </InputAdornment>
-                    ),
-                  }}
                 />
                 <TextField color="secondary"
                   id="dateEnd"
@@ -255,13 +281,6 @@ const FindShow = ({ events, venues }) => {
                   disabled={radioState === 'a'}
                   InputLabelProps={{
                     shrink: true,
-                  }}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <FaCalendarAlt fontSize={24} />
-                      </InputAdornment>
-                    ),
                   }}
                 />
               </div>
@@ -325,6 +344,7 @@ const FindShow = ({ events, venues }) => {
               </div>
             </div>
             <Button
+              ref={scrollRef}
               type="submit"
               variant="outlined"
               startIcon={<SearchIcon fontSize="large" />}
@@ -332,6 +352,30 @@ const FindShow = ({ events, venues }) => {
               Αναζήτηση
             </Button>
           </form>
+          {router.query.dateStart &&
+            <div className={classes.resultsWrapper}>
+              <Typography variant="h3" component="h1" className={classes.underlineDecoration}>Αποτελέσματα</Typography>
+              <div className={classes.resultsContainer}>
+                {shows.length > 0 ?
+                  <>
+                  {shows.slice((page - 1) * 5, page * 5).map(show => 
+                    <EventsCard key={show.id} show={show} />
+                  )}
+                  {shows.length > 5 &&
+                    <Pagination 
+                        count={Math.ceil(shows.length / 5)} 
+                        page={page} 
+                        color="secondary"
+                        style={{alignSelf: "center"}}
+                        onChange={handlePagination}
+                    />
+                  }
+                  </> :
+                  <Typography variant="body1">Δεν βρέθηκαν παραστάσεις!</Typography>
+                }
+              </div>
+            </div>
+          }
         </div>
       </div>
     </>

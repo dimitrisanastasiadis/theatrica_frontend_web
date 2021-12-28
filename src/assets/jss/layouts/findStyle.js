@@ -1,4 +1,4 @@
-const discoverStyle = theme => ({
+const findStyle = theme => ({
   pageWrapper: {
     [theme.breakpoints.up("sm")]:{
         marginLeft: 55,
@@ -45,7 +45,7 @@ const discoverStyle = theme => ({
   form: {
     display: "flex",
     flexDirection: "column",
-    marginTop: 55,
+    margin: "40px 0 65px 0",
     gap: 70
   },
   radioButtons: {
@@ -55,7 +55,10 @@ const discoverStyle = theme => ({
     display: "flex",
     gap: 50,
     alignSelf: "stretch",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    "& ::-webkit-calendar-picker-indicator" : {
+      filter: `invert(${theme.palette.type === "dark" ? 1 : 0})`
+    }
   },
   addressWrapper: {
     display: "flex",
@@ -68,7 +71,16 @@ const discoverStyle = theme => ({
     borderRadius: 12,
     textTransform: "none",
     alignSelf: "flex-start"
+  },
+  resultsWrapper: {
+    margin: "40px 0 65px 0"
+  },
+  resultsContainer: {
+    display: "flex",
+    flexDirection: "column",
+    marginTop: 30,
+    gap: 60
   }
 })
 
-export default discoverStyle
+export default findStyle

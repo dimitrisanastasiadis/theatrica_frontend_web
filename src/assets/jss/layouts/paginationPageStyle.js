@@ -3,7 +3,10 @@ const paginationPageStyle = theme => ({
         flexGrow: 1,
         minWidth: 0,
         padding: "8px 0px 76px 0px",
-        marginTop: 50
+        marginTop: 50,
+        [theme.breakpoints.up("sm")]: {
+            paddingLeft: 55
+        },
     },
     paginationContainer: {
         display: "flex",

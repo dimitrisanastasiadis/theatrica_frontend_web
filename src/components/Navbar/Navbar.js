@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { AppBar, Toolbar, IconButton, InputBase, makeStyles, Button } from "@material-ui/core"
+import { AppBar, Toolbar, IconButton, InputBase, makeStyles, Button, Hidden } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu";
 import style from "../../assets/jss/components/navbarStyle"
 import SearchIcon from "@material-ui/icons/Search"
@@ -22,13 +22,15 @@ function Navbar(props){
         <React.Fragment>
             <AppBar className={classes.appbar}>
                 <Toolbar className={classes.navbar}>
-                    <IconButton onClick={toggleDrawer}>
-                        <MenuIcon />
-                    </IconButton>
+                    <Hidden xsDown>
+                        <IconButton onClick={toggleDrawer}>
+                            <MenuIcon />
+                        </IconButton>
+                    </Hidden>
                     <div className={classes.search}>
                         <InputBase 
                             type="text" 
-                            placeholder="Search" 
+                            placeholder="Αναζήτηση" 
                             classes={
                                 {input: classes.searchInput,
                                  root: classes.searchRoot}

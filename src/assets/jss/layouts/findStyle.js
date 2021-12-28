@@ -35,7 +35,8 @@ const findStyle = theme => ({
     alignSelf: "stretch"
   },
   slider: {
-    maxWidth: 420
+    maxWidth: 420,
+    width: "95%"
   },
   sliderLabel: {
     "&>span>span": {

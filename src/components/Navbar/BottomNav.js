@@ -18,7 +18,6 @@ function BottomNav(props) {
         <Hidden smUp>
             <BottomNavigation 
                 className={classes.root} 
-                showLabels 
                 value={router.pathname.split("/").slice(0, 2).join("/")}>
             {Routes.map(route => {
                 return (

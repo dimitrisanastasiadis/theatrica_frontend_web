@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, Typography, Avatar, Zoom, useMediaQuery, useTheme } from "@material-ui/core";
+import { makeStyles, Typography, Avatar, useMediaQuery, useTheme } from "@material-ui/core";
 import style from "../assets/jss/components/artistCardStyle";
 import PropTypes from "prop-types";
 import Image from "next/image"

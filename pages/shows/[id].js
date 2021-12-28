@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { makeStyles, Typography, Paper, Tab, Tabs, AppBar, Table, TableBody, TableRow, TableCell, TableContainer, Toolbar, IconButton } from "@material-ui/core"
+import { makeStyles, Typography, Tab, Tabs, Table, TableBody, TableRow, TableCell, IconButton } from "@material-ui/core"
 import style from "../../src/assets/jss/layouts/showDetailsStyle"
 import he from "he"
 import ItemsList from "../../src/components/ItemsList"

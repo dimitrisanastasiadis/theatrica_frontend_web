@@ -8,7 +8,9 @@ const ItemsListStyle = theme => ({
         justifyContent: "space-around",
         padding: 5,
         "& > *": {
-            margin: 10
+            [theme.breakpoints.up("sm")]: {
+                margin: 10
+            },
         }
     },
     isLoading: {

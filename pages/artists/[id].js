@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { makeStyles, Avatar, Typography, List, ListItem, ListItemText, Divider, IconButton, useMediaQuery } from "@material-ui/core"
 import style from "../../src/assets/jss/layouts/artistDetailsStyle"
 import LoadingScene from "../../src/components/LoadingScene";
@@ -9,6 +9,7 @@ import Image from "next/image"
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import useFavoriteArtist from "../../src/hooks/useFavoriteArtist"
+import MediaViewer from "../../src/components/MediaViewer";
 
 export const getStaticPaths = async () => {
   const artistIDs = [1908, 1928, 2000, 2007, 2027, 2029, 2037, 2039, 2113, 2124, 2165, 2167, 2168, 2189, 2191];
@@ -67,6 +68,9 @@ function ArtistDetails({ artist, productions, images }) {
 
   const classes = useStyles();
   const mdDown = useMediaQuery("(max-width:960px)");
+
+  const [mediaViewerOpen, setMediaViewerOpen] = useState(false);
+  const [mediaIndex, setMediaIndex] = useState(0);
   
   const { isFavorite, setIsFavorite } = useFavoriteArtist(artist && artist.id);
 
@@ -80,6 +84,11 @@ function ArtistDetails({ artist, productions, images }) {
 
   const handleFavorite = () => {
     setIsFavorite(prev => !prev);
+  }
+
+  const handleImageClick = event => {    
+    setMediaIndex(Number(event.currentTarget.getAttribute('index')))
+    setMediaViewerOpen(true);
   }
   
   return (
@@ -101,12 +110,13 @@ function ArtistDetails({ artist, productions, images }) {
           <Typography variant="body1" className={classes.birthday}><strong>Ημερομηνία Γέννησης: </strong>11 Μαρτίου, 1977</Typography>
         </section>
         <section>
+          {mediaViewerOpen &&  <MediaViewer media={images} currentImage={mediaIndex} setVisibility={setMediaViewerOpen} />}
           <Typography variant="h4" component="h2" className={classes.sectionTitle}>Φωτογραφίες</Typography>
           <div className={classes.photographsContainer}>
             {images.map((url, index) => {
               if ((mdDown && index < 4) || !mdDown){
                 return (
-                  <div key={index} className={classes.photograph}>
+                  <div key={index} index={index} className={classes.photograph} onClick={handleImageClick}>
                     <Image src={url} alt={`${artist.fullName} profile picture`} layout="fill" objectFit="cover" />
                   </div>
                 )

@@ -20,6 +20,7 @@ import useWatchlist from "../../src/hooks/useWatchlist"
 import AspectRatioSizer from "../../src/utils/AspectRatioSizer"
 import ReactPlayer from "react-player/youtube"
 import Link from "next/link"
+import MediaViewer from "../../src/components/MediaViewer"
 
 export const getStaticPaths = async () => {
   const latestShows = await mainFetcher("/productions/latest?page=0&size=10");
@@ -101,6 +102,9 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }
   const { isFavorite, setIsFavorite } = useFavoriteShow(show && show.id);
   const { inWatchlist, setInWatchlist } = useWatchlist(show && show.id);
 
+  const [mediaViewerOpen, setMediaViewerOpen] = useState(false);
+  const [mediaIndex, setMediaIndex] = useState(0);
+
   const hasTrailer = React.useMemo(() => {
     return (
       show && show.mediaURL && (show.mediaURL.includes("youtube") || show.mediaURL.includes("youtu.be"))
@@ -131,6 +135,11 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }
 
   const handleWatchlist = () => {
     setInWatchlist(prev => !prev);
+  }
+
+  const handleImageClick = event => {    
+    setMediaIndex(Number(event.currentTarget.getAttribute('index')))
+    setMediaViewerOpen(true);
   }
 
   return (
@@ -282,9 +291,10 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }
                   }
                 </TabPanel>
                 <TabPanel value={tabValue} index={1} className={classes.photoTab}>
+                  {mediaViewerOpen && <MediaViewer media={images} currentImage={mediaIndex} setVisibility={setMediaViewerOpen} />}
                   <div className={classes.photoFlexContainer}>
                     {images.map((url, index) => 
-                      <div key={index} className={classes.photograph}>
+                      <div key={index} index={index} className={classes.photograph} onClick={handleImageClick}>
                           <Image src={url} alt="Play Photograph" layout="fill" objectFit="cover" />
                       </div>
                     )}

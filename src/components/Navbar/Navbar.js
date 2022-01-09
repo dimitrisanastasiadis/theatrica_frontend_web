@@ -20,7 +20,7 @@ function Navbar(props){
 
     return (
         <React.Fragment>
-            <AppBar className={classes.appbar}>
+            <AppBar className={classes.appbar} id="navbar">
                 <Toolbar className={classes.navbar}>
                     <Hidden xsDown>
                         <IconButton onClick={toggleDrawer}>

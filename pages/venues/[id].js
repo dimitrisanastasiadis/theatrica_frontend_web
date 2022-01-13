@@ -58,11 +58,11 @@ function VenueDetails({ venue, productions, location }) {
       <div className={classes.imageGridWrapper}>
         <div className={classes.imageGrid}>
           <div className={classes.imageBlur}>
-            <Image src="/TheaterImage.jpg" alt="Header image" width={575} height={420}/>
+            <Image src="/TheaterImage.jpg" alt="Header image" layout="fill"/>
           </div>
           <Image src="/TheaterImage.jpg" alt="Header image" width={575} height={420}/>
           <div className={classes.imageBlur}>
-            <Image src="/TheaterImage.jpg" alt="Header image" width={575} height={420}/>
+            <Image src="/TheaterImage.jpg" alt="Header image" layout="fill"/>
           </div>
         </div>
       </div>

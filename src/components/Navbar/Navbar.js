@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { AppBar, Toolbar, IconButton, InputBase, makeStyles, Button, Hidden } from "@material-ui/core"
+import { AppBar, Toolbar, IconButton, InputBase, makeStyles, Button } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu";
 import style from "../../assets/jss/components/navbarStyle"
 import SearchIcon from "@material-ui/icons/Search"
@@ -37,11 +37,9 @@ function Navbar(props){
         <React.Fragment>
             <AppBar className={classes.appbar} id="navbar">
                 <Toolbar className={classes.navbar}>
-                    <Hidden xsDown>
-                        <IconButton onClick={toggleDrawer}>
-                            <MenuIcon />
-                        </IconButton>
-                    </Hidden>
+                    <IconButton onClick={toggleDrawer}>
+                        <MenuIcon />
+                    </IconButton>
                     <form onSubmit={handleSubmit} className={classes.search}>
                         <InputBase 
                             type="text" 

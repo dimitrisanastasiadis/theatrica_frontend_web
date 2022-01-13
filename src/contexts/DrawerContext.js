@@ -9,7 +9,11 @@ export function DrawerContextProvider(props){
         setDrawerOpen(prevDrawerOpen => !prevDrawerOpen);
     }
 
-    const context = {drawerOpen, toggleDrawer};
+    const closeDrawer = () => {
+        setDrawerOpen(false);
+    }
+
+    const context = {drawerOpen, toggleDrawer, closeDrawer};
 
     return (
         <DrawerContext.Provider value={context}>

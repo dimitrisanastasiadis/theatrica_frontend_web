@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import clsx from 'clsx';
-import { makeStyles, List, ListItem, ListItemText, ListItemIcon, Drawer, Hidden } from "@material-ui/core";
+import { makeStyles, List, ListItem, ListItemText, ListItemIcon, Drawer, Hidden, useMediaQuery, useTheme  } from "@material-ui/core";
 import Routes from "../../routes";
 import style from "../../assets/jss/components/sidebarStyle";
 import { DrawerContext } from "../../contexts/DrawerContext";
@@ -11,22 +11,27 @@ const useStyles = makeStyles(style)
 
 function Sidebar(props) {
     const classes = useStyles();
-    const { drawerOpen } = useContext(DrawerContext);
+    const { drawerOpen, closeDrawer } = useContext(DrawerContext);
     const router = useRouter();
 
+    const theme = useTheme();
+    const isDesktop = useMediaQuery(theme.breakpoints.up("sm"))
+
     return (
-        <Hidden xsDown>
             <Drawer 
-                variant="permanent"
+                variant={isDesktop ? "permanent" : "temporary"}
+                anchor="left"
+                open={drawerOpen}
+                onClose={closeDrawer}
                 className={clsx(classes.drawer, {
-                    [classes.drawerOpen]: drawerOpen,
-                    [classes.drawerClose]: !drawerOpen
+                    [classes.drawerOpen]: drawerOpen || !isDesktop,
+                    [classes.drawerClose]: !drawerOpen && isDesktop
                 }) }
                 classes={{paper: clsx(classes.drawerPaper, {
-                    [classes.drawerOpen]: drawerOpen,
-                    [classes.drawerClose]: !drawerOpen
+                    [classes.drawerOpen]: drawerOpen || !isDesktop,
+                    [classes.drawerClose]: !drawerOpen && isDesktop
                 }) }}>
-                <div className={classes.toolbar}/>
+                <Hidden xsDown><div className={classes.toolbar}/></Hidden>
                 <List>
                     {Routes.map(route => {
                         return (
@@ -50,7 +55,6 @@ function Sidebar(props) {
                     })}
                 </List>
             </Drawer>
-        </Hidden>
             
     )
 }

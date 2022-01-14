@@ -1,11 +1,6 @@
 const venueDetailsStyle = theme => ({
   pageWrapper: {
-    [theme.breakpoints.up("sm")]:{
-        marginLeft: 55,
-    },
-    minHeight: "calc(100vh - 64px)",
-    display: "flex",
-    flexDirection: "column"
+    marginTop: "unset"
   },
   imageGridWrapper: {
     display: "flex",
@@ -36,10 +31,6 @@ const venueDetailsStyle = theme => ({
     filter: "blur(1.5px)"
   },
   content: {
-    maxWidth: 960,
-    margin: "0 auto", 
-    width: "100%",
-    padding: 10,
     "& section": {
       marginBottom: "6em"
     }

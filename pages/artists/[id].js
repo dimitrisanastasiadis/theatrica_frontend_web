@@ -92,8 +92,8 @@ function ArtistDetails({ artist, productions, images }) {
   }
   
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.container}>
+    <div className={`pageWrapper ${classes.wrapper}`}>
+      <div className={`pageContent ${classes.container}`}>
         <section className={classes.overview}>
           <Avatar alt="Artist Photo" variant="square" className={classes.avatar}>
             {artist.image ? 

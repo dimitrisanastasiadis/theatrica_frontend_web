@@ -228,8 +228,8 @@ const FindShow = ({ shows }) => {
   return (
     <>
       <Script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAPS_JAVASCRIPT_API}&libraries=places`} onLoad={() => handleScriptLoad(setAutocompleteService)} />
-      <div className={classes.pageWrapper}>
-        <div className={classes.content}>
+      <div className="pageWrapper">
+        <div className="pageContent">
           <Typography variant="h3" component="h1" className={classes.underlineDecoration}>Βρες Μια Παράσταση</Typography>
           <form id="searchForm" onSubmit={handleSubmit} className={classes.form}>
             <div>

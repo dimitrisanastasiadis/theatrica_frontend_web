@@ -17,3 +17,29 @@
   display: inline-block;
   vertical-align: middle;
 }
+
+.pageWrapper {
+  margin-top: 15px;
+  min-height: calc(100vh - 99px);
+  display: flex;
+  flex-direction: column;
+}
+
+.pageContent {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .pageWrapper {
+    margin-left: 55px
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .pageWrapper {
+    margin-top: 35px
+  }
+}

@@ -49,8 +49,8 @@ const ResultsPage = () => {
   }, [router.query.sm, router.query.search_query, router])
 
   return (
-    <div className={classes.pageWrapper}>
-      <div className={classes.content}>
+    <div className="pageWrapper">
+      <div className="pageContent">
         <Typography ref={scrollRef} className={classes.title} variant="h4" component="h1">Αποτελέσματα για <b>{`"${router.query.search_query}"`}</b></Typography>
         <InstantSearch
           searchClient={searchClient}

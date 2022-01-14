@@ -1,23 +1,4 @@
 const resultsPageStyle = theme => ({
-  pageWrapper: {
-    [theme.breakpoints.up("sm")]:{
-        marginLeft: 55,
-    },
-    [theme.breakpoints.up("md")]: {
-        marginTop: 35
-    },
-    marginTop: 15,
-    minHeight: "calc(100vh - 99px)",
-    display: "flex",
-    flexDirection: "column"
-  },
-  content: {
-    marginBottom: "6em",
-    maxWidth: 960,
-    margin: "0 auto",
-    padding: 10,
-    width: "100%"
-  },
   title: {
     marginBottom: 40
   },

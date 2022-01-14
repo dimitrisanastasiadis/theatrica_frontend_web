@@ -1,21 +1,6 @@
 const showDetailsStyle = theme => ({
-    pageWrapper: {
-        [theme.breakpoints.up("sm")]:{
-            marginLeft: 55,
-        },
-        [theme.breakpoints.up("md")]: {
-            marginTop: 35
-        },
-        minHeight: "calc(100vh - 99px)",
-        display: "flex",
-        flexDirection: "column"
-    },
     overview: {
-        marginBottom: "6em",
-        maxWidth: 960,
-        margin: "0 auto",
-        padding: 10,
-        width: "100%"
+        marginBottom: "6em"
     },
     titleActions: {
         display: "flex",

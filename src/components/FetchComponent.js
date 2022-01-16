@@ -1,20 +1,15 @@
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import getShowImage from "../utils/getShowImage"
+import ArtistCard from "./ArtistCard"
+import VenueCard from "./VenueCard"
+import ShowCard from "./ShowCard";
 
-const FetchComponent = ({ Component, id }) => {
-  const [path, setPath] = useState("")
+const FetchComponent = ({ path, id }) => {
   const [props, setProps] = useState({})
   const { data } = useSWR(path ? `/${path}/${id}` : null)
 
-  useEffect(() => {
-    if (Component.name === "ArtistCard")
-      setPath("people")
-    else if (Component.name === "ShowCard")
-      setPath("productions")
-    else if (Component.name === "VenueCard")
-      setPath("venues")
-  }, [Component.name])
+  let component;
 
   useEffect(() => {
     if (data) {
@@ -24,7 +19,6 @@ const FetchComponent = ({ Component, id }) => {
       if (path === "people") {
         props.fullName = data.fullName
         props.image = data.image
-        
       } else if (path === "productions") {
         props.title = data.title
         props.media = getShowImage(data.mediaURL)
@@ -35,9 +29,19 @@ const FetchComponent = ({ Component, id }) => {
     }
   }, [data, path])
 
+  if (path === "people") {
+    component = <ArtistCard {...props} />
+  }else if (path === "productions"){
+    component = <ShowCard {...props} />
+  }else if (path === "venues"){
+    component = <VenueCard {...props} />
+  }
+  
+
   return (
-    data ?
-      <Component {...props} /> : null
+    data ? 
+      component  :
+     null
   );
 }
 

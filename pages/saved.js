@@ -1,15 +1,12 @@
 import { makeStyles, Typography, Divider } from "@material-ui/core"
 import style from "../src/assets/jss/layouts/savedPageStyle";
-import ArtistCard from "../src/components/ArtistCard"
-import VenueCard from "../src/components/VenueCard"
-import ShowCard from "../src/components/ShowCard";
 import { useEffect, useReducer, useState } from "react";
 import FetchComponent from "../src/components/FetchComponent";
 import { useRouter } from "next/router";
 
 const useStyles = makeStyles(style)
 
-const Category = ({ ids, title, component, id }) => {
+const Category = ({ ids, title, path, id }) => {
   const classes = useStyles();
   const router = useRouter();
   const [slicedIds, setSlicedIds] = useState([])
@@ -42,7 +39,7 @@ const Category = ({ ids, title, component, id }) => {
           <Typography variant="h3">{title}</Typography>
           <div className={classes.items}>
             {slicedIds.map(id =>
-              <FetchComponent key={id} Component={component} id={id} />
+              <FetchComponent key={id} path={path} id={id} />
             )}
           </div>
           {!router.query.showMore && 
@@ -62,25 +59,25 @@ const initialState = {
     id: 1,
     title: "Watchlist",
     ids: [],
-    component: ShowCard
+    path: "productions"
   },
   favoriteArtists: {
     id: 2,
     title: "Αγαπημένοι Καλλιτέχνες",
     ids: [],
-    component: ArtistCard
+    path: "people"
   },
   favoriteShows: {
     id: 3,
     title: "Αγαπημένες Παραστάσεις",
     ids: [],
-    component: ShowCard
+    path: "productions"
   },
   favoriteVenues: {
     id: 4,
     title: "Αγαπημένα Θέατρα",
     ids: [],
-    component: VenueCard
+    path: "venues"
   }
 }
 
@@ -118,9 +115,9 @@ const SavedPage = () => {
     <div className="pageWrapper">
       <div className="pageContent">
         {router.query.showMore ?
-        <Category id={state[router.query.showMore].id} ids={state[router.query.showMore].ids} title={state[router.query.showMore].title} component={state[router.query.showMore].component} /> :
+        <Category id={state[router.query.showMore].id} ids={state[router.query.showMore].ids} title={state[router.query.showMore].title} path={state[router.query.showMore].path} /> :
         [state.watchlist, state.favoriteArtists, state.favoriteShows, state.favoriteVenues].map(cat => 
-          <Category key={cat.id} id={cat.id} ids={cat.ids} title={cat.title} component={cat.component} />
+          <Category key={cat.id} id={cat.id} ids={cat.ids} title={cat.title} path={cat.path} />
         )}
       </div>
     </div>

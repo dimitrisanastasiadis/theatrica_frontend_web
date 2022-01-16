@@ -4,6 +4,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import {FaTheaterMasks} from 'react-icons/fa'
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import { FaMapMarkedAlt } from "react-icons/fa"
+import BookmarksIcon from '@material-ui/icons/Bookmarks';
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         path: "/find",
         name: "Βρες",
         icon: <FaMapMarkedAlt fontSize={24} />
+    },
+    {
+        path: "/saved",
+        name: "Αποθηκευμένα",
+        icon: <BookmarksIcon fontSize="default" />
     }
 ]
 

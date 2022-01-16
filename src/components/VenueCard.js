@@ -1,6 +1,5 @@
 import { makeStyles, Card, CardMedia, Typography, IconButton } from "@material-ui/core"
 import style from "../assets/jss/components/showCardStyle"
-import PropTypes from "prop-types"
 import DefaultImage from "../../public/DefaultShowImage.webp"
 import Image from "next/image"
 import Link from "next/link"
@@ -10,7 +9,7 @@ import useFavoriteVenue from "../hooks/useFavoriteVenue";
 
 const useStyles = makeStyles(style);
 
-function ShowCard({ id, title }){
+function VenueCard({ id, title }){
     const classes = useStyles();
 
     const { isFavorite, setIsFavorite } = useFavoriteVenue(id);
@@ -25,7 +24,9 @@ function ShowCard({ id, title }){
                 <CardMedia className={classes.cardImg}>
                     <Link href={`/venues/${id}`}>
                         <a className="linksNoDecoration">
-                            <Image src={DefaultImage} alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
+                            <div className={classes.imageContainer}>
+                                <Image src={DefaultImage} alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
+                            </div>
                         </a>
                     </Link> 
                 </CardMedia>
@@ -48,9 +49,4 @@ function ShowCard({ id, title }){
     )
 }
 
-ShowCard.propTypes = {
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string
-}
-
-export default ShowCard;
+export default VenueCard;

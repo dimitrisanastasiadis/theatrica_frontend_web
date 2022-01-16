@@ -1,6 +1,5 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core"
-import PropTypes from "prop-types"
 
 const style = theme => ({
     aspectRatioSizer: {
@@ -23,11 +22,6 @@ function AspectRatioSizer(props) {
             {props.children}
         </div>
     )
-}
-
-AspectRatioSizer.propTypes = {
-    widthRatio: PropTypes.number,
-    heightRatio: PropTypes.number
 }
 
 export default AspectRatioSizer;

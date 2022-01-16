@@ -2,7 +2,6 @@ import React from "react"
 import ArtistCard from "./ArtistCard"
 import { makeStyles } from "@material-ui/core"
 import style from "../assets/jss/components/itemsListStyle"
-import PropTypes from "prop-types"
 import LoadingScene from "./LoadingScene"
 import clsx from "clsx"
 import ShowCard from "./ShowCard"
@@ -53,12 +52,6 @@ function ItemsList(props){
             }
         </div>
     )
-}
-
-ItemsList.propTypes = {
-    type: PropTypes.string.isRequired,
-    items: PropTypes.array,
-    title: PropTypes.bool
 }
 
 export default ItemsList;

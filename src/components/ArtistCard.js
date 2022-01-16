@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles, Typography, Avatar, useMediaQuery, useTheme } from "@material-ui/core";
 import style from "../assets/jss/components/artistCardStyle";
-import PropTypes from "prop-types";
 import Image from "next/image"
 import Link from "next/link"
 
@@ -28,12 +27,6 @@ function ArtistCard({ id, fullName, image }) {
             </Link>
         </React.Fragment>
     )
-}
-
-ArtistCard.propTypes = {
-    id: PropTypes.number.isRequired,
-    fullName: PropTypes.string,
-    image: PropTypes.string
 }
 
 export default ArtistCard;

@@ -2,7 +2,6 @@ import React from "react";
 import {Typography, LinearProgress, makeStyles} from "@material-ui/core"
 import style from "../assets/jss/components/loadingSceneStyle"
 import clsx from "clsx"
-import PropTypes from "prop-types"
 
 const useStyles = makeStyles(style);
 
@@ -17,10 +16,6 @@ function LoadingScene(props){
             <LinearProgress color="secondary" className={classes.progressBar}/>
         </div>
     )
-}
-
-LoadingScene.propTypes = {
-    fullScreen: PropTypes.bool
 }
 
 export default LoadingScene;

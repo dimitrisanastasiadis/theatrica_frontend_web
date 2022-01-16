@@ -54,19 +54,19 @@ function VenueDetails({ venue, productions, location }) {
   }
 
   return (
-    <div className={classes.pageWrapper}>
+    <div className={`pageWrapper ${classes.pageWrapper}`}>
       <div className={classes.imageGridWrapper}>
         <div className={classes.imageGrid}>
           <div className={classes.imageBlur}>
-            <Image src="/TheaterImage.jpg" alt="Header image" width={575} height={420}/>
+            <Image src="/TheaterImage.jpg" alt="Header image" layout="fill"/>
           </div>
           <Image src="/TheaterImage.jpg" alt="Header image" width={575} height={420}/>
           <div className={classes.imageBlur}>
-            <Image src="/TheaterImage.jpg" alt="Header image" width={575} height={420}/>
+            <Image src="/TheaterImage.jpg" alt="Header image" layout="fill"/>
           </div>
         </div>
       </div>
-      <div className={classes.content}>
+      <div className={`pageContent ${classes.content}`}>
         <div style={{marginTop: -100, marginBottom: "5em"}}>
           <Typography variant="h2" component="h1">{venue.title}</Typography>
           <Typography variant="body2" component="h2">{`${location.address_components[1].long_name} ${location.address_components[0].long_name}, ${location.address_components[2].long_name}`}</Typography>

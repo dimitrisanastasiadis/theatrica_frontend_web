@@ -20,6 +20,8 @@ const ResultsPage = () => {
   const classes = useStyles();
   const router = useRouter();
 
+  const [isSearching, setIsSearching] = useState(true);
+
   const [artistsHits, setArtistsHits] = useState(0);
   const [productionsHits, setProductionsHits] = useState(0);
   const [venuesHits, setVenuesHits] = useState(0);
@@ -47,8 +49,8 @@ const ResultsPage = () => {
   }, [router.query.sm, router.query.search_query, router])
 
   return (
-    <div className={classes.pageWrapper}>
-      <div className={classes.content}>
+    <div className="pageWrapper">
+      <div className="pageContent">
         <Typography ref={scrollRef} className={classes.title} variant="h4" component="h1">Αποτελέσματα για <b>{`"${router.query.search_query}"`}</b></Typography>
         <InstantSearch
           searchClient={searchClient}
@@ -107,9 +109,9 @@ const ResultsPage = () => {
               </Index>
             </div>
           }
-          <CustomStateResults setArtistsHits={setArtistsHits} setProductionsHits={setProductionsHits} setVenuesHits={setVenuesHits} setTotalPages={setTotalPages} />
+          <CustomStateResults setArtistsHits={setArtistsHits} setProductionsHits={setProductionsHits} setVenuesHits={setVenuesHits} setTotalPages={setTotalPages} setIsSearching={setIsSearching} />
         </InstantSearch>
-        {(artistsHits + productionsHits + venuesHits === 0) &&
+        {(artistsHits + productionsHits + venuesHits === 0 && !isSearching) &&
           <Typography variant="h5">Δεν βρέθηκαν αποτελέσματα</Typography>
         }
         {totalPages > 1 &&
@@ -154,7 +156,7 @@ const CustomHits = connectHits(({ hits, path, title }) => {
   )
 });
 
-const CustomStateResults = connectStateResults(({ allSearchResults, setArtistsHits, setProductionsHits, setVenuesHits, setTotalPages }) => {
+const CustomStateResults = connectStateResults(({ allSearchResults, setArtistsHits, setProductionsHits, setVenuesHits, setTotalPages, searching, setIsSearching }) => {
   const router = useRouter()
 
   useEffect(() => {
@@ -179,6 +181,10 @@ const CustomStateResults = connectStateResults(({ allSearchResults, setArtistsHi
     else
       setTotalPages(0)
   }, [allSearchResults, router.query.sm, setTotalPages])
+
+  useEffect(() => {
+    setIsSearching(searching)
+  }, [searching, setIsSearching])
 
   return null;
 })

@@ -3,7 +3,6 @@ import { SWRConfig } from "swr"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { mainFetcher } from "../utils/AxiosInstances"
 import Navbar from "./Navbar/Navbar"
-import BottomNav from "./Navbar/BottomNav"
 import Sidebar from "./Navbar/Sidebar"
 
 const Layout = ({ children }) => {
@@ -19,7 +18,6 @@ const Layout = ({ children }) => {
               fetcher: mainFetcher
             }}>
           <Navbar />
-          <BottomNav />
           <Sidebar />
           <main>
             {children}

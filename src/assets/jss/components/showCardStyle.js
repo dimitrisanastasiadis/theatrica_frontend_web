@@ -30,6 +30,10 @@ const showCardStyle = theme => ({
         height: "70%",
         maxHeight: "70%"
     },
+    imageContainer: {
+        position: "relative",
+        height: "100%"
+    },
     cardTitle: {
         padding: "9px 9px 7px 7px",
         height: "30%",

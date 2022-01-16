@@ -1,20 +1,13 @@
 const artistDetailsStyle = theme => ({
     wrapper: {
-        [theme.breakpoints.up("sm")]: {
-            marginLeft: 55
-        },
         [theme.breakpoints.up("md")]: {
-            marginTop: 35,
             padding: "0 20px"
         }
     },
     container: {
         display: "flex",
         overflowX: "auto",
-        maxWidth: 960,
-        margin: "0 auto",
         flexDirection: "column",
-        padding: 10,
         "& section": {
             marginBottom: "4em"
         }

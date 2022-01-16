@@ -143,8 +143,8 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }
   }
 
   return (
-        <div className={classes.pageWrapper}>
-          <div className={classes.overview}>
+        <div className="pageWrapper">
+          <div className={`pageContent ${classes.overview}`}>
             <div className={classes.titleActions}>
               <Typography variant="h2" component="h1">{show.title}</Typography>
               <div className={classes.actionIcons}>

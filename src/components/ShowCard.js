@@ -1,7 +1,6 @@
 import React from "react"
 import { makeStyles, Card, CardMedia, Typography, IconButton } from "@material-ui/core"
 import style from "../assets/jss/components/showCardStyle"
-import PropTypes from "prop-types"
 import DefaultImage from "../../public/DefaultShowImage.webp"
 import Image from "next/image"
 import Link from "next/link"
@@ -34,7 +33,9 @@ function ShowCard({ id, title, media }){
                 <CardMedia className={classes.cardImg}>
                     <Link href={`/shows/${id}`}>
                         <a className="linksNoDecoration">
-                            <Image src={media ? media : DefaultImage} alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
+                            <div className={classes.imageContainer}>
+                                <Image src={media ? media : DefaultImage} alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
+                            </div>
                         </a>
                     </Link> 
                 </CardMedia>
@@ -58,12 +59,6 @@ function ShowCard({ id, title, media }){
             </Card>
         </div>
     )
-}
-
-ShowCard.propTypes = {
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string,
-    media: PropTypes.string
 }
 
 export default ShowCard;

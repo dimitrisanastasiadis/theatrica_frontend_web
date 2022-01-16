@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/swiper-bundle.css"
 import NavigateNextRoundedIcon from '@material-ui/icons/NavigateNextRounded';
 import NavigateBeforeRoundedIcon from '@material-ui/icons/NavigateBeforeRounded';
-import PropTypes from "prop-types";
 import clsx from "clsx"
 
 const useStyles = makeStyles(style);
@@ -84,12 +83,6 @@ function ContentSlider(props) {
                 </div>
             </div>
     )
-}
-
-ContentSlider.propTypes = {
-    children: PropTypes.array,
-    title: PropTypes.string,
-    description: PropTypes.string
 }
 
 export default ContentSlider;

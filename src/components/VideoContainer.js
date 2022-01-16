@@ -4,7 +4,6 @@ import style from "../assets/jss/components/videoContainerStyle";
 import NavigateNextRoundedIcon from '@material-ui/icons/NavigateNextRounded';
 import NavigateBeforeRoundedIcon from '@material-ui/icons/NavigateBeforeRounded';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import PropTypes from "prop-types";
 import ReactPlayer from 'react-player/youtube';
 import AspectRatioSizer from "../utils/AspectRatioSizer"
 import Link from "next/link"
@@ -81,10 +80,6 @@ function VideoContainer(props) {
             </div>
         </div>  
     )
-}
-
-VideoContainer.propTypes = {
-    production: PropTypes.array
 }
 
 export default VideoContainer;

@@ -2,7 +2,6 @@ import { makeStyles, Grid } from "@material-ui/core"
 import style from "../assets/jss/layouts/paginationPageStyle"
 import { Pagination } from "@material-ui/lab"
 import ItemsList from "./ItemsList"
-import PropTypes from "prop-types"
 import { useRouter } from "next/router"
 
 const useStyles = makeStyles(style);
@@ -41,15 +40,6 @@ function PaginationPage({ items, pageCount, page, path }) {
             </Grid>
         </Grid>
     )
-}
-    
-    
-
-PaginationPage.propTypes = {
-    path: PropTypes.string,
-    items: PropTypes.array,
-    pageCount: PropTypes.number,
-    page: PropTypes.number
 }
 
 export default PaginationPage;

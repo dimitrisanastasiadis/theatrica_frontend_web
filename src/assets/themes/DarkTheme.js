@@ -49,6 +49,15 @@ let DarkTheme = createMuiTheme({
         h6: {
             fontSize: "0.9em"
         }
+    },
+})
+
+export const DatePickerTheme = createMuiTheme({
+    palette: {
+        primary: {
+            main: "#71FFFA"
+        },
+        type: "dark"
     }
 })
 

@@ -33,15 +33,24 @@ const statsPageStyle = theme => ({
     borderRadius: "30"
   },
   flexChartContainer: {
-    overflow: "hidden",
     display:"flex",
     marginTop: 100,
-    gap: 50,
-    flexWrap: "wrap"
+    gap: 80,
+    flexWrap: "wrap",
+    justifyContent: "space-between"
   },
   chartContainer: {
-    width: 400,
-    height: 430
+    width: "100%",
+    height: 430,
+    [theme.breakpoints.up(970)]: {
+      width: 400
+    }
+  },
+  loadingContainer: {
+    height: "100%", 
+    display: "flex", 
+    justifyContent: "center", 
+    alignItems: "center"
   }
 })
 

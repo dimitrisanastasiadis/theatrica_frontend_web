@@ -1,7 +1,14 @@
 const statsPageStyle = theme => ({
+  picker: {
+    display: "inline-flex",
+    flexDirection: "column",
+    gap: 20,
+    margin: "20px 0"
+  },
   calendarContainer: {
     width: "100%",
     marginTop: 10,
+    marginBottom: "3em",
     overflowY: "hidden",
     position: "relative",
     [theme.breakpoints.up(1040)]: {
@@ -51,6 +58,12 @@ const statsPageStyle = theme => ({
     display: "flex", 
     justifyContent: "center", 
     alignItems: "center"
+  },
+  list: {
+    "& li": {
+      marginBottom: 10
+    },
+    paddingLeft: 30
   }
 })
 

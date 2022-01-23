@@ -1,8 +1,8 @@
 import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers"
 import DateFnsUtils from "@date-io/date-fns"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { DatePickerTheme } from "../../src/assets/themes/DarkTheme"
-import { ThemeProvider, makeStyles, Typography, Radio, FormControlLabel, CircularProgress } from "@material-ui/core"
+import { ThemeProvider, makeStyles, Typography, Radio, FormControlLabel, CircularProgress, Chip, Link } from "@material-ui/core"
 import style from "../../src/assets/jss/layouts/statsPageStyle"
 import events from "../../public/events.json"
 import { TimeRange } from '@nivo/calendar'
@@ -14,6 +14,12 @@ import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, Tooltip, LabelList } 
 import { mainFetcher } from "../../src/utils/AxiosInstances"
 import { internalFetcher } from "../../src/utils/AxiosInstances"
 import parsePrice from "parse-price"
+import startOfMonth from 'date-fns/startOfMonth'
+import isValid from 'date-fns/isValid'
+import useSWR from "swr"
+import NextLink from "next/link"
+
+
 
 const useStyles = makeStyles(style);
 
@@ -26,9 +32,9 @@ const calendarTheme = ({
   }
 })
 
-export const getServerSideProps = async ({ query }) => {
-  const months = ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμριος", "Οκτώριος", "Νοέμβριος", "Δεκέμβριος"]
+const months = ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμριος", "Οκτώριος", "Νοέμβριος", "Δεκέμβριος"]
 
+export const getServerSideProps = async ({ query }) => {
   const dateStart = new Date(query.year, query.month || 0, 1, 0, 0, 0)
   let dateEnd = new Date(query.year, 11, 31, 23, 59, 59)
 
@@ -218,19 +224,24 @@ const CustomTooltip = ({ value, date }) => {
 }
 
 const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, priceByShow }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const classes = useStyles()
+  const router = useRouter()
+
   const [mode, setMode] = useState("year")
   const [activeIndex, setActiveIndex] = useState(0)
   const [loading, setLoading] = useState(false)
   const [pixelRatio, setPixelRatio] = useState(1)
+  const [selectedDate, setSelectedDate] = useState(new Date(router.query.year || 2021, router.query.month || 0))
 
-  const classes = useStyles()
-  const router = useRouter()
+  const { data: shows } = useSWR(isValid(selectedDate) ? ['/api/getShowsByDate', selectedDate] : null, internalFetcher)
 
-  const lastDayMonth = endOfMonth(selectedDate)
+
+  const lastDayMonth = useMemo(() => {
+    return endOfMonth(new Date(router.query.year || 2021, router.query.month || 0))
+  }, [router.query.month, router.query.year])
 
   const handleDateChange = date => {
-    setSelectedDate(date)
+    setSelectedDate(startOfMonth(date))
     if (mode === "year")
       router.push(`/stats?year=${date.getFullYear()}`)
     else
@@ -256,11 +267,15 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
     }
   }
 
+  const handleCalendarClick = async (day, event) => {
+    setSelectedDate(day.date)
+  }
+
   useEffect(() => {
     if (!router.query.year) {
-      router.push(`/stats?year=${selectedDate.getFullYear()}`)
+      router.push(`/stats?year=2021`)
     }
-  }, [router, selectedDate])
+  }, [router])
 
   useEffect(() => {
     const { devicePixelRatio: ratio = 1 } = window
@@ -271,32 +286,34 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={grLocale}>
       <div className="pageWrapper" style={{ overflow: "hidden" }}>
         <div className="pageContent">
-          <Typography variant="h2" component="h1">Στατιστικά</Typography>
-          <div style={{ display: "flex" }}>
-            <FormControlLabel
-              control={
-                <Radio
-                  checked={mode === "year"}
-                  value="year"
-                  onChange={handleRadioChange}
-                />
-              }
-              label="Έτος"
-            />
-            <FormControlLabel
-              control={
-                <Radio
-                  checked={mode === "month"}
-                  value="month"
-                  onChange={handleRadioChange}
-                />
-              }
-              label="Μήνας"
-            />
+          <Typography variant="h2" component="h1">Στατιστικά {router.query.month && months[router.query.month]} {router.query.year}</Typography>
+          <div className={classes.picker}>
+            <div style={{ display: "flex" }}>
+              <FormControlLabel
+                control={
+                  <Radio
+                    checked={mode === "year"}
+                    value="year"
+                    onChange={handleRadioChange}
+                  />
+                }
+                label="Έτος"
+              />
+              <FormControlLabel
+                control={
+                  <Radio
+                    checked={mode === "month"}
+                    value="month"
+                    onChange={handleRadioChange}
+                  />
+                }
+                label="Μήνας"
+              />
+            </div>
+            <ThemeProvider theme={DatePickerTheme}>
+              <DatePicker label="Επιλέξτε Περίοδο" value={lastDayMonth} inputVariant="outlined" onChange={handleDateChange} views={mode === "year" ? ["year"] : ["month", "year"]} minDate={"2020-01-01"} maxDate={"2022-12-31"} />
+            </ThemeProvider>
           </div>
-          <ThemeProvider theme={DatePickerTheme}>
-            <DatePicker inputVariant="outlined" value={selectedDate} onChange={handleDateChange} views={mode === "year" ? ["year"] : ["month", "year"]} minDate={"2020-01-01"} maxDate={"2022-12-31"} />
-          </ThemeProvider>
           {eventsByDate.length > 0 ?
             <>
               <div style={{ marginTop: 50 }}>
@@ -308,6 +325,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                     <span>Παρ</span>
                   </div>
                   <TimeRange
+                    onClick={handleCalendarClick}
                     width={940}
                     height={220}
                     theme={calendarTheme}
@@ -341,6 +359,40 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                       }
                     ]}
                   />
+                </div>
+                <div>
+                  <Typography variant="h4" component="h3">{selectedDate.toLocaleDateString("el", { day: "numeric", weekday: "long", month: "long", year: "numeric" })}</Typography>
+                  {!shows ?
+                    <div className={classes.loadingContainer}>
+                      <CircularProgress color="secondary" />
+                    </div> :
+                    <ul className={classes.list}>
+                      {shows.map(venue => {
+                        return (
+                          <li key={venue.id}>
+                            <div>
+                              <NextLink href={`/venues/${venue.id}`} passHref>
+                                <Link color="inherit" variant="body1" style={{ display: "inline" }}>{venue.name}:</Link>
+                              </NextLink>
+                              {venue.shows.map((show) =>
+                                <NextLink key={show.id} href={`/shows/${show.id}`} passHref>
+                                  <Chip
+                                    label={show.name}
+                                    clickable
+                                    style={{ margin: 5 }}
+                                    size="small"
+                                    component="a"
+                                  />
+                                </NextLink>
+                                
+                              )}
+                            </div>
+                          </li>
+                        )
+                      })
+                      }
+                    </ul>
+                  }
                 </div>
               </div>
               <div className={classes.flexChartContainer}>
@@ -381,7 +433,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                       margin={{ top: 50, right: 20, bottom: 60, left: 20 }}
                       data={eventsByShow}
                       layout="vertical">
-                      <XAxis type="number" label={{value: "Εκδηλώσεις", position: "bottom", fill: "#666"}} />
+                      <XAxis type="number" label={{ value: "Εκδηλώσεις", position: "bottom", fill: "#666" }} />
                       <YAxis type="category" dataKey="name" width={1} tick={false} />
                       <Tooltip cursor={{ fillOpacity: 0.35 }} contentStyle={{ backgroundColor: "#373737", border: 0 }} itemStyle={{ color: "#fff" }} />
                       <Bar dataKey="value" fill="#71FFFA" name="Εκδηλώσεις">
@@ -399,7 +451,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                       data={eventsByVenue.slice(0, 5)}
                       layout="vertical"
                       style={{ cursor: "pointer" }}>
-                      <XAxis type="number" label={{value: "Εκδηλώσεις", position: "bottom", fill: "#666"}} />
+                      <XAxis type="number" label={{ value: "Εκδηλώσεις", position: "bottom", fill: "#666" }} />
                       <YAxis type="category" dataKey="name" width={1} tick={false} />
                       <Tooltip cursor={{ fillOpacity: 0.35 }} contentStyle={{ backgroundColor: "#373737", border: 0 }} itemStyle={{ color: "#fff" }} />
                       <Bar dataKey="value" fill="#71FFFA" name="Εκδηλώσεις">

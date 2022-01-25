@@ -1,23 +1,24 @@
 import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers"
 import DateFnsUtils from "@date-io/date-fns"
 import { useEffect, useState, useMemo } from "react"
-import { DatePickerTheme } from "../../src/assets/themes/DarkTheme"
+import { DatePickerTheme } from "../src/assets/themes/DarkTheme"
 import { ThemeProvider, makeStyles, Typography, Radio, FormControlLabel, CircularProgress, Chip, Link } from "@material-ui/core"
-import style from "../../src/assets/jss/layouts/statsPageStyle"
-import events from "../../public/events.json"
+import style from "../src/assets/jss/layouts/statsPageStyle"
+import events from "../public/events.json"
 import { TimeRange } from '@nivo/calendar'
 import grLocale from "date-fns/locale/el"
 import { useRouter } from "next/router"
 import endOfMonth from 'date-fns/endOfMonth'
 import { ResponsivePieCanvas } from "@nivo/pie"
 import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, Tooltip, LabelList } from "recharts"
-import { mainFetcher } from "../../src/utils/AxiosInstances"
-import { internalFetcher } from "../../src/utils/AxiosInstances"
+import { mainFetcher } from "../src/utils/AxiosInstances"
+import { internalFetcher } from "../src/utils/AxiosInstances"
 import parsePrice from "parse-price"
 import startOfMonth from 'date-fns/startOfMonth'
 import isValid from 'date-fns/isValid'
 import useSWR from "swr"
 import NextLink from "next/link"
+import format from 'date-fns/format'
 
 
 
@@ -43,7 +44,7 @@ export const getServerSideProps = async ({ query }) => {
 
   const filteredEvents = events.filter(event => {
     const eventDate = new Date(event.DateEvent)
-    if (eventDate > dateStart && eventDate <= dateEnd) {
+    if (eventDate > dateStart && eventDate < dateEnd) {
       return true;
     }
   })
@@ -53,10 +54,11 @@ export const getServerSideProps = async ({ query }) => {
   const eventsByShowMap = new Map();
   const eventsByVenueMap = new Map();
   const priceByShowMap = new Map();
+  const showsByMonthMap = new Map();
 
   filteredEvents.forEach(event => {
     const eventDate = new Date(event.DateEvent)
-    const isoDate = eventDate.toISOString().split('T')[0]
+    const isoDate = format(eventDate, 'yyyy-MM-dd')
 
     if (!eventsByDayMap.has(isoDate)) {
       eventsByDayMap.set(isoDate, { value: 1 })
@@ -85,7 +87,15 @@ export const getServerSideProps = async ({ query }) => {
       }
     }
 
-    let price = event.PriceRange.match(/\d+,\d{2}€/g)
+    if (!showsByMonthMap.has(eventDate.getMonth())) {
+      showsByMonthMap.set(eventDate.getMonth(), [event.ProductionID])
+    } else {
+      if (!showsByMonthMap.get(eventDate.getMonth()).includes(event.ProductionID)) {
+        showsByMonthMap.get(eventDate.getMonth()).push(event.ProductionID)
+      }
+    }
+
+    let price = event.PriceRange.match(/\d+,*\d*€/g)
     if (price) {
       price = price.map(item => parsePrice(item))
       price = Math.max(...price)
@@ -96,6 +106,13 @@ export const getServerSideProps = async ({ query }) => {
           priceByShowMap.set(event.ProductionID, price)
         }
       }
+    }
+  })
+
+  const showsByMonth = Array.from(showsByMonthMap, month => {
+    return {
+      id: months[month[0]],
+      value: month[1].length
     }
   })
 
@@ -202,7 +219,8 @@ export const getServerSideProps = async ({ query }) => {
       eventsByMonth,
       eventsByShow,
       eventsByVenue,
-      priceByShow
+      priceByShow,
+      showsByMonth
     }
   }
 }
@@ -216,14 +234,14 @@ const CustomTooltip = ({ value, date }) => {
         {`${date.toLocaleDateString("el", { day: "numeric", month: "short" })}`}
       </div>
       <div>
-        {`${value} εκδηλώσεις`}
+        {`${value} παραστάσεις`}
       </div>
 
     </div>
   )
 }
 
-const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, priceByShow }) => {
+const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, priceByShow, showsByMonth }) => {
   const classes = useStyles()
   const router = useRouter()
 
@@ -317,7 +335,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
           {eventsByDate.length > 0 ?
             <>
               <div style={{ marginTop: 50 }}>
-                <Typography variant="h3" component="h2">Εκδηλώσεις ανά Ημέρα</Typography>
+                <Typography variant="h3" component="h2">Παραστάσεις ανά Ημέρα</Typography>
                 <div className={classes.calendarContainer}>
                   <div className={classes.weekdaysLegendContainer}>
                     <span>Δευ</span>
@@ -384,7 +402,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                                     component="a"
                                   />
                                 </NextLink>
-                                
+
                               )}
                             </div>
                           </li>
@@ -397,53 +415,83 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
               </div>
               <div className={classes.flexChartContainer}>
                 {!router.query.month &&
-                  <div className={classes.chartContainer}>
-                    <Typography variant="h3" component="h2">Εκδηλώσεις ανά Μήνα</Typography>
-                    <ResponsivePieCanvas
-                      data={eventsByMonth}
-                      theme={calendarTheme}
-                      margin={{ top: 50, right: 20, bottom: 50, left: 20 }}
-                      innerRadius={0.5}
-                      padAngle={1.4}
-                      arcLabelsTextColor="#000"
-                      arcLabel="id"
-                      cornerRadius={3}
-                      activeOuterRadiusOffset={8}
-                      borderWidth={1}
-                      enableArcLinkLabels={false}
-                      pixelRatio={pixelRatio}
-                      borderColor={{
-                        from: 'color',
-                        modifiers: [
-                          [
-                            'darker',
-                            0.2
+                  <>
+                    <div className={classes.chartContainer}>
+                      <Typography variant="h3" component="h2">Παραγωγές ανά Μήνα</Typography>
+                      <ResponsivePieCanvas
+                        data={showsByMonth}
+                        theme={calendarTheme}
+                        margin={{ top: 50, right: 20, bottom: 50, left: 20 }}
+                        innerRadius={0.5}
+                        padAngle={1.4}
+                        arcLabelsTextColor="#000"
+                        arcLabel="id"
+                        cornerRadius={3}
+                        activeOuterRadiusOffset={8}
+                        borderWidth={1}
+                        enableArcLinkLabels={false}
+                        pixelRatio={pixelRatio}
+                        borderColor={{
+                          from: 'color',
+                          modifiers: [
+                            [
+                              'darker',
+                              0.2
+                            ]
                           ]
-                        ]
-                      }}
-                      arcLinkLabelsTextColor="#333333"
-                      arcLabelsSkipAngle={30}
-                    />
-                  </div>
+                        }}
+                        arcLinkLabelsTextColor="#333333"
+                        arcLabelsSkipAngle={30}
+                      />
+                    </div>
+                    <div className={classes.chartContainer}>
+                      <Typography variant="h3" component="h2">Παραστάσεις ανά Μήνα</Typography>
+                      <ResponsivePieCanvas
+                        data={eventsByMonth}
+                        theme={calendarTheme}
+                        margin={{ top: 50, right: 20, bottom: 50, left: 20 }}
+                        innerRadius={0.5}
+                        padAngle={1.4}
+                        arcLabelsTextColor="#000"
+                        arcLabel="id"
+                        cornerRadius={3}
+                        activeOuterRadiusOffset={8}
+                        borderWidth={1}
+                        enableArcLinkLabels={false}
+                        pixelRatio={pixelRatio}
+                        borderColor={{
+                          from: 'color',
+                          modifiers: [
+                            [
+                              'darker',
+                              0.2
+                            ]
+                          ]
+                        }}
+                        arcLinkLabelsTextColor="#333333"
+                        arcLabelsSkipAngle={30}
+                      />
+                    </div>
+                  </>
                 }
                 <div className={classes.chartContainer}>
-                  <Typography variant="h3" component="h2">Παραστάσεις Με Τις Περισσότερες Εκδηλώσεις</Typography>
+                  <Typography variant="h3" component="h2">Παραγωγές Με Τις Περισσότερες Παραστάσεις</Typography>
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                       margin={{ top: 50, right: 20, bottom: 60, left: 20 }}
                       data={eventsByShow}
                       layout="vertical">
-                      <XAxis type="number" label={{ value: "Εκδηλώσεις", position: "bottom", fill: "#666" }} />
+                      <XAxis type="number" label={{ value: "Παραστάσεις", position: "bottom", fill: "#666" }} />
                       <YAxis type="category" dataKey="name" width={1} tick={false} />
                       <Tooltip cursor={{ fillOpacity: 0.35 }} contentStyle={{ backgroundColor: "#373737", border: 0 }} itemStyle={{ color: "#fff" }} />
-                      <Bar dataKey="value" fill="#71FFFA" name="Εκδηλώσεις">
+                      <Bar dataKey="value" fill="#71FFFA" name="Παραστάσεις">
                         <LabelList dataKey="name" position="inside" />
                       </Bar>
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
                 <div className={classes.chartContainer}>
-                  <Typography variant="h3" component="h2">Θέατρα Με Τις Περισσότερες Εκδηλώσεις</Typography>
+                  <Typography variant="h3" component="h2">Θέατρα Με Τις Περισσότερες Παραστάσεις</Typography>
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                       onClick={handleBarClick}
@@ -451,17 +499,17 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                       data={eventsByVenue.slice(0, 5)}
                       layout="vertical"
                       style={{ cursor: "pointer" }}>
-                      <XAxis type="number" label={{ value: "Εκδηλώσεις", position: "bottom", fill: "#666" }} />
+                      <XAxis type="number" label={{ value: "Παραστάσεις", position: "bottom", fill: "#666" }} />
                       <YAxis type="category" dataKey="name" width={1} tick={false} />
                       <Tooltip cursor={{ fillOpacity: 0.35 }} contentStyle={{ backgroundColor: "#373737", border: 0 }} itemStyle={{ color: "#fff" }} />
-                      <Bar dataKey="value" fill="#71FFFA" name="Εκδηλώσεις">
+                      <Bar dataKey="value" fill="#71FFFA" name="Παραστάσεις">
                         <LabelList dataKey="name" position="inside" />
                       </Bar>
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
                 <div className={classes.chartContainer}>
-                  <Typography variant="h3" component="h2">{`${eventsByVenue[activeIndex].name} - Εκδηλώσεις Ανά Παράσταση`}</Typography>
+                  <Typography variant="h3" component="h2">{`${eventsByVenue[activeIndex].name} - Παραστάσεις Ανά Παραγωγή`}</Typography>
                   {loading ?
                     <div className={classes.loadingContainer}>
                       <CircularProgress color="secondary" />
@@ -510,8 +558,11 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                   </ResponsiveContainer>
                 </div>
               </div>
-            </> :
-            <Typography>Δεν υπάρχουν στατιστικά για την συγκεκριμένη περίοδο!</Typography>
+            </> : 
+            <>
+              {router.query.year && <Typography>Δεν υπάρχουν στατιστικά για την συγκεκριμένη περίοδο!</Typography>}
+            </>
+            
           }
         </div>
       </div>

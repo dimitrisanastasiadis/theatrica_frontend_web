@@ -3,10 +3,10 @@ import events from "../../public/events.json"
 import isSameDay from 'date-fns/isSameDay'
 
 const handler = async (req, res) => {
-  const date = new Date(req.body)
+  const date = new Date(req.body.date)
 
   const filteredEvents = events.filter(event => {
-    const eventDate = new Date(`${event.DateEvent}Z`)
+    const eventDate = new Date(event.DateEvent)
     if (isSameDay(date, eventDate)) {
       return true;
     }

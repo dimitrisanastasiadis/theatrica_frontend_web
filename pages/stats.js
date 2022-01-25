@@ -15,8 +15,6 @@ import { mainFetcher } from "../src/utils/AxiosInstances"
 import { internalFetcher } from "../src/utils/AxiosInstances"
 import parsePrice from "parse-price"
 import startOfMonth from 'date-fns/startOfMonth'
-import isValid from 'date-fns/isValid'
-import useSWR from "swr"
 import NextLink from "next/link"
 import format from 'date-fns/format'
 
@@ -250,8 +248,8 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
   const [loading, setLoading] = useState(false)
   const [pixelRatio, setPixelRatio] = useState(1)
   const [selectedDate, setSelectedDate] = useState(new Date(router.query.year || 2021, router.query.month || 0))
-
-  const { data: shows } = useSWR(isValid(selectedDate) ? ['/api/getShowsByDate', selectedDate] : null, internalFetcher)
+  const [showsByDate, setShowsByDate] = useState([])
+  const [showsLoading, setShowsLoading] = useState(false)
 
 
   const lastDayMonth = useMemo(() => {
@@ -299,6 +297,17 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
     const { devicePixelRatio: ratio = 1 } = window
     setPixelRatio(ratio)
   }, [])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setShowsLoading(true)
+      const shows = await internalFetcher('/api/getShowsByDate', { date: format(selectedDate, 'yyyy-MM-dd') })
+      setShowsByDate(shows)
+      setShowsLoading(false)
+    }
+
+    fetchData()
+  }, [selectedDate])
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={grLocale}>
@@ -380,12 +389,12 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                 </div>
                 <div>
                   <Typography variant="h4" component="h3">{selectedDate.toLocaleDateString("el", { day: "numeric", weekday: "long", month: "long", year: "numeric" })}</Typography>
-                  {!shows ?
+                  {showsLoading ?
                     <div className={classes.loadingContainer}>
                       <CircularProgress color="secondary" />
                     </div> :
                     <ul className={classes.list}>
-                      {shows.map(venue => {
+                      {showsByDate.map(venue => {
                         return (
                           <li key={venue.id}>
                             <div>
@@ -558,11 +567,11 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                   </ResponsiveContainer>
                 </div>
               </div>
-            </> : 
+            </> :
             <>
               {router.query.year && <Typography>Δεν υπάρχουν στατιστικά για την συγκεκριμένη περίοδο!</Typography>}
             </>
-            
+
           }
         </div>
       </div>

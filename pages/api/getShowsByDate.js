@@ -6,7 +6,7 @@ const handler = async (req, res) => {
   const date = new Date(req.body)
 
   const filteredEvents = events.filter(event => {
-    const eventDate = new Date(event.DateEvent)
+    const eventDate = new Date(`${event.DateEvent}Z`)
     if (isSameDay(date, eventDate)) {
       return true;
     }

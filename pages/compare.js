@@ -312,8 +312,9 @@ const ComparePage = ({ stat, labels, statTitle }) => {
   const [mode, setMode] = useState("year")
   const [statValue, setStatValue] = useState("eventsByDate")
 
-  const [firstDate, setFirstDate] = useState(new Date());
-  const [secondDate, setSecondDate] = useState(new Date());
+  const [firstDate, setFirstDate] = useState(new Date('2021'));
+  const [secondDate, setSecondDate] = useState(new Date('2022'));
+  const [errorText, setErrorText] = useState("")
 
   useEffect(() => {
     router.push({
@@ -333,6 +334,18 @@ const ComparePage = ({ stat, labels, statTitle }) => {
     setStatValue("eventsByDate")
   }, [router.query.date1, router.query.date2])
 
+  useEffect(() => {
+    const formatString = mode === "year" ? "yyyy" : "yyyy-M"
+    const date1 = format(firstDate, formatString)
+    const date2 = format(secondDate, formatString)
+
+    if (date1 === date2){
+      setErrorText("Επιλέξτε Διαφορετικές Περιόδους!")
+    } else {
+      setErrorText("")
+    }
+  }, [firstDate, mode, secondDate])
+
   const handleRadioChange = event => {
     setMode(event.target.value);
   }
@@ -342,7 +355,10 @@ const ComparePage = ({ stat, labels, statTitle }) => {
     const formatString = mode === "year" ? "yyyy" : "yyyy-M"
     const date1 = format(firstDate, formatString)
     const date2 = format(secondDate, formatString)
-    router.push(`/compare?date1=${date1}&date2=${date2}&mode=${mode}&stat=eventsByDate`)
+
+    if (date1 !== date2){
+      router.push(`/compare?date1=${date1}&date2=${date2}&mode=${mode}&stat=eventsByDate`)
+    }
   }
 
   const handleSelectChange = event => {
@@ -392,7 +408,10 @@ const ComparePage = ({ stat, labels, statTitle }) => {
                   inputVariant="outlined"
                   onChange={setSecondDate}
                   views={mode === "year" ? ["year"] : ["month", "year"]}
-                  minDate={"2020-01-01"} maxDate={"2022-12-31"} />
+                  minDate={"2020-01-01"} maxDate={"2022-12-31"} 
+                  error={errorText ? true : false}
+                  helperText={errorText}
+                  />
               </div>
             </ThemeProvider>
             <Button

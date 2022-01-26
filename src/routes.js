@@ -5,6 +5,8 @@ import {FaTheaterMasks} from 'react-icons/fa'
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import { FaMapMarkedAlt } from "react-icons/fa"
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 
 const routes = [
     {
@@ -36,6 +38,16 @@ const routes = [
         path: "/saved",
         name: "Αποθηκευμένα",
         icon: <BookmarksIcon fontSize="default" />
+    },
+    {
+        path: "/stats",
+        name: "Στατιστικά",
+        icon: <EqualizerIcon fontSize="default" />
+    },
+    {
+        path: "/compare",
+        name: "Σύκριση",
+        icon: <CompareArrowsIcon fontSize="default" />
     }
 ]
 

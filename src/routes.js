@@ -7,6 +7,7 @@ import { FaMapMarkedAlt } from "react-icons/fa"
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
+import PaletteIcon from '@material-ui/icons/Palette';
 
 const routes = [
     {
@@ -52,6 +53,11 @@ const routes = [
         path: "/compare",
         name: "Σύκριση",
         icon: <CompareArrowsIcon fontSize="default" />
+    },
+    {
+        path: "/color",
+        name: "Χρώματα",
+        icon: <PaletteIcon fontSize="default" />
     }
 ]
 

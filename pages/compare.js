@@ -312,8 +312,8 @@ const ComparePage = ({ stat, labels, statTitle }) => {
   const [mode, setMode] = useState("year")
   const [statValue, setStatValue] = useState("eventsByDate")
 
-  const [firstDate, setFirstDate] = useState(new Date('2021'));
-  const [secondDate, setSecondDate] = useState(new Date('2022'));
+  const [firstDate, setFirstDate] = useState(new Date('2020'));
+  const [secondDate, setSecondDate] = useState(new Date('2021'));
   const [errorText, setErrorText] = useState("")
 
   useEffect(() => {

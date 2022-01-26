@@ -1,6 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect  } from "react";
 import DarkTheme from '../assets/themes/DarkTheme'
-import LightTheme from '../assets/themes/LightTheme'
 import dynamic from 'next/dynamic'
 
 const ThemeProvider = dynamic(
@@ -11,28 +10,23 @@ const ThemeProvider = dynamic(
 export const ThemeContext = createContext();
 
 export function ThemeContextProvider(props){
-    const [darkMode, setDarkMode] = useState();
-
-    const toggleDarkMode = () => {
-        setDarkMode(prevDarkMode => !prevDarkMode);
-    }
+    const [secondaryColor, setSecondaryColor] = useState({});
 
     useEffect(() => {
-        if (localStorage.getItem("darkMode") === null) {
-            setDarkMode(true)
-        }else{
-            setDarkMode(localStorage.getItem("darkMode") === "true")
+        if (localStorage.getItem("secondaryColor") !== null) {
+            const color = JSON.parse(localStorage.getItem("secondaryColor"))
+            setSecondaryColor(color)
         }
     }, [])
 
     useEffect(() => {
-        localStorage.setItem("darkMode", darkMode);
-    }, [darkMode])
+        localStorage.setItem("secondaryColor", JSON.stringify(secondaryColor));
+    }, [secondaryColor])
 
-    const context = {darkMode, toggleDarkMode}
+    const context = { secondaryColor, setSecondaryColor }
 
     return (
-        <ThemeProvider theme = {darkMode ? DarkTheme : LightTheme}>
+        <ThemeProvider theme={DarkTheme(secondaryColor)}>
             <ThemeContext.Provider value={context}>
                 {props.children}
             </ThemeContext.Provider>

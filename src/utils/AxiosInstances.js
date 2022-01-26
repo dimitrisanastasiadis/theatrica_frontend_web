@@ -36,6 +36,21 @@ export const internalFetcher = async (url, data) => {
     }
 }
 
+export const internalFetcherGet = async (url, path, id) => {
+    try{
+        const response = await axios.get(url, {
+            params: {
+                path,
+                id
+            }
+        });
+        const data = response.data;
+        return data;
+    }catch(error){
+        console.log(error)
+    }
+}
+
 export const tmdbFetcher = async url => {
     try{
         const response = await tmdbAxios.get(url);

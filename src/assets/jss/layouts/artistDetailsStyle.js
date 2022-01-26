@@ -101,7 +101,10 @@ const artistDetailsStyle = theme => ({
         display: "flex",
         width: "100%",
         padding: "20px 0",
-        justifyContent: "space-between"
+        gap: "1%",
+        [theme.breakpoints.up("sm")]: {
+            gap: "3%"
+        }
     },
     photograph: {
         width: 120,

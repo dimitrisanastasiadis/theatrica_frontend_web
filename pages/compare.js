@@ -183,7 +183,7 @@ export const getServerSideProps = async ({ query }) => {
     for (let i = 0; i < 12; i++) {
       stat.push(
         {
-          name: months[i],
+          name: months[i].substring(0,3),
           [labels[0]]: showsByMonth1.get(i) ? showsByMonth1.get(i).length : 0,
           [labels[1]]: showsByMonth2.get(i) ? showsByMonth2.get(i).length : 0
         }
@@ -287,7 +287,7 @@ export const getServerSideProps = async ({ query }) => {
     for (let i = 0; i < 12; i++) {
       stat.push(
         {
-          name: months[i],
+          name: months[i].substring(0,3),
           [labels[0]]: eventsByMonth1.get(i) ? eventsByMonth1.get(i).value : 0,
           [labels[1]]: eventsByMonth2.get(i) ? eventsByMonth2.get(i).value : 0
         }

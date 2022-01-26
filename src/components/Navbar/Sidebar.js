@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import clsx from 'clsx';
 import { makeStyles, List, ListItem, ListItemText, ListItemIcon, Drawer, Hidden, useMediaQuery, useTheme  } from "@material-ui/core";
-import Routes from "../../routes";
+import routes from "../../routes";
 import style from "../../assets/jss/components/sidebarStyle";
 import { DrawerContext } from "../../contexts/DrawerContext";
 import { useRouter } from 'next/router';
@@ -33,9 +33,9 @@ function Sidebar(props) {
                 }) }}>
                 <Hidden xsDown><div className={classes.toolbar}/></Hidden>
                 <List>
-                    {Routes.map(route => {
+                    {routes.map(route => {
                         return (
-                            <Link href={route.path} key={route.name}>
+                            <Link href={route.pathOnClick || route.path} key={route.name}>
                                 <a className="linksNoDecoration">
                                     <ListItem
                                         className={classes.item}

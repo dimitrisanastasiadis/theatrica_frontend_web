@@ -16,6 +16,7 @@ import getDaysInYear from 'date-fns/getDaysInYear'
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LabelList, BarChart, Bar } from 'recharts';
 import getDayOfYear from 'date-fns/getDayOfYear'
 import parsePrice from "parse-price"
+import Head from "next/head"
 
 const months = ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"]
 
@@ -367,6 +368,9 @@ const ComparePage = ({ stat, labels, statTitle }) => {
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={grLocale}>
+      <Head>
+        <title>Σύγκριση Χρονικών Περιόδων | Theatrica</title>
+      </Head>
       <div className="pageWrapper" style={{ overflow: "hidden" }}>
         <div className="pageContent">
           <Typography variant="h2" component="h1">Σύγκριση Χρονικών Περιόδων</Typography>

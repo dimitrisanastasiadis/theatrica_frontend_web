@@ -1,9 +1,10 @@
 import PaginationPage from "../../src/components/PaginationPage";
 import { mainFetcher } from "../../src/utils/AxiosInstances";
 import getShowImage from "../../src/utils/getShowImage";
+import Head from "next/head"
 
 export const getServerSideProps = async ({ query }) => {
-  if (!query.page){
+  if (!query.page) {
     return {
       redirect: {
         destination: '/shows?page=1',
@@ -13,9 +14,9 @@ export const getServerSideProps = async ({ query }) => {
   }
 
   const page = Number(query.page)
-  const data = await mainFetcher(`/productions?page=${page-1}&size=20`);
+  const data = await mainFetcher(`/productions?page=${page - 1}&size=20`);
 
-  if(!data.content.length) {
+  if (!data.content.length) {
     return {
       notFound: true
     }
@@ -42,8 +43,14 @@ export const getServerSideProps = async ({ query }) => {
 const ArtistsPagination = ({ shows, pageCount, page }) => {
 
   return (
-    <PaginationPage items={shows} pageCount={pageCount} page={page} path="/shows" />
+    <>
+      <Head>
+        <title>Θεατρικές Παραστάσεις | Theatrica</title>
+      </Head>
+      <PaginationPage items={shows} pageCount={pageCount} page={page} path="/shows" />
+    </>
+
   );
 }
- 
+
 export default ArtistsPagination;

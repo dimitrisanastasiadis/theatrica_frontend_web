@@ -1,5 +1,6 @@
 import PaginationPage from "../../src/components/PaginationPage";
 import { mainFetcher } from "../../src/utils/AxiosInstances";
+import Head from "next/head"
 
 export const getServerSideProps = async ({ query }) => {
   if (!query.page){
@@ -36,7 +37,12 @@ export const getServerSideProps = async ({ query }) => {
 const VenuesPagination = ({ venues, pageCount, page }) => {
 
   return (
-    <PaginationPage items={venues} pageCount={pageCount} page={page} path="/venues" />
+    <>
+      <Head>
+        <title>Θεατρικοί Χώροι | Theatrica</title>
+      </Head>
+      <PaginationPage items={venues} pageCount={pageCount} page={page} path="/venues" />
+    </>
   );
 }
  

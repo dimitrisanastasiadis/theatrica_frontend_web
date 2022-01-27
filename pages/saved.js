@@ -4,6 +4,7 @@ import { useEffect, useReducer, useState } from "react";
 import FetchComponent from "../src/components/FetchComponent";
 import { useRouter } from "next/router";
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
+import Head from "next/head"
 
 const useStyles = makeStyles(style)
 
@@ -35,6 +36,9 @@ const Category = ({ ids, title, path, id }) => {
 
   return (
     <>
+      <Head>
+        <title>Αποθηκευμένα | Theatrica</title>
+      </Head>
       {slicedIds.length > 0 &&
         <div className={classes.container}>
           <Typography variant="h3" component="h2">{title}</Typography>

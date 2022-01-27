@@ -10,7 +10,7 @@ const ThemeProvider = dynamic(
 export const ThemeContext = createContext();
 
 export function ThemeContextProvider(props){
-    const [secondaryColor, setSecondaryColor] = useState({});
+    const [secondaryColor, setSecondaryColor] = useState();
 
     useEffect(() => {
         if (localStorage.getItem("secondaryColor") !== null) {
@@ -20,7 +20,9 @@ export function ThemeContextProvider(props){
     }, [])
 
     useEffect(() => {
-        localStorage.setItem("secondaryColor", JSON.stringify(secondaryColor));
+        if(secondaryColor){
+            localStorage.setItem("secondaryColor", JSON.stringify(secondaryColor));
+        }
     }, [secondaryColor])
 
     const context = { secondaryColor, setSecondaryColor }

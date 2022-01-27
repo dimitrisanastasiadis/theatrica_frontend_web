@@ -25,9 +25,9 @@ const DarkTheme = (secondaryColor) => {
                 dark: "#212121"
             },
             secondary: {
-                light: secondaryColor.light || "#AAFFFF",
-                main: secondaryColor.main || "#71FFFA",
-                dark: secondaryColor.dark || "#2ECBC7"
+                light: secondaryColor ? secondaryColor.light : "#AAFFFF",
+                main: secondaryColor ? secondaryColor.main : "#71FFFA",
+                dark: secondaryColor ? secondaryColor.dark : "#2ECBC7"
             },
             type: "dark"
         },

@@ -7,6 +7,7 @@ import { FaMapMarkedAlt } from "react-icons/fa"
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
+import PaletteIcon from '@material-ui/icons/Palette';
 
 const routes = [
     {
@@ -16,16 +17,19 @@ const routes = [
     },
     {
         path: "/artists",
+        pathOnClick: "/artists?page=1",
         name: "Καλλιτέχνες",
         icon: <PersonIcon fontSize="default"/>
     },
     {
         path: "/shows",
+        pathOnClick: "/shows?page=1",
         name: "Παραστάσεις",
         icon: <FaTheaterMasks fontSize={24} />
     },
     {
         path: "/venues",
+        pathOnClick: "/venues?page=1",
         name: "Θέατρα",
         icon: <LocationCityIcon fontSize="default" />
     },
@@ -41,6 +45,7 @@ const routes = [
     },
     {
         path: "/stats",
+        pathOnClick: "/stats?year=2021",
         name: "Στατιστικά",
         icon: <EqualizerIcon fontSize="default" />
     },
@@ -48,6 +53,11 @@ const routes = [
         path: "/compare",
         name: "Σύκριση",
         icon: <CompareArrowsIcon fontSize="default" />
+    },
+    {
+        path: "/color",
+        name: "Χρώματα",
+        icon: <PaletteIcon fontSize="default" />
     }
 ]
 

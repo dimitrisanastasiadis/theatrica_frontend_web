@@ -4,10 +4,11 @@ import getShowImage from "../utils/getShowImage"
 import ArtistCard from "./ArtistCard"
 import VenueCard from "./VenueCard"
 import ShowCard from "./ShowCard";
+import { internalFetcherGet } from "../utils/AxiosInstances";
 
 const FetchComponent = ({ path, id }) => {
   const [props, setProps] = useState({})
-  const { data } = useSWR(path ? `/${path}/${id}` : null)
+  const { data } = useSWR(path ? ['/api/fetchMask', path, id] : null, internalFetcherGet)
 
   let component;
 

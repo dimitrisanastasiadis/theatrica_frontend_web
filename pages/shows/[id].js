@@ -21,12 +21,15 @@ import AspectRatioSizer from "../../src/utils/AspectRatioSizer"
 import ReactPlayer from "react-player/youtube"
 import Link from "next/link"
 import MediaViewer from "../../src/components/MediaViewer"
+import Head from "next/head"
 
 export const getStaticPaths = async () => {
-  const latestShows = await mainFetcher("/productions/latest?page=0&size=10");
-  const paths = latestShows.content.map(show => ({
-    params: { id: show.id.toString() }
+  const showIDs = [293, 272, 246, 292, 410, 381, 404, 345, 308, 322, 297, 258, 263]
+  const paths = showIDs.map(id => ({
+    params: { id: id.toString() }
   }))
+
+  
 
   return {
     paths,
@@ -143,7 +146,11 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }
   }
 
   return (
-        <div className="pageWrapper">
+    <>
+      <Head>
+        <title>{show.title} | Theatrica</title>
+      </Head>
+      <div className="pageWrapper">
           <div className={`pageContent ${classes.overview}`}>
             <div className={classes.titleActions}>
               <Typography variant="h2" component="h1">{show.title}</Typography>
@@ -389,6 +396,8 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }
             </div>
           </div>
         </div>
+    </>
+        
   )
 }
 

@@ -16,6 +16,7 @@ import getDaysInYear from 'date-fns/getDaysInYear'
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LabelList, BarChart, Bar } from 'recharts';
 import getDayOfYear from 'date-fns/getDayOfYear'
 import parsePrice from "parse-price"
+import Head from "next/head"
 
 const months = ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"]
 
@@ -183,7 +184,7 @@ export const getServerSideProps = async ({ query }) => {
     for (let i = 0; i < 12; i++) {
       stat.push(
         {
-          name: months[i],
+          name: months[i].substring(0,3),
           [labels[0]]: showsByMonth1.get(i) ? showsByMonth1.get(i).length : 0,
           [labels[1]]: showsByMonth2.get(i) ? showsByMonth2.get(i).length : 0
         }
@@ -287,7 +288,7 @@ export const getServerSideProps = async ({ query }) => {
     for (let i = 0; i < 12; i++) {
       stat.push(
         {
-          name: months[i],
+          name: months[i].substring(0,3),
           [labels[0]]: eventsByMonth1.get(i) ? eventsByMonth1.get(i).value : 0,
           [labels[1]]: eventsByMonth2.get(i) ? eventsByMonth2.get(i).value : 0
         }
@@ -312,8 +313,8 @@ const ComparePage = ({ stat, labels, statTitle }) => {
   const [mode, setMode] = useState("year")
   const [statValue, setStatValue] = useState("eventsByDate")
 
-  const [firstDate, setFirstDate] = useState(new Date('2021'));
-  const [secondDate, setSecondDate] = useState(new Date('2022'));
+  const [firstDate, setFirstDate] = useState(new Date('2020'));
+  const [secondDate, setSecondDate] = useState(new Date('2021'));
   const [errorText, setErrorText] = useState("")
 
   useEffect(() => {
@@ -367,6 +368,9 @@ const ComparePage = ({ stat, labels, statTitle }) => {
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={grLocale}>
+      <Head>
+        <title>Σύγκριση Χρονικών Περιόδων | Theatrica</title>
+      </Head>
       <div className="pageWrapper" style={{ overflow: "hidden" }}>
         <div className="pageContent">
           <Typography variant="h2" component="h1">Σύγκριση Χρονικών Περιόδων</Typography>

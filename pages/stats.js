@@ -17,6 +17,7 @@ import parsePrice from "parse-price"
 import startOfMonth from 'date-fns/startOfMonth'
 import NextLink from "next/link"
 import format from 'date-fns/format'
+import Head from "next/head"
 
 
 
@@ -311,6 +312,9 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={grLocale}>
+      <Head>
+        <title>Στατιστικά | Theatrica</title>
+      </Head>
       <div className="pageWrapper" style={{ overflow: "hidden" }}>
         <div className="pageContent">
           <Typography variant="h2" component="h1">Στατιστικά {router.query.month && months[router.query.month]} {router.query.year}</Typography>

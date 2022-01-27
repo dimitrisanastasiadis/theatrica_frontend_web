@@ -8,7 +8,8 @@ const savedPageStyle = theme => ({
     [theme.breakpoints.up("sm")]: {
       padding: "20px 40px 15px",
     },
-    marginBottom: "5em"
+    marginBottom: "5em",
+    marginTop: "3em"
   },
   items: {
     display: "flex",

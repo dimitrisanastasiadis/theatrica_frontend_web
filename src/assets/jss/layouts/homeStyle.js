@@ -29,14 +29,17 @@ const homeStyle = theme => ({
         display: "flex",
         flexDirection: "column",
         "& section": {
+            backgroundColor: theme.palette.primary.dark,
             margin: "40px 0",
-            padding: "0 16px",
+            padding: "30px 0",
             "&:first-child": {
                 marginTop: 0,
                 padding: 0
             },
             [theme.breakpoints.up("md")]: {
-                margin: "25px 0"
+                margin: "25px 0",
+                backgroundColor: "unset",
+                padding: "0 16px",
             }
         }
     }

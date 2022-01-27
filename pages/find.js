@@ -10,6 +10,7 @@ import events from "../public/events.json"
 import { mainFetcher } from "../src/utils/AxiosInstances"
 import EventsCard from "../src/components/EventsCard"
 import { Pagination } from '@material-ui/lab';
+import Head from "next/head"
 
 let sessionToken;
 const date = new Date();
@@ -227,6 +228,9 @@ const FindShow = ({ shows }) => {
 
   return (
     <>
+      <Head>
+        <title>Εύρεση Παράστασης | Theatrica</title>
+      </Head>
       <Script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAPS_JAVASCRIPT_API}&libraries=places`} onLoad={() => handleScriptLoad(setAutocompleteService)} />
       <div className="pageWrapper">
         <div className="pageContent">

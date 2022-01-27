@@ -21,7 +21,10 @@ const contentSliderStyle = theme => ({
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        marginBottom: 16
+        marginBottom: 16,
+        [theme.breakpoints.down("md")]: {
+            padding: "0 20px"
+        }
     },
     swiper: {
         marginTop: 20

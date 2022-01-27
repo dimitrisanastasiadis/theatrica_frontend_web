@@ -7,7 +7,8 @@ const navbarStyle = theme => ({
         backgroundColor: theme.palette.background.default,
         width: "70%",
         display: "flex",
-        maxWidth: 580
+        maxWidth: 580,
+        margin: "auto"
     },
     searchInput: {
         '&:focus': {

@@ -6,6 +6,7 @@ import { InstantSearch, connectSearchBox, Configure, Index, connectHits, connect
 import { useRouter } from "next/router"
 import Link from "next/link"
 import { Pagination } from '@material-ui/lab';
+import Head from "next/head"
 
 const useStyles = makeStyles(style)
 
@@ -49,82 +50,88 @@ const ResultsPage = () => {
   }, [router.query.sm, router.query.search_query, router])
 
   return (
-    <div className="pageWrapper">
-      <div className="pageContent">
-        <Typography ref={scrollRef} className={classes.title} variant="h4" component="h1">Αποτελέσματα για <b>{`"${router.query.search_query}"`}</b></Typography>
-        <InstantSearch
-          searchClient={searchClient}
-          indexName="root"
-          searchState={{
-            query: router.query.search_query
-          }}
-        >
-          <Configure
-            hitsPerPage={hitsPerPage}
-            page={page - 1}
-          />
-          <VirtualSearchBox />
-          {(!router.query.sm || router.query.sm === "a") &&
-            <div className={classes.hitsContainer}>
-              <Index indexName="Artists">
-                <CustomHits path="artists" title="Καλλιτέχνες" />
-                {
-                  artistsHits > 5 && !router.query.sm &&
-                  <Link href={`/results?search_query=${router.query.search_query}&sm=a`}>
-                    <a className={classes.linkMore}>
-                      <Typography variant="body2">Περισσότερα Αποτελέσματα Καλλιτεχνών</Typography>
-                    </a>
-                  </Link>
-                }
-              </Index>
-            </div>
+    <>
+      <Head>
+        <title>Αναζήτηση | Theatrica</title>
+      </Head>
+      <div className="pageWrapper">
+        <div className="pageContent">
+          <Typography ref={scrollRef} className={classes.title} variant="h4" component="h1">Αποτελέσματα για <b>{`"${router.query.search_query}"`}</b></Typography>
+          <InstantSearch
+            searchClient={searchClient}
+            indexName="root"
+            searchState={{
+              query: router.query.search_query
+            }}
+          >
+            <Configure
+              hitsPerPage={hitsPerPage}
+              page={page - 1}
+            />
+            <VirtualSearchBox />
+            {(!router.query.sm || router.query.sm === "a") &&
+              <div className={classes.hitsContainer}>
+                <Index indexName="Artists">
+                  <CustomHits path="artists" title="Καλλιτέχνες" />
+                  {
+                    artistsHits > 5 && !router.query.sm &&
+                    <Link href={`/results?search_query=${router.query.search_query}&sm=a`}>
+                      <a className={classes.linkMore}>
+                        <Typography variant="body2">Περισσότερα Αποτελέσματα Καλλιτεχνών</Typography>
+                      </a>
+                    </Link>
+                  }
+                </Index>
+              </div>
+            }
+            {(!router.query.sm || router.query.sm === "p") &&
+              <div className={classes.hitsContainer}>
+                <Index indexName="Productions">
+                  <CustomHits path="shows" title="Παραστάσεις" />
+                  {
+                    productionsHits > 5 && !router.query.sm &&
+                    <Link href={`/results?search_query=${router.query.search_query}&sm=p`}>
+                      <a className={classes.linkMore}>
+                        <Typography variant="body2">Περισσότερα Αποτελέσματα Παραστάσεων</Typography>
+                      </a>
+                    </Link>
+                  }
+                </Index>
+              </div>
+            }
+            {(!router.query.sm || router.query.sm === "v") &&
+              <div className={classes.hitsContainer}>
+                <Index indexName="Venues">
+                  <CustomHits path="venues" title="Θεατρικοί Χώροι" />
+                  {
+                    venuesHits > 5 && !router.query.sm &&
+                    <Link href={`/results?search_query=${router.query.search_query}&sm=v`}>
+                      <a className={classes.linkMore}>
+                        <Typography variant="body2">Περισσότερα Αποτελέσματα Θεατρικών Χώρων</Typography>
+                      </a>
+                    </Link>
+                  }
+                </Index>
+              </div>
+            }
+            <CustomStateResults setArtistsHits={setArtistsHits} setProductionsHits={setProductionsHits} setVenuesHits={setVenuesHits} setTotalPages={setTotalPages} setIsSearching={setIsSearching} />
+          </InstantSearch>
+          {(artistsHits + productionsHits + venuesHits === 0 && !isSearching) &&
+            <Typography variant="h5">Δεν βρέθηκαν αποτελέσματα</Typography>
           }
-          {(!router.query.sm || router.query.sm === "p") &&
-            <div className={classes.hitsContainer}>
-              <Index indexName="Productions">
-                <CustomHits path="shows" title="Παραστάσεις" />
-                {
-                  productionsHits > 5 && !router.query.sm &&
-                  <Link href={`/results?search_query=${router.query.search_query}&sm=p`}>
-                    <a className={classes.linkMore}>
-                      <Typography variant="body2">Περισσότερα Αποτελέσματα Παραστάσεων</Typography>
-                    </a>
-                  </Link>
-                }
-              </Index>
-            </div>
+          {totalPages > 1 &&
+            <Pagination
+              className={classes.pagination}
+              count={totalPages}
+              page={page}
+              color="secondary"
+              onChange={handlePagination}
+            />
           }
-          {(!router.query.sm || router.query.sm === "v") &&
-            <div className={classes.hitsContainer}>
-              <Index indexName="Venues">
-                <CustomHits path="venues" title="Θεατρικοί Χώροι" />
-                {
-                  venuesHits > 5 && !router.query.sm &&
-                  <Link href={`/results?search_query=${router.query.search_query}&sm=v`}>
-                    <a className={classes.linkMore}>
-                      <Typography variant="body2">Περισσότερα Αποτελέσματα Θεατρικών Χώρων</Typography>
-                    </a>
-                  </Link>
-                }
-              </Index>
-            </div>
-          }
-          <CustomStateResults setArtistsHits={setArtistsHits} setProductionsHits={setProductionsHits} setVenuesHits={setVenuesHits} setTotalPages={setTotalPages} setIsSearching={setIsSearching} />
-        </InstantSearch>
-        {(artistsHits + productionsHits + venuesHits === 0 && !isSearching) &&
-          <Typography variant="h5">Δεν βρέθηκαν αποτελέσματα</Typography>
-        }
-        {totalPages > 1 &&
-          <Pagination
-            className={classes.pagination}
-            count={totalPages}
-            page={page}
-            color="secondary"
-            onChange={handlePagination}
-          />
-        }
+        </div>
       </div>
-    </div>
+    </>
+
   );
 }
 

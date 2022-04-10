@@ -6,7 +6,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Script from "next/script"
 import { useRouter } from "next/router"
-import events from "../public/events.json"
+import events from "../public/eventsVeryNew.json"
 import { mainFetcher } from "../src/utils/AxiosInstances"
 import EventsCard from "../src/components/EventsCard"
 import { Pagination } from '@material-ui/lab';
@@ -88,6 +88,7 @@ export const getServerSideProps = async ({ query }) => {
         const URI = encodeURI(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${query.address}&destinations=${venue.title}&region=gr&key=${process.env.DISTANCE_MATRIX_API}`)
         const response = await fetch(URI)
         const distance = await response.json()
+
         if (distance.rows[0].elements[0].distance.value <= maxDistance) {
           return venue
         }

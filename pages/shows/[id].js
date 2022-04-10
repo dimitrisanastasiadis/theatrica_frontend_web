@@ -24,12 +24,12 @@ import MediaViewer from "../../src/components/MediaViewer"
 import Head from "next/head"
 
 export const getStaticPaths = async () => {
-  const showIDs = [293, 272, 246, 292, 410, 381, 404, 345, 308, 322, 297, 258, 263]
-  const paths = showIDs.map(id => ({
-    params: { id: id.toString() }
-  }))
 
-  
+  const latestShows = await mainFetcher(`/productions/latest?page=0&size=10`)
+
+  const paths = latestShows.content.map(show => ({
+    params: { id: show.id.toString() }
+  }))
 
   return {
     paths,
@@ -89,8 +89,8 @@ const getArtistsByRole = (people) => {
       r[a.role] = [...r[a.role] || [], a];
       return r;
       }, {});
-    const {"Ηθοποιός": actorsTemp, ...crewTemp} = artistGroups;
-    actors = actorsTemp;
+    const {"Ηθοποιός": actorsTemp, "Ηθοποιοί": actorsTemp2, "Παίζουν": actorsTemp3, "Ερμηνεύουν": actorsTemp4, ...crewTemp} = artistGroups || {};
+    actors = [...actorsTemp || [], ...actorsTemp2 || [], ...actorsTemp3 || [], ...actorsTemp4 || []];
     crew = crewTemp;
   }
 
@@ -172,7 +172,7 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }
             <div className={classes.mediaContainer}>
               {(!hasTrailer) ?
                 <div className={classes.imageNoTrailer}>
-                  <Image src={media ? media : DefaultImage} alt={show.title} className={classes.image} layout="fill" objectFit="cover" />
+                  <Image src={media ? media : DefaultImage} alt={show.title} className={classes.image} layout="fill" objectFit="contain" />
                 </div>
               : 
                 <>

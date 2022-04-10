@@ -4,7 +4,7 @@ import { useEffect, useState, useMemo } from "react"
 import { DatePickerTheme } from "../src/assets/themes/DarkTheme"
 import { ThemeProvider, makeStyles, Typography, Radio, FormControlLabel, CircularProgress, Chip, Link } from "@material-ui/core"
 import style from "../src/assets/jss/layouts/statsPageStyle"
-import events from "../public/events.json"
+import events from "../public/eventsVeryNew.json"
 import { TimeRange } from '@nivo/calendar'
 import grLocale from "date-fns/locale/el"
 import { useRouter } from "next/router"

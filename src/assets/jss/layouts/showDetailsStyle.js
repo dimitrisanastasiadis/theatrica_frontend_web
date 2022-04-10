@@ -29,7 +29,7 @@ const showDetailsStyle = theme => ({
         }
     },
     imageNoTrailer: {
-        width: "28%", 
+        width: "100%", 
         position: "relative"
     },
     imageTrailer: {

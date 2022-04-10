@@ -1,5 +1,5 @@
 import { mainFetcher } from "../../src/utils/AxiosInstances"
-import events from "../../public/events.json"
+import events from "../../public/eventsVeryNew.json"
 import isSameDay from 'date-fns/isSameDay'
 
 const handler = async (req, res) => {

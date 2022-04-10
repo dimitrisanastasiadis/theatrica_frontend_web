@@ -15,7 +15,7 @@ import Head from "next/head"
 const placeHolderBio = "Quisque tincidunt porta neque, vitae aliquet quam hendrerit id. Nulla facilisi. Sed hendrerit elit eu vulputate auctor. Mauris ac tincidunt dui. Suspendisse nec sagittis neque, et efficitur nisl. Proin molestie mollis tortor, id sodales risus. Phasellus mi ante, viverra vel euismod eget, vulputate vel libero. Curabitur sem tellus, posuere id est eu, auctor imperdiet mauris. Morbi euismod facilisis dolor, in vestibulum mauris mattis non. Donec sit amet tempor augue, a elementum nisl."
 
 export const getStaticPaths = async () => {
-  const artistIDs = [2189, 2634, 3218, 2939, 2192, 1931, 2755, 3171, 2039, 2027, 2754, 2026];
+  const artistIDs = [5555, 6846, 4770, 4791, 8158, 5047, 5233, 5428, 4691, 5192, 4962, 6643, 4659, 6104];
   const paths = artistIDs.map(id => ({
     params: { id: id.toString() }
   }))

@@ -10,7 +10,7 @@ import { useRouter } from "next/router"
 import format from 'date-fns/format'
 import endOfMonth from 'date-fns/endOfMonth'
 import endOfYear from 'date-fns/endOfYear'
-import events from "../public/events.json"
+import events from "../public/eventsVeryNew.json"
 import getDaysInMonth from 'date-fns/getDaysInMonth'
 import getDaysInYear from 'date-fns/getDaysInYear'
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LabelList, BarChart, Bar } from 'recharts';

@@ -10,7 +10,7 @@ import getShowImage from "../src/utils/getShowImage"
 import Head from "next/head"
 
 export const getStaticProps = async () => {
-    const artistIDs = [2189, 2634, 3218, 2939, 2192, 1931, 2755, 3171, 2039, 2027, 2754, 2026];
+    const artistIDs = [5555, 6846, 4770, 4791, 8158, 5047, 5233, 5428, 4691, 5192, 4962, 6643, 4659, 6104];
     let artists = await Promise.all(
         artistIDs.map(async id => {
             const artist = await mainFetcher(`/people/${id}`);
@@ -20,16 +20,9 @@ export const getStaticProps = async () => {
 
     artists = artists.filter(Boolean);
 
-    const showIDs = [293, 272, 246, 292, 410, 381, 404, 345, 308, 322, 297, 258, 263]
+    let latestShows = await mainFetcher(`/productions/latest?page=0&size=10`)
 
-    let latestShows = await Promise.all(
-        showIDs.map(async id => {
-            const show = await mainFetcher(`/productions/${id}`);
-            return show
-        })
-    )
-
-    latestShows = latestShows.map(show => ({
+    latestShows = latestShows.content.map(show => ({
         id: show.id,
         title: show.title,
         image: getShowImage(show.mediaURL)

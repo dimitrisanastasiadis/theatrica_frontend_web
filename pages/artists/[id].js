@@ -10,7 +10,10 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import useFavoriteArtist from "../../src/hooks/useFavoriteArtist"
 import MediaViewer from "../../src/components/MediaViewer";
-import Head from "next/head"
+import Head from "next/head";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const placeHolderBio = "Quisque tincidunt porta neque, vitae aliquet quam hendrerit id. Nulla facilisi. Sed hendrerit elit eu vulputate auctor. Mauris ac tincidunt dui. Suspendisse nec sagittis neque, et efficitur nisl. Proin molestie mollis tortor, id sodales risus. Phasellus mi ante, viverra vel euismod eget, vulputate vel libero. Curabitur sem tellus, posuere id est eu, auctor imperdiet mauris. Morbi euismod facilisis dolor, in vestibulum mauris mattis non. Donec sit amet tempor augue, a elementum nisl."
 
@@ -91,7 +94,11 @@ const getProductionsByRole = (productions) => {
     }, {});
   }
 
-  return productionGroups;
+  const { "Ηθοποιός": actorsTemp, "Ηθοποιοί": actorsTemp2, "Παίζουν": actorsTemp3, "Ερμηνεύουν": actorsTemp4, ...rest } = productionGroups;
+
+  const acting = [...actorsTemp || [], ...actorsTemp2 || [], ...actorsTemp3 || [], ...actorsTemp4 || []];
+
+  return { acting, rest };
 }
 
 function ArtistDetails({ artist, productions, images }) {
@@ -102,6 +109,7 @@ function ArtistDetails({ artist, productions, images }) {
 
   const [mediaViewerOpen, setMediaViewerOpen] = useState(false);
   const [mediaIndex, setMediaIndex] = useState(0);
+  const [expanded, setExpanded] = useState(false);
 
   const { isFavorite, setIsFavorite } = useFavoriteArtist(artist && artist.id);
 
@@ -128,6 +136,10 @@ function ArtistDetails({ artist, productions, images }) {
     setMediaIndex(Number(event.currentTarget.getAttribute('index')))
     setMediaViewerOpen(true);
   }
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   return (
     <>
@@ -173,23 +185,57 @@ function ArtistDetails({ artist, productions, images }) {
               }
             </div>
           </section>
-          {Object.entries(productionGroups).map(([key, value], index) =>
-            <section key={index}>
-              <Typography variant="h4" component="h2" className={classes.sectionTitle}>{key}</Typography>
-              <List className={classes.list}>
-                {value.map((play, index) =>
-                  <ListItem key={index} className={classes.listItem}>
-                    <Link href={`/shows/${play.productionId}`} >
-                      <a className={classes.link}>
-                        <ListItemText primary={play.title} />
-                      </a>
-                    </Link>
-                    <ListItemText className={classes.year} primary="2020" />
-                  </ListItem>
-                )}
-              </List>
-            </section>
-          )}
+          <section>
+            <Typography variant="h4" component="h3" className={classes.sectionTitle} style={{marginBottom: 20}}>Παραστάσεις</Typography>
+            {productionGroups.acting.length > 0 &&
+              <Accordion square expanded={expanded === 'acting'} onChange={handleChange('acting')}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="acting-content"
+                  id="acting-header"
+                >
+                  <Typography variant="h5" component="h3">Ηθοποιός</Typography>
+                </AccordionSummary>
+                <List className={classes.list}>
+                  {productionGroups.acting.map((play, index) =>
+                    <ListItem key={index} className={classes.listItem}>
+                      <Link href={`/shows/${play.productionId}`} >
+                        <a className={classes.link}>
+                          <ListItemText primary={play.title} />
+                        </a>
+                      </Link>
+                      <ListItemText className={classes.year} primary="2020" />
+                    </ListItem>
+                  )}
+                </List>
+              </Accordion>
+            }
+
+
+            {Object.entries(productionGroups.rest).map(([key, value], index) =>
+              <Accordion square key={index} expanded={expanded === key} onChange={handleChange(key)}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls={`${key}-content`}
+                  id={`${key}-heading`}
+                >
+                  <Typography variant="h5" component="h3">{key}</Typography>
+                </AccordionSummary>
+                <List className={classes.list}>
+                  {value.map((play, index) =>
+                    <ListItem key={index} className={classes.listItem}>
+                      <Link href={`/shows/${play.productionId}`} >
+                        <a className={classes.link}>
+                          <ListItemText primary={play.title} />
+                        </a>
+                      </Link>
+                      <ListItemText className={classes.year} primary="2020" />
+                    </ListItem>
+                  )}
+                </List>
+              </Accordion>
+            )}
+          </section>
           <section>
             <Typography variant="h4" component="h2" className={classes.sectionTitle}>Social</Typography>
             <div className={classes.socialContainer}>

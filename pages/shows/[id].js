@@ -52,7 +52,7 @@ export const getStaticProps = async ({ params }) => {
 
   const media = getShowImage(show.mediaURL)
 
-  const { pastEvents, upcomingEvents } = getShowEvents(events)
+  const { pastEvents, upcomingEvents, range } = getShowEvents(events)
 
   const images = [
     "https://image.tmdb.org/t/p/w300/bjYL6zFdE6R4ycMRzCueFwy1xhn.jpg",
@@ -64,7 +64,7 @@ export const getStaticProps = async ({ params }) => {
   ]
 
   return {
-    props: { show, people, pastEvents, upcomingEvents, media, images }
+    props: { show, people, pastEvents, upcomingEvents, range, media, images }
   }
 }
 
@@ -89,7 +89,7 @@ const getArtistsByRole = (people) => {
       r[a.role] = [...r[a.role] || [], a];
       return r;
       }, {});
-    const {"Ηθοποιός": actorsTemp, "Ηθοποιοί": actorsTemp2, "Παίζουν": actorsTemp3, "Ερμηνεύουν": actorsTemp4, ...crewTemp} = artistGroups || {};
+    const {"Ηθοποιός": actorsTemp, "Ηθοποιοί": actorsTemp2, "Παίζουν": actorsTemp3, "Ερμηνεύουν": actorsTemp4, ...crewTemp} = artistGroups;
     actors = [...actorsTemp || [], ...actorsTemp2 || [], ...actorsTemp3 || [], ...actorsTemp4 || []];
     crew = crewTemp;
   }
@@ -97,7 +97,7 @@ const getArtistsByRole = (people) => {
   return {actors, crew}
 }
 
-function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }) {
+function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, images }) {
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
   const router = useRouter();
@@ -164,8 +164,8 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, media, images }
               </div>
             </div>
             <div className={classes.meta}>
-              {pastEvents.length &&
-                <Typography variant="body2">{pastEvents[pastEvents.length - 1].year}</Typography>
+              {range &&
+                <Typography variant="body2">{range}</Typography>
               }
               <Typography variant="body2" className="dotSeparator">2 ώρες 30 λεπτά</Typography>
             </div>

@@ -61,14 +61,15 @@ function ContentSlider(props) {
                         <Typography className={clsx({[classes.title]: props.decoratedTitle})} variant="h3" component="h2">{props.title}</Typography>
                         <Typography variant="subtitle1" component="h3">{props.description}</Typography>
                     </div>
-                    <div className={classes.buttonsContainer}>
+                    {slidesPerView < props.children.length &&
+                        <div className={classes.buttonsContainer}>
                         <IconButton onClick={prevSlide} disabled={progress <= 0} className={classes.button}>
                             <NavigateBeforeRoundedIcon />
                         </IconButton>
                         <IconButton onClick={nextSlide} disabled={progress >= 1} className={classes.button}>
                             <NavigateNextRoundedIcon />
                         </IconButton>
-                    </div>
+                    </div>}
                 </div>
                 <div className={classes.swiper}>
                     <Swiper 

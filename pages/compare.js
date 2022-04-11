@@ -329,6 +329,7 @@ const ComparePage = ({ stat, labels, statTitle }) => {
       {
         scroll: false
       })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statValue])
 
   useEffect(() => {

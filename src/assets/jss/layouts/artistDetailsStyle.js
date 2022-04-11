@@ -115,7 +115,7 @@ const artistDetailsStyle = theme => ({
         margin: "0 5px "
     },
     list: {
-        marginTop: 20,
+        margin: 10,
         border: `2px solid ${theme.palette.primary.light}`,
         "& ListItem": {
             borderBottom: "1px solid #353535"

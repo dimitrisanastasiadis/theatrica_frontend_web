@@ -47,7 +47,7 @@ const ArtistsPagination = ({ shows, pageCount, page }) => {
       <Head>
         <title>Θεατρικές Παραστάσεις | Theatrica</title>
       </Head>
-      <PaginationPage items={shows} pageCount={pageCount} page={page} path="/shows" />
+      <PaginationPage title="Παραστάσεις" items={shows} pageCount={pageCount} page={page} path="/shows" />
     </>
 
   );

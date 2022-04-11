@@ -41,7 +41,7 @@ const VenuesPagination = ({ venues, pageCount, page }) => {
       <Head>
         <title>Θεατρικοί Χώροι | Theatrica</title>
       </Head>
-      <PaginationPage items={venues} pageCount={pageCount} page={page} path="/venues" />
+      <PaginationPage title="Θέατρα" items={venues} pageCount={pageCount} page={page} path="/venues" />
     </>
   );
 }

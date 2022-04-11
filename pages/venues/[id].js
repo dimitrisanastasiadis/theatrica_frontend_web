@@ -37,7 +37,7 @@ export const getStaticProps = async ({ params }) => {
   const response = await fetch(URI)
   let location = await response.json()
 
-  location = location.results[0]
+  location = location.results[0] || null
 
   return {
     props: { venue, productions, location }
@@ -71,10 +71,12 @@ function VenueDetails({ venue, productions, location }) {
             </div>
           </div>
         </div>
-        <div className={`pageContent ${classes.content}`}>
+        <div className={`pageContent ${classes.content}`} style={{ maxWidth: 1250 }}>
           <div style={{ marginTop: -100, marginBottom: "5em" }}>
             <Typography variant="h2" component="h1">{venue.title}</Typography>
-            <Typography variant="body2" component="h2">{`${location.address_components[1].long_name} ${location.address_components[0].long_name}, ${location.address_components[2].long_name}`}</Typography>
+            {location &&
+              <Typography variant="body2" component="h2">{`${location.address_components[1].long_name} ${location.address_components[0].long_name}, ${location.address_components[2].long_name}`}</Typography>
+            }
           </div>
           <section>
             <Typography className={classes.sectionTitle} variant="h3">Πληροφορίες</Typography>
@@ -94,16 +96,17 @@ function VenueDetails({ venue, productions, location }) {
               )}
             </ContentSlider>
           </section>
-          <section>
-            <Typography className={classes.sectionTitle} variant="h3">Χάρτης</Typography>
-            <iframe
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              loading="lazy"
-              allowFullScreen
-              src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_MAPS_EMBED_API}&q=place_id:${location.place_id}`}></iframe>
-          </section>
+          {location &&
+            <section>
+              <Typography className={classes.sectionTitle} variant="h3">Χάρτης</Typography>
+              <iframe
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_MAPS_EMBED_API}&q=place_id:${location.place_id}`}></iframe>
+            </section>}
           <section>
             <Typography variant="h3" className={classes.sectionTitle}>Επικοινωνία</Typography>
             <div className={classes.socialContainer}>

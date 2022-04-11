@@ -1,4 +1,4 @@
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
+import { createMuiTheme, responsiveFontSizes, useTheme } from "@material-ui/core";
 
 const DarkTheme = (secondaryColor) => {
     let theme = createMuiTheme({
@@ -56,14 +56,18 @@ const DarkTheme = (secondaryColor) => {
     return theme
 }
 
-export const DatePickerTheme = createMuiTheme({
-    palette: {
-        primary: {
-            main: "#71FFFA"
-        },
-        type: "dark"
-    }
-})
+export const DatePickerTheme = () => {
+    const theme = useTheme()
+    
+    return createMuiTheme({
+        palette: {
+            primary: {
+                main: theme.palette.secondary.main,
+            },
+            type: "dark"
+        }
+    })
+} 
 
 
 

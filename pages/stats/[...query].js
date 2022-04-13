@@ -1,25 +1,25 @@
 import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers"
 import DateFnsUtils from "@date-io/date-fns"
 import { useEffect, useState, useMemo } from "react"
-import { DatePickerTheme } from "../src/assets/themes/DarkTheme"
+import { DatePickerTheme } from "../../src/assets/themes/DarkTheme"
 import { ThemeProvider, makeStyles, Typography, Radio, FormControlLabel, CircularProgress, Chip, Link, useTheme, IconButton } from "@material-ui/core"
-import style from "../src/assets/jss/layouts/statsPageStyle"
-import events from "../public/eventsVeryNew.json"
+import style from "../../src/assets/jss/layouts/statsPageStyle"
+import events from "../../public/eventsVeryNew.json"
 import { TimeRange } from '@nivo/calendar'
 import grLocale from "date-fns/locale/el"
 import { useRouter } from "next/router"
 import endOfMonth from 'date-fns/endOfMonth'
 import { ResponsivePieCanvas } from "@nivo/pie"
 import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, Tooltip, LabelList } from "recharts"
-import { mainFetcher } from "../src/utils/AxiosInstances"
-import { internalFetcher } from "../src/utils/AxiosInstances"
+import { mainFetcher } from "../../src/utils/AxiosInstances"
+import { internalFetcher } from "../../src/utils/AxiosInstances"
 import parsePrice from "parse-price"
 import startOfMonth from 'date-fns/startOfMonth'
 import NextLink from "next/link"
 import format from 'date-fns/format'
 import Head from "next/head"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import LoadingScene from "../../src/components/LoadingScene"
 
 
 const useStyles = makeStyles(style);
@@ -35,11 +35,34 @@ const calendarTheme = ({
 
 const months = ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμριος", "Οκτώριος", "Νοέμβριος", "Δεκέμβριος"]
 
-export const getServerSideProps = async ({ query }) => {
-  const dateStart = new Date(query.year, query.month || 0, 1, 0, 0, 0)
-  let dateEnd = new Date(query.year, 11, 31, 23, 59, 59)
+export const getStaticPaths = async () => {
 
-  if (query.month)
+  const date = new Date()
+
+  const paths = [
+    {
+      params: {
+        query: [date.getFullYear().toString()]
+      }
+    },
+    {
+      params: {
+        query: [date.getFullYear().toString(), date.getMonth().toString()]
+      }
+    }
+  ]
+
+  return {
+    paths,
+    fallback: true
+  }
+}
+
+export const getStaticProps = async ({ params }) => {
+  const dateStart = new Date(params.query[0], params.query[1] || 0, 1, 0, 0, 0)
+  let dateEnd = new Date(params.query[0], 11, 31, 23, 59, 59)
+
+  if (params.query[1])
     dateEnd = endOfMonth(dateStart)
 
   const filteredEvents = events.filter(event => {
@@ -48,6 +71,12 @@ export const getServerSideProps = async ({ query }) => {
       return true;
     }
   })
+
+  if (filteredEvents.length < 1){
+    return {
+      notFound: true
+    }
+  }
 
   const eventsByDayMap = new Map();
   const eventsByMonthMap = new Map();
@@ -251,21 +280,21 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
   const [activeIndex, setActiveIndex] = useState(0)
   const [loading, setLoading] = useState(false)
   const [pixelRatio, setPixelRatio] = useState(1)
-  const [selectedDate, setSelectedDate] = useState(new Date(router.query.year || 2021, router.query.month || 0))
+  const [selectedDate, setSelectedDate] = useState(new Date())
   const [showsByDate, setShowsByDate] = useState([])
   const [showsLoading, setShowsLoading] = useState(false)
 
-
   const lastDayMonth = useMemo(() => {
-    return endOfMonth(new Date(router.query.year || 2021, router.query.month || 0))
-  }, [router.query.month, router.query.year])
+    if (router.query.query)
+      return endOfMonth(new Date(router.query.query[0] || 2021, router.query.query[1] || 0))
+  }, [router.query.query])
 
   const handleDateChange = date => {
     setSelectedDate(startOfMonth(date))
     if (mode === "year")
-      router.push(`/stats?year=${date.getFullYear()}`)
+      router.push(`/stats/${date.getFullYear()}`)
     else
-      router.push(`/stats?year=${date.getFullYear()}&month=${date.getMonth()}`)
+      router.push(`/stats/${date.getFullYear()}/${date.getMonth()}`)
   }
 
   const handleRadioChange = event => {
@@ -292,15 +321,14 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
   }
 
   useEffect(() => {
-    if (!router.query.year) {
-      router.push(`/stats?year=2021`)
-    }
-  }, [router])
-
-  useEffect(() => {
     const { devicePixelRatio: ratio = 1 } = window
     setPixelRatio(ratio)
   }, [])
+
+  useEffect(() => {
+    if (router.query.query)
+      setSelectedDate(new Date(router.query.query[0], router.query.query[1] || 0))
+  }, [router.query.query])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -313,6 +341,10 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
     fetchData()
   }, [selectedDate])
 
+  if (router.isFallback){
+    return <LoadingScene fullScreen />
+  }
+
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={grLocale}>
       <Head>
@@ -320,7 +352,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
       </Head>
       <div className="pageWrapper" style={{ overflow: "hidden" }}>
         <div className="pageContent">
-          <Typography variant="h2" component="h1">Στατιστικά {router.query.month && months[router.query.month]} {router.query.year}</Typography>
+          <Typography variant="h2" component="h1">Στατιστικά {router.query.query[1] && months[router.query.query[1]]} {router.query.query[0]}</Typography>
           <div className={classes.picker}>
             <div style={{ display: "flex" }}>
               <FormControlLabel
@@ -364,8 +396,8 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                     height={220}
                     theme={calendarTheme}
                     data={eventsByDate}
-                    from={new Date(router.query.year, router.query.month || 0, 1, 0, 0, 0)}
-                    to={!router.query.month ? `${router.query.year}-12-31` : lastDayMonth}
+                    from={new Date(router.query.query[0], router.query.query[1] || 0, 1, 0, 0, 0)}
+                    to={!router.query.query[1] ? `${router.query.query[0]}-12-31` : lastDayMonth}
                     emptyColor="#303030"
                     colors={['#0e4429', '#006d32', '#26a641', '#39d353']}
                     margin={{ top: 50, right: 0, bottom: 50, left: 0 }}
@@ -435,7 +467,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                 </div>
               </div>
               <div className={classes.flexChartContainer}>
-                {!router.query.month &&
+                {!router.query.query[1] &&
                   <>
                     <div className={classes.chartContainer}>
                       <Typography variant="h3" component="h2">Παραγωγές ανά Μήνα</Typography>
@@ -581,7 +613,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
               </div>
             </> :
             <>
-              {router.query.year && <Typography>Δεν υπάρχουν στατιστικά για την συγκεκριμένη περίοδο!</Typography>}
+              {router.query.query[0] && <Typography>Δεν υπάρχουν στατιστικά για την συγκεκριμένη περίοδο!</Typography>}
             </>
 
           }

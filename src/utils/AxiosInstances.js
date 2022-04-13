@@ -2,7 +2,7 @@ import axios from "axios"
 
 // local server
 export const mainAxios = axios.create({
-    baseURL: "http://192.168.2.10:8080/api"
+    baseURL: process.env.NODE_ENV === "development" ? "http://192.168.2.10:8080/api" : "http://46.177.145.22:53239/api"
 })
 
 // export const mainAxios = axios.create({

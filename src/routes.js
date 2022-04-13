@@ -45,7 +45,7 @@ const routes = [
     },
     {
         path: "/stats",
-        pathOnClick: "/stats?year=2021",
+        pathOnClick: "/stats/2022",
         name: "Στατιστικά",
         icon: <EqualizerIcon fontSize="default" />
     },

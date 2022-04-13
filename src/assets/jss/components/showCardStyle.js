@@ -43,7 +43,8 @@ const showCardStyle = theme => ({
         justifyContent: "space-between",
         "&:last-child": {
             paddingBottom: 7
-        }
+        },
+        overflow: "hidden"
     },
     icons: {
         display: "flex",

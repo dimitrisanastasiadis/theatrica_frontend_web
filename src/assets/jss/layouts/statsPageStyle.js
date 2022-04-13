@@ -16,9 +16,9 @@ const statsPageStyle = theme => ({
     }
   },
   weekdaysLegendContainer: {
-    position: "absolute", 
-    height: 200, 
-    left: 0, 
+    position: "absolute",
+    height: 200,
+    left: 0,
     fontSize: 12,
     "& span": {
       position: "absolute"
@@ -40,7 +40,7 @@ const statsPageStyle = theme => ({
     borderRadius: "30"
   },
   flexChartContainer: {
-    display:"flex",
+    display: "flex",
     marginTop: 100,
     gap: 80,
     flexWrap: "wrap",
@@ -54,16 +54,49 @@ const statsPageStyle = theme => ({
     }
   },
   loadingContainer: {
-    height: "100%", 
-    display: "flex", 
-    justifyContent: "center", 
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
     alignItems: "center"
   },
   list: {
     "& li": {
       marginBottom: 10
     },
-    paddingLeft: 30
+    paddingLeft: 30,
+  },
+  listHidden: {
+    overflow: "hidden",
+    maxHeight: 300,
+    position: "relative",
+    "&:after": {
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      height: "100%",
+      width: "100%",
+      content: "''",
+      background: `linear-gradient(
+            transparent 40%, 
+            ${theme.palette.background.default} 95%
+        )`,
+      pointerEvents: "none"
+    }
+  },
+  listContainer: {
+    display: "flex",
+    flexDirection: "column"
+  },
+  expandButton: {
+    alignSelf: "center",
+    padding: 8,
+    marginTop: 16,
+    "&:hover": {
+      color: theme.palette.secondary.main
+    }
+  },
+  collapseButton: {
+    transform: "rotate(180deg)"
   }
 })
 

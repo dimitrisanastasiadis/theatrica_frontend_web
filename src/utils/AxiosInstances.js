@@ -16,6 +16,13 @@ const tmdbAxios = axios.create({
     }
 })
 
+const newsAxios = axios.create({
+    baseURL: "https://newsapi.org/v2",
+    params: {
+        apiKey: process.env.NEWS_API
+    }
+})
+
 export const mainFetcher = async url => {
     try{
         const response = await mainAxios.get(url);
@@ -54,6 +61,16 @@ export const internalFetcherGet = async (url, path, id) => {
 export const tmdbFetcher = async url => {
     try{
         const response = await tmdbAxios.get(url);
+        const data = response.data;
+        return data;
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const newsFetcher = async url => {
+    try{
+        const response = await newsAxios.get(url);
         const data = response.data;
         return data;
     }catch(error){

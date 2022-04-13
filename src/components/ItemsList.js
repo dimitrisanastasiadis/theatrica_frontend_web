@@ -16,7 +16,6 @@ function ItemsList(props){
         <div className={clsx(classes.container, {
             [classes.isLoading]: !props.items
         })}>
-            {props.title && <h1 style={{width: "100%"}}>Artists</h1>}
             {props.items ?
                 props.items.map((item, index) => {
                     if (props.type === "/artists")

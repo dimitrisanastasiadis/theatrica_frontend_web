@@ -64,7 +64,8 @@ export const getStaticProps = async ({ params }) => {
   ]
 
   return {
-    props: { show, people, pastEvents, upcomingEvents, range, media, images }
+    props: { show, people, pastEvents, upcomingEvents, range, media, images },
+    revalidate: 900
   }
 }
 

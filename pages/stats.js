@@ -2,7 +2,7 @@ import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers"
 import DateFnsUtils from "@date-io/date-fns"
 import { useEffect, useState, useMemo } from "react"
 import { DatePickerTheme } from "../src/assets/themes/DarkTheme"
-import { ThemeProvider, makeStyles, Typography, Radio, FormControlLabel, CircularProgress, Chip, Link } from "@material-ui/core"
+import { ThemeProvider, makeStyles, Typography, Radio, FormControlLabel, CircularProgress, Chip, Link, useTheme, IconButton } from "@material-ui/core"
 import style from "../src/assets/jss/layouts/statsPageStyle"
 import events from "../public/eventsVeryNew.json"
 import { TimeRange } from '@nivo/calendar'
@@ -18,6 +18,7 @@ import startOfMonth from 'date-fns/startOfMonth'
 import NextLink from "next/link"
 import format from 'date-fns/format'
 import Head from "next/head"
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 
@@ -243,6 +244,8 @@ const CustomTooltip = ({ value, date }) => {
 const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, priceByShow, showsByMonth }) => {
   const classes = useStyles()
   const router = useRouter()
+  const theme = useTheme()
+  const [listVisible, setListVisible] = useState(false)
 
   const [mode, setMode] = useState("year")
   const [activeIndex, setActiveIndex] = useState(0)
@@ -341,7 +344,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                 label="Μήνας"
               />
             </div>
-            <ThemeProvider theme={DatePickerTheme}>
+            <ThemeProvider theme={() => DatePickerTheme(theme.palette.secondary.main)}>
               <DatePicker label="Επιλέξτε Περίοδο" value={lastDayMonth} inputVariant="outlined" onChange={handleDateChange} views={mode === "year" ? ["year"] : ["month", "year"]} minDate={"2020-01-01"} maxDate={"2022-12-31"} />
             </ThemeProvider>
           </div>
@@ -397,32 +400,37 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                     <div className={classes.loadingContainer}>
                       <CircularProgress color="secondary" />
                     </div> :
-                    <ul className={classes.list}>
-                      {showsByDate.map(venue => {
-                        return (
-                          <li key={venue.id}>
-                            <div>
-                              <NextLink href={`/venues/${venue.id}`} passHref>
-                                <Link color="inherit" variant="body1" style={{ display: "inline" }}>{venue.name}:</Link>
-                              </NextLink>
-                              {venue.shows.map((show) =>
-                                <NextLink key={show.id} href={`/shows/${show.id}`} passHref>
-                                  <Chip
-                                    label={show.name}
-                                    clickable
-                                    style={{ margin: 5 }}
-                                    size="small"
-                                    component="a"
-                                  />
+                    <div className={classes.listContainer}>
+                      <ul className={`${classes.list} ${listVisible ? "" : classes.listHidden}`}>
+                        {showsByDate.map(venue => {
+                          return (
+                            <li key={venue.id}>
+                              <div>
+                                <NextLink href={`/venues/${venue.id}`} passHref>
+                                  <Link color="inherit" variant="body1" style={{ display: "inline" }}>{venue.name}:</Link>
                                 </NextLink>
+                                {venue.shows.map((show) =>
+                                  <NextLink key={show.id} href={`/shows/${show.id}`} passHref>
+                                    <Chip
+                                      label={show.name}
+                                      clickable
+                                      style={{ margin: 5 }}
+                                      size="small"
+                                      component="a"
+                                    />
+                                  </NextLink>
 
-                              )}
-                            </div>
-                          </li>
-                        )
-                      })
-                      }
-                    </ul>
+                                )}
+                              </div>
+                            </li>
+                          )
+                        })
+                        }
+                      </ul>
+                      <IconButton size="small" className={`${classes.expandButton} ${listVisible ? classes.collapseButton : ""}`} onClick={() => setListVisible(prev => !prev)}>
+                        <ExpandMoreIcon />
+                      </IconButton>
+                    </div>
                   }
                 </div>
               </div>
@@ -497,7 +505,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                       <XAxis type="number" label={{ value: "Παραστάσεις", position: "bottom", fill: "#666" }} />
                       <YAxis type="category" dataKey="name" width={1} tick={false} />
                       <Tooltip cursor={{ fillOpacity: 0.35 }} contentStyle={{ backgroundColor: "#373737", border: 0 }} itemStyle={{ color: "#fff" }} />
-                      <Bar dataKey="value" fill="#71FFFA" name="Παραστάσεις">
+                      <Bar dataKey="value" fill={theme.palette.secondary.main} name="Παραστάσεις">
                         <LabelList dataKey="name" position="inside" />
                       </Bar>
                     </BarChart>
@@ -515,7 +523,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                       <XAxis type="number" label={{ value: "Παραστάσεις", position: "bottom", fill: "#666" }} />
                       <YAxis type="category" dataKey="name" width={1} tick={false} />
                       <Tooltip cursor={{ fillOpacity: 0.35 }} contentStyle={{ backgroundColor: "#373737", border: 0 }} itemStyle={{ color: "#fff" }} />
-                      <Bar dataKey="value" fill="#71FFFA" name="Παραστάσεις">
+                      <Bar dataKey="value" fill={theme.palette.secondary.main} name="Παραστάσεις">
                         <LabelList dataKey="name" position="inside" />
                       </Bar>
                     </BarChart>
@@ -564,7 +572,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                       <XAxis type="number" unit="€" />
                       <YAxis type="category" dataKey="name" width={1} tick={false} />
                       <Tooltip cursor={{ fillOpacity: 0.35 }} contentStyle={{ backgroundColor: "#373737", border: 0 }} itemStyle={{ color: "#fff" }} formatter={value => `${value}€`} />
-                      <Bar dataKey="value" fill="#71FFFA" name="Τιμή">
+                      <Bar dataKey="value" fill={theme.palette.secondary.main} name="Τιμή">
                         <LabelList dataKey="name" position="inside" />
                       </Bar>
                     </BarChart>

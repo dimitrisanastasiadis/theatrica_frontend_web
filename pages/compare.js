@@ -398,7 +398,7 @@ const ComparePage = ({ stat, labels, statTitle }) => {
                 label="Μήνες"
               />
             </div>
-            <ThemeProvider theme={DatePickerTheme}>
+            <ThemeProvider theme={() => DatePickerTheme(theme.palette.secondary.main)}>
               <div className={classes.pickersContainer}>
                 <DatePicker
                   label={mode === "year" ? "Έτος 1" : "Μήνας 1"}

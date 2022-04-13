@@ -18,7 +18,8 @@ const paginationPageStyle = theme => ({
     },
     headingContainer: {
         maxWidth: 1200,
-        margin: "0px auto"
+        margin: "0px auto",
+        paddingLeft: 10
     }
 })
 

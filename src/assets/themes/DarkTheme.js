@@ -56,13 +56,12 @@ const DarkTheme = (secondaryColor) => {
     return theme
 }
 
-export const DatePickerTheme = () => {
-    const theme = useTheme()
+export const DatePickerTheme = (color) => {
     
     return createMuiTheme({
         palette: {
             primary: {
-                main: theme.palette.secondary.main,
+                main: color,
             },
             type: "dark"
         }

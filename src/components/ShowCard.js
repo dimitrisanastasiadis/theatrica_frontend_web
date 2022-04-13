@@ -1,5 +1,5 @@
 import React from "react"
-import { makeStyles, Card, CardMedia, Typography, IconButton } from "@material-ui/core"
+import { makeStyles, Card, CardMedia, Typography, IconButton, Tooltip } from "@material-ui/core"
 import style from "../assets/jss/components/showCardStyle"
 import DefaultImage from "../../public/DefaultShowImage.webp"
 import Image from "next/image"
@@ -13,7 +13,7 @@ import useWatchlist from "../hooks/useWatchlist"
 
 const useStyles = makeStyles(style);
 
-function ShowCard({ id, title, media }){
+function ShowCard({ id, title, media }) {
     const classes = useStyles();
 
     const { isFavorite, setIsFavorite } = useFavoriteShow(id);
@@ -37,16 +37,18 @@ function ShowCard({ id, title, media }){
                                 <Image src={media ? media : DefaultImage} alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
                             </div>
                         </a>
-                    </Link> 
+                    </Link>
                 </CardMedia>
                 <div className={classes.cardTitle}>
-                    <Link  href={`/shows/${id}`}>
+                    <Link href={`/shows/${id}`}>
                         <a className={classes.link}>
-                            <Typography variant="body1" component="h2">
-                                {title}
-                            </Typography>
+                            <Tooltip title={title}>
+                                <Typography variant="body1" component="h2">
+                                    {title}
+                                </Typography>
+                            </Tooltip>
                         </a>
-                    </Link> 
+                    </Link>
                 </div>
                 <div className={classes.icons} >
                     <IconButton size="small" className={classes.button} onClick={handleWatchlist}>

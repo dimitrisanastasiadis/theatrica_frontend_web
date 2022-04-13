@@ -40,7 +40,8 @@ export const getStaticProps = async ({ params }) => {
   location = location.results[0] || null
 
   return {
-    props: { venue, productions, location }
+    props: { venue, productions, location },
+    revalidate: 900
   }
 }
 

@@ -78,7 +78,8 @@ export const getStaticProps = async ({ params }) => {
   }
 
   return {
-    props: { artist, productions, images }
+    props: { artist, productions, images },
+    revalidate: 900
   }
 }
 

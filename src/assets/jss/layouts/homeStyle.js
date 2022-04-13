@@ -1,4 +1,29 @@
 const homeStyle = theme => ({
+    heroSection: {
+        minHeight: `calc(100vh - 128px)`,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        gap: 10,
+        marginBottom: 64,
+        "&>p": {
+            fontSize: "1.3em",
+            maxWidth: 600
+        },
+        padding: "0 20px"
+    },
+    searchInput: {
+        display: "flex",
+        alignItems: "center",
+        gap: 5,
+        padding: 10,
+        maxWidth: 182,
+        backgroundColor: theme.palette.primary.light,
+        borderRadius: 20,
+        border: `1px solid ${theme.palette.primary.light}`,
+        marginTop: 10,
+        boxShadow: "0 2px 8px 2px rgba(0, 0, 0, 0.2)",
+    },
     divider: {
         height: 3,
         margin: "50px 0px"
@@ -19,7 +44,6 @@ const homeStyle = theme => ({
             marginLeft: 55
         },
         [theme.breakpoints.up("md")]: {
-            marginTop: 35,
             padding: "0 20px"
         }
     },
@@ -32,15 +56,27 @@ const homeStyle = theme => ({
             backgroundColor: theme.palette.primary.dark,
             margin: "40px 0",
             padding: "30px 0",
-            "&:first-child": {
-                marginTop: 0,
-                padding: 0
-            },
             [theme.breakpoints.up("md")]: {
                 margin: "25px 0",
                 backgroundColor: "unset",
                 padding: "0 16px",
             }
+        }
+    },
+    newsContainer: {
+        padding: "40px 20px",
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 50,
+        justifyContent: "center",
+        [theme.breakpoints.up(785)]: {
+            justifyContent: "space-around"
+        }
+    },
+    headingPadding: {
+        padding: "0 20px",
+        [theme.breakpoints.up("md")]: {
+            padding: 0
         }
     }
 })

@@ -4,7 +4,8 @@ const ItemsListStyle = theme => ({
         width: "100%", 
         maxWidth: 1200,
         margin: "0px auto",
-        flexWrap: "wrap", 
+        flexWrap: "wrap",
+        gap: 20,
         justifyContent: "space-around",
         padding: 5,
         "& > *": {

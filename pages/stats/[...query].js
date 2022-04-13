@@ -283,6 +283,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [showsByDate, setShowsByDate] = useState([])
   const [showsLoading, setShowsLoading] = useState(false)
+  const [pageLoading, setPageLoading] = useState(false)
 
   const lastDayMonth = useMemo(() => {
     if (router.query.query)
@@ -341,7 +342,21 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
     fetchData()
   }, [selectedDate])
 
-  if (router.isFallback){
+  useEffect(() => {
+    const loadingTrue = () => setPageLoading(true)
+    const loadingFalse = () => setPageLoading(false)
+
+    router.events.on('routeChangeStart', loadingTrue)
+    router.events.on('routeChangeComplete', loadingFalse)
+
+    return () => {
+      router.events.off('routeChangeStart', loadingTrue)
+      router.events.off('routeChangeComplete', loadingFalse)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  if (router.isFallback || pageLoading){
     return <LoadingScene fullScreen />
   }
 
@@ -434,7 +449,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                     </div> :
                     <div className={classes.listContainer}>
                       <ul className={`${classes.list} ${listVisible ? "" : classes.listHidden}`}>
-                        {showsByDate.map(venue => {
+                        {showsByDate && showsByDate.map(venue => {
                           return (
                             <li key={venue.id}>
                               <div>

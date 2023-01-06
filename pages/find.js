@@ -89,7 +89,7 @@ export const getServerSideProps = async ({ query }) => {
         const response = await fetch(URI)
         const distance = await response.json()
 
-        if (distance.rows[0].elements[0].distance.value <= maxDistance) {
+        if (distance.rows[0]?.elements[0]?.distance?.value <= maxDistance) {
           return venue
         }
       }))
@@ -112,9 +112,9 @@ export const getServerSideProps = async ({ query }) => {
   }))
 
   const shows = productions.map(production => {
-    let eventsFinal = filteredEvents.filter(event => Number(event.ProductionID) === production.id)
+    let eventsFinal = filteredEvents.filter(event => Number(event.ProductionID) === production?.id)
     eventsFinal = eventsFinal.map(event => {
-      const venue = filteredVenues.find(venue => Number(event.VenueID) === venue.id)
+      const venue = filteredVenues.find(venue => Number(event.VenueID) === venue?.id)
       return {
         date: event.DateEvent,
         venue,
@@ -159,11 +159,11 @@ const FindShow = ({ shows }) => {
     dispatchError({ field: event.target.id, value: "" })
   }
 
-  const handleSliderChange = (event, newValue) => {
+  const handleSliderChange = (_event, newValue) => {
     dispatch({ field: "maxDistance", value: newValue })
   }
 
-  const handlePlaceSelect = (event, newValue) => {
+  const handlePlaceSelect = (_event, newValue) => {
     dispatch({ field: "address", value: newValue })
   }
 
@@ -171,7 +171,7 @@ const FindShow = ({ shows }) => {
     setRadioState(event.target.value);
   };
 
-  const handlePagination = (event, value) => {
+  const handlePagination = (_event, value) => {
     setPage(value);
     scrollRef.current.scrollIntoView();
   };
@@ -232,7 +232,10 @@ const FindShow = ({ shows }) => {
       <Head>
         <title>Εύρεση Παράστασης | Theatrica</title>
       </Head>
-      <Script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAPS_JAVASCRIPT_API}&libraries=places`} onLoad={() => handleScriptLoad(setAutocompleteService)} />
+      <Script 
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAPS_JAVASCRIPT_API}&libraries=places`} 
+        onLoad={() => handleScriptLoad(setAutocompleteService)} 
+      />
       <div className="pageWrapper">
         <div className="pageContent">
           <Typography variant="h3" component="h1" className={classes.underlineDecoration}>Βρες Μια Παράσταση</Typography>

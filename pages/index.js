@@ -23,8 +23,13 @@ export const getStaticProps = async () => {
     const articles = articlesResponse.articles
 
     articles.forEach(article => {
-        article.urlToImage = cloudinary.url(article.urlToImage, { type: "fetch", width: 320, fetch_format: "auto", crop: "scale", quality: "auto" })
+        article.urlToImage = cloudinary.url(
+            encodeURI(article.urlToImage),
+            {
+                type: "fetch", width: 320, fetch_format: "auto", crop: "scale", quality: "auto"
+            })
     })
+
 
     const artistIDs = [5555, 6846, 4770, 4791, 8158, 5047, 5233, 5428, 4691, 5192, 4962, 6643, 4659, 6104];
     let artists = await Promise.all(
@@ -36,17 +41,17 @@ export const getStaticProps = async () => {
 
     artists = artists.filter(Boolean);
 
-    let latestShows = await mainFetcher(`/productions/latest?page=0&size=10`)
+    let latestShows = await mainFetcher(`/productions?page=0&size=10`)
 
-    latestShows = latestShows.content.map(show => ({
-        id: show.id,
-        title: show.title,
-        image: getShowImage(show.mediaURL)
-    }))
+    latestShows = latestShows?.content?.map(show => ({
+            id: show.id,
+            title: show.title,
+            image: getShowImage(show.mediaURL)
+        }))
 
     return {
         props: { artists, latestShows, articles },
-        revalidate: 900
+        revalidate: 60 * 15
     }
 }
 
@@ -71,6 +76,7 @@ function Home({ artists, latestShows, articles }) {
         <>
             <Head>
                 <title>Theatrica</title>
+                <meta name="description" content="Αναζητήστε καλλιτέχνες, παραστάσεις και θέατρα, δείτε στατιστικά και συγκρίνετε χρονικές περιόδους ή βρείτε μια παράσταση στην περιοχή σας!" />
             </Head>
             <div className={classes.wrapper}>
                 <div className={classes.container}>
@@ -79,14 +85,14 @@ function Home({ artists, latestShows, articles }) {
                         <Typography variant="body2">Αναζητήστε καλλιτέχνες, παραστάσεις και θέατρα, δείτε στατιστικά και συγκρίνετε χρονικές περιόδους ή βρείτε μια παράσταση στην περιοχή σας!</Typography>
                         <form onSubmit={handleSubmit}>
                             <div className={classes.searchInput}>
-                            <SearchIcon />
-                            <InputBase
-                                type="text"
-                                placeholder="Αναζήτηση..."
-                                value={searchValue}
-                                onChange={handleChange}/>
+                                <SearchIcon />
+                                <InputBase
+                                    type="text"
+                                    placeholder="Αναζήτηση..."
+                                    value={searchValue}
+                                    onChange={handleChange} />
                             </div>
-                            
+
                         </form>
                     </div>
                     <section>
@@ -112,7 +118,9 @@ function Home({ artists, latestShows, articles }) {
                                     fullName={artist.fullName}
                                     image={artist.image}
                                     key={index}
-                                    delay={index} />)}
+                                    delay={index}
+                                />
+                            )}
                         </ContentSlider>
                     </section>
                     <Hidden smDown>

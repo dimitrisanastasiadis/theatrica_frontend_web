@@ -84,21 +84,6 @@ const ResultsPage = () => {
                 </Index>
               </div>
             }
-            {(!router.query.sm || router.query.sm === "p") &&
-              <div className={classes.hitsContainer}>
-                <Index indexName="Productions">
-                  <CustomHits path="shows" title="Παραστάσεις" />
-                  {
-                    productionsHits > 5 && !router.query.sm &&
-                    <Link href={`/results?search_query=${router.query.search_query}&sm=p`}>
-                      <a className={classes.linkMore}>
-                        <Typography variant="body2">Περισσότερα Αποτελέσματα Παραστάσεων</Typography>
-                      </a>
-                    </Link>
-                  }
-                </Index>
-              </div>
-            }
             {(!router.query.sm || router.query.sm === "v") &&
               <div className={classes.hitsContainer}>
                 <Index indexName="Venues">
@@ -108,6 +93,21 @@ const ResultsPage = () => {
                     <Link href={`/results?search_query=${router.query.search_query}&sm=v`}>
                       <a className={classes.linkMore}>
                         <Typography variant="body2">Περισσότερα Αποτελέσματα Θεατρικών Χώρων</Typography>
+                      </a>
+                    </Link>
+                  }
+                </Index>
+              </div>
+            }
+            {(!router.query.sm || router.query.sm === "p") &&
+              <div className={classes.hitsContainer}>
+                <Index indexName="Productions">
+                  <CustomHits path="shows" title="Παραστάσεις" />
+                  {
+                    productionsHits > 5 && !router.query.sm &&
+                    <Link href={`/results?search_query=${router.query.search_query}&sm=p`}>
+                      <a className={classes.linkMore}>
+                        <Typography variant="body2">Περισσότερα Αποτελέσματα Παραστάσεων</Typography>
                       </a>
                     </Link>
                   }
@@ -167,23 +167,23 @@ const CustomStateResults = connectStateResults(({ allSearchResults, setArtistsHi
   const router = useRouter()
 
   useEffect(() => {
-    if (allSearchResults && allSearchResults.Artists) {
+    if (allSearchResults?.Artists) {
       setArtistsHits(allSearchResults.Artists.nbHits)
     }
-    if (allSearchResults && allSearchResults.Productions) {
+    if (allSearchResults?.Productions) {
       setProductionsHits(allSearchResults.Productions.nbHits)
     }
-    if (allSearchResults && allSearchResults.Venues) {
+    if (allSearchResults?.Venues) {
       setVenuesHits(allSearchResults.Venues.nbHits)
     }
   }, [allSearchResults, setArtistsHits, setProductionsHits, setVenuesHits])
 
   useEffect(() => {
-    if (router.query.sm === "a" && allSearchResults && allSearchResults.Artists)
+    if (router.query.sm === "a" && allSearchResults?.Artists)
       setTotalPages(allSearchResults.Artists.nbPages)
-    else if (router.query.sm === "p" && allSearchResults && allSearchResults.Productions)
+    else if (router.query.sm === "p" && allSearchResults?.Productions)
       setTotalPages(allSearchResults.Productions.nbPages)
-    else if (router.query.sm === "v" && allSearchResults && allSearchResults.Venues)
+    else if (router.query.sm === "v" && allSearchResults?.Venues)
       setTotalPages(allSearchResults.Venues.nbPages)
     else
       setTotalPages(0)

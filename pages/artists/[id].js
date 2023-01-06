@@ -18,9 +18,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const placeHolderBio = "Quisque tincidunt porta neque, vitae aliquet quam hendrerit id. Nulla facilisi. Sed hendrerit elit eu vulputate auctor. Mauris ac tincidunt dui. Suspendisse nec sagittis neque, et efficitur nisl. Proin molestie mollis tortor, id sodales risus. Phasellus mi ante, viverra vel euismod eget, vulputate vel libero. Curabitur sem tellus, posuere id est eu, auctor imperdiet mauris. Morbi euismod facilisis dolor, in vestibulum mauris mattis non. Donec sit amet tempor augue, a elementum nisl."
 
 export const getStaticPaths = async () => {
-  const artistIDs = [5555, 6846, 4770, 4791, 8158, 5047, 5233, 5428, 4691, 5192, 4962, 6643, 4659, 6104];
-  const paths = artistIDs.map(id => ({
-    params: { id: id.toString() }
+  const artists = await mainFetcher('/productions?page=0&size=10');
+
+  const paths = artists.content.map(artist => ({
+    params: { id: artist.id.toString() }
   }))
 
   return {
@@ -211,8 +212,6 @@ function ArtistDetails({ artist, productions, images }) {
                 </List>
               </Accordion>
             }
-
-
             {Object.entries(productionGroups.rest).map(([key, value], index) =>
               <Accordion square key={index} expanded={expanded === key} onChange={handleChange(key)}>
                 <AccordionSummary
@@ -263,7 +262,6 @@ function ArtistDetails({ artist, productions, images }) {
         </div>
       </div>
     </>
-
   )
 }
 

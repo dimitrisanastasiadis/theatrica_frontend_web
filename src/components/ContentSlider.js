@@ -76,7 +76,7 @@ function ContentSlider(props) {
                     ref={swiperRef}
                     slidesPerView={slidesPerView}
                     freeMode
-                    onProgress={(swiper, newProgress) => {setProgress(newProgress)}}>
+                    onProgress={(_swiper, newProgress) => {setProgress(newProgress)}}>
                         {props.children.map((child, index) =>
                             <SwiperSlide key={index} className={classes.slide}>{child}</SwiperSlide>
                         )}

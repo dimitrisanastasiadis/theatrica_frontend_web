@@ -564,7 +564,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                     <BarChart
                       onClick={handleBarClick}
                       margin={{ top: 50, right: 20, bottom: 60, left: 20 }}
-                      data={eventsByVenue.slice(0, 5)}
+                      data={eventsByVenue}
                       layout="vertical"
                       style={{ cursor: "pointer" }}>
                       <XAxis type="number" label={{ value: "Παραστάσεις", position: "bottom", fill: "#666" }} />

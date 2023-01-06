@@ -10,7 +10,7 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import Head from "next/head"
 
 export const getStaticPaths = async () => {
-  const venueIDs = [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93];
+  const venueIDs = [];
   const paths = venueIDs.map(id => ({
     params: { id: id.toString() }
   }))
@@ -48,6 +48,7 @@ export const getStaticProps = async ({ params }) => {
 const useStyles = makeStyles(style);
 
 function VenueDetails({ venue, productions, location }) {
+  console.log(location)
   const classes = useStyles();
   const router = useRouter();
 
@@ -91,7 +92,7 @@ function VenueDetails({ venue, productions, location }) {
                 <ShowCard
                   id={item.id}
                   title={item.title}
-                  media={item.image}
+                  media={item.mediaURL}
                   key={item.id}
                 />
               )}
@@ -106,8 +107,10 @@ function VenueDetails({ venue, productions, location }) {
                 style={{ border: 0 }}
                 loading="lazy"
                 allowFullScreen
-                src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_MAPS_EMBED_API}&q=place_id:${location.place_id}`}></iframe>
-            </section>}
+                src={`https://www.google.com/maps/embed/v1/place?q=place_id:${location.place_id}&key=${process.env.NEXT_PUBLIC_MAPS_EMBED_API}`}  
+              />
+            </section>
+          }
           <section>
             <Typography variant="h3" className={classes.sectionTitle}>Επικοινωνία</Typography>
             <div className={classes.socialContainer}>

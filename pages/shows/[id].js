@@ -25,7 +25,7 @@ import Head from "next/head"
 
 export const getStaticPaths = async () => {
 
-  const latestShows = await mainFetcher(`/productions/latest?page=0&size=10`)
+  const latestShows = await mainFetcher(`/productions?page=0&size=10`)
 
   const paths = latestShows.content.map(show => ({
     params: { id: show.id.toString() }

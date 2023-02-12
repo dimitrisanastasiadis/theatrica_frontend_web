@@ -1,11 +1,10 @@
 const homeStyle = theme => ({
     heroSection: {
-        minHeight: `calc(100vh - 128px)`,
+        minHeight: `calc(100vh - 64px)`,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         gap: 10,
-        marginBottom: 64,
         "&>p": {
             fontSize: "1.3em",
             maxWidth: 600
@@ -78,6 +77,9 @@ const homeStyle = theme => ({
         [theme.breakpoints.up("md")]: {
             padding: 0
         }
+    },
+    scrollPromptContainer: {
+        marginTop: "auto",
     }
 })
 

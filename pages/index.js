@@ -12,6 +12,7 @@ import { newsFetcher } from "../src/utils/AxiosInstances"
 import { useState } from "react"
 import SearchIcon from "@material-ui/icons/Search"
 import { useRouter } from "next/router"
+import ScrollPrompt from "../src/components/ScrollPrompt"
 
 export const getStaticProps = async () => {
   cloudinary.config({
@@ -81,7 +82,7 @@ function Home({ artists, latestShows, articles }) {
       <div className={classes.wrapper}>
         <div className={classes.container}>
           <div className={classes.heroSection}>
-            <Typography variant="h1">Theatrica</Typography>
+            <Typography variant="h1" style={{ marginTop: "auto" }}>Theatrica</Typography>
             <Typography variant="body2">Αναζητήστε καλλιτέχνες, παραστάσεις και θέατρα, δείτε στατιστικά και συγκρίνετε χρονικές περιόδους ή βρείτε μια παράσταση στην περιοχή σας!</Typography>
             <form onSubmit={handleSubmit}>
               <div className={classes.searchInput}>
@@ -92,8 +93,10 @@ function Home({ artists, latestShows, articles }) {
                   value={searchValue}
                   onChange={handleChange} />
               </div>
-
             </form>
+            <div className={classes.scrollPromptContainer}>
+              <ScrollPrompt />
+            </div>
           </div>
           <section>
             <Typography className={classes.headingPadding} variant="h3" component="h2">Νεότερες Ειδήσεις</Typography>

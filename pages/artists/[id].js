@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { makeStyles, Avatar, Typography, List, ListItem, ListItemText, Divider, IconButton, useMediaQuery } from "@material-ui/core"
+import { makeStyles, Avatar, Typography, List, ListItem, ListItemText, Divider, IconButton, useMediaQuery, useTheme } from "@material-ui/core"
 import style from "../../src/assets/jss/layouts/artistDetailsStyle"
 import LoadingScene from "../../src/components/LoadingScene";
 import { useRouter } from "next/router"
@@ -14,8 +14,11 @@ import Head from "next/head";
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LabelList } from 'recharts';
 
 const placeHolderBio = "Quisque tincidunt porta neque, vitae aliquet quam hendrerit id. Nulla facilisi. Sed hendrerit elit eu vulputate auctor. Mauris ac tincidunt dui. Suspendisse nec sagittis neque, et efficitur nisl. Proin molestie mollis tortor, id sodales risus. Phasellus mi ante, viverra vel euismod eget, vulputate vel libero. Curabitur sem tellus, posuere id est eu, auctor imperdiet mauris. Morbi euismod facilisis dolor, in vestibulum mauris mattis non. Donec sit amet tempor augue, a elementum nisl."
+
+const COLORS = ['#71FFFA', '#fff642', '#ed66ff', '#91ff55', '#fd2155', '#fff9f9'];
 
 export const getStaticPaths = async () => {
   const artists = await mainFetcher('/productions?page=0&size=10');
@@ -75,36 +78,61 @@ export const getStaticProps = async ({ params }) => {
         }
       })
     }
-
   }
 
+  const getProductionsByRole = (productions) => {
+    let productionGroups = {};
+  
+    if (productions) {
+      productionGroups = productions.content.reduce((r, a) => {
+        r[a.role] = [...r[a.role] || [], a];
+        return r;
+      }, {});
+    }
+  
+    const { 
+      "Ηθοποιός": actorsTemp, 
+      "Ηθοποιοί": actorsTemp2, 
+      "Παίζουν": actorsTemp3, 
+      "Ερμηνεύουν": actorsTemp4,
+      "Παίζουν οι": actorsTemp5,
+      "Παίζουν αλφαβητικά": actorsTemp6,
+      ...rest 
+    } = productionGroups;
+  
+    const acting = [...actorsTemp || [], ...actorsTemp2 || [], ...actorsTemp3 || [], ...actorsTemp4 || [], ...actorsTemp5 || [], ...actorsTemp6 || []];
+  
+    return { acting, rest };
+  }
+
+  const getProductionsByRoleStats = (productionGroups) => {
+    const productionsByRoleObject = { Ηθοποιός: productionGroups.acting, ...productionGroups.rest }
+    const productionsByRoleArray = Object.keys(productionsByRoleObject).map(productionKey => ({
+      name: productionKey,
+      value: productionsByRoleObject[productionKey].length
+    }))
+    return productionsByRoleArray
+  };
+
+  const productionGroups = getProductionsByRole(productions)
+  const productionsByRole = getProductionsByRoleStats(productionGroups)
+
   return {
-    props: { artist, productions, images },
+    props: { 
+      artist, 
+      productionGroups,
+      productionsByRole, 
+      images 
+    },
     revalidate: 900
   }
 }
 
 const useStyles = makeStyles(style);
 
-const getProductionsByRole = (productions) => {
-  let productionGroups = {};
-
-  if (productions) {
-    productionGroups = productions.content.reduce((r, a) => {
-      r[a.role] = [...r[a.role] || [], a];
-      return r;
-    }, {});
-  }
-
-  const { "Ηθοποιός": actorsTemp, "Ηθοποιοί": actorsTemp2, "Παίζουν": actorsTemp3, "Ερμηνεύουν": actorsTemp4, ...rest } = productionGroups;
-
-  const acting = [...actorsTemp || [], ...actorsTemp2 || [], ...actorsTemp3 || [], ...actorsTemp4 || []];
-
-  return { acting, rest };
-}
-
-function ArtistDetails({ artist, productions, images }) {
+function ArtistDetails({ artist, productionGroups, productionsByRole, images }) {
   const router = useRouter();
+  const theme = useTheme();
 
   const classes = useStyles();
   const mdDown = useMediaQuery("(max-width:960px)");
@@ -114,10 +142,6 @@ function ArtistDetails({ artist, productions, images }) {
   const [expanded, setExpanded] = useState(false);
 
   const { isFavorite, setIsFavorite } = useFavoriteArtist(artist && artist.id);
-
-  const productionGroups = useMemo(() => {
-    return getProductionsByRole(productions)
-  }, [productions])
 
   const stringBirthday = useMemo(() => {
     if (artist && artist.birthday) {
@@ -188,7 +212,7 @@ function ArtistDetails({ artist, productions, images }) {
             </div>
           </section>
           <section>
-            <Typography variant="h4" component="h3" className={classes.sectionTitle} style={{marginBottom: 20}}>Παραστάσεις</Typography>
+            <Typography variant="h4" component="h3" className={classes.sectionTitle} style={{ marginBottom: 20 }}>Παραστάσεις</Typography>
             {productionGroups.acting.length > 0 &&
               <Accordion square expanded={expanded === 'acting'} onChange={handleChange('acting')}>
                 <AccordionSummary
@@ -235,6 +259,25 @@ function ArtistDetails({ artist, productions, images }) {
                 </List>
               </Accordion>
             )}
+          </section>
+          <section>
+            <Typography variant="h4" component="h2" className={classes.sectionTitle}>Στατιστικά</Typography>
+            <ResponsiveContainer width="100%" height={400}>
+              <PieChart>
+                <Pie
+                  data={productionsByRole}
+                  dataKey="value"
+                >
+                  {productionsByRole.map((prod, index) =>
+                    <Cell key={prod.name} fill={COLORS[index]} stroke={theme.palette.background.default} strokeWidth={2} />
+                  )}
+                  <Cell fill="#fd2155" stroke={theme.palette.background.default} strokeWidth={2} />
+                  <LabelList dataKey="value" strokeWidth={0} fill="#000" />
+                </Pie>
+                <Tooltip contentStyle={{ backgroundColor: "#373737", border: 0 }} itemStyle={{ color: "#fff" }} formatter={value => `${value} παραγωγές`} />
+                <Legend verticalAlign="top" wrapperStyle={{ bottom: 0 }} />
+              </PieChart>
+            </ResponsiveContainer>
           </section>
           <section>
             <Typography variant="h4" component="h2" className={classes.sectionTitle}>Social</Typography>

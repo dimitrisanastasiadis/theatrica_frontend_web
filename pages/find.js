@@ -54,8 +54,7 @@ export const getServerSideProps = async ({ query }) => {
 
   if (query.dateStart) {
     const dateStart = new Date(query.dateStart)
-    console.log(dateStart)
-
+    
     if (query.dateEnd) {
       const dateEnd = new Date(query.dateEnd)
       dateEnd.setUTCHours(23, 59, 59, 999)

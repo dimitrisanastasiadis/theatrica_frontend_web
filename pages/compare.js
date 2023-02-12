@@ -17,8 +17,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Pi
 import getDayOfYear from 'date-fns/getDayOfYear'
 import parsePrice from "parse-price"
 import Head from "next/head"
-
-const months = ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"]
+import { months } from "../src/utils/constants"
 
 const useStyles = makeStyles(style);
 

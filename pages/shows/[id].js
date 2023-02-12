@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { makeStyles, Typography, Tab, Tabs, Table, TableBody, TableRow, TableCell, IconButton } from "@material-ui/core"
+import { makeStyles, Typography, Tab, Tabs, Table, TableBody, TableRow, TableCell, IconButton, useTheme } from "@material-ui/core"
 import style from "../../src/assets/jss/layouts/showDetailsStyle"
 import he from "he"
 import ItemsList from "../../src/components/ItemsList"
@@ -21,6 +21,7 @@ import ReactPlayer from "react-player/youtube"
 import Link from "next/link"
 import MediaViewer from "../../src/components/MediaViewer"
 import Head from "next/head"
+import { XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, LabelList } from 'recharts';
 
 export const getStaticPaths = async () => {
 
@@ -45,13 +46,13 @@ export const getStaticProps = async ({ params }) => {
       notFound: true
     }
   }
-  
+
   const people = await mainFetcher(`/productions/${params.id}/people`) ?? []
   const events = await mainFetcher(`/productions/${params.id}/events`) ?? []
 
   const media = getShowImage(show.mediaURL)
 
-  const { pastEvents, upcomingEvents, range } = getShowEvents(events)
+  const { pastEvents, upcomingEvents, eventsByMonth, eventsByStartTime, range } = getShowEvents(events)
 
   const images = [
     "https://image.tmdb.org/t/p/w300/bjYL6zFdE6R4ycMRzCueFwy1xhn.jpg",
@@ -63,7 +64,17 @@ export const getStaticProps = async ({ params }) => {
   ]
 
   return {
-    props: { show, people, pastEvents, upcomingEvents, range, media, images },
+    props: {
+      show,
+      people,
+      pastEvents,
+      upcomingEvents,
+      range,
+      media,
+      images,
+      eventsByMonth,
+      eventsByStartTime
+    },
     revalidate: 900
   }
 }
@@ -74,7 +85,7 @@ function TabPanel(props) {
   return (
     <div
       hidden={props.value !== props.index}
-      {... props}>
+      {...props}>
       {props.value === props.index &&
         props.children}
     </div>
@@ -84,21 +95,22 @@ function TabPanel(props) {
 const getArtistsByRole = (people) => {
   let actors, crew;
 
-  if (people){
+  if (people) {
     let artistGroups = people.reduce((r, a) => {
       r[a.role] = [...r[a.role] || [], a];
       return r;
-      }, {});
-    const {"Ηθοποιός": actorsTemp, "Ηθοποιοί": actorsTemp2, "Παίζουν": actorsTemp3, "Ερμηνεύουν": actorsTemp4, ...crewTemp} = artistGroups;
+    }, {});
+    const { "Ηθοποιός": actorsTemp, "Ηθοποιοί": actorsTemp2, "Παίζουν": actorsTemp3, "Ερμηνεύουν": actorsTemp4, ...crewTemp } = artistGroups;
     actors = [...actorsTemp || [], ...actorsTemp2 || [], ...actorsTemp3 || [], ...actorsTemp4 || []];
     crew = crewTemp;
   }
 
-  return {actors, crew}
+  return { actors, crew }
 }
 
-function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, images }) {
+function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, images, eventsByMonth, eventsByStartTime }) {
   const classes = useStyles();
+  const theme = useTheme();
   const [tabValue, setTabValue] = useState(0);
   const router = useRouter();
 
@@ -118,7 +130,7 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
     return getArtistsByRole(people)
   }, [people])
 
-  if(router.isFallback){
+  if (router.isFallback) {
     return <LoadingScene fullScreen />
   }
 
@@ -126,9 +138,9 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
-  } 
+  }
 
-  if (show.description){
+  if (show.description) {
     description = show.description.split("\n");
   }
 
@@ -140,7 +152,7 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
     setInWatchlist(prev => !prev);
   }
 
-  const handleImageClick = event => {    
+  const handleImageClick = event => {
     setMediaIndex(Number(event.currentTarget.getAttribute('index')))
     setMediaViewerOpen(true);
   }
@@ -151,57 +163,57 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
         <title>{show.title} | Theatrica</title>
       </Head>
       <div className="pageWrapper">
-          <div className={`pageContent ${classes.overview}`}>
-            <div className={classes.titleActions}>
-              <Typography variant="h2" component="h1">{show.title}</Typography>
-              <div className={classes.actionIcons}>
-                <IconButton size="small" className={classes.button} onClick={handleWatchlist}>
-                  {inWatchlist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}
-                </IconButton>
-                <IconButton size="small" className={classes.button} onClick={handleFavorite}>
-                  {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                </IconButton>
+        <div className={`pageContent ${classes.overview}`}>
+          <div className={classes.titleActions}>
+            <Typography variant="h2" component="h1">{show.title}</Typography>
+            <div className={classes.actionIcons}>
+              <IconButton size="small" className={classes.button} onClick={handleWatchlist}>
+                {inWatchlist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}
+              </IconButton>
+              <IconButton size="small" className={classes.button} onClick={handleFavorite}>
+                {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+              </IconButton>
+            </div>
+          </div>
+          <div className={classes.meta}>
+            {range &&
+              <Typography variant="body2">{range}</Typography>
+            }
+            <Typography variant="body2" className="dotSeparator">2 ώρες 30 λεπτά</Typography>
+          </div>
+          <div className={classes.mediaContainer}>
+            {(!hasTrailer) ?
+              <div className={classes.imageNoTrailer}>
+                <Image src={media ? media : "/DefaultShowImage.jpg"} alt={show.title} className={classes.image} layout="fill" objectFit="contain" />
               </div>
-            </div>
-            <div className={classes.meta}>
-              {range &&
-                <Typography variant="body2">{range}</Typography>
-              }
-              <Typography variant="body2" className="dotSeparator">2 ώρες 30 λεπτά</Typography>
-            </div>
-            <div className={classes.mediaContainer}>
-              {(!hasTrailer) ?
-                <div className={classes.imageNoTrailer}>
-                  <Image src={media ? media : "/DefaultShowImage.jpg"} alt={show.title} className={classes.image} layout="fill" objectFit="contain" />
+              :
+              <>
+                <div className={classes.imageTrailer}>
+                  <Image src={media ? media : "/DefaultShowImage.jpg"} alt={show.title} className={classes.image} layout="fill" objectFit="cover" />
                 </div>
-              : 
-                <>
-                  <div className={classes.imageTrailer}>
-                    <Image src={media ? media : "/DefaultShowImage.jpg"} alt={show.title} className={classes.image} layout="fill" objectFit="cover" />
-                  </div>
-                  <AspectRatioSizer widthRatio={16} heightRatio={9}>
-                      <ReactPlayer 
-                          url={show.mediaURL}
-                          controls
-                          width="100%"
-                          height="100%"
-                      />
-                  </AspectRatioSizer>
-                </>
-              }
-            </div>
-            {people.length !== 0 &&
-              <div className={classes.crewContainer}>
+                <AspectRatioSizer widthRatio={16} heightRatio={9}>
+                  <ReactPlayer
+                    url={show.mediaURL}
+                    controls
+                    width="100%"
+                    height="100%"
+                  />
+                </AspectRatioSizer>
+              </>
+            }
+          </div>
+          {people.length !== 0 &&
+            <div className={classes.crewContainer}>
               {artists.crew[Object.keys(artists.crew)[0]] &&
                 <div className={classes.crewCategory}>
                   <Typography variant="body1" className={classes.crewCategoryTitle}>{Object.keys(artists.crew)[0]}</Typography>
-                  {artists.crew[Object.keys(artists.crew)[0]].map((artist, index) => 
+                  {artists.crew[Object.keys(artists.crew)[0]].map((artist, index) =>
                     <Link key={index} href={`/artists/${artist.id}`}>
                       <a className={classes.link}>
-                        <Typography 
+                        <Typography
                           variant="body1"
-                          className={(index>0) ? "dotSeparator" : ""}>
-                            {artist.fullName}
+                          className={(index > 0) ? "dotSeparator" : ""}>
+                          {artist.fullName}
                         </Typography>
                       </a>
                     </Link>
@@ -211,13 +223,13 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
               {artists.crew[Object.keys(artists.crew)[1]] &&
                 <div className={classes.crewCategory}>
                   <Typography variant="body1" className={classes.crewCategoryTitle}>{Object.keys(artists.crew)[1]}</Typography>
-                  {artists.crew[Object.keys(artists.crew)[1]].map((artist, index) => 
+                  {artists.crew[Object.keys(artists.crew)[1]].map((artist, index) =>
                     <Link key={index} href={`/artists/${artist.id}`}>
                       <a className={classes.link}>
-                        <Typography 
+                        <Typography
                           variant="body1"
-                          className={(index>0) ? "dotSeparator" : ""}>
-                            {artist.fullName}
+                          className={(index > 0) ? "dotSeparator" : ""}>
+                          {artist.fullName}
                         </Typography>
                       </a>
                     </Link>
@@ -225,179 +237,236 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
                 </div>
               }
               {
-                artists.actors && 
-                  <div className={classes.crewCategory}>
-                    <Typography variant="body1" className={classes.crewCategoryTitle}>Ερμηνεύουν</Typography>
-                    {artists.actors.slice(0, 3).map((artist, index) => 
-                      <Link key={index} href={`/artists/${artist.id}`}>
-                        <a className={classes.link}>
-                          <Typography 
-                            variant="body1"
-                            className={(index>0) ? "dotSeparator" : ""}>
-                              {artist.fullName}
-                          </Typography>
-                        </a>
-                      </Link>
-                    )}
-                  </div>
-              }
-              </div>
-            }
-          </div>
-          <div className={classes.detailsBackground}>
-            <div className={classes.details}>
-                <div className={classes.tabsWrapper}>
-                  <Tabs 
-                    className={classes.tabs}
-                    value={tabValue}
-                    onChange={handleTabChange}
-                    variant="scrollable"
-                    scrollButtons="auto"
-                    TabIndicatorProps={{
-                      style:{display: "none"}
-                    }}>
-                    <Tab 
-                      classes={{
-                        wrapper: clsx(classes.tab, {
-                          [classes.tabActive]: tabValue===0
-                        })}} 
-                      label="Περιγραφή" 
-                      disableTouchRipple
-                    />
-                    <Tab 
-                      classes={{
-                        wrapper: clsx(classes.tab, {
-                          [classes.tabActive]: tabValue===1
-                        })}} 
-                      label="Φωτογραφίες" 
-                      disableTouchRipple
-                    />
-                    <Tab 
-                      classes={{
-                        wrapper: clsx(classes.tab, {
-                          [classes.tabActive]: tabValue===2
-                        })}} 
-                      label="Συντελεστές" 
-                      disableTouchRipple
-                    />
-                    <Tab 
-                      classes={{
-                        wrapper: clsx(classes.tab, {
-                          [classes.tabActive]: tabValue===3
-                        })}} 
-                      label="Εκδηλώσεις" 
-                      disableTouchRipple
-                    />
-                  </Tabs>
+                artists.actors &&
+                <div className={classes.crewCategory}>
+                  <Typography variant="body1" className={classes.crewCategoryTitle}>Ερμηνεύουν</Typography>
+                  {artists.actors.slice(0, 3).map((artist, index) =>
+                    <Link key={index} href={`/artists/${artist.id}`}>
+                      <a className={classes.link}>
+                        <Typography
+                          variant="body1"
+                          className={(index > 0) ? "dotSeparator" : ""}>
+                          {artist.fullName}
+                        </Typography>
+                      </a>
+                    </Link>
+                  )}
                 </div>
-                <TabPanel value={tabValue} index={0} className={classes.tabPanel}>
-                  {show.description &&
-                    description.map((sentence, index) => 
-                      <Typography key={index} paragraph variant="body1" style={{wordWrap: "break-word"}}>{he.decode(sentence)} </Typography>
+              }
+            </div>
+          }
+        </div>
+        <div className={classes.detailsBackground}>
+          <div className={classes.details}>
+            <div className={classes.tabsWrapper}>
+              <Tabs
+                className={classes.tabs}
+                value={tabValue}
+                onChange={handleTabChange}
+                variant="scrollable"
+                scrollButtons="auto"
+                TabIndicatorProps={{
+                  style: { display: "none" }
+                }}>
+                <Tab
+                  classes={{
+                    wrapper: clsx(classes.tab, {
+                      [classes.tabActive]: tabValue === 0
+                    })
+                  }}
+                  label="Περιγραφή"
+                  disableTouchRipple
+                />
+                <Tab
+                  classes={{
+                    wrapper: clsx(classes.tab, {
+                      [classes.tabActive]: tabValue === 1
+                    })
+                  }}
+                  label="Φωτογραφίες"
+                  disableTouchRipple
+                />
+                <Tab
+                  classes={{
+                    wrapper: clsx(classes.tab, {
+                      [classes.tabActive]: tabValue === 2
+                    })
+                  }}
+                  label="Συντελεστές"
+                  disableTouchRipple
+                />
+                <Tab
+                  classes={{
+                    wrapper: clsx(classes.tab, {
+                      [classes.tabActive]: tabValue === 3
+                    })
+                  }}
+                  label="Εκδηλώσεις"
+                  disableTouchRipple
+                />
+              </Tabs>
+            </div>
+            <TabPanel value={tabValue} index={0} className={classes.tabPanel}>
+              {show.description &&
+                description.map((sentence, index) =>
+                  <Typography key={index} paragraph variant="body1" style={{ wordWrap: "break-word" }}>{he.decode(sentence)} </Typography>
+                )
+              }
+            </TabPanel>
+            <TabPanel value={tabValue} index={1} className={classes.photoTab}>
+              {mediaViewerOpen && <MediaViewer media={images} currentImage={mediaIndex} setVisibility={setMediaViewerOpen} />}
+              <div className={classes.photoFlexContainer}>
+                {images.map((url, index) =>
+                  <div key={index} index={index} className={classes.photograph} onClick={handleImageClick}>
+                    <Image src={url} alt="Play Photograph" layout="fill" objectFit="cover" />
+                  </div>
+                )}
+              </div>
+            </TabPanel>
+            <TabPanel value={tabValue} index={2} className={classes.tabPanel}>
+              {
+                artists.actors &&
+                <ItemsList items={artists.actors} title={false} type="/artists" />
+              }
+              {
+                Object.keys(artists.crew).length !== 0 &&
+                <div className={classes.crewContainer}>
+                  {
+                    Object.entries(artists.crew).map(([category, artists], index) =>
+                      <div key={index} className={classes.crewCategory}>
+                        <Typography variant="body1" className={classes.crewCategoryTitle}>{category}</Typography>
+                        {artists.map((artist, index) =>
+                          <Link key={index} href={`/artists/${artist.id}`}>
+                            <a className={classes.link}>
+                              <Typography
+                                variant="body1"
+                                className={(index > 0) ? "dotSeparator" : ""}>
+                                {artist.fullName}
+                              </Typography>
+                            </a>
+                          </Link>
+                        )}
+                      </div>
                     )
                   }
-                </TabPanel>
-                <TabPanel value={tabValue} index={1} className={classes.photoTab}>
-                  {mediaViewerOpen && <MediaViewer media={images} currentImage={mediaIndex} setVisibility={setMediaViewerOpen} />}
-                  <div className={classes.photoFlexContainer}>
-                    {images.map((url, index) => 
-                      <div key={index} index={index} className={classes.photograph} onClick={handleImageClick}>
-                          <Image src={url} alt="Play Photograph" layout="fill" objectFit="cover" />
+                </div>
+              }
+            </TabPanel>
+            <TabPanel value={tabValue} index={3} className={classes.tabPanel}>
+              {!!(eventsByMonth.length || eventsByStartTime.length) &&
+                <>
+                  <Typography variant="h4" className={classes.titleDecoration}>Στατιστικά</Typography>
+                  <div className={classes.flexChartContainer}>
+                    {!!eventsByMonth.length &&
+                      <div className={classes.chartContainer}>
+                        <Typography variant="h5" componet="h3" align="center">Παραστάσεις ανά Μήνα</Typography>
+                        <ResponsiveContainer width="100%" height={400}>
+                          <BarChart
+                            data={eventsByMonth}
+                            margin={{
+                              top: 50,
+                              right: 5,
+                              left: 25,
+                              bottom: 25,
+                            }}
+                          >
+                            <XAxis dataKey="monthYear" />
+                            <YAxis width={1} />
+                            <Tooltip cursor={{ fillOpacity: 0.35 }} contentStyle={{ backgroundColor: "#373737", border: 0 }} itemStyle={{ color: "#fff" }} />
+                            <Bar name="Παραστάσεις" dataKey="numberOfShows" fill={theme.palette.secondary.main}>
+                              <LabelList dataKey="numberOfShows" position="inside" />
+                            </Bar>
+                          </BarChart>
+                        </ResponsiveContainer>
                       </div>
-                    )}
+                    }
+                    {!!eventsByStartTime.length &&
+                      <div className={classes.chartContainer}>
+                        <Typography variant="h5" componet="h3" align="center">Παραστάσεις ανά Ώρα Έναρξης</Typography>
+                        <ResponsiveContainer width="100%" height={400}>
+                          <BarChart
+                            data={eventsByStartTime}
+                            margin={{
+                              top: 50,
+                              right: 5,
+                              left: 25,
+                              bottom: 25,
+                            }}
+                          >
+                            <XAxis dataKey="time" />
+                            <YAxis width={1} />
+                            <Tooltip cursor={{ fillOpacity: 0.35 }} contentStyle={{ backgroundColor: "#373737", border: 0 }} itemStyle={{ color: "#fff" }} />
+                            <Bar name="Παραστάσεις" dataKey="numberOfShows" fill={theme.palette.secondary.main}>
+                              <LabelList dataKey="numberOfShows" position="inside" />
+                            </Bar>
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    }
                   </div>
-                </TabPanel>
-                <TabPanel value={tabValue} index={2} className={classes.tabPanel}>
-                  {
-                    artists.actors &&
-                      <ItemsList items={artists.actors} title={false} type="/artists"/>
+                </>
+              }
+              <Typography variant="h4" component="h2" className={classes.titleDecoration}>Προσεχώς</Typography>
+              <Table className={`${classes.table} ${classes.tableMargin}`} >
+                <TableBody>
+                  {upcomingEvents.length ? upcomingEvents.map((event, index) =>
+                    <TableRow key={index} className={classes.tableRow}>
+                      <TableCell className={classes.tableCell}>
+                        <Typography>{event.stringDate}</Typography>
+                        <Typography>{event.time}</Typography>
+                      </TableCell>
+                      <TableCell className={classes.tableCell}>
+                        <Link href={`/venues/${event.venueId}`}>
+                          <a className={classes.link}>
+                            <Typography>{event.title}</Typography>
+                          </a>
+                        </Link>
+                      </TableCell>
+                      <TableCell className={classes.tableCell}>
+                        <Typography>{event.priceRange}</Typography>
+                      </TableCell>
+                    </TableRow>
+                  ) : <TableRow className={classes.tableRow}>
+                    <TableCell className={classes.tableCell}>
+                      <Typography>Δεν υπάρχουν εκδηλώσεις</Typography>
+                    </TableCell>
+                  </TableRow>}
+                </TableBody>
+              </Table>
+              <Typography variant="h4" component="h2" className={classes.titleDecoration}>Ιστορικό Εκδηλώσεων</Typography>
+              <Table className={classes.table}>
+                <TableBody>
+                  {pastEvents.length ? pastEvents.map((event, index) =>
+                    <TableRow key={index} className={classes.tableRow}>
+                      <TableCell className={classes.tableCell}>
+                        <Typography>{event.stringDate}</Typography>
+                        <Typography>{event.time}</Typography>
+                      </TableCell>
+                      <TableCell className={classes.tableCell}>
+                        <Link href={`/venues/${event.venueId}`}>
+                          <a className={classes.link}>
+                            <Typography>{event.title}</Typography>
+                          </a>
+                        </Link>
+                      </TableCell>
+                      <TableCell className={classes.tableCell}>
+                        <Typography>{event.priceRange}</Typography>
+                      </TableCell>
+                    </TableRow>
+                  ) : <TableRow className={classes.tableRow}>
+                    <TableCell className={classes.tableCell}>
+                      <Typography>Δεν υπάρχουν εκδηλώσεις</Typography>
+                    </TableCell>
+                  </TableRow>
                   }
-                  {
-                    Object.keys(artists.crew).length !== 0 &&
-                      <div className={classes.crewContainer}>
-                        {
-                          Object.entries(artists.crew).map(([category, artists], index) => 
-                            <div key={index} className={classes.crewCategory}>
-                              <Typography variant="body1" className={classes.crewCategoryTitle}>{category}</Typography>
-                              {artists.map((artist, index) => 
-                                <Link key={index} href={`/artists/${artist.id}`}>
-                                  <a className={classes.link}>
-                                    <Typography 
-                                      variant="body1"
-                                      className={(index>0) ? "dotSeparator" : ""}>
-                                        {artist.fullName}
-                                    </Typography>
-                                  </a>
-                                </Link>
-                              )}
-                            </div>
-                          )
-                        }
-                      </div>
-                  }
-                </TabPanel>
-                <TabPanel value={tabValue} index={3} className={classes.tabPanel}>
-                  <Typography variant="h4" className={classes.titleDecoration}>Προσεχώς</Typography>
-                  <Table className={`${classes.table} ${classes.tableMargin}`} >
-                    <TableBody>
-                      {upcomingEvents.length ? upcomingEvents.map((event, index) => 
-                        <TableRow key={index} className={classes.tableRow}>
-                          <TableCell className={classes.tableCell}>
-                            <Typography>{event.stringDate}</Typography>
-                            <Typography>{event.time}</Typography>
-                          </TableCell>
-                          <TableCell className={classes.tableCell}>
-                            <Link href={`/venues/${event.venueId}`}>
-                              <a className={classes.link}>
-                                <Typography>{event.title}</Typography>
-                              </a>
-                            </Link>
-                          </TableCell>
-                          <TableCell className={classes.tableCell}>
-                            <Typography>{event.priceRange}</Typography>
-                          </TableCell>
-                        </TableRow>
-                    ) : <TableRow className={classes.tableRow}>
-                          <TableCell className={classes.tableCell}>
-                            <Typography>Δεν υπάρχουν εκδηλώσεις</Typography>
-                          </TableCell>
-                        </TableRow>}
-                    </TableBody>
-                  </Table>
-                  <Typography variant="h4" className={classes.titleDecoration}>Ιστορικό Εκδηλώσεων</Typography>
-                  <Table className={classes.table}>
-                    <TableBody>
-                      {pastEvents.length ? pastEvents.map((event, index) => 
-                        <TableRow key={index} className={classes.tableRow}>
-                          <TableCell className={classes.tableCell}>
-                              <Typography>{event.stringDate}</Typography>
-                              <Typography>{event.time}</Typography>
-                          </TableCell>
-                          <TableCell className={classes.tableCell}>
-                            <Link href={`/venues/${event.venueId}`}>
-                              <a className={classes.link}>
-                                <Typography>{event.title}</Typography>
-                              </a>
-                            </Link>
-                          </TableCell>
-                          <TableCell className={classes.tableCell}>
-                              <Typography>{event.priceRange}</Typography>
-                          </TableCell>
-                        </TableRow>
-                    ) : <TableRow className={classes.tableRow}>
-                          <TableCell className={classes.tableCell}>
-                            <Typography>Δεν υπάρχουν εκδηλώσεις</Typography>
-                          </TableCell>
-                        </TableRow>
-                      }
-                    </TableBody>
-                  </Table>
-                </TabPanel>
-            </div>
+                </TableBody>
+              </Table>
+            </TabPanel>
           </div>
         </div>
+      </div>
     </>
-        
+
   )
 }
 

@@ -20,7 +20,7 @@ import format from 'date-fns/format'
 import Head from "next/head"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LoadingScene from "../../src/components/LoadingScene"
-
+import { months } from "../../src/utils/constants"
 
 const useStyles = makeStyles(style);
 
@@ -32,8 +32,6 @@ const calendarTheme = ({
     }
   }
 })
-
-const months = ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμριος", "Οκτώριος", "Νοέμβριος", "Δεκέμβριος"]
 
 export const getStaticPaths = async () => {
 

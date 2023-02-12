@@ -21,20 +21,20 @@ const showDetailsStyle = theme => ({
         marginTop: 2
     },
     mediaContainer: {
-        display: "flex", 
-        height: "40vw", 
+        display: "flex",
+        height: "40vw",
         marginTop: "2em",
         [theme.breakpoints.up("md")]: {
             maxHeight: 360,
         }
     },
     imageNoTrailer: {
-        width: "100%", 
+        width: "100%",
         position: "relative"
     },
     imageTrailer: {
-        width: "28%", 
-        position: "relative", 
+        width: "28%",
+        position: "relative",
         flexShrink: 0,
         marginRight: 20,
         [theme.breakpoints.down("sm")]: {
@@ -47,7 +47,7 @@ const showDetailsStyle = theme => ({
         flexDirection: "column"
     },
     crewCategory: {
-        display: "flex", 
+        display: "flex",
         flexWrap: "wrap",
         padding: "1em 0",
         borderBottom: `1px solid ${theme.palette.background.paper2}`,
@@ -154,7 +154,22 @@ const showDetailsStyle = theme => ({
     },
     tableCell: {
         borderBottom: `1px solid ${theme.palette.background.paper2}`
-    }
+    },
+    flexChartContainer: {
+        display: "flex",
+        marginTop: 50,
+        marginBottom: 50,
+        gap: 80,
+        flexWrap: "wrap",
+        justifyContent: "center"
+    },
+    chartContainer: {
+        width: "100%",
+        height: 430,
+        [theme.breakpoints.up(970)]: {
+            width: 400
+        }
+    },
 })
 
 export default showDetailsStyle;

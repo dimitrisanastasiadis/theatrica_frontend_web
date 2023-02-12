@@ -48,7 +48,6 @@ export const getStaticProps = async ({ params }) => {
 const useStyles = makeStyles(style);
 
 function VenueDetails({ venue, productions, location }) {
-  console.log(location)
   const classes = useStyles();
   const router = useRouter();
 

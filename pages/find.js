@@ -1,4 +1,4 @@
-import { makeStyles, Typography, TextField, Slider, Button, InputAdornment, Switch, FormControlLabel, Radio } from "@material-ui/core";
+import { makeStyles, Typography, TextField, Slider, Button, InputAdornment, Switch, FormControlLabel, Radio, ThemeProvider, useTheme } from "@material-ui/core";
 import style from "../src/assets/jss/layouts/findStyle"
 import { useReducer, useEffect, useState, useRef } from "react";
 import SearchIcon from '@material-ui/icons/Search';
@@ -11,6 +11,10 @@ import { mainFetcher } from "../src/utils/AxiosInstances"
 import EventsCard from "../src/components/EventsCard"
 import { Pagination } from '@material-ui/lab';
 import Head from "next/head"
+import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns"
+import grLocale from "date-fns/locale/el"
+import { DatePickerTheme } from "../src/assets/themes/DarkTheme";
 
 let sessionToken;
 const date = new Date();
@@ -25,8 +29,8 @@ const useStyles = makeStyles(style);
 
 const initialFormData = {
   address: '',
-  dateStart: date.toISOString().split('T')[0],
-  dateEnd: '',
+  dateStart: date,
+  dateEnd: null,
   maxDistance: 5
 }
 
@@ -50,6 +54,7 @@ export const getServerSideProps = async ({ query }) => {
 
   if (query.dateStart) {
     const dateStart = new Date(query.dateStart)
+    console.log(dateStart)
 
     if (query.dateEnd) {
       const dateEnd = new Date(query.dateEnd)
@@ -139,7 +144,7 @@ export const getServerSideProps = async ({ query }) => {
 
 const FindShow = ({ shows }) => {
   const classes = useStyles();
-
+  const theme = useTheme();
   const router = useRouter();
 
   const [autocompleteService, setAutocompleteService] = useState(null)
@@ -147,6 +152,7 @@ const FindShow = ({ shows }) => {
 
   const [checked, setChecked] = useState(true)
   const [radioState, setRadioState] = useState('a')
+  const [addressClicked, setAddressClicked] = useState(false)
 
   const [formData, dispatch] = useReducer(reducer, initialFormData)
   const [errorText, dispatchError] = useReducer(reducer, initialErrorData)
@@ -157,6 +163,11 @@ const FindShow = ({ shows }) => {
   const handleChange = (event) => {
     dispatch({ field: event.target.id, value: event.target.value })
     dispatchError({ field: event.target.id, value: "" })
+  }
+
+  const handleDateChange = (field, date) => {
+    dispatch({ field, value: date })
+    dispatchError({ field, value: "" })
   }
 
   const handleSliderChange = (_event, newValue) => {
@@ -180,9 +191,9 @@ const FindShow = ({ shows }) => {
     event.preventDefault();
     const query = '';
     if (validateForm()) {
-      query += `dateStart=${formData.dateStart}`
+      query += `dateStart=${formData.dateStart.toISOString().split("T")[0]}`
       if (radioState === 'b') {
-        query += `&dateEnd=${formData.dateEnd}`
+        query += `&dateEnd=${formData.dateEnd.toISOString().split("T")[0]}`
       }
       if (checked) {
         query += `&address=${formData.address}&maxDistance=${formData.maxDistance}`
@@ -228,14 +239,16 @@ const FindShow = ({ shows }) => {
   }, [autocompleteService, formData.address])
 
   return (
-    <>
+    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={grLocale}>
       <Head>
         <title>Εύρεση Παράστασης | Theatrica</title>
       </Head>
-      <Script 
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAPS_JAVASCRIPT_API}&libraries=places`} 
-        onLoad={() => handleScriptLoad(setAutocompleteService)} 
-      />
+      {addressClicked &&
+        <Script
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAPS_JAVASCRIPT_API}&libraries=places`}
+          onLoad={() => handleScriptLoad(setAutocompleteService)}
+        />
+      }
       <div className="pageWrapper">
         <div className="pageContent">
           <Typography variant="h3" component="h1" className={classes.underlineDecoration}>Βρες Μια Παράσταση</Typography>
@@ -263,35 +276,44 @@ const FindShow = ({ shows }) => {
                   label="Εύρος Ημερομηνιών"
                 />
               </div>
-              <div className={classes.formDates}>
-                <TextField color="secondary"
-                  id="dateStart"
-                  label={radioState === 'a' ? "Ημερομηνία" : "Από:"}
-                  type="date"
-                  value={formData.dateStart}
-                  error={errorText.dateStart ? true : false}
-                  helperText={errorText.dateStart}
-                  onChange={handleChange}
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-                <TextField color="secondary"
-                  id="dateEnd"
-                  label="Έως:"
-                  type="date"
-                  value={formData.dateEnd}
-                  error={(radioState === 'b') && errorText.dateEnd ? true : false}
-                  helperText={radioState === 'b' && errorText.dateEnd}
-                  onChange={handleChange}
-                  variant="outlined"
-                  disabled={radioState === 'a'}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-              </div>
+              <ThemeProvider theme={() => DatePickerTheme(theme.palette.secondary.main)}>
+                <div className={classes.formDates}>
+                  <div>
+                    {radioState === 'b' && <label className={classes.label} htmlFor="dateStart">Από:</label>}
+                    <div className={classes.datepicker}>
+                      <DatePicker
+                        label={radioState === 'a' ? "Ημερομηνία" : "Από:"}
+                        value={formData.dateStart}
+                        onChange={(date) => handleDateChange("dateStart", new Date(date))}
+                        error={errorText.dateStart ? true : false}
+                        helperText={errorText.dateStart}
+                        autoOk
+                        variant="static"
+                        openTo="date"
+                      />
+                    </div>
+
+                  </div>
+                  {radioState === 'b' &&
+                    <div>
+                      <label className={classes.label} htmlFor="dateEnd">Έως:</label>
+                      <div className={classes.datepicker}>
+                        <DatePicker
+                          id="dateEnd"
+                          label="Έως:"
+                          value={formData.dateEnd}
+                          onChange={(date) => handleDateChange("dateEnd", new Date(date))}
+                          error={(radioState === 'b') && errorText.dateEnd ? true : false}
+                          helperText={radioState === 'b' && errorText.dateEnd}
+                          variant="static"
+                          openTo="date"
+                        />
+                      </div>
+
+                    </div>
+                  }
+                </div>
+              </ThemeProvider>
             </div>
             <div className={classes.addressWrapper}>
               <FormControlLabel
@@ -308,6 +330,7 @@ const FindShow = ({ shows }) => {
                 freeSolo
                 id="address"
                 onChange={handlePlaceSelect}
+                onFocus={() => setAddressClicked(true)}
                 value={formData.address}
                 fullWidth
                 disabled={!checked}
@@ -366,18 +389,18 @@ const FindShow = ({ shows }) => {
               <div className={classes.resultsContainer}>
                 {shows.length > 0 ?
                   <>
-                  {shows.slice((page - 1) * 5, page * 5).map(show => 
-                    <EventsCard key={show.id} show={show} />
-                  )}
-                  {shows.length > 5 &&
-                    <Pagination 
-                        count={Math.ceil(shows.length / 5)} 
-                        page={page} 
+                    {shows.slice((page - 1) * 5, page * 5).map(show =>
+                      <EventsCard key={show.id} show={show} />
+                    )}
+                    {shows.length > 5 &&
+                      <Pagination
+                        count={Math.ceil(shows.length / 5)}
+                        page={page}
                         color="secondary"
-                        style={{alignSelf: "center"}}
+                        style={{ alignSelf: "center" }}
                         onChange={handlePagination}
-                    />
-                  }
+                      />
+                    }
                   </> :
                   <Typography variant="body1">Δεν βρέθηκαν παραστάσεις!</Typography>
                 }
@@ -386,7 +409,7 @@ const FindShow = ({ shows }) => {
           }
         </div>
       </div>
-    </>
+    </MuiPickersUtilsProvider>
   )
 }
 

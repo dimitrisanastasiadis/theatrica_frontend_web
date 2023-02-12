@@ -9,6 +9,15 @@ export const mainAxios = axios.create({
     baseURL: "http://195.251.123.174:8080/api"
 })
 
+mainAxios.interceptors.request.use((config) => {
+    config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${process.env.JWT_TOKEN}`
+    }
+
+    return config;
+})
+
 const tmdbAxios = axios.create({
     baseURL: "https://api.themoviedb.org/3",
     params: {

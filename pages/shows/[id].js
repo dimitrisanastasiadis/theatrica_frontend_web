@@ -8,7 +8,6 @@ import Image from "next/image"
 import { mainFetcher } from "../../src/utils/AxiosInstances"
 import getShowImage from "../../src/utils/getShowImage"
 import getShowEvents from "../../src/utils/getShowEvents"
-import DefaultImage from "../../public/DefaultShowImage.webp"
 import { useRouter } from "next/router"
 import clsx from 'clsx'
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
@@ -47,8 +46,8 @@ export const getStaticProps = async ({ params }) => {
     }
   }
   
-  const people = await mainFetcher(`/productions/${params.id}/people`)
-  const events = await mainFetcher(`/productions/${params.id}/events`)
+  const people = await mainFetcher(`/productions/${params.id}/people`) ?? []
+  const events = await mainFetcher(`/productions/${params.id}/events`) ?? []
 
   const media = getShowImage(show.mediaURL)
 
@@ -173,12 +172,12 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
             <div className={classes.mediaContainer}>
               {(!hasTrailer) ?
                 <div className={classes.imageNoTrailer}>
-                  <Image src={media ? media : DefaultImage} alt={show.title} className={classes.image} layout="fill" objectFit="contain" />
+                  <Image src={media ? media : "/DefaultShowImage.jpg"} alt={show.title} className={classes.image} layout="fill" objectFit="contain" />
                 </div>
               : 
                 <>
                   <div className={classes.imageTrailer}>
-                    <Image src={media ? media : DefaultImage} alt={show.title} className={classes.image} layout="fill" objectFit="cover" />
+                    <Image src={media ? media : "/DefaultShowImage.jpg"} alt={show.title} className={classes.image} layout="fill" objectFit="cover" />
                   </div>
                   <AspectRatioSizer widthRatio={16} heightRatio={9}>
                       <ReactPlayer 

@@ -340,7 +340,7 @@ const FindShow = ({ shows }) => {
                   id="maxDistance"
                   color="secondary"
                   valueLabelDisplay="auto"
-                  min={5}
+                  min={1}
                   value={formData.maxDistance}
                   onChange={handleSliderChange}
                   className={classes.slider}

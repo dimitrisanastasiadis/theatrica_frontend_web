@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
     })
 
     const articlesResponse = await newsFetcher(encodeURI("/everything?q=παράσταση θέατρο&sortBy=publishedAt&pageSize=3"))
-    const articles = articlesResponse.articles
+    const articles = articlesResponse?.articles
 
     articles.forEach(article => {
         article.urlToImage = cloudinary.url(

@@ -310,11 +310,11 @@ const ComparePage = ({ stat, labels, statTitle }) => {
   const router = useRouter()
   const theme = useTheme()
 
-  const [mode, setMode] = useState("year")
-  const [statValue, setStatValue] = useState("eventsByDate")
+  const [mode, setMode] = useState(router.query.mode || "year")
+  const [statValue, setStatValue] = useState(router.query.stat || "eventsByDate")
 
-  const [firstDate, setFirstDate] = useState(new Date('2020'));
-  const [secondDate, setSecondDate] = useState(new Date('2021'));
+  const [firstDate, setFirstDate] = useState(new Date(router.query.date1 || '2021'));
+  const [secondDate, setSecondDate] = useState(new Date(router.query.date2 || '2022'));
   const [errorText, setErrorText] = useState("")
 
   useEffect(() => {
@@ -331,10 +331,6 @@ const ComparePage = ({ stat, labels, statTitle }) => {
       })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statValue])
-
-  useEffect(() => {
-    setStatValue("eventsByDate")
-  }, [router.query.date1, router.query.date2])
 
   useEffect(() => {
     const formatString = mode === "year" ? "yyyy" : "yyyy-M"
@@ -358,8 +354,14 @@ const ComparePage = ({ stat, labels, statTitle }) => {
     const date1 = format(firstDate, formatString)
     const date2 = format(secondDate, formatString)
 
+    let initialStat = statValue;
+
+    if (mode === "month" && (initialStat === "eventsByMonth" || initialStat === "showsByMonth")) {
+      initialStat = "eventsByDate"
+    }
+
     if (date1 !== date2){
-      router.push(`/compare?date1=${date1}&date2=${date2}&mode=${mode}&stat=eventsByDate`)
+      router.push(`/compare?date1=${date1}&date2=${date2}&mode=${mode}&stat=${initialStat}`)
     }
   }
 
@@ -406,14 +408,14 @@ const ComparePage = ({ stat, labels, statTitle }) => {
                   inputVariant="outlined"
                   onChange={setFirstDate}
                   views={mode === "year" ? ["year"] : ["month", "year"]}
-                  minDate={"2020-01-01"} maxDate={"2022-12-31"} />
+                  minDate={"2021-01-01"} maxDate={"2022-12-31"} />
                 <DatePicker
                   label={mode === "year" ? "Έτος 2" : "Μήνας 2"}
                   value={secondDate}
                   inputVariant="outlined"
                   onChange={setSecondDate}
                   views={mode === "year" ? ["year"] : ["month", "year"]}
-                  minDate={"2020-01-01"} maxDate={"2022-12-31"} 
+                  minDate={"2021-01-01"} maxDate={"2022-12-31"} 
                   error={errorText ? true : false}
                   helperText={errorText}
                   />
@@ -438,6 +440,7 @@ const ComparePage = ({ stat, labels, statTitle }) => {
                   onChange={handleSelectChange}
                   variant="outlined"
                   style={{ width: 250 }}
+                  defaultValue="eventsByDate"
                 >
                   <MenuItem value="eventsByDate">Αθροιστικός Αριθμός Παραστάσεων ανά Ημέρα</MenuItem>
                   <MenuItem value="totalEvents">Αριθμός Παραστάσεων</MenuItem>

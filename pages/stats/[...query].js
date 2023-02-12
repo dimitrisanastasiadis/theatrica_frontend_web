@@ -392,7 +392,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
               />
             </div>
             <ThemeProvider theme={() => DatePickerTheme(theme.palette.secondary.main)}>
-              <DatePicker label="Επιλέξτε Περίοδο" value={lastDayMonth} inputVariant="outlined" onChange={handleDateChange} views={mode === "year" ? ["year"] : ["month", "year"]} minDate={"2020-01-01"} maxDate={"2022-12-31"} />
+              <DatePicker label="Επιλέξτε Περίοδο" value={lastDayMonth} inputVariant="outlined" onChange={handleDateChange} views={mode === "year" ? ["year"] : ["month", "year"]} minDate={"2021-01-01"} maxDate={"2022-12-31"} />
             </ThemeProvider>
           </div>
           {eventsByDate.length > 0 ?

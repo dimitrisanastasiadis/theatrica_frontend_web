@@ -82,7 +82,7 @@ function Home({ artists, latestShows, articles }) {
       <div className={classes.wrapper}>
         <div className={classes.container}>
           <div className={classes.heroSection}>
-            <Typography variant="h1" style={{ marginTop: "auto" }}>Theatrica</Typography>
+            <Typography variant="h1" style={{ marginTop: "auto" }}>Theatrical Analytics</Typography>
             <Typography variant="body2">Αναζητήστε καλλιτέχνες, παραστάσεις και θέατρα, δείτε στατιστικά και συγκρίνετε χρονικές περιόδους ή βρείτε μια παράσταση στην περιοχή σας!</Typography>
             <form onSubmit={handleSubmit}>
               <div className={classes.searchInput}>

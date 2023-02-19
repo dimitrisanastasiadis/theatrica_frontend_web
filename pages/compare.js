@@ -407,14 +407,14 @@ const ComparePage = ({ stat, labels, statTitle }) => {
                   inputVariant="outlined"
                   onChange={setFirstDate}
                   views={mode === "year" ? ["year"] : ["month", "year"]}
-                  minDate={"2021-01-01"} maxDate={"2022-12-31"} />
+                  minDate={"2021-01-01"} maxDate={"2023-12-31"} />
                 <DatePicker
                   label={mode === "year" ? "Έτος 2" : "Μήνας 2"}
                   value={secondDate}
                   inputVariant="outlined"
                   onChange={setSecondDate}
                   views={mode === "year" ? ["year"] : ["month", "year"]}
-                  minDate={"2021-01-01"} maxDate={"2022-12-31"} 
+                  minDate={"2021-01-01"} maxDate={"2023-12-31"} 
                   error={errorText ? true : false}
                   helperText={errorText}
                   />

@@ -40,7 +40,17 @@ export const getStaticPaths = async () => {
   const paths = [
     {
       params: {
-        query: [date.getFullYear().toString()]
+        query: [2021]
+      }
+    },
+    {
+      params: {
+        query: [2022]
+      }
+    },
+    {
+      params: {
+        query: [2023]
       }
     },
     {
@@ -390,7 +400,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
               />
             </div>
             <ThemeProvider theme={() => DatePickerTheme(theme.palette.secondary.main)}>
-              <DatePicker label="Επιλέξτε Περίοδο" value={lastDayMonth} inputVariant="outlined" onChange={handleDateChange} views={mode === "year" ? ["year"] : ["month", "year"]} minDate={"2021-01-01"} maxDate={"2022-12-31"} />
+              <DatePicker label="Επιλέξτε Περίοδο" value={lastDayMonth} inputVariant="outlined" onChange={handleDateChange} views={mode === "year" ? ["year"] : ["month", "year"]} minDate={"2021-01-01"} maxDate={"2023-12-31"} />
             </ThemeProvider>
           </div>
           {eventsByDate.length > 0 ?

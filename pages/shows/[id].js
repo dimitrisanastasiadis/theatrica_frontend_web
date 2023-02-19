@@ -55,12 +55,15 @@ export const getStaticProps = async ({ params }) => {
   const { pastEvents, upcomingEvents, eventsByMonth, eventsByStartTime, range } = getShowEvents(events)
 
   const images = [
-    "https://image.tmdb.org/t/p/w300/bjYL6zFdE6R4ycMRzCueFwy1xhn.jpg",
-    "https://image.tmdb.org/t/p/w300/8rr9KTDZ4iSJWKjNrJo5ZPsRbCj.jpg",
-    "https://image.tmdb.org/t/p/w300/bEhOnNpRPbROUn0Gudf64cGOmPZ.jpg",
-    "https://image.tmdb.org/t/p/w300/hlrtsa0ivHsKzbQGcI78cBZn1gd.jpg",
-    "https://image.tmdb.org/t/p/w300/bjYL6zFdE6R4ycMRzCueFwy1xhn.jpg",
-    "https://image.tmdb.org/t/p/w300/8rr9KTDZ4iSJWKjNrJo5ZPsRbCj.jpg"
+    "/Killer Joe/killer-joe-1.jpeg",
+    "/Killer Joe/killer-joe-2.webp",
+    "/Killer Joe/killer-joe-3.webp",
+    "/Killer Joe/killer-joe-4.jpeg",
+    "/Killer Joe/killer-joe-5.jpeg",
+    "/Killer Joe/killer-joe-6.jpeg",
+    "/Killer Joe/killer-joe-7.jpeg",
+    "/Killer Joe/killer-joe-8.jpg",
+    "/Killer Joe/killer-joe-9.webp",
   ]
 
   return {

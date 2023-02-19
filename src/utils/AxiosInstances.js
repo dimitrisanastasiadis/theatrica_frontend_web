@@ -5,8 +5,10 @@ import axios from "axios"
 //     baseURL: process.env.NODE_ENV === "development" ? "http://192.168.2.14:5000/api" : "http://46.177.145.22:53239/api"
 // })
 
+export const baseURL = "http://195.251.123.174:8080/api";
+
 export const mainAxios = axios.create({
-    baseURL: "http://195.251.123.174:8080/api"
+    baseURL
 })
 
 mainAxios.interceptors.request.use((config) => {

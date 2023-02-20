@@ -142945,5 +142945,3758 @@
     "PriceRange": "-",
     "SystemID": 3,
     "timestamp": "2023-02-09 13:21:26"
+  },
+  {
+    "ID": 26971,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-02-22 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:10"
+  },
+  {
+    "ID": 26972,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-02-23 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:10"
+  },
+  {
+    "ID": 26973,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-02-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:10"
+  },
+  {
+    "ID": 26974,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-02-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:11"
+  },
+  {
+    "ID": 26975,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:11"
+  },
+  {
+    "ID": 26976,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-02-26 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:11"
+  },
+  {
+    "ID": 26977,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-01 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:11"
+  },
+  {
+    "ID": 26978,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-02 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:12"
+  },
+  {
+    "ID": 26979,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-03 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:12"
+  },
+  {
+    "ID": 26980,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-04 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:13"
+  },
+  {
+    "ID": 26981,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:13"
+  },
+  {
+    "ID": 26982,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-05 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:13"
+  },
+  {
+    "ID": 26983,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-08 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:14"
+  },
+  {
+    "ID": 26984,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-09 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:14"
+  },
+  {
+    "ID": 26985,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-10 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:14"
+  },
+  {
+    "ID": 26986,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-11 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:15"
+  },
+  {
+    "ID": 26987,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-11 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:15"
+  },
+  {
+    "ID": 26988,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-12 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:15"
+  },
+  {
+    "ID": 26989,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-15 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:16"
+  },
+  {
+    "ID": 26990,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-16 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:16"
+  },
+  {
+    "ID": 26991,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-17 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:16"
+  },
+  {
+    "ID": 26992,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-18 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:17"
+  },
+  {
+    "ID": 26993,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-18 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:17"
+  },
+  {
+    "ID": 26994,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-19 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:17"
+  },
+  {
+    "ID": 26995,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-22 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:18"
+  },
+  {
+    "ID": 26996,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-23 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:19"
+  },
+  {
+    "ID": 26997,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:20"
+  },
+  {
+    "ID": 26998,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:21"
+  },
+  {
+    "ID": 26999,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:22"
+  },
+  {
+    "ID": 27000,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-26 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:23"
+  },
+  {
+    "ID": 27001,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-29 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:24"
+  },
+  {
+    "ID": 27002,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-30 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:25"
+  },
+  {
+    "ID": 27003,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-03-31 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:26"
+  },
+  {
+    "ID": 27004,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-04-01 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:26"
+  },
+  {
+    "ID": 27005,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-04-01 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:27"
+  },
+  {
+    "ID": 27006,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-04-02 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:28"
+  },
+  {
+    "ID": 27007,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-04-05 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:28"
+  },
+  {
+    "ID": 27008,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-04-06 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:29"
+  },
+  {
+    "ID": 27009,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-04-07 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:30"
+  },
+  {
+    "ID": 27010,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-04-08 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:30"
+  },
+  {
+    "ID": 27011,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-04-08 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:31"
+  },
+  {
+    "ID": 27012,
+    "ProductionID": 1561,
+    "VenueID": 879,
+    "DateEvent": "2023-04-09 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 17\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:00:32"
+  },
+  {
+    "ID": 27013,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-02-22 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:23"
+  },
+  {
+    "ID": 27014,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-02-23 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:23"
+  },
+  {
+    "ID": 27015,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-02-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:24"
+  },
+  {
+    "ID": 27016,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-02-25 17:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:25"
+  },
+  {
+    "ID": 27017,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:25"
+  },
+  {
+    "ID": 27018,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-02-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:26"
+  },
+  {
+    "ID": 27019,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-03-01 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:27"
+  },
+  {
+    "ID": 27020,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-03-02 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:27"
+  },
+  {
+    "ID": 27021,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-03-03 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:28"
+  },
+  {
+    "ID": 27022,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-03-04 17:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:29"
+  },
+  {
+    "ID": 27023,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:29"
+  },
+  {
+    "ID": 27024,
+    "ProductionID": 1562,
+    "VenueID": 842,
+    "DateEvent": "2023-03-05 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 17:01:29"
+  },
+  {
+    "ID": 27025,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-02-20 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:54"
+  },
+  {
+    "ID": 27026,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-02-21 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:54"
+  },
+  {
+    "ID": 27027,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-02-24 21:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:55"
+  },
+  {
+    "ID": 27028,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:55"
+  },
+  {
+    "ID": 27029,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-02-26 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:55"
+  },
+  {
+    "ID": 27030,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-02-27 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:55"
+  },
+  {
+    "ID": 27031,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-02-28 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:55"
+  },
+  {
+    "ID": 27032,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-03 21:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:55"
+  },
+  {
+    "ID": 27033,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:56"
+  },
+  {
+    "ID": 27034,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-05 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:56"
+  },
+  {
+    "ID": 27035,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-06 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:56"
+  },
+  {
+    "ID": 27036,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-07 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:56"
+  },
+  {
+    "ID": 27037,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-10 21:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:56"
+  },
+  {
+    "ID": 27038,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-11 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:57"
+  },
+  {
+    "ID": 27039,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-12 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:57"
+  },
+  {
+    "ID": 27040,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-13 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:57"
+  },
+  {
+    "ID": 27041,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-14 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:57"
+  },
+  {
+    "ID": 27042,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-17 21:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:57"
+  },
+  {
+    "ID": 27043,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-18 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:58"
+  },
+  {
+    "ID": 27044,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-19 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:58"
+  },
+  {
+    "ID": 27045,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-20 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 10\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:58"
+  },
+  {
+    "ID": 27046,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-21 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:58"
+  },
+  {
+    "ID": 27047,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-24 21:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:58"
+  },
+  {
+    "ID": 27048,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:59"
+  },
+  {
+    "ID": 27049,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-26 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 10\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:59"
+  },
+  {
+    "ID": 27050,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-27 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:59"
+  },
+  {
+    "ID": 27051,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-28 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:59"
+  },
+  {
+    "ID": 27052,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-03-31 21:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:55:59"
+  },
+  {
+    "ID": 27053,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-04-01 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 10\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:00"
+  },
+  {
+    "ID": 27054,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-04-02 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 10\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:00"
+  },
+  {
+    "ID": 27055,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-04-03 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:00"
+  },
+  {
+    "ID": 27056,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-04-04 20:00:00",
+    "PriceRange": "16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:00"
+  },
+  {
+    "ID": 27057,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-04-07 21:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:00"
+  },
+  {
+    "ID": 27058,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-04-08 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 10\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:01"
+  },
+  {
+    "ID": 27059,
+    "ProductionID": 1563,
+    "VenueID": 302,
+    "DateEvent": "2023-04-09 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 16\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:01"
+  },
+  {
+    "ID": 27060,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-01 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:28"
+  },
+  {
+    "ID": 27061,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-02 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:28"
+  },
+  {
+    "ID": 27062,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-03 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:28"
+  },
+  {
+    "ID": 27063,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:28"
+  },
+  {
+    "ID": 27064,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-05 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:29"
+  },
+  {
+    "ID": 27065,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-08 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:29"
+  },
+  {
+    "ID": 27066,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-09 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:29"
+  },
+  {
+    "ID": 27067,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-10 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:29"
+  },
+  {
+    "ID": 27068,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-11 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:29"
+  },
+  {
+    "ID": 27069,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-12 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:30"
+  },
+  {
+    "ID": 27070,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-15 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:30"
+  },
+  {
+    "ID": 27071,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-16 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:30"
+  },
+  {
+    "ID": 27072,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-17 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:30"
+  },
+  {
+    "ID": 27073,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-18 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:30"
+  },
+  {
+    "ID": 27074,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-19 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:31"
+  },
+  {
+    "ID": 27075,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-22 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:31"
+  },
+  {
+    "ID": 27076,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-23 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:31"
+  },
+  {
+    "ID": 27077,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:31"
+  },
+  {
+    "ID": 27078,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:32"
+  },
+  {
+    "ID": 27079,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-26 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:32"
+  },
+  {
+    "ID": 27080,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-29 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:32"
+  },
+  {
+    "ID": 27081,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-30 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:32"
+  },
+  {
+    "ID": 27082,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-03-31 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:32"
+  },
+  {
+    "ID": 27083,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-04-01 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:33"
+  },
+  {
+    "ID": 27084,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-04-02 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:33"
+  },
+  {
+    "ID": 27085,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-04-05 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:33"
+  },
+  {
+    "ID": 27086,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-04-06 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:33"
+  },
+  {
+    "ID": 27087,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-04-07 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:33"
+  },
+  {
+    "ID": 27088,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-04-08 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:34"
+  },
+  {
+    "ID": 27089,
+    "ProductionID": 1564,
+    "VenueID": 1840,
+    "DateEvent": "2023-04-09 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:56:34"
+  },
+  {
+    "ID": 27090,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-02-22 19:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:01"
+  },
+  {
+    "ID": 27091,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-02-23 20:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:01"
+  },
+  {
+    "ID": 27092,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-02-24 20:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:02"
+  },
+  {
+    "ID": 27093,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-02-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:02"
+  },
+  {
+    "ID": 27094,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:02"
+  },
+  {
+    "ID": 27095,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-02-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:02"
+  },
+  {
+    "ID": 27096,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-01 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:02"
+  },
+  {
+    "ID": 27097,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-02 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:02"
+  },
+  {
+    "ID": 27098,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-03 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:03"
+  },
+  {
+    "ID": 27099,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-04 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:03"
+  },
+  {
+    "ID": 27100,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:03"
+  },
+  {
+    "ID": 27101,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-05 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:03"
+  },
+  {
+    "ID": 27102,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-08 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:03"
+  },
+  {
+    "ID": 27103,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-09 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:04"
+  },
+  {
+    "ID": 27104,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-10 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:04"
+  },
+  {
+    "ID": 27105,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-11 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:04"
+  },
+  {
+    "ID": 27106,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-11 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:04"
+  },
+  {
+    "ID": 27107,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-12 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:04"
+  },
+  {
+    "ID": 27108,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-15 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:05"
+  },
+  {
+    "ID": 27109,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-16 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:05"
+  },
+  {
+    "ID": 27110,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-17 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:05"
+  },
+  {
+    "ID": 27111,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-18 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:05"
+  },
+  {
+    "ID": 27112,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-18 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:05"
+  },
+  {
+    "ID": 27113,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-19 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:06"
+  },
+  {
+    "ID": 27114,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-22 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:06"
+  },
+  {
+    "ID": 27115,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-23 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:06"
+  },
+  {
+    "ID": 27116,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:06"
+  },
+  {
+    "ID": 27117,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:06"
+  },
+  {
+    "ID": 27118,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:07"
+  },
+  {
+    "ID": 27119,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-26 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:07"
+  },
+  {
+    "ID": 27120,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-29 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:07"
+  },
+  {
+    "ID": 27121,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-30 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:07"
+  },
+  {
+    "ID": 27122,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-03-31 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:07"
+  },
+  {
+    "ID": 27123,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-04-01 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:08"
+  },
+  {
+    "ID": 27124,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-04-01 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:08"
+  },
+  {
+    "ID": 27125,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-04-02 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:08"
+  },
+  {
+    "ID": 27126,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-04-05 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:08"
+  },
+  {
+    "ID": 27127,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-04-06 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:08"
+  },
+  {
+    "ID": 27128,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-04-07 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:09"
+  },
+  {
+    "ID": 27129,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-04-08 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:09"
+  },
+  {
+    "ID": 27130,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-04-08 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:09"
+  },
+  {
+    "ID": 27131,
+    "ProductionID": 1565,
+    "VenueID": 684,
+    "DateEvent": "2023-04-09 18:00:00",
+    "PriceRange": "-",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:09"
+  },
+  {
+    "ID": 27132,
+    "ProductionID": 1566,
+    "VenueID": 885,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 12\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:41"
+  },
+  {
+    "ID": 27133,
+    "ProductionID": 1566,
+    "VenueID": 885,
+    "DateEvent": "2023-02-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 12\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:42"
+  },
+  {
+    "ID": 27134,
+    "ProductionID": 1566,
+    "VenueID": 885,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 12\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:42"
+  },
+  {
+    "ID": 27135,
+    "ProductionID": 1566,
+    "VenueID": 885,
+    "DateEvent": "2023-03-05 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 12\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:57:42"
+  },
+  {
+    "ID": 27136,
+    "ProductionID": 1567,
+    "VenueID": 686,
+    "DateEvent": "2023-02-24 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:58:14"
+  },
+  {
+    "ID": 27137,
+    "ProductionID": 1567,
+    "VenueID": 686,
+    "DateEvent": "2023-02-25 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:58:14"
+  },
+  {
+    "ID": 27138,
+    "ProductionID": 1567,
+    "VenueID": 686,
+    "DateEvent": "2023-02-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:58:14"
+  },
+  {
+    "ID": 27139,
+    "ProductionID": 1568,
+    "VenueID": 876,
+    "DateEvent": "2023-02-24 20:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:58:42"
+  },
+  {
+    "ID": 27140,
+    "ProductionID": 1568,
+    "VenueID": 876,
+    "DateEvent": "2023-02-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:58:43"
+  },
+  {
+    "ID": 27141,
+    "ProductionID": 1568,
+    "VenueID": 876,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:58:43"
+  },
+  {
+    "ID": 27142,
+    "ProductionID": 1568,
+    "VenueID": 876,
+    "DateEvent": "2023-02-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:58:43"
+  },
+  {
+    "ID": 27143,
+    "ProductionID": 1569,
+    "VenueID": 563,
+    "DateEvent": "2023-02-22 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:10"
+  },
+  {
+    "ID": 27144,
+    "ProductionID": 1569,
+    "VenueID": 563,
+    "DateEvent": "2023-02-23 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:10"
+  },
+  {
+    "ID": 27145,
+    "ProductionID": 1569,
+    "VenueID": 563,
+    "DateEvent": "2023-02-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:10"
+  },
+  {
+    "ID": 27146,
+    "ProductionID": 1569,
+    "VenueID": 563,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:10"
+  },
+  {
+    "ID": 27147,
+    "ProductionID": 1569,
+    "VenueID": 563,
+    "DateEvent": "2023-02-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:11"
+  },
+  {
+    "ID": 27148,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-02-22 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:42"
+  },
+  {
+    "ID": 27149,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-02-23 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:42"
+  },
+  {
+    "ID": 27150,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-02-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:42"
+  },
+  {
+    "ID": 27151,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-02-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:42"
+  },
+  {
+    "ID": 27152,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:43"
+  },
+  {
+    "ID": 27153,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-02-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:43"
+  },
+  {
+    "ID": 27154,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-01 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:43"
+  },
+  {
+    "ID": 27155,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-02 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:43"
+  },
+  {
+    "ID": 27156,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-03 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:44"
+  },
+  {
+    "ID": 27157,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-04 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:44"
+  },
+  {
+    "ID": 27158,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:44"
+  },
+  {
+    "ID": 27159,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-05 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:44"
+  },
+  {
+    "ID": 27160,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-08 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:44"
+  },
+  {
+    "ID": 27161,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-09 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:44"
+  },
+  {
+    "ID": 27162,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-10 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:45"
+  },
+  {
+    "ID": 27163,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-11 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:45"
+  },
+  {
+    "ID": 27164,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-11 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:45"
+  },
+  {
+    "ID": 27165,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-12 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:45"
+  },
+  {
+    "ID": 27166,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-15 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:45"
+  },
+  {
+    "ID": 27167,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-16 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:46"
+  },
+  {
+    "ID": 27168,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-17 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:46"
+  },
+  {
+    "ID": 27169,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-18 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:46"
+  },
+  {
+    "ID": 27170,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-18 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:46"
+  },
+  {
+    "ID": 27171,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-19 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:46"
+  },
+  {
+    "ID": 27172,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-22 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:47"
+  },
+  {
+    "ID": 27173,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-23 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:47"
+  },
+  {
+    "ID": 27174,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:47"
+  },
+  {
+    "ID": 27175,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:47"
+  },
+  {
+    "ID": 27176,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:47"
+  },
+  {
+    "ID": 27177,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:48"
+  },
+  {
+    "ID": 27178,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-29 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:48"
+  },
+  {
+    "ID": 27179,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-30 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:48"
+  },
+  {
+    "ID": 27180,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-03-31 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:48"
+  },
+  {
+    "ID": 27181,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-04-01 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:48"
+  },
+  {
+    "ID": 27182,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-04-01 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:49"
+  },
+  {
+    "ID": 27183,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-04-02 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:49"
+  },
+  {
+    "ID": 27184,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-04-05 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:49"
+  },
+  {
+    "ID": 27185,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-04-06 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:49"
+  },
+  {
+    "ID": 27186,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-04-07 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:49"
+  },
+  {
+    "ID": 27187,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-04-08 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:50"
+  },
+  {
+    "ID": 27188,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-04-08 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:50"
+  },
+  {
+    "ID": 27189,
+    "ProductionID": 1570,
+    "VenueID": 568,
+    "DateEvent": "2023-04-09 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 18:59:51"
+  },
+  {
+    "ID": 27190,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-02-22 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:18"
+  },
+  {
+    "ID": 27191,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-02-23 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:18"
+  },
+  {
+    "ID": 27192,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-02-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:18"
+  },
+  {
+    "ID": 27193,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-02-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:18"
+  },
+  {
+    "ID": 27194,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:19"
+  },
+  {
+    "ID": 27195,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-02-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:19"
+  },
+  {
+    "ID": 27196,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-01 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:19"
+  },
+  {
+    "ID": 27197,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-02 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:19"
+  },
+  {
+    "ID": 27198,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-03 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:19"
+  },
+  {
+    "ID": 27199,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-04 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:20"
+  },
+  {
+    "ID": 27200,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:20"
+  },
+  {
+    "ID": 27201,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-05 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:20"
+  },
+  {
+    "ID": 27202,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-08 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:20"
+  },
+  {
+    "ID": 27203,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-09 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:20"
+  },
+  {
+    "ID": 27204,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-10 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:21"
+  },
+  {
+    "ID": 27205,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-11 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:21"
+  },
+  {
+    "ID": 27206,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-11 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:21"
+  },
+  {
+    "ID": 27207,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-12 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:21"
+  },
+  {
+    "ID": 27208,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-15 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:21"
+  },
+  {
+    "ID": 27209,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-16 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:22"
+  },
+  {
+    "ID": 27210,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-17 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:22"
+  },
+  {
+    "ID": 27211,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-18 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:22"
+  },
+  {
+    "ID": 27212,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-18 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:22"
+  },
+  {
+    "ID": 27213,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-19 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:22"
+  },
+  {
+    "ID": 27214,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-22 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:23"
+  },
+  {
+    "ID": 27215,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-23 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:23"
+  },
+  {
+    "ID": 27216,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:23"
+  },
+  {
+    "ID": 27217,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:23"
+  },
+  {
+    "ID": 27218,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:24"
+  },
+  {
+    "ID": 27219,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:24"
+  },
+  {
+    "ID": 27220,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-29 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:24"
+  },
+  {
+    "ID": 27221,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-30 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:24"
+  },
+  {
+    "ID": 27222,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-03-31 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:24"
+  },
+  {
+    "ID": 27223,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-04-01 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:24"
+  },
+  {
+    "ID": 27224,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-04-01 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:25"
+  },
+  {
+    "ID": 27225,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-04-02 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 13\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:25"
+  },
+  {
+    "ID": 27226,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-04-05 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:25"
+  },
+  {
+    "ID": 27227,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-04-06 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:25"
+  },
+  {
+    "ID": 27228,
+    "ProductionID": 1571,
+    "VenueID": 700,
+    "DateEvent": "2023-04-07 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:26"
+  },
+  {
+    "ID": 27229,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-02-22 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:55"
+  },
+  {
+    "ID": 27230,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-02-23 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:55"
+  },
+  {
+    "ID": 27231,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-02-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:55"
+  },
+  {
+    "ID": 27232,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-02-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:56"
+  },
+  {
+    "ID": 27233,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:56"
+  },
+  {
+    "ID": 27234,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-02-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:56"
+  },
+  {
+    "ID": 27235,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-01 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:56"
+  },
+  {
+    "ID": 27236,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-02 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:56"
+  },
+  {
+    "ID": 27237,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-03 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:57"
+  },
+  {
+    "ID": 27238,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-04 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:57"
+  },
+  {
+    "ID": 27239,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:57"
+  },
+  {
+    "ID": 27240,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-05 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:57"
+  },
+  {
+    "ID": 27241,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-08 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:57"
+  },
+  {
+    "ID": 27242,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-09 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:57"
+  },
+  {
+    "ID": 27243,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-10 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:58"
+  },
+  {
+    "ID": 27244,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-11 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:58"
+  },
+  {
+    "ID": 27245,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-11 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:58"
+  },
+  {
+    "ID": 27246,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-12 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:58"
+  },
+  {
+    "ID": 27247,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-15 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:58"
+  },
+  {
+    "ID": 27248,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-16 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:59"
+  },
+  {
+    "ID": 27249,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-17 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:59"
+  },
+  {
+    "ID": 27250,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-18 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:59"
+  },
+  {
+    "ID": 27251,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-18 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:59"
+  },
+  {
+    "ID": 27252,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-19 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:00:59"
+  },
+  {
+    "ID": 27253,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-22 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:00"
+  },
+  {
+    "ID": 27254,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-23 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:00"
+  },
+  {
+    "ID": 27255,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:00"
+  },
+  {
+    "ID": 27256,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:00"
+  },
+  {
+    "ID": 27257,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:00"
+  },
+  {
+    "ID": 27258,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-26 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:01"
+  },
+  {
+    "ID": 27259,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-29 19:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:01"
+  },
+  {
+    "ID": 27260,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-30 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:01"
+  },
+  {
+    "ID": 27261,
+    "ProductionID": 1572,
+    "VenueID": 690,
+    "DateEvent": "2023-03-31 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:02"
+  },
+  {
+    "ID": 27262,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-02-22 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:54"
+  },
+  {
+    "ID": 27263,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-02-23 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:54"
+  },
+  {
+    "ID": 27264,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-02-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:55"
+  },
+  {
+    "ID": 27265,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-02-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:55"
+  },
+  {
+    "ID": 27266,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:56"
+  },
+  {
+    "ID": 27267,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-02-26 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:56"
+  },
+  {
+    "ID": 27268,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-01 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:57"
+  },
+  {
+    "ID": 27269,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-02 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:57"
+  },
+  {
+    "ID": 27270,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-03 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:58"
+  },
+  {
+    "ID": 27271,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-04 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:58"
+  },
+  {
+    "ID": 27272,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:59"
+  },
+  {
+    "ID": 27273,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-05 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:01:59"
+  },
+  {
+    "ID": 27274,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-08 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:00"
+  },
+  {
+    "ID": 27275,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-09 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:00"
+  },
+  {
+    "ID": 27276,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-10 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:01"
+  },
+  {
+    "ID": 27277,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-11 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:02"
+  },
+  {
+    "ID": 27278,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-11 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:02"
+  },
+  {
+    "ID": 27279,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-12 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:03"
+  },
+  {
+    "ID": 27280,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-15 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:04"
+  },
+  {
+    "ID": 27281,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-16 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:04"
+  },
+  {
+    "ID": 27282,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-17 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:05"
+  },
+  {
+    "ID": 27283,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-18 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:05"
+  },
+  {
+    "ID": 27284,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-18 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:05"
+  },
+  {
+    "ID": 27285,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-19 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:05"
+  },
+  {
+    "ID": 27286,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-22 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:05"
+  },
+  {
+    "ID": 27287,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-23 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:06"
+  },
+  {
+    "ID": 27288,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:06"
+  },
+  {
+    "ID": 27289,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:06"
+  },
+  {
+    "ID": 27290,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:06"
+  },
+  {
+    "ID": 27291,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-26 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:06"
+  },
+  {
+    "ID": 27292,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-29 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:07"
+  },
+  {
+    "ID": 27293,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-30 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:07"
+  },
+  {
+    "ID": 27294,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-03-31 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:07"
+  },
+  {
+    "ID": 27295,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-04-01 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:07"
+  },
+  {
+    "ID": 27296,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-04-01 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:07"
+  },
+  {
+    "ID": 27297,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-04-02 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:08"
+  },
+  {
+    "ID": 27298,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-04-05 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:08"
+  },
+  {
+    "ID": 27299,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-04-06 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:08"
+  },
+  {
+    "ID": 27300,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-04-07 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:08"
+  },
+  {
+    "ID": 27301,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-04-08 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:08"
+  },
+  {
+    "ID": 27302,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-04-08 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:09"
+  },
+  {
+    "ID": 27303,
+    "ProductionID": 1573,
+    "VenueID": 907,
+    "DateEvent": "2023-04-09 20:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 14\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:09"
+  },
+  {
+    "ID": 27304,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-02-22 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:40"
+  },
+  {
+    "ID": 27305,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-02-23 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:40"
+  },
+  {
+    "ID": 27306,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-02-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:40"
+  },
+  {
+    "ID": 27307,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-02-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:40"
+  },
+  {
+    "ID": 27308,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:40"
+  },
+  {
+    "ID": 27309,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-02-26 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:40"
+  },
+  {
+    "ID": 27310,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-01 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:41"
+  },
+  {
+    "ID": 27311,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-02 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:41"
+  },
+  {
+    "ID": 27312,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-03 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:41"
+  },
+  {
+    "ID": 27313,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-04 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:41"
+  },
+  {
+    "ID": 27314,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:41"
+  },
+  {
+    "ID": 27315,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-05 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:41"
+  },
+  {
+    "ID": 27316,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-08 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:42"
+  },
+  {
+    "ID": 27317,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-09 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:42"
+  },
+  {
+    "ID": 27318,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-10 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:42"
+  },
+  {
+    "ID": 27319,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-11 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:42"
+  },
+  {
+    "ID": 27320,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-11 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:42"
+  },
+  {
+    "ID": 27321,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-12 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:43"
+  },
+  {
+    "ID": 27322,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-15 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:43"
+  },
+  {
+    "ID": 27323,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-16 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:43"
+  },
+  {
+    "ID": 27324,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-17 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:43"
+  },
+  {
+    "ID": 27325,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-18 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:43"
+  },
+  {
+    "ID": 27326,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-18 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:44"
+  },
+  {
+    "ID": 27327,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-19 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:44"
+  },
+  {
+    "ID": 27328,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-22 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:44"
+  },
+  {
+    "ID": 27329,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-23 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:44"
+  },
+  {
+    "ID": 27330,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-24 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:45"
+  },
+  {
+    "ID": 27331,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-25 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:45"
+  },
+  {
+    "ID": 27332,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-25 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:45"
+  },
+  {
+    "ID": 27333,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-26 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:45"
+  },
+  {
+    "ID": 27334,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-29 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:45"
+  },
+  {
+    "ID": 27335,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-30 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:46"
+  },
+  {
+    "ID": 27336,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-03-31 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:46"
+  },
+  {
+    "ID": 27337,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-04-01 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:46"
+  },
+  {
+    "ID": 27338,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-04-01 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:46"
+  },
+  {
+    "ID": 27339,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-04-02 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:46"
+  },
+  {
+    "ID": 27340,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-04-05 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:47"
+  },
+  {
+    "ID": 27341,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-04-06 20:00:00",
+    "PriceRange": "18\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:47"
+  },
+  {
+    "ID": 27342,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-04-07 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:47"
+  },
+  {
+    "ID": 27343,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-04-08 18:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:47"
+  },
+  {
+    "ID": 27344,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-04-08 21:00:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:47"
+  },
+  {
+    "ID": 27345,
+    "ProductionID": 1574,
+    "VenueID": 701,
+    "DateEvent": "2023-04-09 19:30:00",
+    "PriceRange": "\u03b1\u03c0\u03cc 15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:02:48"
+  },
+  {
+    "ID": 27346,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-02-22 19:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:13"
+  },
+  {
+    "ID": 27347,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-02-23 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:13"
+  },
+  {
+    "ID": 27348,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-02-24 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:13"
+  },
+  {
+    "ID": 27349,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-02-25 18:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:13"
+  },
+  {
+    "ID": 27350,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-02-25 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:14"
+  },
+  {
+    "ID": 27351,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-02-26 20:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:14"
+  },
+  {
+    "ID": 27352,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-01 19:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:14"
+  },
+  {
+    "ID": 27353,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-02 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:14"
+  },
+  {
+    "ID": 27354,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-03 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:14"
+  },
+  {
+    "ID": 27355,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-04 18:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:14"
+  },
+  {
+    "ID": 27356,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-04 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:15"
+  },
+  {
+    "ID": 27357,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-05 20:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:15"
+  },
+  {
+    "ID": 27358,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-08 19:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:15"
+  },
+  {
+    "ID": 27359,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-09 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:15"
+  },
+  {
+    "ID": 27360,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-10 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:15"
+  },
+  {
+    "ID": 27361,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-11 18:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:16"
+  },
+  {
+    "ID": 27362,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-11 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:16"
+  },
+  {
+    "ID": 27363,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-12 20:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:16"
+  },
+  {
+    "ID": 27364,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-15 19:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:16"
+  },
+  {
+    "ID": 27365,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-16 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:16"
+  },
+  {
+    "ID": 27366,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-17 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:17"
+  },
+  {
+    "ID": 27367,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-18 18:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:17"
+  },
+  {
+    "ID": 27368,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-18 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:17"
+  },
+  {
+    "ID": 27369,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-19 20:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:17"
+  },
+  {
+    "ID": 27370,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-22 19:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:17"
+  },
+  {
+    "ID": 27371,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-23 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:17"
+  },
+  {
+    "ID": 27372,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-24 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:18"
+  },
+  {
+    "ID": 27373,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-25 18:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:18"
+  },
+  {
+    "ID": 27374,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-25 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:18"
+  },
+  {
+    "ID": 27375,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-26 20:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:18"
+  },
+  {
+    "ID": 27376,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-29 19:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:18"
+  },
+  {
+    "ID": 27377,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-30 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:19"
+  },
+  {
+    "ID": 27378,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-03-31 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:19"
+  },
+  {
+    "ID": 27379,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-04-01 18:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:19"
+  },
+  {
+    "ID": 27380,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-04-01 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:19"
+  },
+  {
+    "ID": 27381,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-04-02 20:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:19"
+  },
+  {
+    "ID": 27382,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-04-05 19:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:19"
+  },
+  {
+    "ID": 27383,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-04-06 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:20"
+  },
+  {
+    "ID": 27384,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-04-07 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:20"
+  },
+  {
+    "ID": 27385,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-04-08 18:00:00",
+    "PriceRange": "15\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:20"
+  },
+  {
+    "ID": 27386,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-04-08 21:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:20"
+  },
+  {
+    "ID": 27387,
+    "ProductionID": 1575,
+    "VenueID": 884,
+    "DateEvent": "2023-04-09 20:00:00",
+    "PriceRange": "20\u20ac",
+    "SystemID": 3,
+    "timestamp": "2023-02-20 19:03:20"
   }
 ]

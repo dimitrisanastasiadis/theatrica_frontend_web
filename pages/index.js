@@ -42,7 +42,7 @@ export const getStaticProps = async () => {
 
   artists = artists.filter(Boolean);
 
-  let latestShows = await mainFetcher(`/productions?page=0&size=10`)
+  let latestShows = await mainFetcher(`/productions/latest?page=0&size=10`)
 
   latestShows = latestShows?.content?.map(show => ({
     id: show.id,

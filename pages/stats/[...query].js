@@ -40,17 +40,17 @@ export const getStaticPaths = async () => {
   const paths = [
     {
       params: {
-        query: [2021]
+        query: ["2021"]
       }
     },
     {
       params: {
-        query: [2022]
+        query: ["2022"]
       }
     },
     {
       params: {
-        query: [2023]
+        query: ["2023"]
       }
     },
     {

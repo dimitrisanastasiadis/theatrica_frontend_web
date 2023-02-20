@@ -170,6 +170,18 @@ const showDetailsStyle = theme => ({
             width: 400
         }
     },
+    vivaLogo: {
+        color: "white",
+        display: "inline-flex",
+        marginTop: 5,
+        "&:visited": {
+            color: "white"
+        },
+        "&:hover": {
+            textDecoration: "underline",
+            color: "red"
+        }
+    }
 })
 
 export default showDetailsStyle;

@@ -11,6 +11,21 @@ const homeStyle = theme => ({
         },
         padding: "0 20px"
     },
+    heroBackgroundWrapper: {
+        paddingTop: 64,
+        overflow: "hidden",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+        opacity: 0.7,
+    },
+    heroBackground: {
+        width: "103%",
+        height: "100%",
+    },
     searchInput: {
         display: "flex",
         alignItems: "center",

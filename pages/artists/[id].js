@@ -82,26 +82,26 @@ export const getStaticProps = async ({ params }) => {
 
   const getProductionsByRole = (productions) => {
     let productionGroups = {};
-  
+
     if (productions) {
       productionGroups = productions.content.reduce((r, a) => {
         r[a.role] = [...r[a.role] || [], a];
         return r;
       }, {});
     }
-  
-    const { 
-      "Ηθοποιός": actorsTemp, 
-      "Ηθοποιοί": actorsTemp2, 
-      "Παίζουν": actorsTemp3, 
+
+    const {
+      "Ηθοποιός": actorsTemp,
+      "Ηθοποιοί": actorsTemp2,
+      "Παίζουν": actorsTemp3,
       "Ερμηνεύουν": actorsTemp4,
       "Παίζουν οι": actorsTemp5,
       "Παίζουν αλφαβητικά": actorsTemp6,
-      ...rest 
+      ...rest
     } = productionGroups;
-  
+
     const acting = [...actorsTemp || [], ...actorsTemp2 || [], ...actorsTemp3 || [], ...actorsTemp4 || [], ...actorsTemp5 || [], ...actorsTemp6 || []];
-  
+
     return { acting, rest };
   }
 
@@ -118,11 +118,11 @@ export const getStaticProps = async ({ params }) => {
   const productionsByRole = getProductionsByRoleStats(productionGroups)
 
   return {
-    props: { 
-      artist, 
+    props: {
+      artist,
       productionGroups,
-      productionsByRole, 
-      images 
+      productionsByRole,
+      images
     },
     revalidate: 900
   }
@@ -261,7 +261,7 @@ function ArtistDetails({ artist, productionGroups, productionsByRole, images }) 
             )}
           </section>
           <section>
-            <Typography variant="h4" component="h2" className={classes.sectionTitle}>Στατιστικά</Typography>
+            <Typography variant="h4" component="h2" className={classes.sectionTitle}>Παραγωγές ανά Ρόλο</Typography>
             <ResponsiveContainer width="100%" height={400}>
               <PieChart>
                 <Pie

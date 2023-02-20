@@ -184,6 +184,9 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
             }
             <Typography variant="body2" className="dotSeparator">2 ώρες 30 λεπτά</Typography>
           </div>
+          <a href={show.url} className={`linksNoDecoration ${classes.vivaLogo}`}>
+            <Image color="inherit" src="/LogoVivaNew.svg" width={100} height={32} alt="Viva Logo" />
+          </a>
           <div className={classes.mediaContainer}>
             {(!hasTrailer) ?
               <div className={classes.imageNoTrailer}>
@@ -362,7 +365,7 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
                   <div className={classes.flexChartContainer}>
                     {!!eventsByMonth.length &&
                       <div className={classes.chartContainer}>
-                        <Typography variant="h5" componet="h3" align="center">Παραστάσεις ανά Μήνα</Typography>
+                        <Typography variant="h5" component="h3" align="center">Παραστάσεις ανά Μήνα</Typography>
                         <ResponsiveContainer width="100%" height={400}>
                           <BarChart
                             data={eventsByMonth}
@@ -469,7 +472,6 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
         </div>
       </div>
     </>
-
   )
 }
 

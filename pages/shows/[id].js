@@ -182,9 +182,9 @@ function ShowDetails({ show, people, pastEvents, upcomingEvents, range, media, i
             {range &&
               <Typography variant="body2">{range}</Typography>
             }
-            <Typography variant="body2" className="dotSeparator">2 ώρες 30 λεπτά</Typography>
+            <Typography variant="body2" className="dotSeparator">{show.duration || "2 ώρες 30 λεπτά"}</Typography>
           </div>
-          <a href={show.url} className={`linksNoDecoration ${classes.vivaLogo}`}>
+          <a href={show.url} target="_blank" rel="noreferrer" className={`linksNoDecoration ${classes.vivaLogo}`}>
             <Image color="inherit" src="/LogoVivaNew.svg" width={100} height={32} alt="Viva Logo" />
           </a>
           <div className={classes.mediaContainer}>

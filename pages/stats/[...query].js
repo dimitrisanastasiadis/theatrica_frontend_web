@@ -20,7 +20,7 @@ import format from 'date-fns/format'
 import Head from "next/head"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LoadingScene from "../../src/components/LoadingScene"
-
+import { months } from "../../src/utils/constants"
 
 const useStyles = makeStyles(style);
 
@@ -33,8 +33,6 @@ const calendarTheme = ({
   }
 })
 
-const months = ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμριος", "Οκτώριος", "Νοέμβριος", "Δεκέμβριος"]
-
 export const getStaticPaths = async () => {
 
   const date = new Date()
@@ -42,7 +40,17 @@ export const getStaticPaths = async () => {
   const paths = [
     {
       params: {
-        query: [date.getFullYear().toString()]
+        query: ["2021"]
+      }
+    },
+    {
+      params: {
+        query: ["2022"]
+      }
+    },
+    {
+      params: {
+        query: ["2023"]
       }
     },
     {
@@ -392,7 +400,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
               />
             </div>
             <ThemeProvider theme={() => DatePickerTheme(theme.palette.secondary.main)}>
-              <DatePicker label="Επιλέξτε Περίοδο" value={lastDayMonth} inputVariant="outlined" onChange={handleDateChange} views={mode === "year" ? ["year"] : ["month", "year"]} minDate={"2020-01-01"} maxDate={"2022-12-31"} />
+              <DatePicker label="Επιλέξτε Περίοδο" value={lastDayMonth} inputVariant="outlined" onChange={handleDateChange} views={mode === "year" ? ["year"] : ["month", "year"]} minDate={"2021-01-01"} maxDate={"2023-12-31"} />
             </ThemeProvider>
           </div>
           {eventsByDate.length > 0 ?
@@ -564,7 +572,7 @@ const StatsPage = ({ eventsByDate, eventsByMonth, eventsByShow, eventsByVenue, p
                     <BarChart
                       onClick={handleBarClick}
                       margin={{ top: 50, right: 20, bottom: 60, left: 20 }}
-                      data={eventsByVenue.slice(0, 5)}
+                      data={eventsByVenue}
                       layout="vertical"
                       style={{ cursor: "pointer" }}>
                       <XAxis type="number" label={{ value: "Παραστάσεις", position: "bottom", fill: "#666" }} />

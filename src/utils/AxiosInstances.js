@@ -1,13 +1,24 @@
 import axios from "axios"
 
 // local server
+// export const mainAxios = axios.create({
+//     baseURL: process.env.NODE_ENV === "development" ? "http://192.168.2.14:5000/api" : "http://46.177.145.22:53239/api"
+// })
+
+export const baseURL = "http://195.251.123.174:8080/api";
+
 export const mainAxios = axios.create({
-    baseURL: process.env.NODE_ENV === "development" ? "http://192.168.2.10:8080/api" : "http://46.177.145.22:53239/api"
+    baseURL
 })
 
-// export const mainAxios = axios.create({
-//     baseURL: "http://83.212.111.242:8080/api"
-// })
+mainAxios.interceptors.request.use((config) => {
+    config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${process.env.JWT_TOKEN}`
+    }
+
+    return config;
+})
 
 const tmdbAxios = axios.create({
     baseURL: "https://api.themoviedb.org/3",
@@ -22,6 +33,18 @@ const newsAxios = axios.create({
         apiKey: process.env.NEWS_API
     }
 })
+
+export const newsFetcher = async url => {
+    try{
+        const response = await newsAxios.get(url);
+        const data = response.data;
+        return data;
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
 
 export const mainFetcher = async url => {
     try{
@@ -68,12 +91,3 @@ export const tmdbFetcher = async url => {
     }
 }
 
-export const newsFetcher = async url => {
-    try{
-        const response = await newsAxios.get(url);
-        const data = response.data;
-        return data;
-    }catch(error){
-        console.log(error)
-    }
-}

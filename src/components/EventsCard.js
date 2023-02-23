@@ -42,7 +42,7 @@ const EventsCard = ({ show }) => {
       <div className={classes.itemPadding}>
         <div className={classes.duration}>
           <ScheduleIcon />
-          <Typography variant="body1">{show.duration === "Not found" ? "N/A" : show.duration}</Typography>
+          <Typography variant="body1">{show.duration === "Not found" ? "N/A" : "N/A"}</Typography>
         </div>
         <Button
           component="a"

@@ -1,6 +1,5 @@
 import { makeStyles, Card, CardMedia, Typography, IconButton } from "@material-ui/core"
 import style from "../assets/jss/components/showCardStyle"
-import DefaultImage from "../../public/DefaultShowImage.webp"
 import Image from "next/image"
 import Link from "next/link"
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -25,7 +24,7 @@ function VenueCard({ id, title }){
                     <Link href={`/venues/${id}`}>
                         <a className="linksNoDecoration">
                             <div className={classes.imageContainer}>
-                                <Image src={DefaultImage} alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
+                                <Image src="/DefaultShowImage.jpg" alt={`${title} thumbnail`} layout="fill" objectFit="cover" />
                             </div>
                         </a>
                     </Link> 

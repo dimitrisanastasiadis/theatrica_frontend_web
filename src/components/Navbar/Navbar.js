@@ -30,7 +30,7 @@ function Navbar(props){
     }
 
     return (
-        <React.Fragment>
+        <>
             <AppBar className={classes.appbar} id="navbar">
                 <Toolbar className={classes.navbar}>
                     <IconButton onClick={toggleDrawer}>
@@ -38,7 +38,7 @@ function Navbar(props){
                     </IconButton>
                     <form onSubmit={handleSubmit} className={classes.search}>
                         <InputBase 
-                            type="text" 
+                            type="search" 
                             placeholder="Αναζήτηση"
                             value={searchValue}
                             onChange={handleChange}
@@ -54,8 +54,7 @@ function Navbar(props){
                 <NextNprogress color={theme.palette.secondary.main}/>
             </AppBar>
             <Toolbar />
-            
-        </React.Fragment>
+        </>
     )
 }
 

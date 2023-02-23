@@ -7,24 +7,26 @@ import Sidebar from "./Navbar/Sidebar"
 
 const Layout = ({ children }) => {
 
-  return ( 
-    <DrawerContextProvider>
-        <CssBaseline />
-        <SWRConfig
-            value={{
-              revalidateOnFocus: false,
-              dedupingInterval: 300000,
-              errorRetryCount: 2,
-              fetcher: mainFetcher
-            }}>
+  return (
+    <>
+      <CssBaseline />
+      <SWRConfig
+        value={{
+          revalidateOnFocus: false,
+          dedupingInterval: 300000,
+          errorRetryCount: 2,
+          fetcher: mainFetcher
+        }}>
+        <DrawerContextProvider>
           <Navbar />
           <Sidebar />
-          <main>
-            {children}
-          </main>
-        </SWRConfig>
-    </DrawerContextProvider>
+        </DrawerContextProvider>
+        <main>
+          {children}
+        </main>
+      </SWRConfig>
+    </>
   );
 }
- 
+
 export default Layout;

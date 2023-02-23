@@ -62,6 +62,12 @@ const findStyle = theme => ({
     flexDirection: "column",
     marginTop: 30,
     gap: 60
+  },
+  label: {
+    fontSize: "1rem",
+  },
+  datepicker: {
+    marginTop: 10
   }
 })
 

@@ -25,7 +25,7 @@ function PaginationPage({ items, pageCount, page, path, title }) {
             {title &&
                 <Grid item xs={12} >
                     <div className={classes.headingContainer}>
-                        <Typography variant="h2" component="h1" >{title}</Typography>
+                        <Typography variant="h2" component="h1">{title}</Typography>
                     </div>
                 </Grid>}
             <Grid item xs={12}  className={classes.list}>

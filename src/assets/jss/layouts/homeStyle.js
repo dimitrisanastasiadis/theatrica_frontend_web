@@ -1,16 +1,30 @@
 const homeStyle = theme => ({
     heroSection: {
-        minHeight: `calc(100vh - 128px)`,
+        minHeight: `calc(100vh - 64px)`,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         gap: 10,
-        marginBottom: 64,
         "&>p": {
             fontSize: "1.3em",
             maxWidth: 600
         },
         padding: "0 20px"
+    },
+    heroBackgroundWrapper: {
+        paddingTop: 64,
+        overflow: "hidden",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+        opacity: 0.7,
+    },
+    heroBackground: {
+        width: "103%",
+        height: "100%",
     },
     searchInput: {
         display: "flex",
@@ -78,6 +92,9 @@ const homeStyle = theme => ({
         [theme.breakpoints.up("md")]: {
             padding: 0
         }
+    },
+    scrollPromptContainer: {
+        marginTop: "auto",
     }
 })
 
